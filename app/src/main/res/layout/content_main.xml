@@ -10,11 +10,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.ultrakernel.Main"
-    tools:showIn="@layout/app_bar_main">
+    tools:context="com.ultrakernel.Main">
 
     <TextView
+        android:text="HELLO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="201dp"
+        android:id="@+id/textView2" />
+
 </RelativeLayout>
