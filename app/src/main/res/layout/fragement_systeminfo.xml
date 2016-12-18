@@ -11,4 +11,100 @@
     tools:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ultrakernel.fragment.SystemInfo_fragement">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/panel_top_layout"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Ram Memory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="22sp"
+            android:paddingBottom="3pt"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold" />
+
+      <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/square" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3pt" >
+
+            <TextView
+                android:text="Total Ram: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/t1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            <TextView
+                android:text="t_ram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/t_ram"
+                android:layout_marginLeft="@dimen/text_value_margin_left"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3pt" >
+
+            <TextView
+                android:text="Free Ram: "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/t2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            <TextView
+                android:text="f_ram"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/f_ram"
+                android:layout_marginLeft="@dimen/text_value_margin_left"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+        </RelativeLayout>
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:padding="3pt" >
+
+              <TextView
+                  android:text="Used Ram: "
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/t3"
+                  android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+              <TextView
+                  android:text="u_ram"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/u_ram"
+                  android:layout_marginLeft="@dimen/text_value_margin_left"
+                  android:textAppearance="@style/TextAppearance.AppCompat" />
+
+          </RelativeLayout>
+          <TextView
+              android:text="%%"
+              android:padding="1pt"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/u_ram_perc"
+              android:layout_marginLeft="@dimen/text_value_percentage_left"
+              android:layout_marginTop="@dimen/text_value_percentage_top"
+              android:textAppearance="@style/TextAppearance.AppCompat"
+              android:textStyle="normal|bold"
+              android:textSize="22sp"
+              android:fontFamily="sans-serif-smallcaps" />
+      </LinearLayout>
+
+    </LinearLayout>
 </FrameLayout>

@@ -17,6 +17,17 @@
     <dimen name="logo_title_subtext_margin_left">40pt</dimen>
     <dimen name="logo_title_subtext_margin_top">25pt</dimen>
 
+    <!--LOGO Start Icon-->
     <dimen name="start_icon_width">80pt</dimen>
     <dimen name="start_icon_height">80pt</dimen>
+
+    <!--text value-->
+    <dimen name="text_value_margin_left">35pt</dimen>
+    <dimen name="text_value_percentage_left">125pt</dimen>
+    <dimen name="text_value_percentage_top">-29pt</dimen>
+
+    <!--panel-->
+    <dimen name="panel_top">27pt</dimen>
+    <dimen name="panel_top_layout">7pt</dimen>
+
 </resources>

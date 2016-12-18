@@ -24,6 +24,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:id="@+id/content_frame"
+        android:layout_marginTop="@dimen/panel_top"
         android:layout_height="match_parent"/>
 
     <android.support.design.widget.FloatingActionButton

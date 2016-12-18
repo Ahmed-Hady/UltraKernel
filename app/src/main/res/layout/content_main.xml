@@ -73,9 +73,9 @@
         android:minWidth="@dimen/start_icon_width"
         android:cropToPadding="false"
         android:adjustViewBounds="true"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="7dp"
         android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/button" />
+        android:layout_alignStart="@+id/button" />
 
 </RelativeLayout>
 </FrameLayout>
