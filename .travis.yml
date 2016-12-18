@@ -1,0 +1,22 @@
+sudo: false
+language: android
+android:
+  components:
+  - extra-google-m2repository
+  - extra-android-m2repository
+  - platform-tools
+  - tools
+  - build-tools-25.0.0
+  - android-25
+jdk:
+- oraclejdk8
+script:
+- "./gradlew build"
+- find -type f -name "*.apk"
+deploy:
+  provider: releases
+  api_key:
+    secure: KLw/Adlf5zAvuWGR3hC/2PSJM50rfcyi/GuUmtFCzr1+e4/93iCWOWtDCnkzLgYPY0HUKimFeSIHVOSA62NAUJbqY2MKstFEw82X8+ve7nXhuFdFlLVL6Cni9QH2C0DsLPUnRMNa7DXZRXMC2jwv1iKxX4D/N9jkf+9NiS2Z3C3y7ySafyf8kljaNqFjpSAm2NBMI9ki30X7gP5nwZ/iywV/4dreUcaXohfLd/KlbHXfPn57lUciU240cq9Jt4PyabjwIIKiXzwfmbeUtEVDcd9NFUyKGsLEUs+qqFOTvF9AsLm4mRXwlLJIrOVrHgAH/P3YBz1NS6LNljlLDTpJ70nA3BktXgfu5lZPBcQBy+Ksr8g3ZsLs/9KE8IcYwe9xOwKGsfUE2zzCrfN5CD1SNH0oyk7Nlxjoi32J1sZdzwixIW/cxiV9fHfGMk59Vdodc6jlS1c43tCsN7HEZNJJn+ZiGsZaJovaqEQgj/kxpk3VZ93kFUUBl/e08NK/Q7KCmIngY4VufCzKmCAkkoYlFcsHrgHinGLJMHVvXLXUiVuePSC5qWURhq4kEivCXNGTqhvF/yoqkThP0Ked91iTb+M7mfGBIcAOL/YNgR1TvzbgtvYCPGJf/YSafH0sy1jhz2Gh5Xyyde9itYKXTNUU2iqbS7a43+wNvd7TtvuIiYk=
+  file: ''
+  on:
+    repo: Ahmed-Hady/UltraKernel
