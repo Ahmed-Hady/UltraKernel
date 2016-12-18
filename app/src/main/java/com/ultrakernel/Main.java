@@ -16,13 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ultrakernel.fragment.Main_fragement;
-import com.ultrakernel.fragment.SystemInfo;
+import com.ultrakernel.fragment.SystemInfo_fragement;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Main_fragement mMain;
-    private SystemInfo mSystemInfo;
+    private SystemInfo_fragement mSystemInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class Main extends AppCompatActivity
 
         /*Fragments*/
         mMain=new Main_fragement();
-        mSystemInfo=new SystemInfo();
+        mSystemInfo=new SystemInfo_fragement();
 
         /*default fragment*/
         updateFragment(this.mMain);
