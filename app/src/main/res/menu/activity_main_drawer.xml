@@ -6,6 +6,10 @@
             android:id="@+id/nav_main"
             android:icon="@drawable/ic_menu_home"
             android:title="Main" />
+        <item
+            android:id="@+id/nav_systemInfo"
+            android:icon="@drawable/ic_android"
+            android:title="System Information" />
     </group>
 
     <item android:title="Communicate">

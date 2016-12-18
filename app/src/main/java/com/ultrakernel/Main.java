@@ -16,11 +16,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.ultrakernel.fragment.Main_fragement;
+import com.ultrakernel.fragment.SystemInfo;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Main_fragement mMain;
+    private SystemInfo mSystemInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class Main extends AppCompatActivity
 
         /*Fragments*/
         mMain=new Main_fragement();
+        mSystemInfo=new SystemInfo();
 
         /*default fragment*/
         updateFragment(this.mMain);
@@ -95,10 +98,9 @@ public class Main extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_main) {
-            // Handle the camera action
-
-        } else if (id == R.id.nav_share) {
-
+            updateFragment(mMain);
+        } else if (id == R.id.nav_systemInfo) {
+            updateFragment(mSystemInfo);
         } else if (id == R.id.nav_send) {
 
         }
