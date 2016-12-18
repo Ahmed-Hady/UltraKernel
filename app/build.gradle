@@ -41,6 +41,8 @@ repositories {
     maven { url "https://maven.fabric.io/public" }
 }
 
+apply plugin: 'com.android.application'
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

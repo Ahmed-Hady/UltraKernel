@@ -41,7 +41,6 @@ public class Main extends AppCompatActivity
             }
         });
 
-
         /*Fragments*/
         mMain=new Main_fragement();
         mSystemInfo=new SystemInfo_fragement();
@@ -121,5 +120,6 @@ public class Main extends AppCompatActivity
         drawer.openDrawer(GravityCompat.START);
 
     }
+
 }
 
