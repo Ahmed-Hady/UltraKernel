@@ -114,5 +114,10 @@ public class Main extends AppCompatActivity
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
     }
+    public void startBtn_press(View v){
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.openDrawer(GravityCompat.START);
+
+    }
 }
 

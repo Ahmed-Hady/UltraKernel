@@ -13,13 +13,40 @@
     tools:context="com.ultrakernel.Main">
 
     <TextView
-        android:text="HELLO"
-        android:layout_width="wrap_content"
+        android:text="Welcome to UltraKernel App from UltraDevs Team"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:id="@+id/textView2"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="201dp"
-        android:id="@+id/textView2" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="viewStart"
+        android:fontFamily="casual"
+        android:textSize="36sp" />
 
+    <TextView
+        android:text="This App designed for the uses of system and kernel performance boost and improvements "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/textView3"
+        android:textSize="14sp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Press Here To Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:fontFamily="casual"
+        android:textStyle="normal|bold"
+        android:clickable="true"
+        android:onClick="startBtn_press"
+        android:layout_marginBottom="83dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="70dp" />
 </RelativeLayout>
