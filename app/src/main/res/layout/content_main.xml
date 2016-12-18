@@ -12,28 +12,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ultrakernel.Main">
 
-    <TextView
-        android:text="Welcome to UltraKernel App from UltraDevs Team"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="110dp"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textAlignment="viewStart"
-        android:fontFamily="casual"
-        android:textSize="36sp" />
-
-    <TextView
-        android:text="This App designed for the uses of system and kernel performance boost and improvements "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:id="@+id/textView3"
-        android:textSize="14sp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Press Here To Start"
@@ -45,8 +23,46 @@
         android:textStyle="normal|bold"
         android:clickable="true"
         android:onClick="startBtn_press"
-        android:layout_marginBottom="83dp"
+        android:layout_marginBottom="17dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="This App designed for the uses of system and kernel performance boost and improvements "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textSize="14sp"
+        android:layout_marginBottom="55dp"
+        android:layout_above="@+id/button"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="UltraKernel App from UltraDevs Team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textAlignment="center"
+        android:fontFamily="casual"
+        android:textSize="24sp"
+        android:layout_alignBottom="@+id/textView3"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="70dp" />
+        android:layout_marginBottom="55dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_icon"
+        android:id="@+id/imageView2"
+        android:maxHeight="@dimen/start_icon_height"
+        android:maxWidth="@dimen/start_icon_width"
+        android:minHeight="@dimen/start_icon_height"
+        android:minWidth="@dimen/start_icon_width"
+        android:cropToPadding="false"
+        android:adjustViewBounds="true"
+        android:layout_marginTop="54dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/button" />
+
 </RelativeLayout>

@@ -16,4 +16,7 @@
     <dimen name="logo_title_text_margin_top">9pt</dimen>
     <dimen name="logo_title_subtext_margin_left">40pt</dimen>
     <dimen name="logo_title_subtext_margin_top">25pt</dimen>
+
+    <dimen name="start_icon_width">80pt</dimen>
+    <dimen name="start_icon_height">80pt</dimen>
 </resources>
