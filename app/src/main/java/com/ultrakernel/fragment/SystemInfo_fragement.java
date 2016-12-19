@@ -151,9 +151,52 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         double rRam = (uRam / memoryInfo.totalMem)*100;
         DecimalFormat dec = new DecimalFormat("0");
         ram_perc.setText("" + dec.format(rRam).concat("%"));
+
+
+        // SYSTEM INFO
+
+        //OS_VERSION
+        TextView OS_Version=(TextView) swipeRefreshLayout.findViewById(R.id.os_ver);
+        List<String> system_version= Shell.SH.run("getprop ro.build.version.release");
+        OS_Version.setText("" + system_version);
+
+        //OS_sdk
+        TextView OS_sdk=(TextView) swipeRefreshLayout.findViewById(R.id.os_sdk);
+        List<String> system_sdk= Shell.SH.run("getprop ro.build.version.sdk");
+        OS_sdk.setText("" + system_sdk);
+
+        //OS_s
+        TextView OS_patch=(TextView) swipeRefreshLayout.findViewById(R.id.os_sec_patch);
+        List<String> system_patch= Shell.SH.run("getprop ro.build.version.security_patch");
+        OS_patch.setText("" + system_patch);
+
+        //device_Board
+        TextView board=(TextView) swipeRefreshLayout.findViewById(R.id.d_board);
+        List<String> d_board= Shell.SH.run("getprop ro.product.board");
+        board.setText("" + d_board);
+
+        //device_Manufacturer
+        TextView manuf=(TextView) swipeRefreshLayout.findViewById(R.id.d_manuf);
+        List<String> d_manuf= Shell.SH.run("getprop ro.product.manufacturer");
+        manuf.setText("" + d_manuf);
+
+        //device_name
+        TextView name=(TextView) swipeRefreshLayout.findViewById(R.id.device);
+        List<String> d_name= Shell.SH.run("getprop ro.product.model");
+        name.setText("" + d_name);
+
+        //kernel
+        TextView kernel=(TextView) swipeRefreshLayout.findViewById(R.id.kernel);
+        List<String> d_kernel= Shell.SH.run("cat /proc/version");
+        kernel.setText("" + d_kernel);
+
+        // Battery
+
+        TextView B=(TextView) swipeRefreshLayout.findViewById(R.id.battery);
+        B.setText(readBattery());
+
         swipeRefreshLayout = (SwipeRefreshLayout) swipeRefreshLayout.findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setOnRefreshListener(this);
-
 
         //do processing to get new data and set your listview's adapter, maybe  reinitialise the loaders you may be using or so
         //when your data has finished loading, cset the refresh state of the view to false
@@ -173,28 +216,25 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
         int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
         if(status == BatteryManager.BATTERY_STATUS_CHARGING){
-            sb.append("BATTERY_STATUS_CHARGING\n");
+            sb.append("CHARGING\n");
         }
         if(status == BatteryManager.BATTERY_STATUS_FULL){
-            sb.append("BATTERY_STATUS_FULL\n");
+            sb.append("FULL\n");
         }
 
         int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
-            sb.append("BATTERY_PLUGGED_USB\n");
+            sb.append("PLUGGED USB\n");
         }
         if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
-            sb.append("BATTERY_PLUGGED_AC\n");
+            sb.append("PLUGGED AC\n");
         }
 
         int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-        sb.append("LEVEL: " + level + "\n");
-
-        int scale = batteryIntent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
-        sb.append("SCALE: " + scale + "\n");
+        sb.append("LEVEL: " + level + "%\n");
 
         int  health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
-        sb.append("health: " + convHealth(health) + "\n");
+        sb.append("HEALTH: " + convHealth(health) + "\n");
 
         String  technology = batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
         sb.append("TECHNOLOGY: " + technology + "\n");
@@ -205,10 +245,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         int  voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
         sb.append("VOLTAGE: " + voltage + "\n");
 
-        //I have no idea how to load the small icon from system resources!
-        int  icon_small_resourceId = batteryIntent.getIntExtra(BatteryManager.EXTRA_ICON_SMALL,0);
-        sb.append("ICON_SMALL: " + icon_small_resourceId + "\n");
-
         return sb.toString();
     }
 
@@ -216,25 +252,25 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         String result;
         switch(health){
             case BatteryManager.BATTERY_HEALTH_COLD:
-                result = "BATTERY_HEALTH_COLD";
+                result = "COLD";
                 break;
             case BatteryManager.BATTERY_HEALTH_DEAD:
-                result = "BATTERY_HEALTH_DEAD";
+                result = "DEAD";
                 break;
             case BatteryManager.BATTERY_HEALTH_GOOD:
-                result = "BATTERY_HEALTH_GOOD";
+                result = "GOOD";
                 break;
             case BatteryManager.BATTERY_HEALTH_OVERHEAT:
-                result = "BATTERY_HEALTH_OVERHEAT";
+                result = "OVERHEAT";
                 break;
             case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
-                result = "BATTERY_HEALTH_OVER_VOLTAGE";
+                result = "VOLTAGE";
                 break;
             case BatteryManager.BATTERY_HEALTH_UNKNOWN:
-                result = "BATTERY_HEALTH_UNKNOWN";
+                result = "UNKNOWN";
                 break;
             case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
-                result = "BATTERY_HEALTH_UNSPECIFIED_FAILURE";
+                result = "FAILURE";
                 break;
             default:
                 result = "unkknown";
