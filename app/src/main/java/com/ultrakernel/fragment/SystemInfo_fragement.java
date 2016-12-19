@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.ultrakernel.R;
 
 import java.text.DecimalFormat;
+import java.util.List;
+
+import eu.chainfire.libsuperuser.Shell;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 
@@ -26,8 +29,9 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         final View view = inflater.inflate(R.layout.fragement_systeminfo, container, false);
-        
         ActivityManager activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
+
+        // RAM Monitor
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
 
@@ -44,6 +48,44 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         double rRam = (uRam / memoryInfo.totalMem)*100;
         DecimalFormat dec = new DecimalFormat("0");
         ram_perc.setText("" + dec.format(rRam).concat("%"));
+
+        // SYSTEM INFO
+
+            //OS_VERSION
+            TextView OS_Version=(TextView) view.findViewById(R.id.os_ver);
+            List<String> system_version= Shell.SH.run("getprop ro.build.version.release");
+            OS_Version.setText("" + system_version);
+
+            //OS_sdk
+            TextView OS_sdk=(TextView) view.findViewById(R.id.os_sdk);
+            List<String> system_sdk= Shell.SH.run("getprop ro.build.version.sdk");
+            OS_sdk.setText("" + system_sdk);
+
+            //OS_s
+            TextView OS_patch=(TextView) view.findViewById(R.id.os_sec_patch);
+            List<String> system_patch= Shell.SH.run("getprop ro.build.version.security_patch");
+            OS_patch.setText("" + system_patch);
+
+            //device_Board
+            TextView board=(TextView) view.findViewById(R.id.d_board);
+            List<String> d_board= Shell.SH.run("getprop ro.product.board");
+            board.setText("" + d_board);
+
+            //device_Manufacturer
+            TextView manuf=(TextView) view.findViewById(R.id.d_manuf);
+            List<String> d_manuf= Shell.SH.run("getprop ro.product.manufacturer");
+            manuf.setText("" + d_manuf);
+
+            //device_name
+            TextView name=(TextView) view.findViewById(R.id.device);
+            List<String> d_name= Shell.SH.run("getprop ro.product.model");
+            name.setText("" + d_name);
+
+            //kernel
+            TextView kernel=(TextView) view.findViewById(R.id.kernel);
+            List<String> d_kernel= Shell.SH.run("cat /proc/version");
+            kernel.setText("" + d_kernel);
+        // Refresh
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setOnRefreshListener(this);
 
