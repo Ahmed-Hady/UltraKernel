@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipeContainer"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -17,6 +11,11 @@
     tools:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.ultrakernel.fragment.SystemInfo_fragement">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -272,8 +271,38 @@
 
             </LinearLayout>
 
+        <TextView
+            android:text="Battery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="22sp"
+            android:paddingBottom="3pt"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="Battery: "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/battery"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+            </RelativeLayout>
+        </LinearLayout>
         </LinearLayout>
 
     </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>
-</android.support.v4.widget.SwipeRefreshLayout>
