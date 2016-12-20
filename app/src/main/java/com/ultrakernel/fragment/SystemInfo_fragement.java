@@ -33,6 +33,8 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B;
+    private ActivityManager.MemoryInfo memoryInfo;
+    private ActivityManager activityManager;
     @Nullable
     @Override
 
@@ -42,8 +44,8 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
         // RAM Monitor
 
-        ActivityManager activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
-        ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
+        memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
 
         total_ram = (TextView) view.findViewById(R.id.t_ram);
@@ -51,14 +53,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         used_ram = (TextView) view.findViewById(R.id.u_ram);
         ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
 
-        total_ram.setText(" " + size((int) memoryInfo.totalMem));
-        used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
-        free_ram.setText(" " + size((int) memoryInfo.availMem));
-
-        double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
-        double rRam = (uRam / memoryInfo.totalMem)*100;
-        DecimalFormat dec = new DecimalFormat("0");
-        ram_perc.setText("" + dec.format(rRam).concat("%"));
 
         // SYSTEM INFO
 
@@ -98,6 +92,33 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         // Refresh
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setOnRefreshListener(this);
+        Thread t = new Thread() {
+
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                total_ram.setText(" " + size((int) memoryInfo.totalMem));
+                                used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
+                                free_ram.setText(" " + size((int) memoryInfo.availMem));
+
+                                double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
+                                double rRam = (uRam / memoryInfo.totalMem)*100;
+                                DecimalFormat dec = new DecimalFormat("0");
+                                ram_perc.setText("" + dec.format(rRam).concat("%"));
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                }
+            }
+        };
+
+        t.start();
 
         return view;
     }
