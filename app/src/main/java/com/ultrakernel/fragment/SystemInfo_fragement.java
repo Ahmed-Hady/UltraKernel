@@ -21,11 +21,18 @@ import java.util.List;
 import eu.chainfire.libsuperuser.Shell;
 
 import static android.content.Context.ACTIVITY_SERVICE;
+import static com.ultrakernel.util.Config.Android_OS_Version;
+import static com.ultrakernel.util.Config.Android_Sdk_Version;
+import static com.ultrakernel.util.Config.Android_d_board;
+import static com.ultrakernel.util.Config.Android_d_kernel;
+import static com.ultrakernel.util.Config.Android_d_manuf;
+import static com.ultrakernel.util.Config.Android_d_name;
+import static com.ultrakernel.util.Config.Android_system_patch_Version;
 
 public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
     private SwipeRefreshLayout swipeRefreshLayout;
-
+    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B;
     @Nullable
     @Override
 
@@ -39,10 +46,10 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
         activityManager.getMemoryInfo(memoryInfo);
 
-        TextView total_ram = (TextView) view.findViewById(R.id.t_ram);
-        TextView free_ram = (TextView) view.findViewById(R.id.f_ram);
-        TextView used_ram = (TextView) view.findViewById(R.id.u_ram);
-        TextView ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
+        total_ram = (TextView) view.findViewById(R.id.t_ram);
+        free_ram = (TextView) view.findViewById(R.id.f_ram);
+        used_ram = (TextView) view.findViewById(R.id.u_ram);
+        ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
 
         total_ram.setText(" " + size((int) memoryInfo.totalMem));
         used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
@@ -55,44 +62,36 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
         // SYSTEM INFO
 
-            //OS_VERSION
-            TextView OS_Version=(TextView) view.findViewById(R.id.os_ver);
-            List<String> system_version= Shell.SH.run("getprop ro.build.version.release");
-            OS_Version.setText("" + system_version);
+        //OS_VERSION
+        OS_Version=(TextView) view.findViewById(R.id.os_ver);
+        OS_Version.setText("" + Android_OS_Version());
 
-            //OS_sdk
-            TextView OS_sdk=(TextView) view.findViewById(R.id.os_sdk);
-            List<String> system_sdk= Shell.SH.run("getprop ro.build.version.sdk");
-            OS_sdk.setText("" + system_sdk);
+        //OS_sdk
+        OS_sdk=(TextView) view.findViewById(R.id.os_sdk);
+        OS_sdk.setText("" + Android_Sdk_Version());
 
-            //OS_s
-            TextView OS_patch=(TextView) view.findViewById(R.id.os_sec_patch);
-            List<String> system_patch= Shell.SH.run("getprop ro.build.version.security_patch");
-            OS_patch.setText("" + system_patch);
+        //OS_s
+        OS_patch=(TextView) view.findViewById(R.id.os_sec_patch);
+        OS_patch.setText("" + Android_system_patch_Version());
 
-            //device_Board
-            TextView board=(TextView) view.findViewById(R.id.d_board);
-            List<String> d_board= Shell.SH.run("getprop ro.product.board");
-            board.setText("" + d_board);
+        //device_Board
+        board=(TextView) view.findViewById(R.id.d_board);
+        board.setText("" + Android_d_board());
 
-            //device_Manufacturer
-            TextView manuf=(TextView) view.findViewById(R.id.d_manuf);
-            List<String> d_manuf= Shell.SH.run("getprop ro.product.manufacturer");
-            manuf.setText("" + d_manuf);
+        //device_Manufacturer
+        manuf=(TextView) view.findViewById(R.id.d_manuf);
+        manuf.setText("" + Android_d_manuf());
 
-            //device_name
-            TextView name=(TextView) view.findViewById(R.id.device);
-            List<String> d_name= Shell.SH.run("getprop ro.product.model");
-            name.setText("" + d_name);
+        //device_name
+        name=(TextView) view.findViewById(R.id.device);
+        name.setText("" + Android_d_name());
 
-            //kernel
-            TextView kernel=(TextView) view.findViewById(R.id.kernel);
-            List<String> d_kernel= Shell.SH.run("cat /proc/version");
-            kernel.setText("" + d_kernel);
-
+        //kernel
+        kernel=(TextView) view.findViewById(R.id.kernel);
+        kernel.setText("" + Android_d_kernel());
         // Battery
 
-        TextView B=(TextView) view.findViewById(R.id.battery);
+        B=(TextView) view.findViewById(R.id.battery);
         B.setText(readBattery());
 
 
