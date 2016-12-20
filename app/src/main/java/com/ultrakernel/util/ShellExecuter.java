@@ -54,6 +54,10 @@ public class ShellExecuter {
     {
         return new File("/system/xbin/su").isFile();
     }
+    public static boolean has_systemless_Root()
+    {
+        return new File("/su/xbin").exists();
+    }
     public static List<String> SuperSu(){
         List<String> newShell= (Shell.SH.run(command));
         return newShell;

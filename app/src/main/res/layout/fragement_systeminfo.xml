@@ -270,6 +270,25 @@
                         tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/root"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t11"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/root"
+                        android:layout_marginLeft="46pt"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         <TextView

@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ultrakernel.R;
+import com.ultrakernel.util.ShellExecuter;
 
 import java.text.DecimalFormat;
 
@@ -28,8 +29,9 @@ import static com.ultrakernel.util.Config.Android_system_patch_Version;
 
 public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
+    private ShellExecuter Shell;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B;
+    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B,root_s;
     @Nullable
     @Override
 
@@ -71,6 +73,16 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         B=(TextView) view.findViewById(R.id.battery);
         B.setText(readBattery());
 
+
+        //root
+        root_s=(TextView) view.findViewById(R.id.root);
+            if(Shell.hasRoot()) {
+                root_s.setText("Rooted");
+            }else if(Shell.has_systemless_Root()) {
+                root_s.setText("Rooted");
+            }else{
+                root_s.setText("Not Rooted");
+            }
 
         // RAM Monitor
 

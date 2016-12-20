@@ -22,4 +22,5 @@
     <string name="kernel">Kernel:</string>
     <string name="battery">Battery</string>
     <string name="battery_text">Battery:</string>
+    <string name="root">Root Status:</string>
 </resources>
