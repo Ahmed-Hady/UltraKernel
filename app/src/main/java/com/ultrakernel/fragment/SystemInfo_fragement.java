@@ -30,8 +30,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B;
-    private ActivityManager.MemoryInfo memoryInfo;
-    private ActivityManager activityManager;
     @Nullable
     @Override
 
@@ -40,10 +38,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         final View view = inflater.inflate(R.layout.fragement_systeminfo, container, false);
 
         // RAM Monitor
-
-        activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
-        memoryInfo = new ActivityManager.MemoryInfo();
-        activityManager.getMemoryInfo(memoryInfo);
 
         total_ram = (TextView) view.findViewById(R.id.t_ram);
         free_ram = (TextView) view.findViewById(R.id.f_ram);
@@ -85,12 +79,9 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         B=(TextView) view.findViewById(R.id.battery);
         B.setText(readBattery());
 
+        final ActivityManager activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
 
-        // Refresh
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
-        swipeRefreshLayout.setOnRefreshListener(this);
         Thread t = new Thread() {
-
             @Override
             public void run() {
                 try {
@@ -99,6 +90,8 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                final ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+                                activityManager.getMemoryInfo(memoryInfo);
                                 total_ram.setText(" " + size((int) memoryInfo.totalMem));
                                 used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
                                 free_ram.setText(" " + size((int) memoryInfo.availMem));
@@ -107,6 +100,9 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
                                 double rRam = (uRam / memoryInfo.totalMem)*100;
                                 DecimalFormat dec = new DecimalFormat("0");
                                 ram_perc.setText("" + dec.format(rRam).concat("%"));
+                                // Battery
+                                B=(TextView) view.findViewById(R.id.battery);
+                                B.setText(readBattery());
                             }
                         });
                     }
@@ -116,6 +112,10 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         };
 
         t.start();
+
+        // Refresh
+        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         return view;
     }
