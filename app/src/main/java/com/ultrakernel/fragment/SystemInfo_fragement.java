@@ -37,14 +37,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
         final View view = inflater.inflate(R.layout.fragement_systeminfo, container, false);
 
-        // RAM Monitor
-
-        total_ram = (TextView) view.findViewById(R.id.t_ram);
-        free_ram = (TextView) view.findViewById(R.id.f_ram);
-        used_ram = (TextView) view.findViewById(R.id.u_ram);
-        ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
-
-
         // SYSTEM INFO
 
         //OS_VERSION
@@ -79,7 +71,26 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         B=(TextView) view.findViewById(R.id.battery);
         B.setText(readBattery());
 
+
+        // RAM Monitor
+
+        total_ram = (TextView) view.findViewById(R.id.t_ram);
+        free_ram = (TextView) view.findViewById(R.id.f_ram);
+        used_ram = (TextView) view.findViewById(R.id.u_ram);
+        ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
+
+
         final ActivityManager activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
+        final ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
+        activityManager.getMemoryInfo(memoryInfo);
+        total_ram.setText(" " + size((int) memoryInfo.totalMem));
+        used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
+        free_ram.setText(" " + size((int) memoryInfo.availMem));
+
+        double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
+        double rRam = (uRam / memoryInfo.totalMem)*100;
+        DecimalFormat dec = new DecimalFormat("0");
+        ram_perc.setText("" + dec.format(rRam).concat("%"));
 
         Thread t = new Thread() {
             @Override
@@ -212,8 +223,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         swipeRefreshLayout.setRefreshing(false);
 
     }
-
-
 
     private String readBattery(){
         StringBuilder sb = new StringBuilder();

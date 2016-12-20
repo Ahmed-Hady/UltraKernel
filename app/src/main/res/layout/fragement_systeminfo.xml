@@ -57,7 +57,6 @@
                         android:id="@+id/t1"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t_ram"
@@ -77,7 +76,6 @@
                         android:id="@+id/t2"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/f_ram"
@@ -97,7 +95,6 @@
                         android:id="@+id/t3"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/u_ram"
@@ -107,7 +104,6 @@
 
                 </RelativeLayout>
                 <TextView
-                    android:text="@string/two_percent"
                     android:padding="1pt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -118,7 +114,8 @@
                     android:textStyle="normal|bold"
                     android:textSize="22sp"
                     android:fontFamily="sans-serif-smallcaps"
-                    tools:ignore="RtlHardcoded" />
+                    tools:ignore="RtlHardcoded"
+                    android:text="0%" />
             </LinearLayout>
 
 
@@ -151,7 +148,6 @@
                         android:id="@+id/t4"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/os_ver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_ver"
@@ -171,7 +167,6 @@
                         android:id="@+id/t5"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/os_sdk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_sdk"
@@ -191,7 +186,6 @@
                         android:id="@+id/t6"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/os_sec_patch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_sec_patch"
@@ -211,7 +205,6 @@
                         android:id="@+id/t7"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/d_board"
@@ -231,7 +224,6 @@
                         android:id="@+id/t8"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/d_manuf"
@@ -251,7 +243,6 @@
                         android:id="@+id/t9"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/device"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/device"
@@ -271,7 +262,6 @@
                         android:id="@+id/t10"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="@string/kernel_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/kernel"
