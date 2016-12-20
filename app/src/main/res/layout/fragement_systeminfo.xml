@@ -26,10 +26,10 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:paddingTop="@dimen/panel_top_layout"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
-                android:text="Ram Memory"
+                android:text="@string/ram_memory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4"
@@ -51,18 +51,19 @@
                     android:padding="3pt" >
 
                     <TextView
-                        android:text="Total Ram: "
+                        android:text="@string/total_ram"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t1"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="t_ram"
+                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t_ram"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -70,18 +71,19 @@
                     android:padding="3pt" >
 
                     <TextView
-                        android:text="Free Ram: "
+                        android:text="@string/free_ram"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t2"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="f_ram"
+                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/f_ram"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -89,22 +91,23 @@
                     android:padding="3pt" >
 
                     <TextView
-                        android:text="Used Ram: "
+                        android:text="@string/used_ram"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t3"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="u_ram"
+                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/u_ram"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
 
                 </RelativeLayout>
                 <TextView
-                    android:text="%%"
+                    android:text="@string/two_percent"
                     android:padding="1pt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,12 +117,13 @@
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:textStyle="normal|bold"
                     android:textSize="22sp"
-                    android:fontFamily="sans-serif-smallcaps" />
+                    android:fontFamily="sans-serif-smallcaps"
+                    tools:ignore="RtlHardcoded" />
             </LinearLayout>
 
 
             <TextView
-                android:text="System"
+                android:text="@string/system"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5"
@@ -141,18 +145,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Version: "
+                        android:text="@string/version"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t4"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="os_ver"
+                        android:text="@string/os_ver"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_ver"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -160,18 +165,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="SDK: "
+                        android:text="@string/sdk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t5"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="os_sdk"
+                        android:text="@string/os_sdk"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_sdk"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -179,18 +185,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Security: "
+                        android:text="@string/security"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t6"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="os_sec_patch"
+                        android:text="@string/os_sec_patch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/os_sec_patch"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -198,18 +205,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Board: "
+                        android:text="@string/board"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t7"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="d_board"
+                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/d_board"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -217,18 +225,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Manufacturer: "
+                        android:text="@string/manufacturer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t8"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="d_manuf"
+                        android:text="@string/loading"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/d_manuf"
                         android:layout_marginLeft="46pt"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -236,18 +245,19 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Device Name: "
+                        android:text="@string/device_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t9"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="device"
+                        android:text="@string/device"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/device"
                         android:layout_marginLeft="46pt"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -255,24 +265,25 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:text="Kernel: "
+                        android:text="@string/kernel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/t10"
                         android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
                     <TextView
-                        android:text="kernel"
+                        android:text="@string/kernel_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/kernel"
                         android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
                 </RelativeLayout>
 
             </LinearLayout>
 
         <TextView
-            android:text="Battery"
+            android:text="@string/battery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView6"
@@ -294,7 +305,7 @@
                 android:padding="3pt" >
 
                 <TextView
-                    android:text="Battery: "
+                    android:text="@string/battery_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/battery"

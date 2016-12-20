@@ -16,9 +16,6 @@ import android.widget.TextView;
 import com.ultrakernel.R;
 
 import java.text.DecimalFormat;
-import java.util.List;
-
-import eu.chainfire.libsuperuser.Shell;
 
 import static android.content.Context.ACTIVITY_SERVICE;
 import static com.ultrakernel.util.Config.Android_OS_Version;
@@ -176,40 +173,32 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         // SYSTEM INFO
 
         //OS_VERSION
-        TextView OS_Version=(TextView) swipeRefreshLayout.findViewById(R.id.os_ver);
-        List<String> system_version= Shell.SH.run("getprop ro.build.version.release");
-        OS_Version.setText("" + system_version);
+        OS_Version=(TextView) swipeRefreshLayout.findViewById(R.id.os_ver);
+        OS_Version.setText("" + Android_OS_Version());
 
         //OS_sdk
-        TextView OS_sdk=(TextView) swipeRefreshLayout.findViewById(R.id.os_sdk);
-        List<String> system_sdk= Shell.SH.run("getprop ro.build.version.sdk");
-        OS_sdk.setText("" + system_sdk);
+        OS_sdk=(TextView) swipeRefreshLayout.findViewById(R.id.os_sdk);
+        OS_sdk.setText("" + Android_Sdk_Version());
 
         //OS_s
-        TextView OS_patch=(TextView) swipeRefreshLayout.findViewById(R.id.os_sec_patch);
-        List<String> system_patch= Shell.SH.run("getprop ro.build.version.security_patch");
-        OS_patch.setText("" + system_patch);
+        OS_patch=(TextView) swipeRefreshLayout.findViewById(R.id.os_sec_patch);
+        OS_patch.setText("" + Android_system_patch_Version());
 
         //device_Board
-        TextView board=(TextView) swipeRefreshLayout.findViewById(R.id.d_board);
-        List<String> d_board= Shell.SH.run("getprop ro.product.board");
-        board.setText("" + d_board);
+        board=(TextView) swipeRefreshLayout.findViewById(R.id.d_board);
+        board.setText("" + Android_d_board());
 
         //device_Manufacturer
-        TextView manuf=(TextView) swipeRefreshLayout.findViewById(R.id.d_manuf);
-        List<String> d_manuf= Shell.SH.run("getprop ro.product.manufacturer");
-        manuf.setText("" + d_manuf);
+        manuf=(TextView) swipeRefreshLayout.findViewById(R.id.d_manuf);
+        manuf.setText("" + Android_d_manuf());
 
         //device_name
-        TextView name=(TextView) swipeRefreshLayout.findViewById(R.id.device);
-        List<String> d_name= Shell.SH.run("getprop ro.product.model");
-        name.setText("" + d_name);
+        name=(TextView) swipeRefreshLayout.findViewById(R.id.device);
+        name.setText("" + Android_d_name());
 
         //kernel
-        TextView kernel=(TextView) swipeRefreshLayout.findViewById(R.id.kernel);
-        List<String> d_kernel= Shell.SH.run("cat /proc/version");
-        kernel.setText("" + d_kernel);
-
+        kernel=(TextView) swipeRefreshLayout.findViewById(R.id.kernel);
+        kernel.setText("" + Android_d_kernel());
         // Battery
 
         TextView B=(TextView) swipeRefreshLayout.findViewById(R.id.battery);
