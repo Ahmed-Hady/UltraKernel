@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.Main_fragement;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
@@ -21,6 +22,7 @@ public class Main extends AppCompatActivity
 
     private Main_fragement mMain;
     private SystemInfo_fragement mSystemInfo;
+    private KernelFragment mKernel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class Main extends AppCompatActivity
         /*Fragments*/
         mMain=new Main_fragement();
         mSystemInfo=new SystemInfo_fragement();
+        mKernel=new KernelFragment();
 
         /*default fragment*/
         updateFragment(this.mMain);
@@ -89,6 +92,8 @@ public class Main extends AppCompatActivity
             updateFragment(mMain);
         } else if (id == R.id.nav_systemInfo) {
             updateFragment(mSystemInfo);
+        } else if (id == R.id.nav_kernel_tweaks) {
+            updateFragment(mKernel);
         } else if (id == R.id.nav_send) {
 
         }

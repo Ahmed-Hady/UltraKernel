@@ -10,6 +10,10 @@
             android:id="@+id/nav_systemInfo"
             android:icon="@drawable/ic_android"
             android:title="System Information" />
+        <item
+            android:id="@+id/nav_kernel_tweaks"
+            android:icon="@drawable/ic_kernel_set"
+            android:title="Kernel Tweaks" />
     </group>
 
     <item android:title="Communicate">
