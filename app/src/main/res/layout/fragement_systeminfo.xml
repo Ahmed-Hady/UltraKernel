@@ -101,23 +101,26 @@
                         android:layout_marginLeft="@dimen/text_value_margin_left"
                         android:textAppearance="@style/TextAppearance.AppCompat"
                         tools:ignore="RtlHardcoded" />
+                    </RelativeLayout>
 
-                </RelativeLayout>
-                <TextView
-                    android:padding="1pt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <io.netopen.hotbitmapgg.library.view.RingProgressBar
                     android:id="@+id/u_ram_perc"
-                    android:layout_marginLeft="@dimen/text_value_percentage_left"
-                    android:layout_marginTop="@dimen/text_value_percentage_top"
-                    android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textStyle="normal|bold"
-                    android:textSize="22sp"
-                    android:fontFamily="sans-serif-smallcaps"
-                    tools:ignore="RtlHardcoded"
-                    android:text="0%" />
+                    android:layout_width="@dimen/value_percentage_width"
+                    android:layout_height="@dimen/value_percentage_height"
+                    android:layout_marginLeft="@dimen/value_percentage_left"
+                    android:layout_marginTop="@dimen/value_percentage_top"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    app:ringColor="@android:color/darker_gray"
+                    app:ringProgressColor="@color/colorPrimary"
+                    app:ringWidth="3dp"
+                    app:style="STROKE"
+                    app:textColor="@color/colorPrimary"
+                    app:textIsShow="true"
+                    app:textSize="16sp" />
             </LinearLayout>
-
 
             <TextView
                 android:text="@string/system"

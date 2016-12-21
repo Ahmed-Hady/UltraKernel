@@ -18,6 +18,8 @@ import com.ultrakernel.util.ShellExecuter;
 
 import java.text.DecimalFormat;
 
+import io.netopen.hotbitmapgg.library.view.RingProgressBar;
+
 import static android.content.Context.ACTIVITY_SERVICE;
 import static com.ultrakernel.util.Config.Android_OS_Version;
 import static com.ultrakernel.util.Config.Android_Sdk_Version;
@@ -31,7 +33,8 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
     private ShellExecuter Shell;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,ram_perc,B,root_s;
+    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,B,root_s;
+    private RingProgressBar ram_perc;
     @Nullable
     @Override
 
@@ -89,7 +92,7 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         total_ram = (TextView) view.findViewById(R.id.t_ram);
         free_ram = (TextView) view.findViewById(R.id.f_ram);
         used_ram = (TextView) view.findViewById(R.id.u_ram);
-        ram_perc = (TextView) view.findViewById(R.id.u_ram_perc);
+        ram_perc = (RingProgressBar) view.findViewById(R.id.u_ram_perc);
 
 
         final ActivityManager activityManager = (ActivityManager) this.getContext().getSystemService(ACTIVITY_SERVICE);
@@ -101,8 +104,8 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
         double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
         double rRam = (uRam / memoryInfo.totalMem)*100;
-        DecimalFormat dec = new DecimalFormat("0");
-        ram_perc.setText("" + dec.format(rRam).concat("%"));
+        // Set the progress bar's progress
+        ram_perc.setProgress((int) rRam);
 
         Thread t = new Thread() {
             @Override
@@ -121,8 +124,7 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
                                 double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
                                 double rRam = (uRam / memoryInfo.totalMem)*100;
-                                DecimalFormat dec = new DecimalFormat("0");
-                                ram_perc.setText("" + dec.format(rRam).concat("%"));
+                                ram_perc.setProgress((int) rRam);
                                 // Battery
                                 B=(TextView) view.findViewById(R.id.battery);
                                 B.setText(readBattery());
@@ -181,7 +183,7 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         TextView total_ram = (TextView) swipeRefreshLayout.findViewById(R.id.t_ram);
         TextView free_ram = (TextView) swipeRefreshLayout.findViewById(R.id.f_ram);
         TextView used_ram = (TextView) swipeRefreshLayout.findViewById(R.id.u_ram);
-        TextView ram_perc = (TextView) swipeRefreshLayout.findViewById(R.id.u_ram_perc);
+        RingProgressBar ram_perc = (RingProgressBar) swipeRefreshLayout.findViewById(R.id.u_ram_perc);
 
         total_ram.setText(" " + size((int) memoryInfo.totalMem));
         used_ram.setText(" " + size((int) (memoryInfo.totalMem-memoryInfo.availMem)));
@@ -190,7 +192,7 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
         double rRam = (uRam / memoryInfo.totalMem)*100;
         DecimalFormat dec = new DecimalFormat("0");
-        ram_perc.setText("" + dec.format(rRam).concat("%"));
+        ram_perc.setProgress((int) rRam);
 
 
         // SYSTEM INFO

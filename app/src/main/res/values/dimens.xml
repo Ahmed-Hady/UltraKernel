@@ -23,8 +23,10 @@
 
     <!--text value-->
     <dimen name="text_value_margin_left">35pt</dimen>
-    <dimen name="text_value_percentage_left">125pt</dimen>
-    <dimen name="text_value_percentage_top">-29pt</dimen>
+    <dimen name="value_percentage_left">125pt</dimen>
+    <dimen name="value_percentage_top">-36pt</dimen>
+    <dimen name="value_percentage_height">30pt</dimen>
+    <dimen name="value_percentage_width">30pt</dimen>
 
     <!--panel-->
     <dimen name="panel_top">27pt</dimen>
