@@ -31,7 +31,6 @@ public class Main extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -133,8 +132,11 @@ public class Main extends AppCompatActivity
     {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
+        ft.setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit);
+
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
+
     }
     public void startBtn_press(View v){
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
