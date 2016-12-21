@@ -37,4 +37,6 @@
 
     <!--Switch-->
     <dimen name="switch_float_right">130pt</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
 </resources>
