@@ -30,4 +30,11 @@
     <dimen name="panel_top">27pt</dimen>
     <dimen name="panel_top_layout">7pt</dimen>
 
+    <!--sub_info_text-->
+    <dimen name="f_info_m">4pt</dimen>
+    <dimen name="f_info_m_left">5pt</dimen>
+    <dimen name="f_info_m_top">-2pt</dimen>
+
+    <!--Switch-->
+    <dimen name="switch_float_right">130pt</dimen>
 </resources>

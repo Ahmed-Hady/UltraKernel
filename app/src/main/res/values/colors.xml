@@ -12,4 +12,5 @@
     <color name="accent">#ff5252</color>
     <color name="secondary_text">#727272</color>
     <color name="white_overlay">#F3F3F3</color>
+    <color name="lightPurple">#753bb7</color>
 </resources>

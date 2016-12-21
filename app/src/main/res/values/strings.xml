@@ -5,8 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    
     <string name="ram_memory">Ram Memory</string>
     <string name="total_ram">Total Ram:</string>
     <string name="free_ram">Free Ram:</string>
@@ -22,4 +21,14 @@
     <string name="battery">Battery</string>
     <string name="battery_text">Battery:</string>
     <string name="root">Root Status:</string>
+    
+    <string name="kernel_info">Kernel Info</string>
+    <string name="kernel_features">Kernel Features</string>
+
+    <string name="fastCharge">USB Fast Charging</string>
+    <string name="fastCharge_info">Tap to enable Fast Charging feature Through USB</string>
+    <string name="d2w">Double Tap to Wake</string>
+    <string name="d2w_info">Unlock your phone by Double tapping on screen </string>
+    <string name="ARCH_Power">ARCH Power</string>
+    <string name="ARCH_Power_info">Tap to enable ARCH POWER feature for MSM</string>
 </resources>

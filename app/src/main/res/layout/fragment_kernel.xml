@@ -2,10 +2,168 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
     tools:context="com.ultrakernel.fragment.KernelFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/panel_top_layout"
+        android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/kernel_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="17sp"
+                android:paddingBottom="3pt"
+                android:fontFamily="casual"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/kInfo"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        <TextView
+            android:text="@string/kernel_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="17sp"
+            android:paddingTop="4pt"
+            android:paddingBottom="3pt"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:layout_marginTop="2pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/feature"
+                    android:text="@string/d2w"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/switch_float_right"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/lightPurple"
+                android:text="@string/d2w_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/feature2"
+                    android:text="@string/fastCharge"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/switch_float_right"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info2"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/lightPurple"
+                android:text="@string/fastCharge_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/feature3"
+                    android:text="@string/ARCH_Power"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold" />
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/switch_float_right"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info3"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/lightPurple"
+                android:text="@string/ARCH_Power_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
 </FrameLayout>
