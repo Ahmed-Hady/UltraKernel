@@ -9,10 +9,14 @@
         android:id="@+id/menu_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        fab:fab_addButtonColorNormal="?attr/colorPrimary"
-        fab:fab_addButtonSize="normal"
+        android:layout_gravity="right|bottom"
+        fab:fab_addButtonColorNormal="@color/accent"
+        fab:fab_addButtonColorPressed="@color/accent_dark"
+        fab:fab_addButtonPlusIconColor="@color/white"
+        fab:fab_addButtonStrokeVisible="true"
+        fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
+
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/boost"

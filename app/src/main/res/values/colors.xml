@@ -8,4 +8,8 @@
     <color name="colorAccent">#324e61</color>
     <color name="borderColor">#e7e7e7</color>
     <color name="white">#ffff</color>
+    <color name="accent_dark">#ff2929</color>
+    <color name="accent">#ff5252</color>
+    <color name="secondary_text">#727272</color>
+    <color name="white_overlay">#F3F3F3</color>
 </resources>
