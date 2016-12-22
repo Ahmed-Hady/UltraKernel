@@ -17,7 +17,6 @@
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
 
-
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/boost"
             android:layout_width="wrap_content"
@@ -25,7 +24,8 @@
             fab:fab_colorNormal="?attr/colorAccent"
             fab:fab_icon="@drawable/ic_boost"
             fab:fab_size="mini"
-            fab:fab_title="Boost Memory" />
+            android:onClick="boost"
+            fab:fab_title="Boost System" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/fstrim"

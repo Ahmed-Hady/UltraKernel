@@ -1,5 +1,7 @@
 package com.ultrakernel;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,12 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.Main_fragement;
 import com.ultrakernel.fragment.SystemInfo_fragement;
+
+import java.io.File;
+
+import me.drakeet.materialdialog.MaterialDialog;
+
+import static com.ultrakernel.util.ShellCommands.boost_system;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -143,6 +151,37 @@ public class Main extends AppCompatActivity
         drawer.openDrawer(GravityCompat.START);
 
     }
+
+    public void boost(View v){
+        boolean basybox_test = new File("/system/xbin/busybox").exists();
+        if(basybox_test) {
+            boost_system(this);
+        }else{
+            mMaterialDialog.show();
+        }
+    }
+
+    MaterialDialog mMaterialDialog = new MaterialDialog(this)
+            .setTitle("Error!")
+            .setMessage("BusyBox Not Found.\n")
+            .setPositiveButton("INSTALL", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final String appPackageName = "stericson.busybox";
+                    try {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + appPackageName)));
+                    } catch (android.content.ActivityNotFoundException anfe) {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
+                    }
+                    mMaterialDialog.dismiss();
+                }
+            })
+            .setNegativeButton("NO", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mMaterialDialog.dismiss();
+                }
+            });
 
 }
 
