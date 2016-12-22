@@ -35,6 +35,8 @@ public class ShellCommands {
             Shell.SU.run("killall -9 com.facebook.katana"); //facebook
             Shell.SU.run("killall -9 com.facebook.orca");  //Messenger
             Shell.SU.run("killall -9 com.whatsapp");  //WhatsApp
+            Shell.SU.run("killall -9 com.android.chrome");  //Chrome
+            Shell.SU.run("killall -9 com.google.android.talk");  //Hangouts
 
             TastyToast.makeText(mMain.getApplicationContext(), "Ram Improved!", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
         }else{
