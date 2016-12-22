@@ -1,18 +1,16 @@
+[![](https://jitpack.io/v/Ahmed-Hady/UltraKernel.svg)](https://jitpack.io/#Ahmed-Hady/UltraKernel)
+[![Build Status](https://travis-ci.org/Ahmed-Hady/UltraKernel.svg?branch=master)](https://travis-ci.org/Ahmed-Hady/UltraKernel)
+
 # UltraKernel
 ==============
 App for system &amp; kernel performance improvment
 
 # ScreenShots:
-![1]
-![2]
-![3]
-![4]
-![5]
-![6]
-![7]
-![8]
-![9]
-![10]
+![1] ![2]
+![3] ![4]
+![5] ![6]
+![7] ![8]
+![9] ![10]
 
 [1]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233839.png
 [2]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233844.png
