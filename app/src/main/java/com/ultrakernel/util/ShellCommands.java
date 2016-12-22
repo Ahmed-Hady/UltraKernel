@@ -25,4 +25,21 @@ public class ShellCommands {
         }
 
     }
+
+    public static void RAM_IMP(final Context mMain){
+        TastyToast.makeText(mMain.getApplicationContext(), "Killing ram draining apps...", TastyToast.LENGTH_LONG, TastyToast.DEFAULT);
+
+        if(Shell.SU.available()) {
+            Shell.SU.run("killall -9 android.process.media");
+            Shell.SU.run("killall -9 mediaserver");
+            Shell.SU.run("killall -9 com.facebook.katana"); //facebook
+            Shell.SU.run("killall -9 com.facebook.orca");  //Messenger
+            Shell.SU.run("killall -9 com.whatsapp");  //WhatsApp
+
+            TastyToast.makeText(mMain.getApplicationContext(), "Ram Improved!", TastyToast.LENGTH_LONG, TastyToast.SUCCESS);
+        }else{
+            TastyToast.makeText(mMain.getApplicationContext(), "Failed: you have no Root", TastyToast.LENGTH_LONG, TastyToast.ERROR);
+        }
+
+    }
 }

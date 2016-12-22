@@ -26,6 +26,7 @@ import java.io.File;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
+import static com.ultrakernel.util.ShellCommands.RAM_IMP;
 import static com.ultrakernel.util.ShellCommands.boost_system;
 
 public class Main extends AppCompatActivity
@@ -159,6 +160,10 @@ public class Main extends AppCompatActivity
         }else{
             mMaterialDialog.show();
         }
+    }
+
+    public void kill_drains(View v){
+        RAM_IMP(this);
     }
 
     MaterialDialog mMaterialDialog = new MaterialDialog(this)
