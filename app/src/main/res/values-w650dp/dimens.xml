@@ -1,0 +1,4 @@
+<resources>
+    <!--text value-->
+    <dimen name="value_percentage_left">290pt</dimen>
+</resources>
