@@ -145,30 +145,13 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         return view;
     }
 
-    public String size(int size){
-        String hrSize = "";
-        int k = size;
-        double m = size/1024;
-        double g = size/1048576;
-
-        DecimalFormat dec = new DecimalFormat("0.0");
-
-        if (k>0)
-        {
-            hrSize = dec.format(k).concat(" KB");
-        }
-        if (m>0)
-        {
-            hrSize = dec.format(m).concat(" MB");
-        }
-        if (g>0)
-        {
-            hrSize = dec.format(g/1000).concat(" GB");
-        }
-
-        return hrSize;
+    public static String size(long size) {
+        if (size <= 0)
+            return "0";
+        final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
+        int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+        return new DecimalFormat("#,##0.#").format(size / Math.pow(1024, digitGroups)) + " " + units[digitGroups];
     }
-
 
     @Override
     public void onRefresh(){
