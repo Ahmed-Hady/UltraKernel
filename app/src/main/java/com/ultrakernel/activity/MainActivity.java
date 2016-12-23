@@ -1,4 +1,4 @@
-package com.ultrakernel;
+package com.ultrakernel.activity;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.ultrakernel.R;
 import com.ultrakernel.fragment.CPUFragment;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.Main_fragement;
@@ -30,7 +31,7 @@ import me.drakeet.materialdialog.MaterialDialog;
 import static com.ultrakernel.util.ShellCommands.RAM_IMP;
 import static com.ultrakernel.util.ShellCommands.boost_system;
 
-public class Main extends AppCompatActivity
+public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Main_fragement mMain;
@@ -57,7 +58,7 @@ public class Main extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
+        drawer.addDrawerListener(toggle);
         toggle.syncState();
 
 
