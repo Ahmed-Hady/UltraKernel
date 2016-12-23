@@ -35,4 +35,9 @@
     <string name="freq_table">Frequently Table</string>
     <string name="title_activity_scrolling" translatable="false">ScrollingActivity</string>
     <string name="ARCH_Power" translatable="false">ARCH_Power</string>
+
+    <string name="Hardware">Hardware: </string>
+    <string name="Processor">Processor: </string>
+
+    <string name="gov">Governor</string>
 </resources>

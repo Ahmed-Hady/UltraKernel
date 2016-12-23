@@ -40,10 +40,33 @@
                     android:layout_height="wrap_content"
                     android:padding="3pt" >
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/kInfo"/>
+                        android:text="@string/Hardware"
+                        android:textStyle="normal|bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_value_margin_left"
+                        android:id="@+id/Cpuhw"/>
                 </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Processor"
+                        android:textStyle="normal|bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_value_margin_left"
+                        android:id="@+id/CpuP"/>
+                </RelativeLayout>
+
             </LinearLayout>
 
             <TextView
@@ -51,6 +74,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="17sp"
+                android:paddingTop="4pt"
+                android:paddingBottom="3pt"
+                android:fontFamily="casual"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:layout_marginTop="2pt"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:text="@string/gov"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView6"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display2"
                 android:textSize="17sp"
                 android:paddingTop="4pt"

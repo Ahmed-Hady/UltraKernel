@@ -14,6 +14,10 @@
             android:id="@+id/nav_kernel_tweaks"
             android:icon="@drawable/ic_kernel_set"
             android:title="Kernel Tweaks" />
+        <item
+            android:id="@+id/nav_cpu_tweaks"
+            android:icon="@drawable/ic_cpu_settings"
+            android:title="CPU Tweaks" />
     </group>
 
     <item android:title="Communicate">
