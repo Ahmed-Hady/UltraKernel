@@ -317,13 +317,133 @@
                 android:padding="3pt" >
 
                 <TextView
-                    android:text="@string/battery_text"
+                    android:text="@string/Bat_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/battery"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_percent"
+                    android:layout_marginLeft="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
             </RelativeLayout>
-        </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_presence"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t13"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_preset"
+                    android:layout_marginLeft="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_status"
+                    android:layout_marginLeft="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_health"
+                    android:layout_marginLeft="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Tech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t13"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_tech"
+                    android:layout_marginLeft="45pt"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t13"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_temp"
+                    android:layout_marginLeft="45pt"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Volt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t14"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_volt"
+                    android:layout_marginLeft="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+         </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

@@ -33,7 +33,7 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
 
     private ShellExecuter Shell;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,B,root_s;
+    private TextView OS_Version,OS_sdk,OS_patch,board,manuf,name,kernel,total_ram,free_ram,used_ram,root_s,b_level,b_volt,b_status,b_temp,b_tech,b_health;
     private RingProgressBar ram_perc;
     @Nullable
     @Override
@@ -71,10 +71,55 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         //kernel
         kernel=(TextView) view.findViewById(R.id.kernel);
         kernel.setText("" + Android_d_kernel());
-        // Battery
 
-        B=(TextView) view.findViewById(R.id.battery);
-        B.setText(readBattery());
+        // Battery
+            IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+            Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
+
+            TextView b_present = (TextView) view.findViewById(R.id.b_preset);
+            TextView b_status = (TextView) view.findViewById(R.id.b_status);
+            TextView b_level = (TextView) view.findViewById(R.id.b_percent);
+            TextView b_health = (TextView) view.findViewById(R.id.b_health);
+            TextView b_tech = (TextView) view.findViewById(R.id.b_tech);
+            TextView b_temp = (TextView) view.findViewById(R.id.b_temp);
+            TextView b_volt = (TextView) view.findViewById(R.id.b_volt);
+
+            boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
+            b_present.setText("" + present);
+
+            int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+            if(status == BatteryManager.BATTERY_STATUS_CHARGING){
+                b_status.setText("Charging");
+            }
+            if(status == BatteryManager.BATTERY_STATUS_FULL){
+                b_status.setText("Full");
+            }
+            if(status == BatteryManager.BATTERY_STATUS_DISCHARGING){
+                b_status.setText("Dis-Charging");
+            }
+
+            int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+            if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
+                b_status.setText(b_status.getText() + " & PLUGGED USB");
+            }
+            if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
+                b_status.setText(b_status.getText() + " & PLUGGED AC");
+            }
+
+            int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+            b_level.setText(level + "%");
+
+            int health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+            b_health.setText(convHealth(health));
+
+            String technology = batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
+            b_tech.setText(""+technology);
+
+            int temperature = batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+            b_temp.setText(""+temperature);
+
+            int voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
+            b_volt.setText(""+voltage);
 
 
         //root
@@ -125,9 +170,56 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
                                 double uRam = (memoryInfo.totalMem-memoryInfo.availMem);
                                 double rRam = (uRam / memoryInfo.totalMem)*100;
                                 ram_perc.setProgress((int) rRam);
+
                                 // Battery
-                                B=(TextView) view.findViewById(R.id.battery);
-                                B.setText(readBattery());
+                                IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+                                Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
+
+                                TextView b_present = (TextView) view.findViewById(R.id.b_preset);
+                                TextView b_status = (TextView) view.findViewById(R.id.b_status);
+                                TextView b_level = (TextView) view.findViewById(R.id.b_percent);
+                                TextView b_health = (TextView) view.findViewById(R.id.b_health);
+                                TextView b_tech = (TextView) view.findViewById(R.id.b_tech);
+                                TextView b_temp = (TextView) view.findViewById(R.id.b_temp);
+                                TextView b_volt = (TextView) view.findViewById(R.id.b_volt);
+
+                                boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
+                                b_present.setText("" + present);
+
+                                int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+                                if(status == BatteryManager.BATTERY_STATUS_CHARGING){
+                                    b_status.setText("Charging");
+                                }
+                                if(status == BatteryManager.BATTERY_STATUS_FULL){
+                                    b_status.setText("Full");
+                                }
+
+                                if(status == BatteryManager.BATTERY_STATUS_DISCHARGING){
+                                    b_status.setText("Dis-Charging");
+                                }
+
+                                int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+                                if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
+                                    b_status.setText(b_status.getText() + " & PLUGGED USB");
+                                }
+                                if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
+                                    b_status.setText(b_status.getText() + " & PLUGGED AC");
+                                }
+
+                                int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+                                b_level.setText(level + "%");
+
+                                int health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+                                b_health.setText(convHealth(health));
+
+                                String technology = batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
+                                b_tech.setText(""+technology);
+
+                                int temperature = batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+                                b_temp.setText(""+temperature);
+
+                                int voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
+                                b_volt.setText(""+voltage);
                             }
                         });
                     }
@@ -207,10 +299,56 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         //kernel
         kernel=(TextView) swipeRefreshLayout.findViewById(R.id.kernel);
         kernel.setText("" + Android_d_kernel());
-        // Battery
 
-        TextView B=(TextView) swipeRefreshLayout.findViewById(R.id.battery);
-        B.setText(readBattery());
+        // Battery
+        IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
+
+        TextView b_present = (TextView) swipeRefreshLayout.findViewById(R.id.b_preset);
+        TextView b_status = (TextView) swipeRefreshLayout.findViewById(R.id.b_status);
+        TextView b_level = (TextView) swipeRefreshLayout.findViewById(R.id.b_percent);
+        TextView b_health = (TextView) swipeRefreshLayout.findViewById(R.id.b_health);
+        TextView b_tech = (TextView) swipeRefreshLayout.findViewById(R.id.b_tech);
+        TextView b_temp = (TextView) swipeRefreshLayout.findViewById(R.id.b_temp);
+        TextView b_volt = (TextView) swipeRefreshLayout.findViewById(R.id.b_volt);
+
+        boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
+        b_present.setText("" + present);
+
+        int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
+        if(status == BatteryManager.BATTERY_STATUS_CHARGING){
+            b_status.setText("Charging");
+        }
+        if(status == BatteryManager.BATTERY_STATUS_FULL){
+            b_status.setText("Full");
+        }
+
+        if(status == BatteryManager.BATTERY_STATUS_DISCHARGING){
+            b_status.setText("Dis-Charging");
+        }
+
+        int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
+        if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
+            b_status.setText(b_status.getText() + " & PLUGGED USB");
+        }
+        if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
+            b_status.setText(b_status.getText() + " & PLUGGED AC");
+        }
+
+        int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+        b_level.setText(level + "%");
+
+        int health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
+        b_health.setText(convHealth(health));
+
+        String technology = batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
+        b_tech.setText(""+technology);
+
+        int temperature = batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+        b_temp.setText(""+temperature);
+
+        int voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
+        b_volt.setText(""+voltage);
 
         swipeRefreshLayout = (SwipeRefreshLayout) swipeRefreshLayout.findViewById(R.id.swipeContainer);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -219,48 +357,6 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         //when your data has finished loading, cset the refresh state of the view to false
         swipeRefreshLayout.setRefreshing(false);
 
-    }
-
-    private String readBattery(){
-        StringBuilder sb = new StringBuilder();
-        IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-        Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
-
-        boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
-        sb.append("PRESENT: " + present + "\n");
-
-        int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-        if(status == BatteryManager.BATTERY_STATUS_CHARGING){
-            sb.append("CHARGING\n");
-        }
-        if(status == BatteryManager.BATTERY_STATUS_FULL){
-            sb.append("FULL\n");
-        }
-
-        int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-        if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
-            sb.append("PLUGGED USB\n");
-        }
-        if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
-            sb.append("PLUGGED AC\n");
-        }
-
-        int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
-        sb.append("LEVEL: " + level + "%\n");
-
-        int  health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH,0);
-        sb.append("HEALTH: " + convHealth(health) + "\n");
-
-        String  technology = batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
-        sb.append("TECHNOLOGY: " + technology + "\n");
-
-        int  temperature = batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
-        sb.append("TEMPERATURE: " + temperature + "\n");
-
-        int  voltage = batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
-        sb.append("VOLTAGE: " + voltage + "\n");
-
-        return sb.toString();
     }
 
     private String convHealth(int health){

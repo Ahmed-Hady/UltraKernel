@@ -19,8 +19,14 @@
     <string name="device_name">Device Name:</string>
     <string name="kernel">Kernel:</string>
     <string name="battery" translatable="false">Battery</string>
-    <string name="battery_text">Battery:</string>
-    <string name="root">Root Status:</string>
+    <string name="Bat_percent">Level: </string>
+    <string name="Bat_presence">Presence: </string>
+    <string name="Bat_Status">Status: </string>
+    <string name="Bat_Health">Health: </string>
+    <string name="Bat_Tech">Technology: </string>
+    <string name="Bat_Temp">Temperature: </string>
+    <string name="Bat_Volt">Voltage: </string>
+    <string name="root">Root Status: </string>
 
     <string name="kernel_info">Kernel Info</string>
     <string name="kernel_features">Kernel Features</string>
