@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="start_icon_width">70pt</dimen>
+    <dimen name="start_icon_height">70pt</dimen>
+    <dimen name="logo_title_text_margin_top">20pt</dimen>
+    <!--text value-->
+    <dimen name="value_percentage_left">190pt</dimen>
+</resources>
