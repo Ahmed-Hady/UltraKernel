@@ -76,16 +76,12 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
             IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
             Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
 
-            TextView b_present = (TextView) view.findViewById(R.id.b_preset);
             TextView b_status = (TextView) view.findViewById(R.id.b_status);
             TextView b_level = (TextView) view.findViewById(R.id.b_percent);
             TextView b_health = (TextView) view.findViewById(R.id.b_health);
             TextView b_tech = (TextView) view.findViewById(R.id.b_tech);
             TextView b_temp = (TextView) view.findViewById(R.id.b_temp);
             TextView b_volt = (TextView) view.findViewById(R.id.b_volt);
-
-            boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
-            b_present.setText("" + present);
 
             int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
             if(status == BatteryManager.BATTERY_STATUS_CHARGING){
@@ -175,16 +171,12 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
                                 IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
                                 Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
 
-                                TextView b_present = (TextView) view.findViewById(R.id.b_preset);
                                 TextView b_status = (TextView) view.findViewById(R.id.b_status);
                                 TextView b_level = (TextView) view.findViewById(R.id.b_percent);
                                 TextView b_health = (TextView) view.findViewById(R.id.b_health);
                                 TextView b_tech = (TextView) view.findViewById(R.id.b_tech);
                                 TextView b_temp = (TextView) view.findViewById(R.id.b_temp);
                                 TextView b_volt = (TextView) view.findViewById(R.id.b_volt);
-
-                                boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
-                                b_present.setText("" + present);
 
                                 int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
                                 if(status == BatteryManager.BATTERY_STATUS_CHARGING){
@@ -304,16 +296,12 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
 
-        TextView b_present = (TextView) swipeRefreshLayout.findViewById(R.id.b_preset);
         TextView b_status = (TextView) swipeRefreshLayout.findViewById(R.id.b_status);
         TextView b_level = (TextView) swipeRefreshLayout.findViewById(R.id.b_percent);
         TextView b_health = (TextView) swipeRefreshLayout.findViewById(R.id.b_health);
         TextView b_tech = (TextView) swipeRefreshLayout.findViewById(R.id.b_tech);
         TextView b_temp = (TextView) swipeRefreshLayout.findViewById(R.id.b_temp);
         TextView b_volt = (TextView) swipeRefreshLayout.findViewById(R.id.b_volt);
-
-        boolean  present= batteryIntent.getExtras().getBoolean(BatteryManager.EXTRA_PRESENT);
-        b_present.setText("" + present);
 
         int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
         if(status == BatteryManager.BATTERY_STATUS_CHARGING){

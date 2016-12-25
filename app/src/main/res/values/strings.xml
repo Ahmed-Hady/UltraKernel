@@ -20,7 +20,6 @@
     <string name="kernel">Kernel:</string>
     <string name="battery" translatable="false">Battery</string>
     <string name="Bat_percent">Level: </string>
-    <string name="Bat_presence">Presence: </string>
     <string name="Bat_Status">Status: </string>
     <string name="Bat_Health">Health: </string>
     <string name="Bat_Tech">Technology: </string>

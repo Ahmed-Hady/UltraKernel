@@ -336,25 +336,6 @@
                 android:padding="3pt" >
 
                 <TextView
-                    android:text="@string/Bat_presence"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/t13"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/b_preset"
-                    android:layout_marginLeft="@dimen/text_value_margin_left"
-                    android:textAppearance="@style/TextAppearance.AppCompat" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="3pt" >
-
-                <TextView
                     android:text="@string/Bat_Status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
