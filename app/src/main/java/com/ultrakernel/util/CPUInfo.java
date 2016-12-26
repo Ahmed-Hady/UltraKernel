@@ -52,4 +52,8 @@ public class CPUInfo {
         }
         return PROCESSOR();
     }
+    public static String cur_gov(){
+        mShell.command="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+        return mShell.runAsRoot();
+    }
 }
