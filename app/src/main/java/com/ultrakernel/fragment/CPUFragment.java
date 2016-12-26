@@ -12,6 +12,7 @@ import com.ultrakernel.R;
 
 import static com.ultrakernel.util.CPUInfo.HW;
 import static com.ultrakernel.util.CPUInfo.PROCESSOR;
+import static com.ultrakernel.util.CPUInfo.cur_gov;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +24,7 @@ public class CPUFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private TextView Cpuhw, CpuP;
+    private TextView Cpuhw, CpuP, cur_gov;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -35,7 +36,10 @@ public class CPUFragment extends Fragment {
 
         CpuP = (TextView) rootview.findViewById(R.id.CpuP);
         CpuP.setText("" + PROCESSOR());
+
+        cur_gov = (TextView) rootview.findViewById(R.id.cur_gov);
+        cur_gov.setText(cur_gov());
+
         return rootview;
     }
-
 }
