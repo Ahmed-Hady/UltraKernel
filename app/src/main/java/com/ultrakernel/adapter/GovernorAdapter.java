@@ -160,7 +160,6 @@ public class GovernorAdapter extends BaseAdapter
 
         return convertView;
     }
-
     public class GovernorItem
     {
         public String cmdName;

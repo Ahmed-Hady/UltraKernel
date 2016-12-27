@@ -132,6 +132,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+
+                    <TextView
+                        android:id="@+id/rep_gov_t"
+                        android:text="@string/rep_gov"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="normal|bold" />
+
+                    <Spinner
+                        android:id="@+id/GOVS"
+                        android:layout_marginLeft="@dimen/text_value_margin_left"
+                        android:layout_marginTop="-13dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </RelativeLayout>
+
             </LinearLayout>
 
         </LinearLayout>
