@@ -10,8 +10,11 @@ import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.sdsmdg.tastytoast.TastyToast;
 import com.ultrakernel.R;
 import com.ultrakernel.adapter.GovernorAdapter;
+
+import eu.chainfire.libsuperuser.Shell;
 
 import static com.ultrakernel.util.CPUInfo.HW;
 import static com.ultrakernel.util.CPUInfo.PROCESSOR;
@@ -26,10 +29,6 @@ public class CPUFragment extends Fragment {
         // Required empty public constructor
     }
 
-    //final GovernorAdapter adapter = new GovernorAdapter(getContext());
-
-    //final ShellUtils shell = ((Activity)getActivity()).getShellSession();
-
     private TextView Cpuhw, CpuP, cur_gov;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,19 +42,18 @@ public class CPUFragment extends Fragment {
         CpuP = (TextView) rootview.findViewById(R.id.CpuP);
         CpuP.setText("" + PROCESSOR());
 
-        cur_gov = (TextView) rootview.findViewById(R.id.cur_gov);
-        cur_gov.setText(cur_gov());
-
         final Spinner SpinnerGOV = (Spinner) rootview.findViewById(R.id.GOVS);
-
-        GovernorAdapter adapter = new GovernorAdapter(getContext());
+        final GovernorAdapter adapter = new GovernorAdapter(getContext());
 
         SpinnerGOV.setAdapter(adapter);
 
         SpinnerGOV.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int pos,
                                        long id) {
-                //Shell.SU.run("echo "+ parent.getItemAtPosition(pos).toString() + " >  /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor");
+                
+                Shell.SU.run("echo "+ adapter.getText(pos) + " >  /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor");
+                TastyToast.makeText(getContext(), "Governor is " + cur_gov(), TastyToast.LENGTH_LONG, TastyToast.INFO);
+
             }
 
             @Override

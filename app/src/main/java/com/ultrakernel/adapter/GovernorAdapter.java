@@ -160,6 +160,13 @@ public class GovernorAdapter extends BaseAdapter
 
         return convertView;
     }
+
+    public String getText(int position){
+
+        String text = ((GovernorItem) getItem(position)).cmdName;
+        return text;
+    }
+
     public class GovernorItem
     {
         public String cmdName;
