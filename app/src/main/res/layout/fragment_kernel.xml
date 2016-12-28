@@ -58,6 +58,7 @@
             android:textStyle="normal|bold" />
 
         <LinearLayout
+            android:id="@+id/d2w"
             android:layout_marginTop="2pt"
             android:orientation="vertical"
             android:layout_width="match_parent"
