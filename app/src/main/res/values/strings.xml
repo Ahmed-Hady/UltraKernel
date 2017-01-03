@@ -49,5 +49,5 @@
     <string name="rep_gov">Change</string>
 
     <string name="MOTOLED">Motorola devices Led</string>
-    <string name="MOTOLED_INFO">Switch The Motorola Hide Led On/OFF</string>
+    <string name="MOTOLED_INFO">Switch The Motorola Led On/OFF</string>
 </resources>
