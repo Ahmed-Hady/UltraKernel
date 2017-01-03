@@ -7,18 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.ultrakernel.R;
 
 import java.io.File;
 
+import eu.chainfire.libsuperuser.Shell;
+
 import static com.ultrakernel.util.CPUInfo.cur_gov;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.Android_d_kernel;
+import static com.ultrakernel.util.Config.Android_d_manuf;
 import static com.ultrakernel.util.Config.DT2W_ENABLE;
 import static com.ultrakernel.util.Config.DT2W_FT5X06;
 import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
@@ -28,7 +33,6 @@ import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
 import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -42,8 +46,11 @@ public class KernelFragment extends Fragment {
 
     private LinearLayout d2w;
 
+    private LinearLayout moto_L;
+
     private Button GovernorButton;
 
+    private Switch motoL;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,6 +130,62 @@ public class KernelFragment extends Fragment {
         }else{
             d2w.setVisibility(RelativeLayout.GONE);
         }
+
+
+//************************************************************************
+        //Moto Led section
+//***********************************************************************
+        moto_L=(LinearLayout)view.findViewById(R.id.motoLed);
+
+        String MOTO = "motorola";
+
+        if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1){
+            moto_L.setVisibility(RelativeLayout.VISIBLE);
+        }else{
+            moto_L.setVisibility(RelativeLayout.GONE);
+        }
+
+        motoL = (Switch) view.findViewById(R.id.motoL);
+
+
+        Thread l = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                final String get_l = (Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
+
+                                if (get_l.equals("[255]")) {
+                                    motoL.setChecked(true);
+                                }else if (get_l.equals("[0]")){
+                                    motoL.setChecked(false);
+                                }
+
+                                motoL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                    @Override
+                                    public void onCheckedChanged(CompoundButton buttonView,
+                                                                 boolean isChecked) {
+                                        if(isChecked){
+                                            Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
+                                        }else if(!isChecked){
+                                            Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                        }
+
+                                    }
+                                });
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                }
+            }
+        };
+
+        l.start();
 
     return view;
     }

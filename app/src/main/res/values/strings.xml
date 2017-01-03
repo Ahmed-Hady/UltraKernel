@@ -47,4 +47,7 @@
     <string name="gov">CPU Governors</string>
     <string name="cur_gov">Current: </string>
     <string name="rep_gov">Change</string>
+
+    <string name="MOTOLED">Motorola devices Led</string>
+    <string name="MOTOLED_INFO">Switch The Motorola Hide Led On/OFF</string>
 </resources>

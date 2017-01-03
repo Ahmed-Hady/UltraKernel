@@ -193,6 +193,41 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/motoLed"
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <Switch
+                    android:text="@string/MOTOLED"
+                    android:id="@+id/motoL"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info3"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/MOTOLED_INFO"
+                android:textSize="12sp" />
+        </LinearLayout>
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="20pt" />
     </LinearLayout>
 </ScrollView>
 
