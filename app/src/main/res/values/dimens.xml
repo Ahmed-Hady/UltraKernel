@@ -35,7 +35,7 @@
     <!--sub_info_text-->
     <dimen name="f_info_m">4pt</dimen>
     <dimen name="f_info_m_left">5pt</dimen>
-    <dimen name="f_info_m_top">-2pt</dimen>
+    <dimen name="f_info_m_top">-6pt</dimen>
 
     <!--Switch-->
     <dimen name="switch_float_right">130pt</dimen>
