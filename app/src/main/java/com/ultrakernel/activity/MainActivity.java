@@ -137,10 +137,16 @@ public class MainActivity extends Activity
         if (id == R.id.nav_main) {
             updateFragment(mMain);
         } else if (id == R.id.nav_systemInfo) {
+            final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
+            fabMenu.setVisibility(FloatingActionsMenu.VISIBLE);
             updateFragment(mSystemInfo);
         } else if (id == R.id.nav_kernel_tweaks) {
+            final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
+            fabMenu.setVisibility(FloatingActionsMenu.GONE);
             updateFragment(mKernel);
         } else if (id == R.id.nav_cpu_tweaks) {
+            final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
+            fabMenu.setVisibility(FloatingActionsMenu.GONE);
             updateFragment(mCpu);
         } else if (id == R.id.nav_send) {
 
