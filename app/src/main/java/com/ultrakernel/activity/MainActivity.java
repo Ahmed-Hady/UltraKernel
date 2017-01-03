@@ -200,6 +200,5 @@ public class MainActivity extends Activity
                     mMaterialDialog.dismiss();
                 }
             });
-
 }
 

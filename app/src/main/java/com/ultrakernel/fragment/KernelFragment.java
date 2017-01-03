@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import com.ultrakernel.R;
 
 import java.io.File;
 
+import static com.ultrakernel.util.CPUInfo.cur_gov;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.Android_d_kernel;
@@ -40,15 +42,60 @@ public class KernelFragment extends Fragment {
 
     private LinearLayout d2w;
 
+    private Button GovernorButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_kernel, container, false);
 
+//************************************************************************
+                        //Kernel Info
+//************************************************************************
+
         kerne_info = (TextView) view.findViewById(R.id.kInfo);
         kerne_info.setText("" + Android_d_kernel());
 
+
+//************************************************************************
+                        //GOVERNORS
+//************************************************************************
+        //Get GOVs
+
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    while (!isInterrupted()) {
+                        Thread.sleep(1000);
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TextView get_gov = (TextView) view.findViewById(R.id.cur_gov);
+                                get_gov.setText(cur_gov());
+                            }
+                        });
+                    }
+                } catch (Exception e) {
+                }
+            }
+        };
+
+        t.start();
+        //Change gov
+        GovernorButton=(Button)view.findViewById(R.id.change_gov);
+        GovernorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GovernorOptionDialogFragment fragment = new GovernorOptionDialogFragment();
+                fragment.show(getActivity().getSupportFragmentManager(), "power_dialog_fragment");
+            }
+        });
+
+//************************************************************************
+                        //d2w section
+//***********************************************************************
         d2w=(LinearLayout)view.findViewById(R.id.d2w);
 
         if(new File(LGE_TOUCH_DT2W).exists()){
@@ -79,5 +126,4 @@ public class KernelFragment extends Fragment {
 
     return view;
     }
-
 }

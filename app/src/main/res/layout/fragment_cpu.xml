@@ -96,48 +96,6 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <TextView
-                android:text="@string/gov"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView6"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-                android:textSize="17sp"
-                android:paddingTop="4pt"
-                android:paddingBottom="3pt"
-                android:fontFamily="casual"
-                android:textStyle="normal|bold" />
-
-            <LinearLayout
-                android:layout_marginTop="2pt"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/square" >
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="3pt" >
-
-                    <TextView
-                        android:id="@+id/rep_gov_t"
-                        android:text="@string/cur_gov"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textStyle="normal|bold" />
-
-                    <Spinner
-                        android:id="@+id/GOVS"
-                        android:layout_marginLeft="@dimen/text_value_margin_left"
-                        android:layout_marginTop="-13dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
 

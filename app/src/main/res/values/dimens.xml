@@ -38,7 +38,9 @@
     <dimen name="f_info_m_top">-6pt</dimen>
 
     <!--Switch-->
-    <dimen name="switch_float_right">130pt</dimen>
+    <dimen name="switch_float_right">110pt</dimen>
+    <dimen name="switch_float_Top">2pt</dimen>
+    <dimen name="button_subtext_top">-16pt</dimen>
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="text_margin">16dp</dimen>
 </resources>

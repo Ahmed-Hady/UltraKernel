@@ -152,6 +152,47 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <TextView
+                    android:text="@string/gov"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:layout_marginLeft="@dimen/switch_float_right"
+                    android:layout_marginTop="@dimen/switch_float_Top"
+                    android:text="@string/rep_gov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                    android:id="@+id/change_gov" />
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cur_gov"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/button_subtext_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/cur_gov"
+                android:textSize="12sp" />
+        </LinearLayout>
+
     </LinearLayout>
 </ScrollView>
 
