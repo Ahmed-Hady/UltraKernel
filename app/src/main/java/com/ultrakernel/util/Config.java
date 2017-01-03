@@ -37,11 +37,6 @@ public class Config {
         return mShell.runAsRoot();
     }
 
-    public static String M_Led(){
-        mShell.command="cat /sys/class/leds/charging/max_brightness";
-        return mShell.runAsRoot();
-    }
-
     public static final String LGE_TOUCH_DT2W = "/sys/devices/virtual/input/lge_touch/dt_wake_enabled";
     public static final String LGE_TOUCH_CORE_DT2W = "/sys/module/lge_touch_core/parameters/doubletap_to_wake";
     public static final String LGE_TOUCH_GESTURE = "/sys/devices/virtual/input/lge_touch/touch_gesture";
