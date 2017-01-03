@@ -69,17 +69,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="3pt" >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/feature"
+                <Switch
                     android:text="@string/d2w"
                     android:textSize="18sp"
-                    android:textStyle="normal|bold" />
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/switch_float_right"/>
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -105,17 +101,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="3pt" >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/feature2"
+                <Switch
                     android:text="@string/fastCharge"
                     android:textSize="18sp"
-                    android:textStyle="normal|bold" />
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/switch_float_right"/>
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
@@ -140,17 +132,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="3pt" >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/feature3"
+                <Switch
                     android:text="@string/ARCH_Power"
                     android:textSize="18sp"
-                    android:textStyle="normal|bold" />
-                <Switch
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/switch_float_right"/>
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"

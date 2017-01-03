@@ -14,4 +14,5 @@
     <color name="white_overlay">#F3F3F3</color>
     <color name="lightPurple">#753bb7</color>
     <color name="DeepGreen">#005e29</color>
+    <color name="dark_grey">#5b5b5b</color>
 </resources>
