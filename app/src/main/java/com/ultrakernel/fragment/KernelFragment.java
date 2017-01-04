@@ -141,50 +141,56 @@ public class KernelFragment extends Fragment {
 
         if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1){
             moto_L.setVisibility(RelativeLayout.VISIBLE);
+
+            motoL = (Switch) view.findViewById(R.id.motoL);
+            Thread l = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        while (!isInterrupted()) {
+                            Thread.sleep(500);
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    final String get_l = (Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
+
+                                    if (get_l.equals("[255]")) {
+                                        Shell.SU.run("echo 1 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
+                                        motoL.setChecked(true);
+                                    }else if (get_l.equals("[0]")){
+                                        Shell.SU.run("echo 0 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
+                                        motoL.setChecked(false);
+                                    }
+
+                                    motoL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                        @Override
+                                        public void onCheckedChanged(CompoundButton buttonView,
+                                                                     boolean isChecked) {
+                                            if(isChecked){
+                                                Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
+                                                Shell.SU.run("echo 1 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
+
+                                            }else if(!isChecked){
+                                                Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                                Shell.SU.run("echo 0 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
+                                            }
+
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    } catch (Exception e) {
+                    }
+                }
+            };
+
+            l.start();
+
         }else{
             moto_L.setVisibility(RelativeLayout.GONE);
+            Shell.SU.run("rm " + getContext().getApplicationInfo().dataDir + "/moto_led");
         }
-
-        motoL = (Switch) view.findViewById(R.id.motoL);
-
-        Thread l = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    while (!isInterrupted()) {
-                        Thread.sleep(1000);
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                final String get_l = (Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
-
-                                if (get_l.equals("[255]")) {
-                                    motoL.setChecked(true);
-                                }else if (get_l.equals("[0]")){
-                                    motoL.setChecked(false);
-                                }
-
-                                motoL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                    @Override
-                                    public void onCheckedChanged(CompoundButton buttonView,
-                                                                 boolean isChecked) {
-                                        if(isChecked){
-                                            Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
-                                        }else if(!isChecked){
-                                            Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
-                                        }
-
-                                    }
-                                });
-                            }
-                        });
-                    }
-                } catch (Exception e) {
-                }
-            }
-        };
-
-        l.start();
 
     return view;
     }

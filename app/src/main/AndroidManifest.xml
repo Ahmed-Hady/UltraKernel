@@ -16,14 +16,13 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <service android:name=".ApplyScripts" />
         <receiver android:name=".BootReceiver">
-        <intent-filter>
+        <intent-filter android:priority="999">
             <action android:name="android.intent.action.BOOT_COMPLETED" />
         </intent-filter>
                 </receiver>
