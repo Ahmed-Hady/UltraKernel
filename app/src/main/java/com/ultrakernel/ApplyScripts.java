@@ -33,11 +33,6 @@ public class ApplyScripts extends Service {
         super.onDestroy();
     }
 
-    public static String split(String receiver) {
-        String[] splitter = receiver.split(":");
-        return splitter[1];
-    }
-
     @Override
     public void onStart(Intent intent, int startId) {
 
