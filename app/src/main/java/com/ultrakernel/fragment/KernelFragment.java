@@ -147,7 +147,6 @@ public class KernelFragment extends Fragment {
 
         motoL = (Switch) view.findViewById(R.id.motoL);
 
-
         Thread l = new Thread() {
             @Override
             public void run() {

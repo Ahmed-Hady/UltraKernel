@@ -225,9 +225,13 @@
                 android:text="@string/MOTOLED_INFO"
                 android:textSize="12sp" />
         </LinearLayout>
+
 <Space
     android:layout_width="match_parent"
     android:layout_height="20pt" />
+
+
+
     </LinearLayout>
 </ScrollView>
 
