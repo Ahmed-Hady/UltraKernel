@@ -33,6 +33,11 @@ public class ApplyScripts extends Service {
         super.onDestroy();
     }
 
+    public static String split(String receiver) {
+        String[] splitter = receiver.split(":");
+        return splitter[1];
+    }
+
     @Override
     public void onStart(Intent intent, int startId) {
 
@@ -56,7 +61,17 @@ public class ApplyScripts extends Service {
                         for (incr = 0; incr <= 100; incr+=10) {
                             try {
                                 Thread.sleep(600);
-                                Shell.SU.run("sh /system/etc/init.d/*");
+
+                                //MOTO led
+                                if(new File("/data/data/com.ultrakernel/moto_led").exists()) {
+                                    final String R_ml = (Shell.SU.run("cat /data/data/com.ultrakernel/moto_led")).toString();
+                                    if (R_ml.equals("[1]")) {
+                                        Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
+                                    } else if (R_ml.equals("[0]")) {
+                                        Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                    }
+                                }
+
                             } catch (InterruptedException e) {
 
                             }
