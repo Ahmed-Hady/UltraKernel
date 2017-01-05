@@ -3,8 +3,6 @@
     package="com.ultrakernel">
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -24,7 +22,7 @@
 
         <service android:name=".ApplyScripts" />
         <receiver android:name=".BootReceiver">
-        <intent-filter android:priority="900">
+        <intent-filter android:priority="999">
             <action android:name="android.intent.action.BOOT_COMPLETED" />
         </intent-filter>
                 </receiver>

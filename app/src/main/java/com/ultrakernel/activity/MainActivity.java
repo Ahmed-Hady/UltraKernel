@@ -17,8 +17,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.github.javiersantos.appupdater.AppUpdater;
-import com.github.javiersantos.appupdater.enums.Display;
 import com.ultrakernel.R;
 import com.ultrakernel.fragment.CPUFragment;
 import com.ultrakernel.fragment.KernelFragment;
@@ -93,22 +91,6 @@ public class MainActivity extends Activity
                 frameLayout.setOnTouchListener(null);
             }
         });
-
-        //UP
-        AppUpdater up = new AppUpdater(this);
-
-        up.init()
-                //.setUpdateFrom(UpdateFrom.GITHUB)
-                .setDisplay(Display.DIALOG)
-                .setGitHubUserAndRepo("Ahmed-Hady", "UltraKernel")
-                .setTitleOnUpdateAvailable("Update available")
-                .setContentOnUpdateAvailable("Check out the latest version available of my app!")
-                .setTitleOnUpdateNotAvailable("Update not available")
-                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
-                .setButtonUpdate("Update now?")
-                .setButtonDismiss("Maybe later")
-                .setButtonDoNotShowAgain("Huh, not interested");
-        
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
