@@ -4,35 +4,34 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ListView
+        android:id="@+id/splash_list"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:layout_marginTop="29dp"
+        android:padding="5dp"
+        android:layout_below="@+id/progressBar2"
+        android:layout_alignParentStart="true"></ListView>
+
     <TextView
         android:text="Checking System"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="66dp"
         android:id="@+id/textView7"
         android:textStyle="normal|bold"
         android:textSize="36sp"
         android:fontFamily="casual"
+        android:layout_marginStart="26dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="29dp" />
+        android:layout_alignParentStart="true" />
 
     <ProgressBar
         style="@android:style/Widget.Material.ProgressBar.Large"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="103dp"
         android:id="@+id/progressBar2"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/textView7"
-        android:layout_alignStart="@+id/textView7" />
-
-    <ListView
-        android:id="@+id/splash_list"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginTop="29dp"
-        android:padding="5dp"
-        android:layout_below="@+id/progressBar2"
-        android:layout_alignParentStart="true"></ListView>
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
