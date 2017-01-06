@@ -2,28 +2,26 @@
 [![Build Status](https://travis-ci.org/Ahmed-Hady/UltraKernel.svg?branch=master)](https://travis-ci.org/Ahmed-Hady/UltraKernel)
 
 # UltraKernel
-==============
 App for system &amp; kernel performance improvment
 
 ## Change Log
-================
-[*] What is working ?
-   - Ram Boosting Tool
-   - Killing Ram draining apps
-   - Motorola Led Switching Feature
-   - CPU Governor Changer
-   - System and devices Information Feature
-     -> Including Ram, Battery, Processor, and kernel information
-   - Applying on Boot
+### - What is working ?
+   ####- Ram Boosting Tool
+   ####- Killing Ram draining apps
+   ####- Motorola Led Switching Feature
+   ####- CPU Governor Changer
+   ####- System and devices Information Feature
+         -> Including Ram, Battery, Processor, and kernel information
+- Applying on Boot
 
-[*] What Still Work in process Features ?
-   - FsTrim
-   - ART Optimization
-   - Zipling Optimization
-   - Catch Cleaner
-   - Init.d Executer
-   - CPU Frequentaly Changer
-   - And Others Comming Soon!!
+### - What Still Work in process Features ?
+   ####- FsTrim
+   ####- ART Optimization
+   ####- Zipling Optimization
+   ####- Catch Cleaner
+   ####- Init.d Executer
+   ####- CPU Frequentaly Changer
+   ####- And Others Comming Soon!!
 
 # ScreenShots:
 ![1] ![2]
