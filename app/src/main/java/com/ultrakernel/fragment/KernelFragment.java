@@ -75,7 +75,7 @@ public class KernelFragment extends Fragment {
             public void run() {
                 try {
                     while (!isInterrupted()) {
-                        Thread.sleep(1000);
+                        Thread.sleep(500);
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -148,7 +148,7 @@ public class KernelFragment extends Fragment {
                 public void run() {
                     try {
                         while (!isInterrupted()) {
-                            Thread.sleep(500);
+                            Thread.sleep(800);
                             getActivity().runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
