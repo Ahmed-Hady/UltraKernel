@@ -11,8 +11,8 @@ App for system &amp; kernel performance improvment
    * Motorola Led Switching Feature
    * CPU Governor Changer
    * System and devices Information Feature
-         -> Including Ram, Battery, Processor, and kernel information
-- Applying on Boot
+         - Including Ram, Battery, Processor, and kernel information
+   * Applying on Boot
 
 ### - What Still Work in process Features ?
    * FsTrim
