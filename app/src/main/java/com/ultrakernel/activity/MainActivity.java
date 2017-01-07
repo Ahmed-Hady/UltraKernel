@@ -24,7 +24,6 @@ import com.ultrakernel.fragment.Main_fragement;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
 import java.io.File;
-import java.io.IOException;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -45,13 +44,6 @@ public class MainActivity extends Activity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //Request Root Permission
-        try {
-            Process process = Runtime.getRuntime().exec(new String[] { "su", "-", "root"});
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         /*Fragments*/
         mMain=new Main_fragement();

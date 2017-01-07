@@ -19,6 +19,7 @@ import java.io.File;
 
 import eu.chainfire.libsuperuser.Shell;
 
+import static com.ultrakernel.adapter.CheckAdapter.moto;
 import static com.ultrakernel.util.CPUInfo.cur_gov;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
@@ -141,27 +142,8 @@ public class KernelFragment extends Fragment {
 
         if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1){
             moto_L.setVisibility(RelativeLayout.VISIBLE);
-
             motoL = (Switch) view.findViewById(R.id.motoL);
-            Thread l = new Thread() {
-                @Override
-                public void run() {
-                    try {
-                        while (!isInterrupted()) {
-                            Thread.sleep(800);
-                            getActivity().runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    final String get_l = (Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
-
-                                    if (get_l.equals("[255]")) {
-                                        Shell.SU.run("echo 1 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
-                                        motoL.setChecked(true);
-                                    }else if (get_l.equals("[0]")){
-                                        Shell.SU.run("echo 0 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
-                                        motoL.setChecked(false);
-                                    }
-
+            motoL.setChecked(moto);
                                     motoL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                         @Override
                                         public void onCheckedChanged(CompoundButton buttonView,
@@ -177,15 +159,6 @@ public class KernelFragment extends Fragment {
 
                                         }
                                     });
-                                }
-                            });
-                        }
-                    } catch (Exception e) {
-                    }
-                }
-            };
-
-            l.start();
 
         }else{
             moto_L.setVisibility(RelativeLayout.GONE);

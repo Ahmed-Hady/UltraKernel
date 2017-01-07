@@ -28,7 +28,7 @@
 
         <service android:name=".ApplyScripts" />
         <receiver android:name=".BootReceiver">
-        <intent-filter android:priority="999">
+        <intent-filter android:priority="800">
             <action android:name="android.intent.action.BOOT_COMPLETED" />
         </intent-filter>
                 </receiver>
@@ -36,8 +36,7 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="170780f99a1c0f42ee4bce379c8a786f3e295ea7" />
-
-        <activity android:name=".activity.change_gov"></activity>
+        
     </application>
 
 </manifest>
