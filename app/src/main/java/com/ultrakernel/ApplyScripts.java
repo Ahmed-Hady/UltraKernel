@@ -50,30 +50,34 @@ public class ApplyScripts extends Service {
                 new Runnable() {
                     @Override
                     public void run() {
-                        int incr;
-                        mBuilder.setProgress(0, 0, true);
-                        mNotificationManager.notify(id, mBuilder.build());
-                        for (incr = 0; incr <= 100; incr+=10) {
-                            try {
-                                Thread.sleep(600);
+                        final String get_l1 = (eu.chainfire.libsuperuser.Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
+                        final String get_l2 = (eu.chainfire.libsuperuser.Shell.SU.run("cat /data/data/com.ultrakernel/moto_led")).toString();
+                        if(!get_l2.toString().contains(get_l1.toString())){
+                            int incr;
+                            mBuilder.setProgress(0, 0, true);
+                            mNotificationManager.notify(id, mBuilder.build());
+                            for (incr = 0; incr <= 100; incr+=10) {
+                                try {
+                                    Thread.sleep(600);
 
-                                //MOTO led
-                                if(new File("/data/data/com.ultrakernel/moto_led").exists()) {
-                                    final String R_ml = (Shell.SU.run("cat /data/data/com.ultrakernel/moto_led")).toString();
-                                    if (R_ml.equals("[1]")) {
-                                        Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
-                                    } else if (R_ml.equals("[0]")) {
-                                        Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                    //MOTO led
+                                    if(new File("/data/data/com.ultrakernel/moto_led").exists()) {
+                                        final String R_ml = (Shell.SU.run("cat /data/data/com.ultrakernel/moto_led")).toString();
+                                        if (R_ml.equals("[1]")) {
+                                            Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
+                                        } else if (R_ml.equals("[0]")) {
+                                            Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                        }
                                     }
+
+                                } catch (InterruptedException e) {
+
                                 }
-
-                            } catch (InterruptedException e) {
-
                             }
+                            mBuilder.setContentText("Applying complete")
+                                    .setProgress(0,0,false);
+                            mNotificationManager.notify(id, mBuilder.build());
                         }
-                        mBuilder.setContentText("Applying complete")
-                                .setProgress(0,0,false);
-                        mNotificationManager.notify(id, mBuilder.build());
                     }
                 }
         ).start();
