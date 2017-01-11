@@ -16,24 +16,11 @@ import android.widget.TextView;
 
 import com.ultrakernel.R;
 
-import java.io.File;
-
 import eu.chainfire.libsuperuser.Shell;
 
 import static com.ultrakernel.util.CPUInfo.cur_gov;
-import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
-import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.Android_d_kernel;
 import static com.ultrakernel.util.Config.Android_d_manuf;
-import static com.ultrakernel.util.Config.DT2W_ENABLE;
-import static com.ultrakernel.util.Config.DT2W_FT5X06;
-import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
-import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE;
-import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE_2;
-import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
-import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
-import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
-import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -142,27 +129,7 @@ public class KernelFragment extends Fragment {
 //***********************************************************************
         d2w=(LinearLayout)view.findViewById(R.id.d2w);
 
-        if(new File(LGE_TOUCH_DT2W).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(LGE_TOUCH_CORE_DT2W).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(LGE_TOUCH_GESTURE).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(ANDROID_TOUCH_DT2W).exists()) {
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(ANDROID_TOUCH2_DT2W).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        } else if(new File(TOUCH_PANEL_DT2W).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(DT2W_WAKEUP_GESTURE).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        } else if(new File(DT2W_ENABLE).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(DT2W_WAKE_GESTURE).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        }else if(new File(DT2W_WAKE_GESTURE_2).exists()){
-            d2w.setVisibility(RelativeLayout.VISIBLE);
-        } else if(new File(DT2W_FT5X06).exists()){
+        if(getPreferences_bool("d2w_exist") == true) {
             d2w.setVisibility(RelativeLayout.VISIBLE);
         }else{
             d2w.setVisibility(RelativeLayout.GONE);

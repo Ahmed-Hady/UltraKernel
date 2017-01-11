@@ -11,9 +11,21 @@ import android.widget.TextView;
 import com.ultrakernel.R;
 import com.ultrakernel.util.ShellExecuter;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
+import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
+import static com.ultrakernel.util.Config.DT2W_ENABLE;
+import static com.ultrakernel.util.Config.DT2W_FT5X06;
+import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
+import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE;
+import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE_2;
+import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
+import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
+import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
+import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -90,12 +102,51 @@ public class CheckAdapter extends BaseAdapter
 
         if (((checkItem) getItem((position))).cmdName.contains("Information")){
 
+            //MOTO
                 final String get_l = (eu.chainfire.libsuperuser.Shell.SH.run("cat /sys/class/leds/charging/max_brightness")).toString();
                 if (get_l.contains("255")) {
                     PutBooleanPreferences("Moto",TRUE);
                 } else if (get_l.contains("0")) {
                     PutBooleanPreferences("Moto",FALSE);
                 }
+
+            //d2w
+            if(new File(LGE_TOUCH_DT2W).exists()){
+                PutStringPreferences("d2w",LGE_TOUCH_DT2W);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(LGE_TOUCH_CORE_DT2W).exists()){
+                PutStringPreferences("d2w",LGE_TOUCH_CORE_DT2W);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(LGE_TOUCH_GESTURE).exists()){
+                PutStringPreferences("d2w",LGE_TOUCH_GESTURE);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(ANDROID_TOUCH_DT2W).exists()) {
+                PutStringPreferences("d2w",ANDROID_TOUCH_DT2W);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(ANDROID_TOUCH2_DT2W).exists()){
+                PutStringPreferences("d2w",ANDROID_TOUCH2_DT2W);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            } else if(new File(TOUCH_PANEL_DT2W).exists()){
+                PutStringPreferences("d2w",TOUCH_PANEL_DT2W);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(DT2W_WAKEUP_GESTURE).exists()){
+                PutStringPreferences("d2w",DT2W_WAKEUP_GESTURE);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            } else if(new File(DT2W_ENABLE).exists()){
+                PutStringPreferences("d2w",DT2W_ENABLE);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(DT2W_WAKE_GESTURE).exists()){
+                PutStringPreferences("d2w",DT2W_WAKE_GESTURE);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else if(new File(DT2W_WAKE_GESTURE_2).exists()){
+                PutStringPreferences("d2w",DT2W_WAKE_GESTURE_2);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            } else if(new File(DT2W_FT5X06).exists()){
+                PutStringPreferences("d2w",DT2W_FT5X06);
+                PutBooleanPreferences("d2w_exist",TRUE);
+            }else{
+                PutBooleanPreferences("d2w_exist",FALSE);
+            }
         }
 
         return convertView;
