@@ -80,6 +80,12 @@ public class KernelFragment extends Fragment {
         return settings.getBoolean(Name, Boolean.parseBoolean(null));
     }
 
+    public void RemovePreferences(String Name){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove(Name);
+        editor.commit();
+    }
     //********************************************************************************************
 
     @Override
@@ -191,7 +197,7 @@ public class KernelFragment extends Fragment {
 
         }else{
             moto_L.setVisibility(RelativeLayout.GONE);
-            //TODO Add Clea Code for The Preferences;
+            RemovePreferences("Moto");
         }
 
     return view;

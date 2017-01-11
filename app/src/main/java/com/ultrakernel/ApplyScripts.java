@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import eu.chainfire.libsuperuser.Shell;
 
 import static android.R.attr.id;
+import static com.ultrakernel.util.Config.Android_d_manuf;
 
 /**
  * Created by ahmedhady on 04/01/17.
@@ -87,14 +88,16 @@ public class ApplyScripts extends Service {
                             for (incr = 0; incr <= 100; incr+=10) {
                                 try {
                                     Thread.sleep(600);
+                                    String MOTO = "motorola";
+                                    if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1) {
 
-                                    //MOTO led
+                                        //MOTO led
                                         if (getPreferences_bool("Moto") == true) {
                                             Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
                                         } else if (getPreferences_bool("Moto") == false) {
                                             Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
                                         }
-
+                                    }
                                 } catch (InterruptedException e) {
 
                                 }
