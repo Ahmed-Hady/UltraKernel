@@ -1,6 +1,7 @@
 package com.ultrakernel.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,11 @@ import com.ultrakernel.util.ShellExecuter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
+
 public class CheckAdapter extends BaseAdapter
 {
-    public static Boolean moto;
     private Context mContext;
     private LayoutInflater mInflater;
     private ArrayList<checkItem> mList = new ArrayList<>();
@@ -32,7 +35,6 @@ public class CheckAdapter extends BaseAdapter
         mList.add(new checkItem("Checking DT2W Existence"));
         mList.add(new checkItem("Checking Information"));
     }
-
     @Override
     public int getCount()
     {
@@ -87,18 +89,13 @@ public class CheckAdapter extends BaseAdapter
         }
 
         if (((checkItem) getItem((position))).cmdName.contains("Information")){
-            if(Shell.hasRoot()) {
-                try{
-                final String get_l = (eu.chainfire.libsuperuser.Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
-                if (get_l.equals("[255]")) {
-                    eu.chainfire.libsuperuser.Shell.SU.run("echo 1 > " + "/data/data/com.ultrakernel/moto_led");
-                    moto = true;
-                } else if (get_l.equals("[0]")) {
-                    eu.chainfire.libsuperuser.Shell.SU.run("echo 0 > " + "/data/data/com.ultrakernel/moto_led");
-                    moto = false;
+
+                final String get_l = (eu.chainfire.libsuperuser.Shell.SH.run("cat /sys/class/leds/charging/max_brightness")).toString();
+                if (get_l.contains("255")) {
+                    PutBooleanPreferences("Moto",TRUE);
+                } else if (get_l.contains("0")) {
+                    PutBooleanPreferences("Moto",FALSE);
                 }
-                } catch (Exception e) {}
-            }
         }
 
         return convertView;
@@ -112,4 +109,33 @@ public class CheckAdapter extends BaseAdapter
             this.cmdName = cmdName;
         }
     }
+
+    //*********************************** Getting & Setting Info **************************************
+    public void PutStringPreferences(String Name,String Function){
+        SharedPreferences settings = mContext.getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(Name, Function);
+        editor.commit();
+    }
+
+    public String getStringPreferences(String Name){
+        String o;
+        SharedPreferences settings = mContext.getSharedPreferences(Name, 0); // 0 - for private mode
+        o=settings.getString(Name,null);
+        return o;
+    }
+
+    public void PutBooleanPreferences(String Name,Boolean Function){
+        SharedPreferences settings = mContext.getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(Name, Function);
+        editor.commit();
+    }
+
+    public boolean getPreferences_bool(String Name){
+        SharedPreferences settings = mContext.getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getBoolean(Name, Boolean.parseBoolean(null));
+    }
+
+//*************************************************************************************************
 }

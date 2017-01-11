@@ -1,6 +1,7 @@
 package com.ultrakernel.fragment;
 
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,7 +20,6 @@ import java.io.File;
 
 import eu.chainfire.libsuperuser.Shell;
 
-import static com.ultrakernel.adapter.CheckAdapter.moto;
 import static com.ultrakernel.util.CPUInfo.cur_gov;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
@@ -52,6 +52,36 @@ public class KernelFragment extends Fragment {
     private Button GovernorButton;
 
     private Switch motoL;
+
+    //********************************* Getting & Setting Info ***********************************
+    public void PutStringPreferences(String Name,String Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(Name, Function);
+        editor.commit();
+    }
+
+    public String getStringPreferences(String Name){
+        String o;
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0); // 0 - for private mode
+        o=settings.getString(Name,null);
+        return o;
+    }
+
+    public void PutBooleanPreferences(String Name,Boolean Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(Name, Function);
+        editor.commit();
+    }
+
+    public boolean getPreferences_bool(String Name){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getBoolean(Name, Boolean.parseBoolean(null));
+    }
+
+    //********************************************************************************************
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -143,18 +173,17 @@ public class KernelFragment extends Fragment {
         if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1){
             moto_L.setVisibility(RelativeLayout.VISIBLE);
             motoL = (Switch) view.findViewById(R.id.motoL);
-            motoL.setChecked(moto);
+            motoL.setChecked(getPreferences_bool("Moto"));
                                     motoL.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                         @Override
                                         public void onCheckedChanged(CompoundButton buttonView,
                                                                      boolean isChecked) {
                                             if(isChecked){
                                                 Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
-                                                Shell.SU.run("echo 1 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
-
+                                                PutBooleanPreferences("Moto",Boolean.TRUE);
                                             }else if(!isChecked){
                                                 Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
-                                                Shell.SU.run("echo 0 > " + getContext().getApplicationInfo().dataDir + "/moto_led");
+                                                PutBooleanPreferences("Moto",Boolean.FALSE);
                                             }
 
                                         }
@@ -162,7 +191,7 @@ public class KernelFragment extends Fragment {
 
         }else{
             moto_L.setVisibility(RelativeLayout.GONE);
-            Shell.SU.run("rm " + getContext().getApplicationInfo().dataDir + "/moto_led");
+            //TODO Add Clea Code for The Preferences;
         }
 
     return view;
