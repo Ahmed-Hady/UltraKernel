@@ -89,13 +89,22 @@ public class ApplyScripts extends Service {
                                 try {
                                     Thread.sleep(600);
                                     String MOTO = "motorola";
+                                    //MOTO led
                                     if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1) {
 
-                                        //MOTO led
                                         if (getPreferences_bool("Moto") == true) {
                                             Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
                                         } else if (getPreferences_bool("Moto") == false) {
                                             Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
+                                        }
+                                    }
+
+                                    //d2w
+                                    if (getPreferences_bool("d2w_exist") == true){
+                                        if (getPreferences_bool("d2w_enable") == true) {
+                                            Shell.SU.run("echo 1 > " + getStringPreferences("d2w"));
+                                        } else if (getPreferences_bool("d2w_enable") == false) {
+                                            Shell.SU.run("echo 0 > " + getStringPreferences("d2w"));
                                         }
                                     }
                                 } catch (InterruptedException e) {

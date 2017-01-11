@@ -71,6 +71,7 @@
                 android:padding="3pt" >
                 <Switch
                     android:text="@string/d2w"
+                    android:id="@+id/d2w_switch"
                     android:textSize="18sp"
                     android:textStyle="normal|bold"
                     android:textColor="@color/dark_grey"

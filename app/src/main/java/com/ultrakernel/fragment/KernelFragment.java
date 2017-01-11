@@ -40,6 +40,8 @@ public class KernelFragment extends Fragment {
 
     private Switch motoL;
 
+    private Switch d2w_switch;
+
     //********************************* Getting & Setting Info ***********************************
     public void PutStringPreferences(String Name,String Function){
         SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
@@ -131,6 +133,24 @@ public class KernelFragment extends Fragment {
 
         if(getPreferences_bool("d2w_exist") == true) {
             d2w.setVisibility(RelativeLayout.VISIBLE);
+
+            d2w_switch = (Switch) view.findViewById(R.id.d2w_switch);
+            d2w_switch.setChecked(getPreferences_bool("d2w_enable"));
+            d2w_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView,
+                                             boolean isChecked) {
+                    if(isChecked){
+                        Shell.SU.run("echo 1 > " + getStringPreferences("d2w"));
+                        PutBooleanPreferences("d2w_enable",Boolean.TRUE);
+                    }else if(!isChecked){
+                        Shell.SU.run("echo 0 > " + getStringPreferences("d2w"));
+                        PutBooleanPreferences("d2w_enable",Boolean.FALSE);
+                    }
+
+                }
+            });
+
         }else{
             d2w.setVisibility(RelativeLayout.GONE);
         }

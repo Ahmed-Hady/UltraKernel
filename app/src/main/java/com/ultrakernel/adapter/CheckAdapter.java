@@ -147,6 +147,15 @@ public class CheckAdapter extends BaseAdapter
             }else{
                 PutBooleanPreferences("d2w_exist",FALSE);
             }
+
+            if(getPreferences_bool("d2w_exist")==true){
+                final String get_d = (eu.chainfire.libsuperuser.Shell.SH.run("cat " + getStringPreferences("d2w"))).toString();
+                if (get_l.contains("1")) {
+                    PutBooleanPreferences("d2w_enable",TRUE);
+                } else if (get_l.contains("0")) {
+                    PutBooleanPreferences("d2w_enable",FALSE);
+                }
+            }
         }
 
         return convertView;
