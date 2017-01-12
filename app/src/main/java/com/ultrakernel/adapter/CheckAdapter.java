@@ -48,6 +48,10 @@ public class CheckAdapter extends BaseAdapter
         mList.add(new checkItem("Checking Information"));
     }
     @Override
+    public boolean isEnabled(int position) {
+        return false;
+    }
+    @Override
     public int getCount()
     {
         return mList.size();
@@ -77,7 +81,6 @@ public class CheckAdapter extends BaseAdapter
         text.setText(((checkItem) getItem(position)).cmdName);
 
         if (((checkItem) getItem(position)).cmdName.contains("Root")){
-
             if(Shell.hasRoot()) {
                 PutBooleanPreferences("Root", TRUE);
             }else if (Shell.has_systemless_Root()) {
