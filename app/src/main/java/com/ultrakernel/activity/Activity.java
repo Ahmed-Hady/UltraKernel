@@ -4,7 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.javiersantos.appupdater.AppUpdater;
 import com.ultrakernel.util.ShellUtils;
+
+import static com.ultrakernel.util.Config.UpdaterUrl;
 
 
 /**
@@ -15,6 +18,7 @@ import com.ultrakernel.util.ShellUtils;
 public class Activity extends AppCompatActivity
 {
     public static ShellUtils mShellInstance;
+    private AppUpdater mAppUpdater;
 
     public ShellUtils getShellSession()
     {
@@ -29,10 +33,26 @@ public class Activity extends AppCompatActivity
         this.mShellInstance = new ShellUtils(this);
     }
 
+    public void OnInit(){
+        Updater();
+    }
+    public void Updater(){
+        mAppUpdater=new AppUpdater(this);
+        mAppUpdater.setUpdateXML(UpdaterUrl)
+                    .setTitleOnUpdateAvailable("Update available")
+                    .setContentOnUpdateAvailable("Check out the latest version available of my app!")
+                    .setTitleOnUpdateNotAvailable("Update not available")
+                    .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
+                    .setButtonUpdate("Update now?")
+                    .setButtonDismiss("Maybe later")
+                    .setButtonDoNotShowAgain("Huh, not interested");
+
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        OnInit();
     }
 
     @Override
