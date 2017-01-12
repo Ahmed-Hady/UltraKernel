@@ -120,7 +120,7 @@ public class CheckAdapter extends BaseAdapter
         if (((checkItem) getItem((position))).cmdName.contains("Information")){
 
             //MOTO
-                final String get_l = (eu.chainfire.libsuperuser.Shell.SH.run("cat /sys/class/leds/charging/max_brightness")).toString();
+                final String get_l = (eu.chainfire.libsuperuser.Shell.SH.run("su -c cat /sys/class/leds/charging/max_brightness")).toString();
                 if (get_l.contains("255")) {
                     PutBooleanPreferences("Moto",TRUE);
                 } else if (get_l.contains("0")) {
