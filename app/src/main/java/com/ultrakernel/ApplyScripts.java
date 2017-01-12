@@ -69,7 +69,7 @@ public class ApplyScripts extends Service {
 
         final NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.ic_android)
+                        .setSmallIcon(R.drawable.ic_build)
                         .setContentTitle("Applying Mods")
                         .setContentText("Please Wait ...");
 
