@@ -21,7 +21,7 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.ultrakernel.R;
 import com.ultrakernel.fragment.CPUFragment;
 import com.ultrakernel.fragment.KernelFragment;
-import com.ultrakernel.fragment.Main_fragement;
+import com.ultrakernel.fragment.Creditsfragement;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
 import me.drakeet.materialdialog.MaterialDialog;
@@ -32,7 +32,7 @@ import static com.ultrakernel.util.ShellCommands.boost_system;
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Main_fragement mMain;
+    private Creditsfragement mCredits;
     private SystemInfo_fragement mSystemInfo;
     private KernelFragment mKernel;
     private CPUFragment mCpu;
@@ -45,13 +45,13 @@ public class MainActivity extends Activity
         setSupportActionBar(toolbar);
 
         /*Fragments*/
-        mMain=new Main_fragement();
+        mCredits=new Creditsfragement();
         mSystemInfo=new SystemInfo_fragement();
         mKernel=new KernelFragment();
         mCpu=new CPUFragment();
 
         /*default fragment*/
-        updateFragment(this.mMain);
+        updateFragment(this.mSystemInfo);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -125,9 +125,7 @@ public class MainActivity extends Activity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_main) {
-            updateFragment(mMain);
-        } else if (id == R.id.nav_systemInfo) {
+        if (id == R.id.nav_systemInfo) {
             final FloatingActionsMenu fabMenu = (FloatingActionsMenu) findViewById(R.id.menu_fab);
             fabMenu.setVisibility(FloatingActionsMenu.VISIBLE);
             updateFragment(mSystemInfo);
@@ -141,6 +139,8 @@ public class MainActivity extends Activity
             updateFragment(mCpu);
         } else if (id == R.id.nav_send) {
 
+        } else if (id == R.id.nav_credits) {
+            updateFragment(mCredits);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -155,11 +155,6 @@ public class MainActivity extends Activity
 
         ft.replace(R.id.content_frame, fragment);
         ft.commit();
-
-    }
-    public void startBtn_press(View v){
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.openDrawer(GravityCompat.START);
 
     }
 

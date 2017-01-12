@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 
 import com.ultrakernel.R;
 
-public class Main_fragement  extends Fragment {
+public class Creditsfragement  extends Fragment {
     @Nullable
     @Override
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.content_main, container, false);
+        final View view = inflater.inflate(R.layout.credits, container, false);
         return view;
     }
 
