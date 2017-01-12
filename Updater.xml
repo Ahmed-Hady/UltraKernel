@@ -1,6 +1,6 @@
 <AppUpdater>
     <update>
-        <latestVersion>0.1</latestVersion>
+        <latestVersion>0.2</latestVersion>
         <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-d996fc3e36b5f82445d1/app-debug.apk</url>
         <releaseNotes>
             - Test Updater
