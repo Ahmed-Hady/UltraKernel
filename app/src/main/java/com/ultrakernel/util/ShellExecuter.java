@@ -56,7 +56,7 @@ public class ShellExecuter {
     }
     public static boolean has_systemless_Root()
     {
-        return new File("/su/xbin").exists();
+        return new File("/su/bin/su").exists();
     }
     public static List<String> SuperSu(){
         List<String> newShell= (Shell.SH.run(command));
@@ -66,6 +66,7 @@ public class ShellExecuter {
     {
         return new File("/system/xbin/busybox").isFile();
     }
+    public static boolean has_Systemless_Busybox() {return new File("/su/xbin/busybox").isFile();}
     public static boolean hasGpu(){return new File("/sys/class/kgsl/kgsl-3d0/gpuclk").isFile();}
     public static boolean hasFastCharge(){return new File("/sys/kernel/fast_charge/force_fast_charge").isFile();}
 

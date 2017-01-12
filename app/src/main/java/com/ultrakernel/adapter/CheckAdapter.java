@@ -77,7 +77,14 @@ public class CheckAdapter extends BaseAdapter
         text.setText(((checkItem) getItem(position)).cmdName);
 
         if (((checkItem) getItem(position)).cmdName.contains("Root")){
+
             if(Shell.hasRoot()) {
+                PutBooleanPreferences("Root", TRUE);
+            }else if (Shell.has_systemless_Root()) {
+                PutBooleanPreferences("Root", TRUE);
+            }else{PutBooleanPreferences("Root",FALSE);}
+
+            if(getPreferences_bool("Root") == true){
                 //Request Root Permission
                 try {
                     Process process = Runtime.getRuntime().exec(new String[] { "su", "-", "root"});
@@ -92,7 +99,15 @@ public class CheckAdapter extends BaseAdapter
         }
 
         if (((checkItem) getItem(position)).cmdName.contains("BusyBox")){
+
             if(Shell.hasBusybox()) {
+                PutBooleanPreferences("bb", TRUE);
+            }else if (Shell.has_Systemless_Busybox()) {
+                PutBooleanPreferences("bb", TRUE);
+            }else{PutBooleanPreferences("bb",FALSE);}
+
+
+            if(getPreferences_bool("bb") == true) {
                 text2.setText("Ok!");
             }else{
                 text2.setText("Failed! :(");

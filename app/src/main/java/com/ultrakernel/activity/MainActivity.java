@@ -1,6 +1,7 @@
 package com.ultrakernel.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -22,8 +23,6 @@ import com.ultrakernel.fragment.CPUFragment;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.Main_fragement;
 import com.ultrakernel.fragment.SystemInfo_fragement;
-
-import java.io.File;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -165,8 +164,7 @@ public class MainActivity extends Activity
     }
 
     public void boost(View v){
-        boolean basybox_test = new File("/system/xbin/busybox").exists();
-        if(basybox_test) {
+        if(getPreferences_bool("bb") == true) {
             boost_system(this);
         }else{
             mMaterialDialog.show();
@@ -198,6 +196,41 @@ public class MainActivity extends Activity
                     mMaterialDialog.dismiss();
                 }
             });
+
+    //********************************* Getting & Setting Info ***********************************
+    public void PutStringPreferences(String Name,String Function){
+        SharedPreferences settings = getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(Name, Function);
+        editor.commit();
+    }
+
+    public String getStringPreferences(String Name){
+        String o;
+        SharedPreferences settings = getSharedPreferences(Name, 0); // 0 - for private mode
+        o=settings.getString(Name,null);
+        return o;
+    }
+
+    public void PutBooleanPreferences(String Name,Boolean Function){
+        SharedPreferences settings = getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(Name, Function);
+        editor.commit();
+    }
+
+    public boolean getPreferences_bool(String Name){
+        SharedPreferences settings = getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getBoolean(Name, Boolean.parseBoolean(null));
+    }
+
+    public void RemovePreferences(String Name){
+        SharedPreferences settings = getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.remove(Name);
+        editor.commit();
+    }
+    //********************************************************************************************
 
 }
 
