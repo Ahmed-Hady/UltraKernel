@@ -195,7 +195,9 @@ public class SystemInfo_fragement  extends Fragment implements SwipeRefreshLayou
                                     b_status.setText(b_status.getText() + " & PLUGGED USB");
                                 }
                                 if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
-                                    b_status.setText(b_status.getText() + " & PLUGGED AC");
+                                    /*Clear old text*/
+                                    b_status.setText("");
+                                    b_status.setText(b_status.getText() + " PLUGGED AC");
                                 }
 
                                 int level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
