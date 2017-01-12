@@ -18,6 +18,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
+import com.github.javiersantos.appupdater.AppUpdater;
+import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.ultrakernel.R;
 import com.ultrakernel.fragment.CPUFragment;
 import com.ultrakernel.fragment.KernelFragment;
@@ -26,6 +29,7 @@ import com.ultrakernel.fragment.SystemInfo_fragement;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
+import static com.ultrakernel.util.Config.UpdaterUrl;
 import static com.ultrakernel.util.ShellCommands.RAM_IMP;
 import static com.ultrakernel.util.ShellCommands.boost_system;
 
@@ -36,6 +40,7 @@ public class MainActivity extends Activity
     private SystemInfo_fragement mSystemInfo;
     private KernelFragment mKernel;
     private CPUFragment mCpu;
+    private AppUpdater mAppUpdater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +88,27 @@ public class MainActivity extends Activity
             }
         });
 
+        Updater();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    public void Updater(){
+        mAppUpdater=new AppUpdater(this);
+        mAppUpdater
+                .setUpdateFrom(UpdateFrom.XML)
+                .setUpdateXML(UpdaterUrl)
+                .setDisplay(Display.DIALOG)
+                .setTitleOnUpdateAvailable("Update available")
+                .setContentOnUpdateAvailable("Check out the latest version available of my app!")
+                .setTitleOnUpdateNotAvailable("Update not available")
+                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
+                .setButtonUpdate("Update now?")
+                .setButtonDismiss("Maybe later")
+                .setButtonDoNotShowAgain("Huh, not interested");
+        mAppUpdater.start();
+
     }
 
     @Override
