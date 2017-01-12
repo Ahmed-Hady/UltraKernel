@@ -1,9 +1,11 @@
 package com.ultrakernel.activity;
 
+import android.app.DownloadManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,20 +13,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.eminayar.panter.PanterDialog;
+import com.eminayar.panter.enums.Animation;
 import com.getbase.floatingactionbutton.FloatingActionsMenu;
-import com.github.javiersantos.appupdater.AppUpdater;
-import com.github.javiersantos.appupdater.enums.Display;
+import com.github.javiersantos.appupdater.AppUpdaterUtils;
+import com.github.javiersantos.appupdater.enums.AppUpdaterError;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
+import com.github.javiersantos.appupdater.objects.Update;
 import com.ultrakernel.R;
 import com.ultrakernel.fragment.CPUFragment;
-import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.Creditsfragement;
+import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
 import me.drakeet.materialdialog.MaterialDialog;
@@ -40,8 +46,9 @@ public class MainActivity extends Activity
     private SystemInfo_fragement mSystemInfo;
     private KernelFragment mKernel;
     private CPUFragment mCpu;
-    private AppUpdater mAppUpdater;
-
+    private AppUpdaterUtils mAppUpdater;
+    private PanterDialog UpdateDialog;
+    private DownloadManager downloadManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,20 +102,50 @@ public class MainActivity extends Activity
     }
 
     public void Updater(){
-        mAppUpdater=new AppUpdater(this);
+        mAppUpdater=new AppUpdaterUtils(this);
         mAppUpdater
                 .setUpdateFrom(UpdateFrom.XML)
                 .setUpdateXML(UpdaterUrl)
-                .setDisplay(Display.DIALOG)
-                .setTitleOnUpdateAvailable("Update available")
-                .setContentOnUpdateAvailable("Check out the latest version available of my app!")
-                .setTitleOnUpdateNotAvailable("Update not available")
-                .setContentOnUpdateNotAvailable("No update available. Check for updates again later!")
-                .setButtonUpdate("Update now?")
-                .setButtonDismiss("Maybe later")
-                .setButtonDoNotShowAgain("Huh, not interested");
-        mAppUpdater.start();
+                .withListener(new AppUpdaterUtils.UpdateListener() {
+                    @Override
+                    public void onSuccess(final Update update, Boolean isUpdateAvailable) {
+                        downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
 
+                        Log.d("AppUpdater", update.getLatestVersion() + ", " + update.getUrlToDownload() + ", " + Boolean.toString(isUpdateAvailable));
+                        if(isUpdateAvailable==true){
+                            UpdateDialog= new PanterDialog(MainActivity.this);
+                            UpdateDialog.setTitle("Update Found")
+                                    .setHeaderBackground(R.color.colorPrimaryDark)
+                                    .setMessage("Changelog :- \n\n"+update.getReleaseNotes())
+                                    .setPositive("Download",new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+                                            Uri uri = Uri.parse(String.valueOf(update.getUrlToDownload()));
+                                            DownloadManager.Request request = new DownloadManager.Request(uri);
+                                            String  fileName = uri.getLastPathSegment();
+                                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,fileName);
+
+                                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                            Long reference = downloadManager.enqueue(request);
+                                            UpdateDialog.dismiss();
+
+                                        }
+                                    })
+                                    .setNegative("DISMISS")
+                                    .isCancelable(false)
+                                    .withAnimation(Animation.SIDE)
+                                    .show();
+
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(AppUpdaterError error) {
+                        Log.d("AppUpdater", "Something went wrong");
+                    }
+                });
+        mAppUpdater.start();
     }
 
     @Override
