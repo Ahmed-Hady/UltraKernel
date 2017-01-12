@@ -44,7 +44,6 @@ public class CheckAdapter extends BaseAdapter
 
         mList.add(new checkItem("Checking Root Access"));
         mList.add(new checkItem("Checking BusyBox"));
-        mList.add(new checkItem("Checking DT2W Existence"));
         mList.add(new checkItem("Checking Information"));
     }
     @Override
@@ -174,6 +173,7 @@ public class CheckAdapter extends BaseAdapter
                     PutBooleanPreferences("d2w_enable",FALSE);
                 }
             }
+            text2.setText("Ok!");
         }
 
         return convertView;
