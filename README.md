@@ -13,6 +13,7 @@ App for system &amp; kernel performance improvment
    * System and devices Information Feature
          - Including Ram, Battery, Processor, and kernel information
    * Applying on Boot
+   * Double-Tap to Wake
 
 ### - What Still Work in process Features ?
    * FsTrim
@@ -21,6 +22,7 @@ App for system &amp; kernel performance improvment
    * Catch Cleaner
    * Init.d Executer
    * CPU Frequentaly Changer
+   * Ambient Display Switcher
    * And Others Comming Soon!!
 
 # ScreenShots:
