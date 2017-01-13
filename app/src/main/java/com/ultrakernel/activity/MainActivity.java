@@ -135,9 +135,8 @@ public class MainActivity extends Activity
                                     })
                                     .setNegative("DISMISS")
                                     .isCancelable(false)
-                                    .withAnimation(Animation.SIDE)
+                                    .withAnimation(Animation.POP)
                                     .show();
-
 
                         }
                     }
