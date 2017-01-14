@@ -176,6 +176,9 @@ public class MainActivity extends Activity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent();
+            intent = new Intent(this, Settings.class);
+            startActivity(intent);
             return true;
         }
 
@@ -289,6 +292,5 @@ public class MainActivity extends Activity
         editor.commit();
     }
     //********************************************************************************************
-
 }
 
