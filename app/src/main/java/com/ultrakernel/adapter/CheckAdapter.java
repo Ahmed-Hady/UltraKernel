@@ -28,6 +28,7 @@ import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
 import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
+import static com.ultrakernel.util.Config.get_l;
 
 public class CheckAdapter extends BaseAdapter
 {
@@ -120,13 +121,15 @@ public class CheckAdapter extends BaseAdapter
         if (((checkItem) getItem((position))).cmdName.contains("Information")){
 
             //MOTO
-                final String get_l = (eu.chainfire.libsuperuser.Shell.SH.run("su -c cat /sys/class/leds/charging/max_brightness")).toString();
-                if (get_l.contains("255")) {
+            try {
+                if (get_l().contains("255")) {
                     PutBooleanPreferences("Moto",TRUE);
-                } else if (get_l.contains("0")) {
+                } else if (get_l().contains("0")) {
                     PutBooleanPreferences("Moto",FALSE);
                 }
-
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             //d2w
             if(new File(LGE_TOUCH_DT2W).exists()){
                 PutStringPreferences("d2w",LGE_TOUCH_DT2W);
@@ -166,11 +169,15 @@ public class CheckAdapter extends BaseAdapter
             }
 
             if(getPreferences_bool("d2w_exist")==true){
-                final String get_d = (eu.chainfire.libsuperuser.Shell.SH.run("cat " + getStringPreferences("d2w"))).toString();
-                if (get_l.contains("1")) {
-                    PutBooleanPreferences("d2w_enable",TRUE);
-                } else if (get_l.contains("0")) {
-                    PutBooleanPreferences("d2w_enable",FALSE);
+                try {
+                    final String get_d = (Runtime.getRuntime().exec("su -c cat " + getStringPreferences("d2w"))).toString();
+                    if (get_d.contains("1")) {
+                        PutBooleanPreferences("d2w_enable", TRUE);
+                    } else if (get_d.contains("0")) {
+                        PutBooleanPreferences("d2w_enable", FALSE);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
             text2.setText("Ok!");

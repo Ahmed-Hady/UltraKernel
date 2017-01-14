@@ -37,6 +37,11 @@ public class Config {
         return mShell.runAsRoot();
     }
 
+    public static String get_l(){
+        mShell.command = "cat /sys/class/leds/charging/max_brightness";
+        return mShell.runAsRoot();
+    }
+
     public static final String LGE_TOUCH_DT2W = "/sys/devices/virtual/input/lge_touch/dt_wake_enabled";
     public static final String LGE_TOUCH_CORE_DT2W = "/sys/module/lge_touch_core/parameters/doubletap_to_wake";
     public static final String LGE_TOUCH_GESTURE = "/sys/devices/virtual/input/lge_touch/touch_gesture";
@@ -49,5 +54,4 @@ public class Config {
     public static final String DT2W_WAKE_GESTURE_2 = "/sys/devices/soc.0/f9924000.i2c/i2c-2/2-0070/input/input0/wake_gesture";
     public static final String DT2W_FT5X06 = "/sys/bus/i2c/drivers/ft5x06_i2c/5-0038/d2w_switch";
     public static final String UpdaterUrl = "https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/Updater.xml";
-
 }
