@@ -1,5 +1,8 @@
 package com.ultrakernel.util;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 /**
  * Created by sumit on 20/12/16.
  */
@@ -39,6 +42,20 @@ public class Config {
 
     public static String get_l(){
         mShell.command = "cat /sys/class/leds/charging/max_brightness";
+        return mShell.runAsRoot();
+    }
+
+    private static Context mContext;
+
+    public static String getStringPreferences(String Name){
+        String o;
+        SharedPreferences settings = mContext.getSharedPreferences(Name, 0); // 0 - for private mode
+        o=settings.getString(Name,null);
+        return o;
+    }
+
+    public static String get_d(){
+        mShell.command = "su -c cat " + getStringPreferences("d2w");
         return mShell.runAsRoot();
     }
 

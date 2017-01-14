@@ -26,6 +26,7 @@ import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
 import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
+import static com.ultrakernel.util.Config.get_d;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static com.ultrakernel.util.Config.get_l;
@@ -170,13 +171,12 @@ public class CheckAdapter extends BaseAdapter
 
             if(getPreferences_bool("d2w_exist")==true){
                 try {
-                    final String get_d = (Runtime.getRuntime().exec("su -c cat " + getStringPreferences("d2w"))).toString();
-                    if (get_d.contains("1")) {
+                    if (get_d().contains("1")) {
                         PutBooleanPreferences("d2w_enable", TRUE);
-                    } else if (get_d.contains("0")) {
+                    } else if (get_d().contains("0")) {
                         PutBooleanPreferences("d2w_enable", FALSE);
                     }
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
