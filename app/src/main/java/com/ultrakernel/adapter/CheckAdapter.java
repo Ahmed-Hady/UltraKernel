@@ -12,7 +12,6 @@ import com.ultrakernel.R;
 import com.ultrakernel.util.ShellExecuter;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
@@ -27,9 +26,9 @@ import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
 import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
 import static com.ultrakernel.util.Config.get_d;
+import static com.ultrakernel.util.Config.get_l;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static com.ultrakernel.util.Config.get_l;
 
 public class CheckAdapter extends BaseAdapter
 {
@@ -88,7 +87,7 @@ public class CheckAdapter extends BaseAdapter
                 PutBooleanPreferences("Root", TRUE);
             }else{PutBooleanPreferences("Root",FALSE);}
 
-            if(getPreferences_bool("Root") == true){
+/*            if(getPreferences_bool("Root") == true){
                 //Request Root Permission
                 try {
                     Process process = Runtime.getRuntime().exec(new String[] { "su", "-", "root"});
@@ -99,7 +98,8 @@ public class CheckAdapter extends BaseAdapter
             }else{
                 text2.setText("Failed! :(");
                 text2.setTextColor(R.color.accent_dark);
-            }
+            }*/
+            eu.chainfire.libsuperuser.Shell.SU.run("echo Hello");
         }
 
         if (((checkItem) getItem(position)).cmdName.contains("BusyBox")){
