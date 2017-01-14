@@ -87,9 +87,9 @@ public class CheckAdapter extends BaseAdapter
                 PutBooleanPreferences("Root", TRUE);
             }else{PutBooleanPreferences("Root",FALSE);}
 
-/*            if(getPreferences_bool("Root") == true){
+            if(getPreferences_bool("Root") == true){
                 //Request Root Permission
-                try {
+/*                try {
                     Process process = Runtime.getRuntime().exec(new String[] { "su", "-", "root"});
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -97,9 +97,10 @@ public class CheckAdapter extends BaseAdapter
                 text2.setText("Ok!");
             }else{
                 text2.setText("Failed! :(");
-                text2.setTextColor(R.color.accent_dark);
-            }*/
-            eu.chainfire.libsuperuser.Shell.SU.run("echo Hello");
+                text2.setTextColor(R.color.accent_dark);*/
+                eu.chainfire.libsuperuser.Shell.SU.run("echo Hello");
+            }
+
         }
 
         if (((checkItem) getItem(position)).cmdName.contains("BusyBox")){
