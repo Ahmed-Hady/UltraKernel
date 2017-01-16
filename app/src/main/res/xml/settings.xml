@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="General Settings">
-        <SwitchPreference android:title="Auto Update" />
+        <SwitchPreference android:title="Auto Update" android:id="@+id/autoup"
+            android:key="autoup"
+            android:icon="@drawable/ic_system_update"
+            android:summary="App periodically Updates" />
     </PreferenceCategory>
 </PreferenceScreen>

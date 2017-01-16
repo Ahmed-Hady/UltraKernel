@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -97,8 +98,14 @@ public class MainActivity extends Activity
             }
         });
 
-        Updater();
+//        if(!getPreferences_bool("autoup"))
+//            PutBooleanPreferences("autoup",Boolean.TRUE);
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+
+        if(pref.getBoolean("autoup",Boolean.parseBoolean(null)) == true) {
+            Updater();
+        }
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
