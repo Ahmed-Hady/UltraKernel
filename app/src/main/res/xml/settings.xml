@@ -6,4 +6,7 @@
             android:icon="@drawable/ic_system_update"
             android:summary="App periodically Updates" />
     </PreferenceCategory>
+    <PreferenceCategory android:title="Appearance Settings">
+        <SwitchPreference android:title="Night Theme" android:key="night" android:summary="Night Theme" android:icon="@drawable/ic_night" />
+    </PreferenceCategory>
 </PreferenceScreen>

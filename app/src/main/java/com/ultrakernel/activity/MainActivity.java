@@ -103,6 +103,12 @@ public class MainActivity extends Activity
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
+        if(pref.getBoolean("night",Boolean.parseBoolean(null)) == true){
+            setTheme(R.style.AppTheme_Dark);
+        }else{
+            setTheme(R.style.AppTheme);
+        }
+
         if(pref.getBoolean("autoup",Boolean.parseBoolean(null)) == true) {
             Updater();
         }

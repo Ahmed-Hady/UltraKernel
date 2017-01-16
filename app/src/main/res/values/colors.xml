@@ -15,4 +15,9 @@
     <color name="lightPurple">#753bb7</color>
     <color name="DeepGreen">#1a894a</color>
     <color name="dark_grey">#5b5b5b</color>
+
+    <!--Night-->
+    <color name="colorPrimaryNight">#2e302e</color>
+    <color name="colorPrimaryDarkNight">#171817</color>
+    <color name="colorAccentNight">#222c33</color>
 </resources>
