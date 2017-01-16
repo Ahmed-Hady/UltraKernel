@@ -21,6 +21,8 @@ import eu.chainfire.libsuperuser.Shell;
 import static com.ultrakernel.util.CPUInfo.cur_gov;
 import static com.ultrakernel.util.Config.Android_d_kernel;
 import static com.ultrakernel.util.Config.Android_d_manuf;
+import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -34,6 +36,8 @@ public class KernelFragment extends Fragment {
 
     private LinearLayout d2w;
 
+    private LinearLayout usbFCH;
+
     private LinearLayout moto_L;
 
     private Button GovernorButton;
@@ -41,6 +45,8 @@ public class KernelFragment extends Fragment {
     private Switch motoL;
 
     private Switch d2w_switch;
+
+    private Switch ubFCH_switch;
 
     //********************************* Getting & Setting Info ***********************************
     public void PutStringPreferences(String Name,String Function){
@@ -185,6 +191,36 @@ public class KernelFragment extends Fragment {
         }else{
             moto_L.setVisibility(RelativeLayout.GONE);
             RemovePreferences("Moto");
+        }
+
+
+//************************************************************************
+        //d2w section
+//***********************************************************************
+        usbFCH=(LinearLayout)view.findViewById(R.id.UsbFCH);
+
+        if(getPreferences_bool("usbFCH_exist") == true) {
+            usbFCH.setVisibility(RelativeLayout.VISIBLE);
+
+            ubFCH_switch = (Switch) view.findViewById(R.id.usbFCHswitch);
+            ubFCH_switch.setChecked(getPreferences_bool("usbFCH_enable"));
+            ubFCH_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView,
+                                             boolean isChecked) {
+                    if(isChecked){
+                        Shell.SU.run("echo 1 > " + FORCE_FAST_CHARGE);
+                        PutBooleanPreferences("usbFCH_enable",Boolean.TRUE);
+                    }else if(!isChecked){
+                        Shell.SU.run("echo 0 > " + FORCE_FAST_CHARGE);
+                        PutBooleanPreferences("usbFCH_enable",Boolean.FALSE);
+                    }
+
+                }
+            });
+
+        }else{
+            usbFCH.setVisibility(RelativeLayout.GONE);
         }
 
     return view;

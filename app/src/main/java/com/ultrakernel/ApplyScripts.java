@@ -11,6 +11,7 @@ import eu.chainfire.libsuperuser.Shell;
 
 import static android.R.attr.id;
 import static com.ultrakernel.util.Config.Android_d_manuf;
+import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
 
 /**
  * Created by ahmedhady on 04/01/17.
@@ -105,6 +106,15 @@ public class ApplyScripts extends Service {
                                             Shell.SU.run("echo 1 > " + getStringPreferences("d2w"));
                                         } else if (getPreferences_bool("d2w_enable") == false) {
                                             Shell.SU.run("echo 0 > " + getStringPreferences("d2w"));
+                                        }
+                                    }
+
+                                    //Fast Charging
+                                    if (getPreferences_bool("usbFCH_exist") == true){
+                                        if (getPreferences_bool("usbFCH_enable") == true) {
+                                            Shell.SU.run("echo 1 > " + FORCE_FAST_CHARGE);
+                                        } else if (getPreferences_bool("usbFCH_enable") == false) {
+                                            Shell.SU.run("echo 0 > " + FORCE_FAST_CHARGE);
                                         }
                                     }
                                 } catch (InterruptedException e) {

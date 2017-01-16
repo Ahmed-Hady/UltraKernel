@@ -21,6 +21,7 @@ import static com.ultrakernel.util.Config.DT2W_FT5X06;
 import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
 import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE;
 import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE_2;
+import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
 import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
 import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
@@ -176,6 +177,27 @@ public class CheckAdapter extends BaseAdapter
                         PutBooleanPreferences("d2w_enable", TRUE);
                     } else if (get_d().contains("0")) {
                         PutBooleanPreferences("d2w_enable", FALSE);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // Fast Charge
+
+            if(new File(FORCE_FAST_CHARGE).exists()) {
+                PutBooleanPreferences("usbFCH_exist", TRUE);
+            }else{
+                PutBooleanPreferences("usbFCH_exist", FALSE);
+            }
+
+            if(getPreferences_bool("usbFCH_exist")==true){
+                String get_fch = (eu.chainfire.libsuperuser.Shell.SU.run("cat " + FORCE_FAST_CHARGE)).toString();
+                try {
+                    if (get_fch.contains("1")) {
+                        PutBooleanPreferences("usbFCH_enable", TRUE);
+                    } else if (get_fch.contains("0")) {
+                        PutBooleanPreferences("usbFCH_enable", FALSE);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

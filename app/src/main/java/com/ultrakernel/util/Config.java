@@ -71,4 +71,6 @@ public class Config {
     public static final String DT2W_WAKE_GESTURE_2 = "/sys/devices/soc.0/f9924000.i2c/i2c-2/2-0070/input/input0/wake_gesture";
     public static final String DT2W_FT5X06 = "/sys/bus/i2c/drivers/ft5x06_i2c/5-0038/d2w_switch";
     public static final String UpdaterUrl = "https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/Updater.xml";
+    public static final String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
+
 }
