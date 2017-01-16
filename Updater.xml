@@ -1,9 +1,10 @@
 <AppUpdater>
     <update>
         <latestVersion>0.2</latestVersion>
-        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-d996fc3e36b5f82445d1/app-debug.apk</url>
+        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-c4d6fa3ae6eb02792d49/app-debug.apk</url>
         <releaseNotes>
-            - Test Updater
+            - Auto Update Switcher in Settings
+            - USB Fast Charging
         </releaseNotes>
     </update>
 </AppUpdater>
