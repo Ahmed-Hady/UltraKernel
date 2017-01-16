@@ -14,6 +14,8 @@ App for system &amp; kernel performance improvment
          - Including Ram, Battery, Processor, and kernel information
    * Applying on Boot
    * Double-Tap to Wake
+   * USB Fast Charging
+   * Switch auto update
 
 ### - What Still Work in process Features ?
    * FsTrim
