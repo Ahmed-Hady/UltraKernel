@@ -4,7 +4,8 @@
         <SwitchPreference android:title="Auto Update" android:id="@+id/autoup"
             android:key="autoup"
             android:icon="@drawable/ic_system_update"
-            android:summary="App periodically Updates" />
+            android:summary="App periodically Updates"
+            android:defaultValue="true"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="Appearance Settings">
         <SwitchPreference android:title="Night Theme" android:key="night" android:summary="Night Theme" android:icon="@drawable/ic_night" />
