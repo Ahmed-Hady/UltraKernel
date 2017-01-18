@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.eminayar.panter.PanterDialog;
 import com.eminayar.panter.enums.Animation;
@@ -36,6 +37,12 @@ import com.ultrakernel.fragment.Creditsfragement;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import eu.chainfire.libsuperuser.Shell;
 import me.drakeet.materialdialog.MaterialDialog;
 
 import static com.ultrakernel.util.Config.UpdaterUrl;
@@ -270,6 +277,36 @@ public class MainActivity extends Activity
                     mMaterialDialog.dismiss();
                 }
             });
+
+    public void fstrim(View v){
+        try {
+            fstrim_tmp();
+            Toast.makeText(getApplicationContext(), Shell.SU.run("cd " + package_path + " && fstrim -v /system").toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), Shell.SU.run("cd " + package_path + " && fstrim -v /data").toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), Shell.SU.run("cd " + package_path + " && fstrim -v /cache && rm -rf fstrim && cd").toString(), Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public final String package_path = "/data/data/com.ultrakernel/";
+    public final String fstrim = "fstrim";
+
+    public void fstrim_tmp() throws IOException {
+
+        OutputStream myOutput = new FileOutputStream(package_path + fstrim);
+        byte[] buffer = new byte[1024];
+        int length;
+        InputStream myInput = getBaseContext().getAssets().open("fstrim");
+        while ((length = myInput.read(buffer)) > 0) {
+            myOutput.write(buffer, 0, length);
+        }
+        myInput.close();
+        myOutput.flush();
+        myOutput.close();
+
+    }
 
     //********************************* Getting & Setting Info ***********************************
     public void PutStringPreferences(String Name,String Function){

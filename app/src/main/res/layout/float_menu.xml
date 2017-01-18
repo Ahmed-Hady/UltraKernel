@@ -34,7 +34,8 @@
             fab:fab_colorNormal="?attr/colorAccent"
             fab:fab_icon="@drawable/ic_trim"
             fab:fab_size="mini"
-            fab:fab_title="FsTrim" />
+            fab:fab_title="FsTrim"
+            android:onClick="fstrim" />
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:id="@+id/kill"
