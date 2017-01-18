@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.ultrakernel.activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
@@ -29,9 +29,9 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".ApplyScripts" />
+        <service android:name="com.ultrakernel.ApplyScripts" />
 
-        <receiver android:name=".BootReceiver">
+        <receiver android:name="com.ultrakernel.BootReceiver">
             <intent-filter android:priority="800">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
