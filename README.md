@@ -16,9 +16,9 @@ App for system &amp; kernel performance improvment
    * Double-Tap to Wake
    * USB Fast Charging
    * Switch auto update
+   * FsTrim
 
 ### - What Still Work in process Features ?
-   * FsTrim
    * ART Optimization
    * Zipling Optimization
    * Catch Cleaner
