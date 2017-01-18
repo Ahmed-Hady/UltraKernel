@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import eu.chainfire.libsuperuser.Shell;
 
 import static android.R.attr.id;
+import static com.ultrakernel.util.Config.ARCH_POWER;
 import static com.ultrakernel.util.Config.Android_d_manuf;
 import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
 
@@ -115,6 +116,15 @@ public class ApplyScripts extends Service {
                                             Shell.SU.run("echo 1 > " + FORCE_FAST_CHARGE);
                                         } else if (getPreferences_bool("usbFCH_enable") == false) {
                                             Shell.SU.run("echo 0 > " + FORCE_FAST_CHARGE);
+                                        }
+                                    }
+
+                                    //ARCH POWER
+                                    if (getPreferences_bool("archP_exist") == true){
+                                        if (getPreferences_bool("archP_enable") == true) {
+                                            Shell.SU.run("echo 1 > " + ARCH_POWER);
+                                        } else if (getPreferences_bool("archP_enable") == false) {
+                                            Shell.SU.run("echo 0 > " + ARCH_POWER);
                                         }
                                     }
                                 } catch (InterruptedException e) {

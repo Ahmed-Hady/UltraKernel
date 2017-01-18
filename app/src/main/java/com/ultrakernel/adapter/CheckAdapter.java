@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
 import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
+import static com.ultrakernel.util.Config.ARCH_POWER;
 import static com.ultrakernel.util.Config.DT2W_ENABLE;
 import static com.ultrakernel.util.Config.DT2W_FT5X06;
 import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
@@ -203,6 +204,25 @@ public class CheckAdapter extends BaseAdapter
                     e.printStackTrace();
                 }
             }
+
+            // ARCH POWER
+
+            if(new File(ARCH_POWER).exists()) {
+                PutBooleanPreferences("archP_exist", TRUE);
+            }else{
+                PutBooleanPreferences("archP_exist", FALSE);
+            }
+
+            if(getPreferences_bool("archP_exist")==true){
+                String getArch = (eu.chainfire.libsuperuser.Shell.SH.run("cat " + ARCH_POWER)).toString();
+
+                if (getArch.contains("1")) {
+                        PutBooleanPreferences("archP_enable", TRUE);
+                    } else if (getArch.contains("0")) {
+                        PutBooleanPreferences("archP_enable", FALSE);
+                    }
+            }
+
             text2.setText("Ok!");
         }
 

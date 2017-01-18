@@ -125,6 +125,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/archP"
             android:layout_marginTop="3pt"
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -136,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:padding="3pt" >
                 <Switch
+                    android:id="@+id/archP_switcher"
                     android:text="@string/ARCH_Power"
                     android:textSize="18sp"
                     android:textStyle="normal|bold"

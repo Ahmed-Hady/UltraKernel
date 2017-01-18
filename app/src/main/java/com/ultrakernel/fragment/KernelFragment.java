@@ -19,6 +19,7 @@ import com.ultrakernel.R;
 import eu.chainfire.libsuperuser.Shell;
 
 import static com.ultrakernel.util.CPUInfo.cur_gov;
+import static com.ultrakernel.util.Config.ARCH_POWER;
 import static com.ultrakernel.util.Config.Android_d_kernel;
 import static com.ultrakernel.util.Config.Android_d_manuf;
 import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
@@ -40,6 +41,8 @@ public class KernelFragment extends Fragment {
 
     private LinearLayout moto_L;
 
+    private LinearLayout archP;
+
     private Button GovernorButton;
 
     private Switch motoL;
@@ -47,6 +50,8 @@ public class KernelFragment extends Fragment {
     private Switch d2w_switch;
 
     private Switch ubFCH_switch;
+
+    private Switch archP_switch;
 
     //********************************* Getting & Setting Info ***********************************
     public void PutStringPreferences(String Name,String Function){
@@ -195,7 +200,7 @@ public class KernelFragment extends Fragment {
 
 
 //************************************************************************
-        //d2w section
+        //Fast Charge
 //***********************************************************************
         usbFCH=(LinearLayout)view.findViewById(R.id.UsbFCH);
 
@@ -221,6 +226,34 @@ public class KernelFragment extends Fragment {
 
         }else{
             usbFCH.setVisibility(RelativeLayout.GONE);
+        }
+
+//************************************************************************
+        //Arch Power
+//***********************************************************************
+        archP=(LinearLayout)view.findViewById(R.id.archP);
+
+        if(getPreferences_bool("archP_exist") == true) {
+            archP.setVisibility(RelativeLayout.VISIBLE);
+
+            archP_switch = (Switch) view.findViewById(R.id.archP_switcher);
+            archP_switch.setChecked(getPreferences_bool("archP_enable"));
+            archP_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView,
+                                             boolean isChecked) {
+                    if(isChecked){
+                        Shell.SU.run("echo 1 > " + ARCH_POWER);
+                        PutBooleanPreferences("archP_enable",Boolean.TRUE);
+                    }else if(!isChecked){
+                        Shell.SU.run("echo 0 > " + ARCH_POWER);
+                        PutBooleanPreferences("archP_enable",Boolean.FALSE);
+                    }
+                }
+            });
+
+        }else{
+            archP.setVisibility(RelativeLayout.GONE);
         }
 
     return view;
