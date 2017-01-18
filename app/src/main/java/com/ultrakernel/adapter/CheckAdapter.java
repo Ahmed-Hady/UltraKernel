@@ -214,6 +214,7 @@ public class CheckAdapter extends BaseAdapter
             }
 
             if(getPreferences_bool("archP_exist")==true){
+                try{
                 String getArch = (eu.chainfire.libsuperuser.Shell.SH.run("cat " + ARCH_POWER)).toString();
 
                 if (getArch.contains("1")) {
@@ -221,6 +222,9 @@ public class CheckAdapter extends BaseAdapter
                     } else if (getArch.contains("0")) {
                         PutBooleanPreferences("archP_enable", FALSE);
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             text2.setText("Ok!");

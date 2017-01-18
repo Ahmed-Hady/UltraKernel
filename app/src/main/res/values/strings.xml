@@ -34,12 +34,12 @@
     <string name="fastCharge_info">Tap to enable Fast Charging feature Through USB</string>
     <string name="d2w" translatable="false">Double Tap to Wake</string>
     <string name="d2w_info">Unlock your phone by Double tapping on screen </string>
-    <string name="ARCH_Power_info">Tap to enable ARCH POWER feature for MSM</string>
+    <string name="ARCH_Power_info">Tap to enable ARCH POWER feature</string>
 
     <string name="cpu_info">CPU Information</string>
     <string name="freq_table">Frequently Table</string>
     <string name="title_activity_scrolling" translatable="false">ScrollingActivity</string>
-    <string name="ARCH_Power" translatable="false">ARCH_Power</string>
+    <string name="ARCH_Power" translatable="false">ARCH Power</string>
 
     <string name="Hardware">Hardware: </string>
     <string name="Processor">Processor: </string>
