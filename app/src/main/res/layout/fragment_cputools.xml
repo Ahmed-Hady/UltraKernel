@@ -48,6 +48,6 @@
                 android:textStyle="italic"
                 android:gravity="center" />
         </LinearLayout>
-        <include layout="@layout/hotplug" />
+        <!--<include layout="@layout/hotplug" />-->
     </LinearLayout>
 </LinearLayout>
