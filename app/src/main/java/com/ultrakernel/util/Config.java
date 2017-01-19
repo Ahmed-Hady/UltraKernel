@@ -74,5 +74,7 @@ public class Config {
     public static final String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
     public static final String ARCH_POWER = "/sys/kernel/sched/arch_power";
     public final static String PATH_CPUS = "/sys/devices/system/cpu";
+    public static final String ALUCARD_HOTPLUG = "/sys/kernel/alucard_hotplug";
+    public static final String HOTPLUG_MSM = "/sys/module/msm_hotplug";
 
 }

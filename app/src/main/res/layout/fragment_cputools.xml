@@ -4,7 +4,6 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:weightSum="1">
-
     <fragment
         android:id="@+id/cputools_cpulist_fragment"
         android:name="com.ultrakernel.fragment.CPUCoreListFragment"
@@ -22,16 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.45"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.5"
+            android:layout_height="75dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingBottom="10dp">
+            android:paddingBottom="5dp"
+            android:layout_weight="0.16">
 
             <TextView
                 android:id="@+id/fragment_cputools_cpuinfo_currentspeed_text"
@@ -39,8 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gathering_cpu_information"
                 android:textStyle="bold"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/fragment_cputools_cpuinfo_text"
@@ -48,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/gathering_cpu_information"
                 android:textStyle="italic"
-                android:gravity="center"/>
-
+                android:gravity="center" />
         </LinearLayout>
+        <include layout="@layout/hotplug" />
     </LinearLayout>
 </LinearLayout>

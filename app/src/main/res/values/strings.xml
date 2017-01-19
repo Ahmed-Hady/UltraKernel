@@ -36,13 +36,7 @@
     <string name="d2w_info">Unlock your phone by Double tapping on screen </string>
     <string name="ARCH_Power_info">Tap to enable ARCH POWER feature</string>
 
-    <string name="cpu_info">CPU Information</string>
-    <string name="freq_table">Frequently Table</string>
-    <string name="title_activity_scrolling" translatable="false">ScrollingActivity</string>
     <string name="ARCH_Power" translatable="false">ARCH Power</string>
-
-    <string name="Hardware">Hardware: </string>
-    <string name="Processor">Processor: </string>
 
     <string name="gov">CPU Governors</string>
     <string name="cur_gov">Current: </string>
@@ -56,4 +50,7 @@
     <string name="cpu_info_speed_max">Maximum speed</string>
     <string name="cpu_info_speed_min">Minimum speed</string>
     <string name="cpu_info_active_governor">Active governor</string>
+
+    <string name="alucard">Alucard Hotplug</string>
+    <string name="msm_hotplug">MSM Hotplug</string>
 </resources>

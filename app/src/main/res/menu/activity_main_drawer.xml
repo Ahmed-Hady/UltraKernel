@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_cpu_tweaks"
             android:icon="@drawable/ic_cpu_settings"
-            android:title="CPU Tweaks" />
+            android:title="CPU" />
     </group>
 
     <item android:title="Communicate">
