@@ -1,5 +1,4 @@
 package com.ultrakernel.util;
-
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;

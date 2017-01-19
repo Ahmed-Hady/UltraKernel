@@ -50,4 +50,10 @@
 
     <string name="MOTOLED">Motorola devices Led</string>
     <string name="MOTOLED_INFO">Switch The Motorola Led On/OFF</string>
+
+    <string name="gathering_cpu_information">Gathering CPU information…</string>
+    <string name="cpu_info_speed_current">Current speed</string>
+    <string name="cpu_info_speed_max">Maximum speed</string>
+    <string name="cpu_info_speed_min">Minimum speed</string>
+    <string name="cpu_info_active_governor">Active governor</string>
 </resources>

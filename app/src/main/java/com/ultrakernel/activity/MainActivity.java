@@ -32,7 +32,7 @@ import com.github.javiersantos.appupdater.enums.AppUpdaterError;
 import com.github.javiersantos.appupdater.enums.UpdateFrom;
 import com.github.javiersantos.appupdater.objects.Update;
 import com.ultrakernel.R;
-import com.ultrakernel.fragment.CPUFragment;
+import com.ultrakernel.fragment.CPUToolsFragment;
 import com.ultrakernel.fragment.Creditsfragement;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.SystemInfo_fragement;
@@ -55,7 +55,7 @@ public class MainActivity extends Activity
     private Creditsfragement mCredits;
     private SystemInfo_fragement mSystemInfo;
     private KernelFragment mKernel;
-    private CPUFragment mCpu;
+    private CPUToolsFragment mCpu;
     private AppUpdaterUtils mAppUpdater;
     private PanterDialog UpdateDialog;
     private DownloadManager downloadManager;
@@ -70,7 +70,7 @@ public class MainActivity extends Activity
         mCredits=new Creditsfragement();
         mSystemInfo=new SystemInfo_fragement();
         mKernel=new KernelFragment();
-        mCpu=new CPUFragment();
+        mCpu=new CPUToolsFragment();
 
         /*default fragment*/
         updateFragment(this.mSystemInfo);

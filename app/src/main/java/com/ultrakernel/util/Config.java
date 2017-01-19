@@ -73,5 +73,6 @@ public class Config {
     public static final String UpdaterUrl = "https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/Updater.xml";
     public static final String FORCE_FAST_CHARGE = "/sys/kernel/fast_charge/force_fast_charge";
     public static final String ARCH_POWER = "/sys/kernel/sched/arch_power";
+    public final static String PATH_CPUS = "/sys/devices/system/cpu";
 
 }
