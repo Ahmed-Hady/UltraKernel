@@ -1,10 +1,10 @@
 <AppUpdater>
     <update>
-        <latestVersion>0.3</latestVersion>
-        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-091d40db660c6548bf94/app-debug.apk</url>
+        <latestVersion>0.4</latestVersion>
+        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-2d543e4ab7f9512e0be0/app-debug.apk</url>
         <releaseNotes>
-            - ARCH Power Kenel feature
-- Fstrim
+            - CPU Features and information
+- Fixing Some loading issues
         </releaseNotes>
     </update>
 </AppUpdater>
