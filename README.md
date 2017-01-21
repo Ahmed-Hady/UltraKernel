@@ -17,13 +17,13 @@ App for system &amp; kernel performance improvment
    * USB Fast Charging
    * Switch auto update
    * FsTrim
+   * CPU Frequentaly Changer - Partially Working
 
 ### - What Still Work in process Features ?
    * ART Optimization
    * Zipling Optimization
    * Catch Cleaner
    * Init.d Executer
-   * CPU Frequentaly Changer
    * Ambient Display Switcher
    * And Others Comming Soon!!
 
@@ -32,15 +32,12 @@ App for system &amp; kernel performance improvment
 ![3] ![4]
 ![5] ![6]
 ![7] ![8]
-![9] ![10]
 
-[1]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233839.png
-[2]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233844.png
-[3]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233850.png
-[4]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233915.png
-[5]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233920.png
-[6]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233927.png
-[7]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233944.png
-[8]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233946.png
-[9]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233954.png
-[10]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20161222-233957.png
+[1]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012507.png
+[2]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012514.png
+[3]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012526.png
+[4]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012529.png
+[5]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012534.png
+[6]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012547.png
+[7]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012731.png
+[8]: https://raw.githubusercontent.com/Ahmed-Hady/UltraKernel/master/ScreenShots/Screenshot_20170122-012734.png

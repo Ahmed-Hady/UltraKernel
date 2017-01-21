@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#125688</color>
-    <color name="colorPrimaryDark">#125688</color>
+<!-- Base Colors -->
+
+    <color name="colorPrimary">#1f8063</color>
+    <color name="colorPrimaryDark">#17503f</color>
+    <color name="colorAccent">#1e5c4a</color>
+
     <color name="textColorPrimary">#FFFFFF</color>
+
     <color name="windowBackground">#FFFFFF</color>
+
     <color name="navigationBarColor">#000000</color>
-    <color name="colorAccent">#324e61</color>
+
     <color name="borderColor">#e7e7e7</color>
+
     <color name="white">#ffff</color>
-    <color name="accent_dark">#ff2929</color>
-    <color name="accent">#ff5252</color>
+
+    <color name="accent_dark">#30563b</color>
+    <color name="accent">#4a8059</color>
+
     <color name="secondary_text">#727272</color>
     <color name="white_overlay">#F3F3F3</color>
     <color name="lightPurple">#753bb7</color>
