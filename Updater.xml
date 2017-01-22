@@ -1,10 +1,10 @@
 <AppUpdater>
     <update>
-        <latestVersion>0.4</latestVersion>
-        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-2d543e4ab7f9512e0be0/app-debug.apk</url>
+        <latestVersion>0.5</latestVersion>
+        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-3e1da0b1a6c6fb303a33/app-debug.apk</url>
         <releaseNotes>
-            - CPU Features and information
-- Fixing Some loading issues
+            - Green Material Style instead of blue
+- Adding Arabic Language
         </releaseNotes>
     </update>
 </AppUpdater>
