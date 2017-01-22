@@ -1,0 +1,243 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="com.ultrakernel.fragment.KernelFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:paddingTop="@dimen/panel_top_layout"
+        android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/kernel_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="17sp"
+                android:paddingBottom="3pt"
+                android:fontFamily="casual"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/kInfo"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+        <TextView
+            android:text="@string/kernel_features"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="17sp"
+            android:paddingTop="4pt"
+            android:paddingBottom="3pt"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:id="@+id/d2w"
+            android:layout_marginTop="2pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <Switch
+                    android:text="@string/d2w"
+                    android:id="@+id/d2w_switch"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/d2w_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/UsbFCH"
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <Switch
+                    android:text="@string/fastCharge"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/usbFCHswitch" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info2"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/fastCharge_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/archP"
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <Switch
+                    android:id="@+id/archP_switcher"
+                    android:text="@string/ARCH_Power"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info3"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/ARCH_Power_info"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <TextView
+                    android:text="@string/gov"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:layout_marginRight="@dimen/switch_float_right"
+                    android:layout_marginTop="@dimen/switch_float_Top"
+                    android:text="@string/rep_gov"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                    android:id="@+id/change_gov" />
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cur_gov"
+                android:padding="@dimen/f_info_m"
+                android:layout_marginLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/button_subtext_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/cur_gov"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/motoLed"
+            android:layout_marginTop="3pt"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+                <Switch
+                    android:text="@string/MOTOLED"
+                    android:id="@+id/motoL"
+                    android:textSize="18sp"
+                    android:textStyle="normal|bold"
+                    android:textColor="@color/dark_grey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feature_info3"
+                android:padding="@dimen/f_info_m"
+                android:paddingLeft="@dimen/f_info_m_left"
+                android:layout_marginTop="@dimen/f_info_m_top"
+                android:textColor="@color/DeepGreen"
+                android:text="@string/MOTOLED_INFO"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="20pt" />
+
+
+
+    </LinearLayout>
+</ScrollView>
+
+</FrameLayout>

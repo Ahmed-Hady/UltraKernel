@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UltraKernel</string>
+    <string name="ARCH_Power_info">إضغط لتفعيل ARCH POWER</string>
+    <string name="Bat_Health">الأداء</string>
+    <string name="Bat_Status">الحالة</string>
+    <string name="Bat_Tech">التكنولوجيا</string>
+    <string name="Bat_Temp">الحرارة</string>
+    <string name="Bat_Volt">الفولتية</string>
+    <string name="Bat_percent">المستوى</string>
+    <string name="MOTOLED">ضوء أجهزة موتورولا</string>
+    <string name="action_settings">الأعدادات</string>
+    <string name="MOTOLED_INFO">إضغط للتدبيل - تشغيل\\إغلاق</string>
+    <string name="alucard">Alucard Hotplug</string>
+    <string name="battery" translatable="false">البطارية</string>
+    <string name="board">الرقاقة</string>
+    <string name="cpu_info_active_governor">Active governor</string>
+    <string name="cpu_info_speed_current">السرعة الحالية</string>
+    <string name="cpu_info_speed_max">السرعة القصوى</string>
+    <string name="cpu_info_speed_min">السرعة الدُنيا</string>
+    <string name="cur_gov">الحالي</string>
+    <string name="d2w" translatable="false">خاصية ال Double Tap to Wake</string>
+    <string name="d2w_info">إفتح جهازك بالصغط مرتين على الشاشة</string>
+    <string name="device_name">إسم الجهاز</string>
+    <string name="fastCharge">الشحن السريع من الUSB</string>
+    <string name="fastCharge_info">إضغط لتفعيل الشحن السريع من الUSB</string>
+    <string name="free_ram">المتاحة:</string>
+    <string name="gathering_cpu_information">جمع المعلومات عن المعالج...</string>
+    <string name="gov">منظم المعالج</string>
+    <string name="kernel">النواة</string>
+    <string name="kernel_features">خصائص النواة</string>
+    <string name="kernel_info">معلومات النواة</string>
+    <string name="manufacturer">المُصنع</string>
+    <string name="ram_memory">الذاكرة العشوائية</string>
+    <string name="system">النظام</string>
+    <string name="rep_gov">تغيير</string>
+    <string name="root">حالة الجذر:</string>
+    <string name="sdk" translatable="false">:SDK</string>
+    <string name="security">حزمة الأمن:</string>
+    <string name="total_ram">الكلية</string>
+    <string name="used_ram">المستخدمة</string>
+    <string name="version">الإصدار</string>
+    <string name="msm_hotplug">MSM Hotplug</string>
+    <string name="ram_quick_improvement">تسريع الرام</string>
+    <string name="boost">تسريع النظام</string>
+    <string name="fstrim" translatable="false">FsTrim</string>
+    <string name="ARCH_Power">"خاصية ال ARCH POWER"</string>
+</resources>

@@ -12,13 +12,13 @@
     <string name="used_ram">Used Ram:</string>
     <string name="system">System</string>
     <string name="version">Version:</string>
-    <string name="sdk" translatable="false">SDK:</string>
-    <string name="security" translatable="false">Security:</string>
+    <string name="sdk">SDK:</string>
+    <string name="security">Security:</string>
     <string name="board">Board:</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="device_name">Device Name:</string>
     <string name="kernel">Kernel:</string>
-    <string name="battery" translatable="false">Battery</string>
+    <string name="battery">Battery</string>
     <string name="Bat_percent">Level: </string>
     <string name="Bat_Status">Status: </string>
     <string name="Bat_Health">Health: </string>
@@ -32,11 +32,11 @@
 
     <string name="fastCharge">USB Fast Charging</string>
     <string name="fastCharge_info">Tap to enable Fast Charging feature Through USB</string>
-    <string name="d2w" translatable="false">Double Tap to Wake</string>
+    <string name="d2w">Double Tap to Wake</string>
     <string name="d2w_info">Unlock your phone by Double tapping on screen </string>
     <string name="ARCH_Power_info">Tap to enable ARCH POWER feature</string>
 
-    <string name="ARCH_Power" translatable="false">ARCH Power</string>
+    <string name="ARCH_Power">ARCH Power</string>
 
     <string name="gov">CPU Governors</string>
     <string name="cur_gov">Current: </string>
@@ -53,4 +53,8 @@
 
     <string name="alucard">Alucard Hotplug</string>
     <string name="msm_hotplug">MSM Hotplug</string>
+
+    <string name="boost">Boost System</string>
+    <string name="fstrim">FsTrim</string>
+    <string name="ram_quick_improvement">Ram Quick Improvement</string>
 </resources>

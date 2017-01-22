@@ -1,0 +1,46 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">130dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!-- LOGO -->
+    <dimen name="logo_margin_bottom">-7pt</dimen>
+    <dimen name="logo_margin_left">-7pt</dimen>
+
+    <!--LOGO title text-->
+    <dimen name="logo_title_text_margin_left">40pt</dimen>
+    <dimen name="logo_title_text_margin_top">9pt</dimen>
+    <dimen name="logo_title_subtext_margin_left">40pt</dimen>
+    <dimen name="logo_title_subtext_margin_top">25pt</dimen>
+
+    <!--LOGO Start Icon-->
+    <dimen name="start_icon_width">80pt</dimen>
+    <dimen name="start_icon_height">80pt</dimen>
+
+    <!--text value-->
+    <dimen name="text_value_margin_left">35pt</dimen>
+    <dimen name="value_percentage_left">115pt</dimen>
+    <dimen name="value_percentage_top">-36pt</dimen>
+    <dimen name="value_percentage_height">30pt</dimen>
+    <dimen name="value_percentage_width">30pt</dimen>
+
+    <!--panel-->
+    <dimen name="panel_top">27pt</dimen>
+    <dimen name="panel_top_layout">7pt</dimen>
+
+    <!--sub_info_text-->
+    <dimen name="f_info_m">4pt</dimen>
+    <dimen name="f_info_m_left">110pt</dimen>
+    <dimen name="f_info_m_top">-6pt</dimen>
+
+    <!--Switch-->
+    <dimen name="switch_float_right">110pt</dimen>
+    <dimen name="switch_float_Top">2pt</dimen>
+    <dimen name="button_subtext_top">-16pt</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+</resources>

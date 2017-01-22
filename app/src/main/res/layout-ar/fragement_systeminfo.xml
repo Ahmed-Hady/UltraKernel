@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.ultrakernel.fragment.SystemInfo_fragement">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:paddingTop="@dimen/panel_top_layout"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="@string/ram_memory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView4"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="22sp"
+                android:paddingBottom="3pt"
+                android:fontFamily="casual"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+
+                    <TextView
+                        android:text="@string/total_ram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t_ram"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+
+                    <TextView
+                        android:text="@string/free_ram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t2"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/f_ram"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+
+                    <TextView
+                        android:text="@string/used_ram"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/u_ram"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                    </RelativeLayout>
+
+                <io.netopen.hotbitmapgg.library.view.RingProgressBar
+                    android:id="@+id/u_ram_perc"
+                    android:layout_width="@dimen/value_percentage_width"
+                    android:layout_height="@dimen/value_percentage_height"
+                    android:layout_marginRight="@dimen/value_percentage_left"
+                    android:layout_marginTop="@dimen/value_percentage_top"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    app:ringColor="@android:color/darker_gray"
+                    app:ringProgressColor="@color/colorPrimary"
+                    app:ringWidth="3dp"
+                    app:style="STROKE"
+                    app:textColor="@color/colorPrimary"
+                    app:textIsShow="true"
+                    app:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:text="@string/system"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+                android:textSize="22sp"
+                android:paddingTop="3pt"
+                android:paddingBottom="3pt"
+                android:fontFamily="casual"
+                android:textStyle="normal|bold" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/square" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/version"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t4"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/os_ver"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/sdk"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t5"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/os_sdk"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/security"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t6"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/os_sec_patch"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/board"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t7"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/d_board"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/manufacturer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t8"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/d_manuf"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/device_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t9"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/device"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/kernel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t10"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/kernel"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="3pt" >
+                    <TextView
+                        android:text="@string/root"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/t11"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/root"
+                        android:layout_marginRight="@dimen/text_value_margin_left"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        tools:ignore="RtlHardcoded" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        <TextView
+            android:text="@string/battery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:textSize="22sp"
+            android:paddingBottom="3pt"
+            android:fontFamily="casual"
+            android:textStyle="normal|bold" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/square" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_percent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_percent"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_status"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t12"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_health"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Tech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t13"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_tech"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t13"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_temp"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3pt" >
+
+                <TextView
+                    android:text="@string/Bat_Volt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/t14"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/b_volt"
+                    android:layout_marginRight="@dimen/text_value_margin_left"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
+            </RelativeLayout>
+
+         </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</FrameLayout>
