@@ -65,9 +65,8 @@ public class ApplyScripts extends Service {
     }
 
     @Override
-    public void onStart(Intent intent, int startId) {
+    public int onStartCommand(Intent intent, int flags, int startId) {
 
-        super.onStart(intent, startId);
 
         final NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
@@ -137,6 +136,7 @@ public class ApplyScripts extends Service {
                     //}
                 }
         ).start();
+        return Service.START_NOT_STICKY;
     }
 
 }
