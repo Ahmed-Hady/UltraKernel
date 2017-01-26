@@ -118,6 +118,8 @@ public class KernelFragment extends Fragment {
                             public void run() {
                                 TextView get_gov = (TextView) view.findViewById(R.id.cur_gov);
                                 get_gov.setText(cur_gov());
+                                String[] govers = cur_gov().trim().split("\\&");
+                                PutStringPreferences("governor",govers[0]);
                             }
                         });
                     }

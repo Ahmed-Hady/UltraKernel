@@ -10,6 +10,7 @@ import android.support.v4.app.NotificationCompat;
 import static android.R.attr.id;
 import static com.ultrakernel.services.ArchPower.SETARCHPOWER;
 import static com.ultrakernel.services.d2w.SETD2W;
+import static com.ultrakernel.services.gov.SETGOV;
 import static com.ultrakernel.services.motoLED.SetMOTOLED;
 import static com.ultrakernel.services.usbFCH.USBFCH;
 import static com.ultrakernel.util.Config.Android_d_manuf;
@@ -81,7 +82,7 @@ public class ApplyScripts extends Service {
                     @Override
                     public void run() {
                             int incr;
-                            for (incr = 0; incr <= 100; incr+=25) {
+                            for (incr = 0; incr <= 100; incr+=20) {
 
                                 mBuilder.setProgress(100, incr, false);
                                 mNotificationManager.notify(id, mBuilder.build());
@@ -108,6 +109,9 @@ public class ApplyScripts extends Service {
                                     if (getPreferences_bool("archP_exist") == true){
                                         SETARCHPOWER(getBaseContext());
                                     }
+
+                                    //CPU GOV
+                                        SETGOV(getBaseContext());
                                 } catch (InterruptedException e) {
 
                                 }
