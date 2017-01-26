@@ -81,15 +81,14 @@ public class ApplyScripts extends Service {
                 new Runnable() {
                     @Override
                     public void run() {
-                        //final String get_l1 = (eu.chainfire.libsuperuser.Shell.SU.run("cat /sys/class/leds/charging/max_brightness")).toString();
-                        //final String get_l2 = (eu.chainfire.libsuperuser.Shell.SU.run("cat /data/data/com.ultrakernel/moto_led")).toString();
-                        //if(!get_l2.toString().contains(get_l1.toString())){
                             int incr;
-                            mBuilder.setProgress(0, 0, true);
-                            mNotificationManager.notify(id, mBuilder.build());
-                            for (incr = 0; incr <= 100; incr+=10) {
+                            for (incr = 0; incr <= 100; incr+=25) {
+
+                                mBuilder.setProgress(100, incr, false);
+                                mNotificationManager.notify(id, mBuilder.build());
+
                                 try {
-                                    Thread.sleep(600);
+                                    Thread.sleep(10);
                                     String MOTO = "motorola";
                                     //MOTO led
                                     if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1) {

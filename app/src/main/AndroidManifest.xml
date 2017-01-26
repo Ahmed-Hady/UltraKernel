@@ -31,9 +31,10 @@
 
         <service android:name="com.ultrakernel.ApplyScripts" />
 
-        <receiver android:name="com.ultrakernel.BootReceiver">
+        <receiver android:name="com.ultrakernel.BootReceiver" android:enabled="true">
             <intent-filter android:priority="800">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.INFO" />
             </intent-filter>
         </receiver>
 
