@@ -7,12 +7,12 @@ import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
 
-import eu.chainfire.libsuperuser.Shell;
-
 import static android.R.attr.id;
-import static com.ultrakernel.util.Config.ARCH_POWER;
+import static com.ultrakernel.services.ArchPower.SETARCHPOWER;
+import static com.ultrakernel.services.d2w.SETD2W;
+import static com.ultrakernel.services.motoLED.SetMOTOLED;
+import static com.ultrakernel.services.usbFCH.USBFCH;
 import static com.ultrakernel.util.Config.Android_d_manuf;
-import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
 
 /**
  * Created by ahmedhady on 04/01/17.
@@ -88,42 +88,25 @@ public class ApplyScripts extends Service {
 
                                 try {
                                     Thread.sleep(10);
-                                    String MOTO = "motorola";
                                     //MOTO led
+                                    String MOTO = "motorola";
                                     if (Android_d_manuf().toLowerCase().indexOf(MOTO.toLowerCase()) != -1) {
-
-                                        if (getPreferences_bool("Moto") == true) {
-                                            Shell.SU.run("echo 255 > /sys/class/leds/charging/max_brightness");
-                                        } else if (getPreferences_bool("Moto") == false) {
-                                            Shell.SU.run("echo 0 > /sys/class/leds/charging/max_brightness");
-                                        }
+                                        SetMOTOLED(getBaseContext());
                                     }
 
                                     //d2w
                                     if (getPreferences_bool("d2w_exist") == true){
-                                        if (getPreferences_bool("d2w_enable") == true) {
-                                            Shell.SU.run("echo 1 > " + getStringPreferences("d2w"));
-                                        } else if (getPreferences_bool("d2w_enable") == false) {
-                                            Shell.SU.run("echo 0 > " + getStringPreferences("d2w"));
-                                        }
+                                        SETD2W(getBaseContext());
                                     }
 
                                     //Fast Charging
                                     if (getPreferences_bool("usbFCH_exist") == true){
-                                        if (getPreferences_bool("usbFCH_enable") == true) {
-                                            Shell.SU.run("echo 1 > " + FORCE_FAST_CHARGE);
-                                        } else if (getPreferences_bool("usbFCH_enable") == false) {
-                                            Shell.SU.run("echo 0 > " + FORCE_FAST_CHARGE);
-                                        }
+                                        USBFCH(getBaseContext());
                                     }
 
                                     //ARCH POWER
                                     if (getPreferences_bool("archP_exist") == true){
-                                        if (getPreferences_bool("archP_enable") == true) {
-                                            Shell.SU.run("echo 1 > " + ARCH_POWER);
-                                        } else if (getPreferences_bool("archP_enable") == false) {
-                                            Shell.SU.run("echo 0 > " + ARCH_POWER);
-                                        }
+                                        SETARCHPOWER(getBaseContext());
                                     }
                                 } catch (InterruptedException e) {
 
