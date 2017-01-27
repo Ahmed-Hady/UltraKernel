@@ -1,10 +1,11 @@
 <AppUpdater>
     <update>
-        <latestVersion>0.5</latestVersion>
-        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-3e1da0b1a6c6fb303a33/app-debug.apk</url>
+        <latestVersion>0.6</latestVersion>
+        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-63f2b2ca67f24e570095/app-debug.apk</url>
         <releaseNotes>
-            - Green Material Style instead of blue
-- Adding Arabic Language
+            - Add support for Kitkat
+- Fix double applying issue
+- Setting Governors on Boot
         </releaseNotes>
     </update>
 </AppUpdater>

@@ -18,6 +18,7 @@ App for system &amp; kernel performance improvment
    * Switch auto update
    * FsTrim
    * CPU Frequentaly Changer - Partially Working
+   * Supportig Kitkat
 
 ### - What Still Work in process Features ?
    * ART Optimization
