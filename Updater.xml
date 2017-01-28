@@ -1,7 +1,7 @@
 <AppUpdater>
     <update>
         <latestVersion>0.6</latestVersion>
-        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/untagged-63f2b2ca67f24e570095/app-debug.apk</url>
+        <url>https://github.com/Ahmed-Hady/UltraKernel/releases/download/Version-0.6/app-debug.apk</url>
         <releaseNotes>
             - Add support for Kitkat
 - Fix double applying issue
