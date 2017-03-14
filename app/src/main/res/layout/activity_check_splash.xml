@@ -4,37 +4,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white_overlay">
 
-    <ListView
-        android:id="@+id/splash_list"
-        android:layout_width="match_parent"
-        android:layout_height="270dp"
-        android:layout_marginTop="29dp"
-        android:padding="5dp"
-        android:layout_below="@+id/progressBar2"
-        android:layout_alignParentStart="true"
-        android:scrollbars="none"></ListView>
-
-    <ProgressBar
-        style="@android:style/Widget.Material.ProgressBar.Large"
+    <TextView
+        android:text="ULTRADEVS TEAM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar2"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/textView7"
+        android:layout_marginBottom="14dp"
+        android:id="@+id/textView10"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Checking System"
+        android:text="Please Wait ..."
+        android:textColor="@color/colorAccent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:id="@+id/textView7"
-        android:textStyle="normal|bold"
-        android:textSize="36sp"
-        android:fontFamily="casual"
+        android:layout_marginTop="115dp"
+        android:id="@+id/wait"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
         android:textAlignment="center"
+        android:typeface="sans"
+        android:textStyle="normal|bold"
+        android:textSize="50sp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignStart="@+id/check"
+        android:fontFamily="sans-serif-condensed" />
+
+    <TextView
+        android:text="Oops !!"
+        android:textColor="@color/error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="115dp"
+        android:id="@+id/ERROR_S"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:textAlignment="center"
+        android:typeface="sans"
+        android:textStyle="normal|bold"
+        android:textSize="50sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/check"
+        android:fontFamily="sans-serif-condensed"
+        android:visibility="gone" />
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:spb_maxStateNumber="four"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateForegroundColor="@color/accent"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee"
+        app:spb_currentStateDescriptionColor="@color/accent"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_checkStateCompleted="true"
+        android:layout_marginTop="100dp"
+        android:layout_below="@+id/wait"
+        android:layout_alignParentStart="true"
+        app:spb_animateToCurrentProgressState="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="There are some missing packages that we need to start !!"
+        android:layout_below="@+id/ERROR_S"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="37dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="25sp"
+        android:textAlignment="textStart"
+        android:fontFamily="sans-serif-condensed"
+        android:id="@+id/E1"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please Root your Phone and Install BusyBox"
+        android:layout_marginTop="18dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+        android:layout_below="@+id/E1"
+        android:layout_alignStart="@+id/E1"
+        android:textSize="20sp"
+        android:id="@+id/E2"
+        android:visibility="gone"/>
+
 </RelativeLayout>

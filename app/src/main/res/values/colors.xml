@@ -6,6 +6,8 @@
     <color name="colorPrimaryDark">#17503f</color>
     <color name="colorAccent">#1e5c4a</color>
 
+    <color name="error">#cc3f3f</color>
+
     <color name="textColorPrimary">#FFFFFF</color>
 
     <color name="windowBackground">#FFFFFF</color>
@@ -20,7 +22,7 @@
     <color name="accent">#4a8059</color>
 
     <color name="secondary_text">#727272</color>
-    <color name="white_overlay">#F3F3F3</color>
+    <color name="white_overlay">#f8f8f8</color>
     <color name="lightPurple">#753bb7</color>
     <color name="DeepGreen">#1a894a</color>
     <color name="dark_grey">#5b5b5b</color>
