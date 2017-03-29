@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="Blue_50">#E3F2FD</color>
+    <color name="Blue_100">#BBDEFB</color>
+    <color name="Blue_200">#90CAF9</color>
+    <color name="Blue_300">#64B5F6</color>
+    <color name="Blue_400">#42A5F5</color>
+    <color name="Blue_500">#2196F3</color>
+    <color name="Blue_600">#1E88E5</color>
+    <color name="Blue_700">#1976D2</color>
+    <color name="Blue_800">#1565C0</color>
+    <color name="Blue_900">#0D47A1</color>
+</resources>

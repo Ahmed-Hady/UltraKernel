@@ -16,8 +16,6 @@
 
     <color name="borderColor">#e7e7e7</color>
 
-    <color name="white">#ffff</color>
-
     <color name="accent_dark">#30563b</color>
     <color name="accent">#4a8059</color>
 
@@ -27,8 +25,37 @@
     <color name="DeepGreen">#1a894a</color>
     <color name="dark_grey">#5b5b5b</color>
 
-    <!--Night-->
-    <color name="colorPrimaryNight">#2e302e</color>
-    <color name="colorPrimaryDarkNight">#171817</color>
-    <color name="colorAccentNight">#222c33</color>
+    <color name="white">#ffffff</color>
+
+    <!-- Screens background color-->
+    <color name="bg_screen1">#f64c73</color>
+    <color name="bg_screen2">#c873f4</color>
+    <color name="bg_screen3">#4b9bf1</color>
+    <color name="bg_screen4">#20d2bb</color>
+
+    <!-- dots inactive colors -->
+    <color name="dot_dark_screen1">#d1395c</color>
+    <color name="dot_dark_screen2">#733b91</color>
+    <color name="dot_dark_screen3">#2278d4</color>
+    <color name="dot_dark_screen4">#14a895</color>
+
+    <!-- dots active colors -->
+    <color name="dot_light_screen1">#f98da5</color>
+    <color name="dot_light_screen2">#e4b5fc</color>
+    <color name="dot_light_screen3">#93c6fd</color>
+    <color name="dot_light_screen4">#8cf9eb</color>
+
+    <array name="array_dot_active">
+        <item>@color/dot_light_screen1</item>
+        <item>@color/dot_light_screen2</item>
+        <item>@color/dot_light_screen3</item>
+        <item>@color/dot_light_screen4</item>
+    </array>
+
+    <array name="array_dot_inactive">
+        <item>@color/dot_dark_screen1</item>
+        <item>@color/dot_dark_screen2</item>
+        <item>@color/dot_dark_screen3</item>
+        <item>@color/dot_dark_screen4</item>
+    </array>
 </resources>

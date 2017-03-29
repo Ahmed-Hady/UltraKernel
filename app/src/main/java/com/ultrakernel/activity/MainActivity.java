@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -37,6 +38,7 @@ import com.ultrakernel.fragment.Creditsfragement;
 import com.ultrakernel.fragment.KernelFragment;
 import com.ultrakernel.fragment.SystemInfo_fragement;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,9 +47,26 @@ import java.io.OutputStream;
 import eu.chainfire.libsuperuser.Shell;
 import me.drakeet.materialdialog.MaterialDialog;
 
+import static com.ultrakernel.util.Config.ANDROID_TOUCH2_DT2W;
+import static com.ultrakernel.util.Config.ANDROID_TOUCH_DT2W;
+import static com.ultrakernel.util.Config.ARCH_POWER;
+import static com.ultrakernel.util.Config.DT2W_ENABLE;
+import static com.ultrakernel.util.Config.DT2W_FT5X06;
+import static com.ultrakernel.util.Config.DT2W_WAKEUP_GESTURE;
+import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE;
+import static com.ultrakernel.util.Config.DT2W_WAKE_GESTURE_2;
+import static com.ultrakernel.util.Config.FORCE_FAST_CHARGE;
+import static com.ultrakernel.util.Config.LGE_TOUCH_CORE_DT2W;
+import static com.ultrakernel.util.Config.LGE_TOUCH_DT2W;
+import static com.ultrakernel.util.Config.LGE_TOUCH_GESTURE;
+import static com.ultrakernel.util.Config.TOUCH_PANEL_DT2W;
 import static com.ultrakernel.util.Config.UpdaterUrl;
+import static com.ultrakernel.util.Config.get_d;
+import static com.ultrakernel.util.Config.get_l;
 import static com.ultrakernel.util.ShellCommands.RAM_IMP;
 import static com.ultrakernel.util.ShellCommands.boost_system;
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -59,6 +78,7 @@ public class MainActivity extends Activity
     private AppUpdaterUtils mAppUpdater;
     private PanterDialog UpdateDialog;
     private DownloadManager downloadManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,11 +86,14 @@ public class MainActivity extends Activity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        /* Get INFO */
+        CheckStart();
+
         /*Fragments*/
-        mCredits=new Creditsfragement();
-        mSystemInfo=new SystemInfo_fragement();
-        mKernel=new KernelFragment();
-        mCpu=new CPUToolsFragment();
+        mCredits = new Creditsfragement();
+        mSystemInfo = new SystemInfo_fragement();
+        mKernel = new KernelFragment();
+        mCpu = new CPUToolsFragment();
 
         /*default fragment*/
         updateFragment(this.mSystemInfo);
@@ -110,21 +133,21 @@ public class MainActivity extends Activity
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
 
-        if(pref.getBoolean("night",Boolean.parseBoolean(null)) == true){
+        if (pref.getBoolean("night", Boolean.parseBoolean(null)) == true) {
             //setTheme(R.style.AppTheme_Dark);
-        }else{
+        } else {
             setTheme(R.style.AppTheme);
         }
 
-        if(pref.getBoolean("autoup",Boolean.parseBoolean(null)) == true) {
+        if (pref.getBoolean("autoup", Boolean.parseBoolean(null)) == true) {
             Updater();
         }
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void Updater(){
-        mAppUpdater=new AppUpdaterUtils(this);
+    public void Updater() {
+        mAppUpdater = new AppUpdaterUtils(this);
         mAppUpdater
                 .setUpdateFrom(UpdateFrom.XML)
                 .setUpdateXML(UpdaterUrl)
@@ -134,18 +157,18 @@ public class MainActivity extends Activity
                         downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
 
                         Log.d("AppUpdater", update.getLatestVersion() + ", " + update.getUrlToDownload() + ", " + Boolean.toString(isUpdateAvailable));
-                        if(isUpdateAvailable==true){
-                            UpdateDialog= new PanterDialog(MainActivity.this);
+                        if (isUpdateAvailable == true) {
+                            UpdateDialog = new PanterDialog(MainActivity.this);
                             UpdateDialog.setTitle("Update Found")
                                     .setHeaderBackground(R.color.colorPrimaryDark)
-                                    .setMessage("Changelog :- \n\n"+update.getReleaseNotes())
-                                    .setPositive("Download",new View.OnClickListener() {
+                                    .setMessage("Changelog :- \n\n" + update.getReleaseNotes())
+                                    .setPositive("Download", new View.OnClickListener() {
                                         @Override
                                         public void onClick(View view) {
                                             Uri uri = Uri.parse(String.valueOf(update.getUrlToDownload()));
                                             DownloadManager.Request request = new DownloadManager.Request(uri);
-                                            String  fileName = uri.getLastPathSegment();
-                                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,fileName);
+                                            String fileName = uri.getLastPathSegment();
+                                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
 
                                             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                                             Long reference = downloadManager.enqueue(request);
@@ -233,8 +256,8 @@ public class MainActivity extends Activity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    protected void updateFragment(Fragment fragment)
-    {
+
+    protected void updateFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.setCustomAnimations(R.anim.pop_enter, R.anim.pop_exit);
@@ -244,15 +267,15 @@ public class MainActivity extends Activity
 
     }
 
-    public void boost(View v){
-        if(getPreferences_bool("bb") == true) {
+    public void boost(View v) {
+        if (getPreferences_bool("bb") == true) {
             boost_system(this);
-        }else{
+        } else {
             mMaterialDialog.show();
         }
     }
 
-    public void kill_drains(View v){
+    public void kill_drains(View v) {
         RAM_IMP(this);
     }
 
@@ -278,7 +301,7 @@ public class MainActivity extends Activity
                 }
             });
 
-    public void fstrim(View v){
+    public void fstrim(View v) {
         try {
             fstrim_tmp();
             Toast.makeText(getApplicationContext(), Shell.SU.run("cd " + package_path + " && fstrim -v /system").toString(), Toast.LENGTH_LONG).show();
@@ -307,7 +330,134 @@ public class MainActivity extends Activity
         myOutput.close();
 
     }
+    public boolean getPreferences_bool(String Name){
+        SharedPreferences settings = getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getBoolean(Name, Boolean.parseBoolean(null));
+    }
+    public void CheckStart() {
 
+
+        /* New Handler to start the Menu-Activity
+         * and close this Splash-Screen after some seconds.*/
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+
+                //if(Shell.hasBusybox()) {
+                PutBooleanPreferences("bb", TRUE);
+                //}else if (Shell.has_Systemless_Busybox()) {
+                //    PutBooleanPreferences("bb", TRUE);
+                //}else{
+                //    PutBooleanPreferences("bb",FALSE);
+                //}
+
+
+                //MOTO
+                try {
+                    if (get_l().contains("255")) {
+                        PutBooleanPreferences("Moto", TRUE);
+                    } else if (get_l().contains("0")) {
+                        PutBooleanPreferences("Moto", FALSE);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //d2w
+                if (new File(LGE_TOUCH_DT2W).exists()) {
+                    PutStringPreferences("d2w", LGE_TOUCH_DT2W);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(LGE_TOUCH_CORE_DT2W).exists()) {
+                    PutStringPreferences("d2w", LGE_TOUCH_CORE_DT2W);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(LGE_TOUCH_GESTURE).exists()) {
+                    PutStringPreferences("d2w", LGE_TOUCH_GESTURE);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(ANDROID_TOUCH_DT2W).exists()) {
+                    PutStringPreferences("d2w", ANDROID_TOUCH_DT2W);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(ANDROID_TOUCH2_DT2W).exists()) {
+                    PutStringPreferences("d2w", ANDROID_TOUCH2_DT2W);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(TOUCH_PANEL_DT2W).exists()) {
+                    PutStringPreferences("d2w", TOUCH_PANEL_DT2W);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(DT2W_WAKEUP_GESTURE).exists()) {
+                    PutStringPreferences("d2w", DT2W_WAKEUP_GESTURE);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(DT2W_ENABLE).exists()) {
+                    PutStringPreferences("d2w", DT2W_ENABLE);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(DT2W_WAKE_GESTURE).exists()) {
+                    PutStringPreferences("d2w", DT2W_WAKE_GESTURE);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(DT2W_WAKE_GESTURE_2).exists()) {
+                    PutStringPreferences("d2w", DT2W_WAKE_GESTURE_2);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else if (new File(DT2W_FT5X06).exists()) {
+                    PutStringPreferences("d2w", DT2W_FT5X06);
+                    PutBooleanPreferences("d2w_exist", TRUE);
+                } else {
+                    PutBooleanPreferences("d2w_exist", FALSE);
+                }
+
+                if (getPreferences_bool("d2w_exist") == true) {
+                    try {
+                        if (get_d().contains("1")) {
+                            PutBooleanPreferences("d2w_enable", TRUE);
+                        } else if (get_d().contains("0")) {
+                            PutBooleanPreferences("d2w_enable", FALSE);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                // Fast Charge
+
+                if (new File(FORCE_FAST_CHARGE).exists()) {
+                    PutBooleanPreferences("usbFCH_exist", TRUE);
+                } else {
+                    PutBooleanPreferences("usbFCH_exist", FALSE);
+                }
+
+                if (getPreferences_bool("usbFCH_exist") == true) {
+                    String get_fch = (eu.chainfire.libsuperuser.Shell.SU.run("cat " + FORCE_FAST_CHARGE)).toString();
+                    try {
+                        if (get_fch.contains("1")) {
+                            PutBooleanPreferences("usbFCH_enable", TRUE);
+                        } else if (get_fch.contains("0")) {
+                            PutBooleanPreferences("usbFCH_enable", FALSE);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                // ARCH POWER
+
+                if (new File(ARCH_POWER).exists()) {
+                    PutBooleanPreferences("archP_exist", TRUE);
+                } else {
+                    PutBooleanPreferences("archP_exist", FALSE);
+                }
+
+                if (getPreferences_bool("archP_exist") == true) {
+                    try {
+                        String getArch = (eu.chainfire.libsuperuser.Shell.SH.run("cat " + ARCH_POWER)).toString();
+
+                        if (getArch.contains("1")) {
+                            PutBooleanPreferences("archP_enable", TRUE);
+                        } else if (getArch.contains("0")) {
+                            PutBooleanPreferences("archP_enable", FALSE);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        }, 0);
+    }
     //********************************* Getting & Setting Info ***********************************
     public void PutStringPreferences(String Name,String Function){
         SharedPreferences settings = getSharedPreferences(Name, 0);
@@ -316,31 +466,13 @@ public class MainActivity extends Activity
         editor.commit();
     }
 
-    public String getStringPreferences(String Name){
-        String o;
-        SharedPreferences settings = getSharedPreferences(Name, 0); // 0 - for private mode
-        o=settings.getString(Name,null);
-        return o;
-    }
-
     public void PutBooleanPreferences(String Name,Boolean Function){
         SharedPreferences settings = getSharedPreferences(Name, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(Name, Function);
         editor.commit();
     }
-
-    public boolean getPreferences_bool(String Name){
-        SharedPreferences settings = getSharedPreferences(Name, 0); // 0 - for private mode
-        return settings.getBoolean(Name, Boolean.parseBoolean(null));
-    }
-
-    public void RemovePreferences(String Name){
-        SharedPreferences settings = getSharedPreferences(Name, 0);
-        SharedPreferences.Editor editor = settings.edit();
-        editor.remove(Name);
-        editor.commit();
-    }
     //********************************************************************************************
+
 }
 

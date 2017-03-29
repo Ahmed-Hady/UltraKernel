@@ -1,15 +1,39 @@
 <resources>
+    <!-- Intro Page Strings -->
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome !</string>
+    <string name="slide_1_desc">To UltraKernel application ... this app will help you to improve your android experience</string>
+
+    <string name="slide_2_title">System Requirements !</string>
+    <string name="slide_2_desc">Please check Root Access Permission</string>
+
+    <string name="slide_3_title">Your System !</string>
+    <string name="slide_3_desc">Tab below to check your system information</string>
+
+    <string name="slide_4_title">Ready !</string>
+    <string name="slide_4_desc">All things done ... Are you ready to start the magic ?!</string>
+
+   <!-- App Name -->
     <string name="app_name">UltraKernel</string>
 
+   <!-- navigation drawer -->
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
+   <!-- Settings -->
     <string name="action_settings">Settings</string>
 
+   <!-- Ram -->
     <string name="ram_memory">Ram Memory</string>
     <string name="total_ram">Total Ram:</string>
     <string name="free_ram">Free Ram:</string>
     <string name="used_ram">Used Ram:</string>
+
+   <!-- System -->
     <string name="system">System</string>
     <string name="version">Version:</string>
     <string name="sdk">SDK:</string>
@@ -18,6 +42,8 @@
     <string name="manufacturer">Manufacturer:</string>
     <string name="device_name">Device Name:</string>
     <string name="kernel">Kernel:</string>
+
+   <!-- Battery -->
     <string name="battery">Battery</string>
     <string name="Bat_percent">Level: </string>
     <string name="Bat_Status">Status: </string>
@@ -25,35 +51,31 @@
     <string name="Bat_Tech">Technology: </string>
     <string name="Bat_Temp">Temperature: </string>
     <string name="Bat_Volt">Voltage: </string>
+
+   <!-- Root -->
     <string name="root">Root Status: </string>
 
+   <!-- Kernel Info -->
     <string name="kernel_info">Kernel Info</string>
     <string name="kernel_features">Kernel Features</string>
-
     <string name="fastCharge">USB Fast Charging</string>
     <string name="fastCharge_info">Tap to enable Fast Charging feature Through USB</string>
     <string name="d2w">Double Tap to Wake</string>
     <string name="d2w_info">Unlock your phone by Double tapping on screen </string>
     <string name="ARCH_Power_info">Tap to enable ARCH POWER feature</string>
-
     <string name="ARCH_Power">ARCH Power</string>
-
     <string name="gov">CPU Governors</string>
     <string name="cur_gov">Current: </string>
     <string name="rep_gov">Change</string>
-
     <string name="MOTOLED">Motorola devices Led</string>
     <string name="MOTOLED_INFO">Switch The Motorola Led On/OFF</string>
-
     <string name="gathering_cpu_information">Gathering CPU information…</string>
     <string name="cpu_info_speed_current">Current speed</string>
     <string name="cpu_info_speed_max">Maximum speed</string>
     <string name="cpu_info_speed_min">Minimum speed</string>
     <string name="cpu_info_active_governor">Active governor</string>
-
     <string name="alucard">Alucard Hotplug</string>
     <string name="msm_hotplug">MSM Hotplug</string>
-
     <string name="boost">Boost System</string>
     <string name="fstrim">FsTrim</string>
     <string name="ram_quick_improvement">Ram Quick Improvement</string>
