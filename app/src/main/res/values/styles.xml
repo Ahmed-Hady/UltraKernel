@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:actionBarSize">70dp</item>
+        <item name="android:actionBarSize">@dimen/action_bar_size</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
