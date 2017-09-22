@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    buildToolsVersion "26.0.1"
     defaultConfig {
-        applicationId "com.ultradevs.cellidtracker"
+        applicationId "com.ultradevs.ultakernel"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
