@@ -12,10 +12,10 @@ import com.ultradevs.ultrakernel.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment {
+public class SystemInfoFragment extends Fragment {
 
 
-    public MainFragment() {
+    public SystemInfoFragment() {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_main, container, false);
+        View v = inflater.inflate(R.layout.fragment_sysinfo, container, false);
         return v;
     }
 

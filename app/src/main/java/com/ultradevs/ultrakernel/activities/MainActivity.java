@@ -11,14 +11,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import com.ultradevs.ultrakernel.fragments.MainFragment;
+import com.ultradevs.ultrakernel.fragments.SystemInfoFragment;
 
 import com.ultradevs.ultrakernel.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private MainFragment mMain;
+    private SystemInfoFragment mSysInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         /* Define Fragments */
-        mMain = new MainFragment();
+        mSysInfo = new SystemInfoFragment();
 
-        updateFragment(this.mMain);
+        updateFragment(this.mSysInfo);
     }
 
     @Override
@@ -80,17 +80,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_sys) {
+            updateFragment(this.mSysInfo);
+        } else if (id == R.id.nav_bat) {
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_kernel) {
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_proc) {
 
         }
 

@@ -5,5 +5,14 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    
+
+    <!-- Menu Titles -->
+    <string name="info_title">Device Information</string>
+
+    <!-- Info sections -->
+    <string name="sys_info">System Information</string>
+    <string name="bat_info">Battery Status</string>
+    <string name="kernel_info">Kernel Information</string>
+    <string name="proc_info">Processor Information</string>
+
 </resources>
