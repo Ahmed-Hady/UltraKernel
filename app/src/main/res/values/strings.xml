@@ -15,4 +15,9 @@
     <string name="kernel_info">Kernel Information</string>
     <string name="proc_info">Processor Information</string>
 
+    <!-- System Info -->
+    <string name="sys_info_title">System Version</string>
+
+    <!-- Glyph to be overlaid atop the battery when the level is extremely low. Do not translate. -->
+    <string name="battery_meter_very_low_overlay_symbol">!</string>
 </resources>

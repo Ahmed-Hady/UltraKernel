@@ -5,4 +5,9 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="top_panel_height">120dp</dimen>
+    <dimen name="battery_height">14.5dp</dimen>
+    <dimen name="battery_width">9.5dp</dimen>
+    <dimen name="battery_meter_width">66dp</dimen>
+    <dimen name="battery_meter_height">100dp</dimen>
 </resources>

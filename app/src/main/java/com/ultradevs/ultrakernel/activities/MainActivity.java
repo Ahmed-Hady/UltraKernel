@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.ultradevs.ultrakernel.fragments.BatteryInfoFragment;
 import com.ultradevs.ultrakernel.fragments.SystemInfoFragment;
 
 import com.ultradevs.ultrakernel.R;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SystemInfoFragment mSysInfo;
+    private BatteryInfoFragment mBatInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         /* Define Fragments */
         mSysInfo = new SystemInfoFragment();
+        mBatInfo = new BatteryInfoFragment();
 
         updateFragment(this.mSysInfo);
     }
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_sys) {
             updateFragment(this.mSysInfo);
         } else if (id == R.id.nav_bat) {
-
+            updateFragment(this.mBatInfo);
         } else if (id == R.id.nav_kernel) {
 
         } else if (id == R.id.nav_proc) {

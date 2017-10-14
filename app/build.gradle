@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.ultradevs.ultakernel"
         minSdkVersion 19
@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -29,4 +33,7 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
+    compile 'org.jetbrains:annotations-java5:15.0'
+    compile 'com.github.jineshfrancs:BatteryProgressView:187ffa72ce'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
 }
