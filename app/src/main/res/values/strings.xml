@@ -20,4 +20,5 @@
 
     <!-- Glyph to be overlaid atop the battery when the level is extremely low. Do not translate. -->
     <string name="battery_meter_very_low_overlay_symbol">!</string>
+    <string name="perc_0">0%</string>
 </resources>
