@@ -16,6 +16,7 @@ import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.BatteryStatusAdapter;
 import com.ultradevs.ultrakernel.adapters.bat_status_list;
 import com.ultradevs.ultrakernel.utils.BatteryMeterView;
+import com.ultradevs.ultrakernel.utils.BatteryUtils;
 
 import java.util.ArrayList;
 
@@ -58,55 +59,14 @@ public class BatteryInfoFragment extends Fragment {
         bat.setImageLevel(level);
         bat.setBatteryLevel(level);
         mtxt_perc.setText(level + "%");
-
         int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-        if(status == BatteryManager.BATTERY_STATUS_CHARGING){
-            mtxt_bat_status.setText("Charging");
-            battery_status = new bat_status_list("Status", "Charging");
-            adapter.add(battery_status);
-        }
-        if(status == BatteryManager.BATTERY_STATUS_FULL){
-            mtxt_bat_status.setText("Full");
-            battery_status = new bat_status_list("Status", "Full");
-            adapter.add(battery_status);
-        }
-        if(status == BatteryManager.BATTERY_STATUS_DISCHARGING){
-            mtxt_bat_status.setText("Not Charging");
-            battery_status = new bat_status_list("Status", "Not Charging");
-            adapter.add(battery_status);
-        }
 
-        if(status == BatteryManager.BATTERY_HEALTH_COLD){
-            battery_status = new bat_status_list("Health", "Cold");
-            adapter.add(battery_status);
-        } else if(status == BatteryManager.BATTERY_HEALTH_DEAD){
-            battery_status = new bat_status_list("Health", "Dead");
-            adapter.add(battery_status);
-        } else if(status == BatteryManager.BATTERY_HEALTH_GOOD){
-            battery_status = new bat_status_list("Health", "Good");
-            adapter.add(battery_status);
-        } else if(status == BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE){
-            battery_status = new bat_status_list("Health", "Over Voltage");
-            adapter.add(battery_status);
-        } else if(status == BatteryManager.BATTERY_HEALTH_OVERHEAT){
-            battery_status = new bat_status_list("Health", "Over Heat");
-            adapter.add(battery_status);
-        } else if(status == BatteryManager.BATTERY_HEALTH_UNKNOWN){
-            battery_status = new bat_status_list("Health", "Unknown");
-            adapter.add(battery_status);
-        }
+        mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
+        mtxt_bat_status.setText(mtxt_bat_status.getText() + BatteryUtils.Plugged(getContext()));
 
-        int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-        if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
-            mtxt_bat_status.setText(mtxt_bat_status.getText() + " & PLUGGED USB");
-            battery_status = new bat_status_list("Plugged to", "USB");
-            adapter.add(battery_status);
-        }
-        if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
-            mtxt_bat_status.setText(mtxt_bat_status.getText() + " & PLUGGED AC");
-            battery_status = new bat_status_list("Plugged to", "AC");
-            adapter.add(battery_status);
-        }
+        adapter.add(new bat_status_list("Status", BatteryUtils.current_status(getContext())));
+        adapter.add(new bat_status_list("Health", BatteryUtils.BatteryHealth(getContext())));
+        adapter.add(new bat_status_list("Plugged to", BatteryUtils.Plugged(getContext())));
 
         Thread t = new Thread() {
             @Override
@@ -123,25 +83,12 @@ public class BatteryInfoFragment extends Fragment {
 
                                 bat.setBatteryLevel(level);
                                 mtxt_perc.setText(level + "%");
-                                int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
-                                if(status == BatteryManager.BATTERY_STATUS_CHARGING){
+                                mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
+                                mtxt_bat_status.setText(mtxt_bat_status.getText() + BatteryUtils.Plugged(getContext()));
+                                if(BatteryUtils.current_status(getContext())=="Charging"){
                                     bat.setCharging(true);
-                                    mtxt_bat_status.setText("Charging");
-                                } else {
+                                } else if(BatteryUtils.current_status(getContext())=="Not Charging"){
                                     bat.setCharging(false);
-                                    mtxt_bat_status.setText("Not Charging");
-                                }
-
-                                if(status == BatteryManager.BATTERY_STATUS_FULL){
-                                    mtxt_bat_status.setText("Full");
-                                }
-
-                                int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
-                                if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
-                                    mtxt_bat_status.setText(mtxt_bat_status.getText() + " & PLUGGED USB");
-                                }
-                                if(plugged == BatteryManager.BATTERY_PLUGGED_AC){
-                                    mtxt_bat_status.setText(mtxt_bat_status.getText() + " & PLUGGED AC");
                                 }
                             }
                         });
