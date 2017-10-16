@@ -43,6 +43,8 @@ public class BatteryInfoFragment extends Fragment {
         BatteryMeterView bat = v.findViewById(R.id.battery_header_icon);
 
         // Battery: Set Defaults
+        bat.setColorFilter(getContext().getColor(R.color.colorAccent_light));
+        bat.setImageLevel(level);
         bat.setBatteryLevel(level);
         mtxt_perc.setText(level + "%");
 

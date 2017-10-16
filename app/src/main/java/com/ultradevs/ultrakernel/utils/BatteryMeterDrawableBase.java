@@ -99,9 +99,9 @@ public class BatteryMeterDrawableBase extends Drawable {
         for (int i=0; i < N; i++) {
             mColors[2 * i] = levels.getInt(i, 0);
             if (colors.getType(i) == TypedValue.TYPE_ATTRIBUTE) {
-                //mColors[2 * i + 1] = Utils.getColorAttr(context, colors.getThemeAttributeId(i, 0));
+                //mColors[2 * i + 1] = utils.getColorAttr(context, utils.getThemeAttributeId(i, 0));
             } else {
-                //mColors[2 * i + 1] = colors.getColor(i, 0);
+                mColors[2 * i + 1] = colors.getColor(i, 0);
             }
         }
         levels.recycle();
@@ -248,7 +248,7 @@ public class BatteryMeterDrawableBase extends Drawable {
     public void setColors(int fillColor, int backgroundColor) {
         mIconTint = fillColor;
         mFramePaint.setColor(backgroundColor);
-        //mBoltPaint.setColor(fillColor);
+        mBoltPaint.setColor(fillColor);
         mChargeColor = fillColor;
         invalidateSelf();
     }
@@ -274,7 +274,7 @@ public class BatteryMeterDrawableBase extends Drawable {
                 mFrame.left + Math.round(width * 0.25f),
                 mFrame.top,
                 mFrame.right - Math.round(width * 0.25f),
-                mFrame.top + buttonHeight);
+                mFrame.top +buttonHeight);
 
         mButtonFrame.top += mSubpixelSmoothingLeft;
         mButtonFrame.left += mSubpixelSmoothingLeft;

@@ -3,6 +3,7 @@
     <color name="colorPrimary">#5092e7</color>
     <color name="colorPrimaryDark">#e6e6e6</color>
     <color name="colorAccent">#5092e7</color>
+    <color name="colorAccent_light">#b6d0f2</color>
     <color name="mono">#505050</color>
     <color name="batterymeter_frame_color">#66FFFFFF</color>
     <color name="batterymeter_bolt_color">#ff141414</color>

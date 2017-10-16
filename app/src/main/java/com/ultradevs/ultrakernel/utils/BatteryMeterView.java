@@ -15,19 +15,19 @@
  */
 
 package com.ultradevs.ultrakernel.utils;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
-import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import com.ultradevs.ultrakernel.R;
+
+import javax.annotation.Nullable;
 
 @SuppressLint("AppCompatCustomView")
 public class BatteryMeterView extends ImageView {
@@ -49,11 +49,11 @@ public class BatteryMeterView extends ImageView {
     public BatteryMeterView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        final int frameColor = context.getColor(R.color.colorPrimary);
+        final int frameColor = context.getColor(R.color.batterymeter_frame_color);
         mAccentColorFilter = new PorterDuffColorFilter(
                 context.getColor(R.color.colorAccent), PorterDuff.Mode.SRC_IN);
         mErrorColorFilter = new PorterDuffColorFilter(
-                context.getColor(android.R.color.holo_red_light), PorterDuff.Mode.SRC_IN);
+                context.getColor(R.color.mono), PorterDuff.Mode.SRC_IN);
 
         mDrawable = new BatteryMeterDrawable(context, frameColor);
         mDrawable.setShowPercent(false);
