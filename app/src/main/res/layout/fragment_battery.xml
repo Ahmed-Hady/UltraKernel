@@ -67,7 +67,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="@string/bat_info"
+        android:text=""
         android:textAlignment="center"
         android:textSize="24sp" />
 

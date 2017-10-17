@@ -1,6 +1,7 @@
 package com.ultradevs.ultrakernel.fragments;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
@@ -39,11 +40,13 @@ public class BatteryInfoFragment extends Fragment {
 
     public BatteryStatusAdapter adapter;
 
+    @SuppressLint("ResourceType")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_battery, container, false);
 
+        getActivity().setTitle(R.string.bat_info);
 
         // Battery
         bat_status_list battery_status;
@@ -86,6 +89,8 @@ public class BatteryInfoFragment extends Fragment {
                             @Override
                             public void run() {
                                 // Battery
+                                IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+                                Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
                                 level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
                                 bat.setBatteryLevel(level);
                                 mtxt_perc.setText(level + "%");
