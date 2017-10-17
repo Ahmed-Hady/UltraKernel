@@ -67,10 +67,15 @@ public class BatteryInfoFragment extends Fragment {
         mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
         mtxt_bat_status.setText(mtxt_bat_status.getText() + BatteryUtils.Plugged(getContext()));
 
-        adapter.add(new bat_status_list("Status", BatteryUtils.current_status(getContext())));
-        adapter.add(new bat_status_list("Health", BatteryUtils.BatteryHealth(getContext())));
-        adapter.add(new bat_status_list("Plugged to", BatteryUtils.Plugged(getContext())));
+        String S = BatteryUtils.current_status(getContext());
+        String H = BatteryUtils.BatteryHealth(getContext());
 
+        adapter.add(new bat_status_list("Status", S));
+        adapter.add(new bat_status_list("Health", H));
+        adapter.add(new bat_status_list("Technology", BatteryUtils.Techonolgy(getContext())));
+        adapter.add(new bat_status_list("Plugged to", BatteryUtils.Plugged(getContext())));
+        adapter.add(new bat_status_list("Temperature", String.valueOf(BatteryUtils.Temp(getContext()))));
+        adapter.add(new bat_status_list("Voltage", String.valueOf(BatteryUtils.Voltage(getContext()))));
         Thread t = new Thread() {
             @Override
             public void run() {
@@ -92,8 +97,15 @@ public class BatteryInfoFragment extends Fragment {
                                     bat.setCharging(true);
                                 } else if(BatteryUtils.current_status(getContext())=="Not Charging"){
                                     bat.setCharging(false);
-                                }
-                                
+                                };
+                                adapter.clear();
+                                adapter.add(new bat_status_list("Status", S));
+                                adapter.add(new bat_status_list("Health", H));
+                                adapter.add(new bat_status_list("Technology", BatteryUtils.Techonolgy(getContext())));
+                                adapter.add(new bat_status_list("Plugged to", BatteryUtils.Plugged(getContext())));
+                                adapter.add(new bat_status_list("Temperature", String.valueOf(BatteryUtils.Temp(getContext()))));
+                                adapter.add(new bat_status_list("Voltage", String.valueOf(BatteryUtils.Voltage(getContext()))));
+
                             }
                         });
                     }
@@ -106,4 +118,5 @@ public class BatteryInfoFragment extends Fragment {
 
         return v;
     }
+
 }

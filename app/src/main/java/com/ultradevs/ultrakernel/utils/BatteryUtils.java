@@ -40,10 +40,10 @@ public class BatteryUtils {
             return "Good";
         } else if(status == BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE){
             return "OverVoltage";
-        } else if(status == BatteryManager.BATTERY_HEALTH_OVERHEAT){
-            return "OverHeat";
         } else if(status == BatteryManager.BATTERY_HEALTH_UNKNOWN){
             return "Unknown";
+        } else if(status == BatteryManager.BATTERY_HEALTH_OVERHEAT) {
+            return "OverHeat";
         }
         return null;
     }
@@ -59,5 +59,20 @@ public class BatteryUtils {
             return " Wireless Charger";
         }
         return "";
+    }
+    public static String Techonolgy(Context mContext){
+        IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
+        return batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
+    }
+    public static int Temp(Context mContext){
+        IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
+        return batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+    }
+    public static int Voltage(Context mContext){
+        IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
+        return batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
     }
 }

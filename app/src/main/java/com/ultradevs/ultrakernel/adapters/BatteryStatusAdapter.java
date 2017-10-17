@@ -5,19 +5,22 @@ package com.ultradevs.ultrakernel.adapters;
  */
 
 import android.content.Context;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BatteryStatusAdapter extends ArrayAdapter<bat_status_list> {
-    public BatteryStatusAdapter(Context context, ArrayList<bat_status_list> users) {
-        super(context, 0, users);
+    public BatteryStatusAdapter(Context context, ArrayList<bat_status_list> batInfo) {
+        super(context, 0, batInfo);
     }
 
     @Override
@@ -29,12 +32,14 @@ public class BatteryStatusAdapter extends ArrayAdapter<bat_status_list> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.info_list_item, parent, false);
         }
         // Lookup view for data population
-        TextView tvName = (TextView) convertView.findViewById(R.id.title);
-        TextView tvHome = (TextView) convertView.findViewById(R.id.summary);
+        TextView mTitle = (TextView) convertView.findViewById(R.id.title);
+        TextView mSummary = (TextView) convertView.findViewById(R.id.summary);
         // Populate the data into the template view using the data object
-        tvName.setText(infolist.title);
-        tvHome.setText(infolist.summary);
+        mTitle.setText(infolist.title);
+        mSummary.setText(infolist.summary);
         // Return the completed view to render on screen
         return convertView;
     }
 }
+
+
