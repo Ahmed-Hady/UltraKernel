@@ -16,6 +16,7 @@ import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 import java.util.ArrayList;
 
+import static com.ultradevs.ultrakernel.utils.ShellExecuter.hasSelinux;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Name;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Sdk_Version;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Version;
@@ -66,7 +67,13 @@ public class SystemInfoFragment extends Fragment {
         adapter.add(new InfoList("Device SOC", Android_device_board()));
         adapter.add(new InfoList("Device Manufacturer", Android_device_manuf()));
         adapter.add(new InfoList("Kernel Version", Android_device_kernel()));
-
+        if(hasSelinux()==true) {
+            adapter.add(new InfoList("SElinux", "Enforcing"));
+        } else if(hasSelinux()==false) {
+            adapter.add(new InfoList("SElinux", "Permissive"));
+        }else {
+            adapter.add(new InfoList("SElinux", "Off"));
+        }
         return v;
     }
 
