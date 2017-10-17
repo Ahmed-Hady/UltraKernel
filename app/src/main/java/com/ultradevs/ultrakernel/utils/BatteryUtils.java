@@ -52,11 +52,11 @@ public class BatteryUtils {
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
         int plugged = batteryIntent.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1);
         if(plugged == BatteryManager.BATTERY_PLUGGED_USB){
-            return " - USB Cable";
+            return " USB Cable";
         } else if(plugged == BatteryManager.BATTERY_PLUGGED_AC) {
-            return " - AC Charger";
+            return " AC Charger";
         }if(plugged == BatteryManager.BATTERY_PLUGGED_WIRELESS){
-            return " - Wireless Charger";
+            return " Wireless Charger";
         }
         return "";
     }

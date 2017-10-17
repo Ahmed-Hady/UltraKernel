@@ -19,6 +19,7 @@ import com.ultradevs.ultrakernel.utils.BatteryMeterView;
 import com.ultradevs.ultrakernel.utils.BatteryUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,12 +29,15 @@ public class BatteryInfoFragment extends Fragment {
     TextView mtxt_perc;
     TextView mtxt_bat_status;
     int level;
+    ListView batinfolist;
 
     ArrayList<bat_status_list> arrayOfBattery = new ArrayList<bat_status_list>();
 
     public BatteryInfoFragment() {
         // Required empty public constructor
     }
+
+    public BatteryStatusAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,15 +47,15 @@ public class BatteryInfoFragment extends Fragment {
 
         // Battery
         bat_status_list battery_status;
-        BatteryStatusAdapter adapter = new BatteryStatusAdapter(getContext(), arrayOfBattery);
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
         level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         mtxt_perc = v.findViewById(R.id.txt_bat_perce);
         mtxt_bat_status = v.findViewById(R.id.txt_bat_status);
         BatteryMeterView bat = v.findViewById(R.id.battery_header_icon);
-        ListView listView = (ListView) v.findViewById(R.id.bat_status_list);
-        listView.setAdapter(adapter);
+        adapter = new BatteryStatusAdapter(getContext(), arrayOfBattery);
+        batinfolist = (ListView) v.findViewById(R.id.bat_status_list);
+        batinfolist.setAdapter(adapter);
 
 
         // Battery: Set Defaults
@@ -59,7 +63,6 @@ public class BatteryInfoFragment extends Fragment {
         bat.setImageLevel(level);
         bat.setBatteryLevel(level);
         mtxt_perc.setText(level + "%");
-        int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
 
         mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
         mtxt_bat_status.setText(mtxt_bat_status.getText() + BatteryUtils.Plugged(getContext()));
@@ -90,6 +93,7 @@ public class BatteryInfoFragment extends Fragment {
                                 } else if(BatteryUtils.current_status(getContext())=="Not Charging"){
                                     bat.setCharging(false);
                                 }
+                                
                             }
                         });
                     }
@@ -100,9 +104,6 @@ public class BatteryInfoFragment extends Fragment {
 
         t.start();
 
-
-
         return v;
     }
-
 }
