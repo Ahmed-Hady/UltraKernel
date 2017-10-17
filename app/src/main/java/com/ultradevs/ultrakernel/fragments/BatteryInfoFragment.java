@@ -86,11 +86,10 @@ public class BatteryInfoFragment extends Fragment {
                             @Override
                             public void run() {
                                 // Battery
-                                IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-                                Intent batteryIntent = getActivity().registerReceiver(null, batteryIntentFilter);
-
+                                level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
                                 bat.setBatteryLevel(level);
                                 mtxt_perc.setText(level + "%");
+
                                 mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
                                 mtxt_bat_status.setText(mtxt_bat_status.getText() + BatteryUtils.Plugged(getContext()));
                                 if(BatteryUtils.current_status(getContext())=="Charging"){
