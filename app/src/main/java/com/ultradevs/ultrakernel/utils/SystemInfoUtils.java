@@ -16,19 +16,19 @@ public class SystemInfoUtils {
     }
     public static String Android_Name() {
         if (Android_Version().startsWith("4.4")){
-            return "Android KitKat";
+            return "KitKat";
         }
         if (Android_Version().startsWith("5")){
-            return "Android Lollipop";
+            return "Lollipop";
         }
         if (Android_Version().startsWith("6")){
-            return "Android Marshmallow";
+            return "Marshmallow";
         }
         if (Android_Version().startsWith("7")){
-            return "Android Nougat";
+            return "Nougat";
         }
         if (Android_Version().startsWith("8")){
-            return "Android Oreo";
+            return "Oreo";
         }
         return null;
     }
