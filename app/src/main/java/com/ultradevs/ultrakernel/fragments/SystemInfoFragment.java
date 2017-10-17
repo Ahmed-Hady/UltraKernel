@@ -55,11 +55,9 @@ public class SystemInfoFragment extends Fragment {
 
         TextView os_name = v.findViewById(R.id.txt_os_name);
         TextView os_version = v.findViewById(R.id.txt_os_version);
-        TextView os_sdk = v.findViewById(R.id.txt_os_sdk);
 
         os_name.setText(Android_Name());
         os_version.setText(Android_Version());
-        os_sdk.setText("Android SDK: " + Android_Sdk_Version());
 
         adapter.add(new bat_status_list("Android Code Name", Android_Name()));
         adapter.add(new bat_status_list("Android Version", Android_Version()));
