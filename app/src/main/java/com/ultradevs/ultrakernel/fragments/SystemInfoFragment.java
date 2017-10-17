@@ -7,13 +7,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.adapters.BatteryStatusAdapter;
-import com.ultradevs.ultrakernel.adapters.bat_status_list;
+import com.ultradevs.ultrakernel.adapters.InfoList;
+import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 import java.util.ArrayList;
 
@@ -31,11 +30,11 @@ import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_system_pat
  */
 public class SystemInfoFragment extends Fragment {
 
-    ArrayList<bat_status_list> arrayOfSystem = new ArrayList<bat_status_list>();
-
-    public BatteryStatusAdapter adapter;
-
+    ArrayList<InfoList> arrayOfSystem = new ArrayList<InfoList>();
+    public StatusAdapter adapter;
     ListView sysinfolist;
+    TextView os_name;
+    TextView os_version;
 
     public SystemInfoFragment() {
         // Required empty public constructor
@@ -49,24 +48,24 @@ public class SystemInfoFragment extends Fragment {
 
         getActivity().setTitle(R.string.sys_info_title);
 
-        adapter = new BatteryStatusAdapter(getContext(), arrayOfSystem);
-        sysinfolist = (ListView) v.findViewById(R.id.sys_info_list);
+        adapter = new StatusAdapter(getContext(), arrayOfSystem);
+        sysinfolist = v.findViewById(R.id.sys_info_list);
         sysinfolist.setAdapter(adapter);
 
-        TextView os_name = v.findViewById(R.id.txt_os_name);
-        TextView os_version = v.findViewById(R.id.txt_os_version);
+        os_name = v.findViewById(R.id.txt_os_name);
+        os_version = v.findViewById(R.id.txt_os_version);
 
         os_name.setText("Android " + Android_Name());
         os_version.setText(Android_Version());
 
-        adapter.add(new bat_status_list("Android Code Name", Android_Name()));
-        adapter.add(new bat_status_list("Android Version", Android_Version()));
-        adapter.add(new bat_status_list("SDK Version", Android_Sdk_Version()));
-        adapter.add(new bat_status_list("Security Patch", Android_system_patch_Version()));
-        adapter.add(new bat_status_list("Device Name", Android_device_name()));
-        adapter.add(new bat_status_list("Device SOC", Android_device_board()));
-        adapter.add(new bat_status_list("Device Manufacturer", Android_device_manuf()));
-        adapter.add(new bat_status_list("Kernel Version", Android_device_kernel()));
+        adapter.add(new InfoList("Android Code Name", Android_Name()));
+        adapter.add(new InfoList("Android Version", Android_Version()));
+        adapter.add(new InfoList("SDK Version", Android_Sdk_Version()));
+        adapter.add(new InfoList("Security Patch", Android_system_patch_Version()));
+        adapter.add(new InfoList("Device Name", Android_device_name()));
+        adapter.add(new InfoList("Device SOC", Android_device_board()));
+        adapter.add(new InfoList("Device Manufacturer", Android_device_manuf()));
+        adapter.add(new InfoList("Kernel Version", Android_device_kernel()));
 
         return v;
     }

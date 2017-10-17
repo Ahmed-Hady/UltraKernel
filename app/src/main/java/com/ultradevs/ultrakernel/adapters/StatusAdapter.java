@@ -18,15 +18,15 @@ import com.ultradevs.ultrakernel.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BatteryStatusAdapter extends ArrayAdapter<bat_status_list> {
-    public BatteryStatusAdapter(Context context, ArrayList<bat_status_list> batInfo) {
+public class StatusAdapter extends ArrayAdapter<InfoList> {
+    public StatusAdapter(Context context, ArrayList<InfoList> batInfo) {
         super(context, 0, batInfo);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        bat_status_list infolist = getItem(position);
+        InfoList infolist = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.info_list_item, parent, false);
