@@ -59,6 +59,7 @@ public class SystemInfoFragment extends Fragment {
         os_name.setText("Android " + Android_Name());
         os_version.setText(Android_Version());
 
+        adapter.clear();
         adapter.add(new InfoList("Android Code Name", Android_Name()));
         adapter.add(new InfoList("Android Version", Android_Version()));
         adapter.add(new InfoList("SDK Version", Android_Sdk_Version()));
