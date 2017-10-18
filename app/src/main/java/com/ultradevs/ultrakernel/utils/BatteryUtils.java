@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 
-import com.ultradevs.ultrakernel.adapters.bat_status_list;
+import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 /**
  * Created by ahmedhady on 16/10/17.
