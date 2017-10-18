@@ -91,10 +91,13 @@ public class BatteryUtils {
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
         return batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
     }
-    public static int Temp(Context mContext){
+    public static String Temp(Context mContext){
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
-        return batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0);
+
+        float  temp   = ((float) batteryIntent.getIntExtra(BatteryManager.EXTRA_TEMPERATURE,0)) / 10;
+
+        return temp + Character.toString ((char) 176) + " C";
     }
     public static int Voltage(Context mContext){
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
