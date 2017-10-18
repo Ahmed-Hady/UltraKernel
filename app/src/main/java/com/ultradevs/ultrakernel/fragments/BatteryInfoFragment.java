@@ -167,8 +167,9 @@ public class BatteryInfoFragment extends Fragment {
             }
 
             // display plugged status ...
-            adapter.add(new InfoList("Plugged", getString(pluggedLbl)));
-
+            if(pluggedLbl != R.string.battery_plugged_none) {
+                adapter.add(new InfoList("Plugged", getString(pluggedLbl)));
+            }
             int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
             int statusLbl = R.string.battery_status_discharging;
 
