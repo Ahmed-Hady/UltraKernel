@@ -29,4 +29,11 @@
     <string name="battery_health_over_voltage">Over-Voltage</string>
     <string name="battery_health_overheat">Over-Heat</string>
     <string name="battery_health_unspecified_failure">Unspecified failure</string>
+    <string name="battery_plugged_none"></string>
+    <string name="battery_plugged_wireless">Wireless Charger</string>
+    <string name="battery_plugged_usb">USB Charger</string>
+    <string name="battery_plugged_ac">AC Charger</string>
+    <string name="battery_status_discharging">Not Charging</string>
+    <string name="battery_status_charging">Charging</string>
+    <string name="battery_status_full">Full</string>
 </resources>

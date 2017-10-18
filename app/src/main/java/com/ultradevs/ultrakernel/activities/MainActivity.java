@@ -1,5 +1,9 @@
 package com.ultradevs.ultrakernel.activities;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,10 +16,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.fragments.BatteryInfoFragment;
 import com.ultradevs.ultrakernel.fragments.SystemInfoFragment;
-
-import com.ultradevs.ultrakernel.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity
         /* Define Fragments */
         mSysInfo = new SystemInfoFragment();
         mBatInfo = new BatteryInfoFragment();
-
         updateFragment(this.mSysInfo);
     }
 
@@ -104,6 +106,5 @@ public class MainActivity extends AppCompatActivity
 
         ft.replace(R.id.content, fragment);
         ft.commit();
-
     }
 }

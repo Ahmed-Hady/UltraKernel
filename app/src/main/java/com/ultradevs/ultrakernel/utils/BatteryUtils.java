@@ -4,9 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 /**
  * Created by ahmedhady on 16/10/17.
@@ -86,7 +86,7 @@ public class BatteryUtils {
         }
         return "";
     }
-    public static String Techonolgy(Context mContext){
+    public static String Technology(Context mContext){
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
         return batteryIntent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
@@ -104,8 +104,26 @@ public class BatteryUtils {
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
         return batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
     }
-}
+    public static double getBatteryCapacity(Context context) {
+        Object mPowerProfile;
+        double batteryCapacity = 0;
+        final String POWER_PROFILE_CLASS = "com.android.internal.os.PowerProfile";
 
-    /*public void updateBatteryData(Intent intent) {
-        boolean present = intent.getBooleanExtra(BatteryManager.EXTRA_PRESENT, false);
-    }*/
+        try {
+            mPowerProfile = Class.forName(POWER_PROFILE_CLASS)
+                    .getConstructor(Context.class)
+                    .newInstance(context);
+
+            batteryCapacity = (double) Class
+                    .forName(POWER_PROFILE_CLASS)
+                    .getMethod("getBatteryCapacity")
+                    .invoke(mPowerProfile);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return batteryCapacity;
+
+    }
+}
