@@ -21,4 +21,12 @@
     <!-- Glyph to be overlaid atop the battery when the level is extremely low. Do not translate. -->
     <string name="battery_meter_very_low_overlay_symbol">!</string>
     <string name="perc_0">0%</string>
+
+    <!-- Battery Health -->
+    <string name="battery_health_cold">Cold</string>
+    <string name="battery_health_dead">Dead</string>
+    <string name="battery_health_good">Good</string>
+    <string name="battery_health_over_voltage">Over-Voltage</string>
+    <string name="battery_health_overheat">Over-Heat</string>
+    <string name="battery_health_unspecified_failure">Unspecified failure</string>
 </resources>

@@ -120,5 +120,4 @@ public class BatteryInfoFragment extends Fragment {
 
         return v;
     }
-
 }

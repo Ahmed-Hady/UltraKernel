@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
 
+import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 /**
@@ -30,20 +31,45 @@ public class BatteryUtils {
     public static String BatteryHealth(Context mContext){
         IntentFilter batteryIntentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
         Intent batteryIntent = mContext.registerReceiver(null, batteryIntentFilter);
-        int status = batteryIntent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
 
-        if(status == BatteryManager.BATTERY_HEALTH_COLD){
-            return "Cold";
-        } else if(status == BatteryManager.BATTERY_HEALTH_DEAD){
-            return "Dead";
-        } else if(status == BatteryManager.BATTERY_HEALTH_GOOD){
-            return "Good";
-        } else if(status == BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE){
-            return "OverVoltage";
-        } else if(status == BatteryManager.BATTERY_HEALTH_UNKNOWN){
-            return "Unknown";
-        } else if(status == BatteryManager.BATTERY_HEALTH_OVERHEAT) {
-            return "OverHeat";
+        boolean present = batteryIntent.getBooleanExtra(BatteryManager.EXTRA_PRESENT, false);
+
+        if (present) {
+            int health = batteryIntent.getIntExtra(BatteryManager.EXTRA_HEALTH, 0);
+            int healthLbl = -1;
+
+            switch (health) {
+                case BatteryManager.BATTERY_HEALTH_COLD:
+                    healthLbl = R.string.battery_health_cold;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_DEAD:
+                    healthLbl = R.string.battery_health_dead;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_GOOD:
+                    healthLbl = R.string.battery_health_good;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
+                    healthLbl = R.string.battery_health_over_voltage;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_OVERHEAT:
+                    healthLbl = R.string.battery_health_overheat;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
+                    healthLbl = R.string.battery_health_unspecified_failure;
+                    break;
+
+                case BatteryManager.BATTERY_HEALTH_UNKNOWN:
+                default:
+                    break;
+            }
+
+            if (healthLbl != -1)
+                return mContext.getString(healthLbl);
         }
         return null;
     }
@@ -76,3 +102,7 @@ public class BatteryUtils {
         return batteryIntent.getIntExtra(BatteryManager.EXTRA_VOLTAGE,0);
     }
 }
+
+    /*public void updateBatteryData(Intent intent) {
+        boolean present = intent.getBooleanExtra(BatteryManager.EXTRA_PRESENT, false);
+    }*/
