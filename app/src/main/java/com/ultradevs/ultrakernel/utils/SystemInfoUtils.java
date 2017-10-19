@@ -1,5 +1,7 @@
 package com.ultradevs.ultrakernel.utils;
 
+import android.os.Build;
+
 import java.io.IOException;
 
 /**
@@ -7,12 +9,9 @@ import java.io.IOException;
  */
 
 public class SystemInfoUtils {
-
-    public static ShellExecuter mShell;
-
+    
     public static String Android_Version() {
-        mShell.command="getprop ro.build.version.release";
-        return mShell.runAsRoot();
+        return Build.VERSION.RELEASE;
     }
     public static String Android_Name() {
         if (Android_Version().startsWith("4.4")){
@@ -33,29 +32,23 @@ public class SystemInfoUtils {
         return null;
     }
     public static String Android_Sdk_Version(){
-        mShell.command="getprop ro.build.version.sdk";
-        return mShell.runAsRoot();
+        return Build.VERSION.SDK;
     }
     public static String Android_system_patch_Version(){
-        mShell.command="getprop ro.build.version.security_patch";
-        return mShell.runAsRoot();
+        return Build.VERSION.SECURITY_PATCH;
     }
     public static String Android_device_board(){
-        mShell.command="getprop ro.product.board";
-        return mShell.runAsRoot();
+        return Build.BOARD;
     }
     public static String Android_device_manuf(){
-        mShell.command="getprop ro.product.manufacturer";
-        return mShell.runAsRoot();
+        return Build.MANUFACTURER;
     }
 
     public static String Android_device_name(){
-        mShell.command="getprop ro.product.model";
-        return mShell.runAsRoot();
+        return Build.DEVICE;
     }
 
     public static String Android_device_kernel(){
-        mShell.command="cat /proc/version";
-        return mShell.runAsRoot();
+        return System.getProperty("os.version");
     }
 }
