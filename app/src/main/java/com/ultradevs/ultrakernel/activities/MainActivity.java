@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.fragments.BatteryInfoFragment;
+import com.ultradevs.ultrakernel.fragments.KernelInfoFragment;
 import com.ultradevs.ultrakernel.fragments.SystemInfoFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity
 
     private SystemInfoFragment mSysInfo;
     private BatteryInfoFragment mBatInfo;
+    private KernelInfoFragment mKernelInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity
         /* Define Fragments */
         mSysInfo = new SystemInfoFragment();
         mBatInfo = new BatteryInfoFragment();
+        mKernelInfo = new KernelInfoFragment();
         updateFragment(this.mSysInfo);
     }
 
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_bat) {
             updateFragment(this.mBatInfo);
         } else if (id == R.id.nav_kernel) {
-
+            updateFragment(this.mKernelInfo);
         } else if (id == R.id.nav_proc) {
 
         }

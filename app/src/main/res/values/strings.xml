@@ -14,6 +14,7 @@
     <string name="bat_info">Battery Status</string>
     <string name="kernel_info">Kernel Information</string>
     <string name="proc_info">Processor Information</string>
+    <string name="KernelInfo">Kernel Information</string>
 
     <!-- System Info -->
     <string name="sys_info_title">System Version</string>
