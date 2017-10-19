@@ -1,4 +1,4 @@
-package com.ultradevs.ultrakernel.fragments;
+package com.ultradevs.ultrakernel.fragments.deviceInfo;
 
 
 import android.os.Bundle;

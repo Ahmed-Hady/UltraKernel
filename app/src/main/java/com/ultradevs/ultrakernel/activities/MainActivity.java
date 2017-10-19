@@ -1,9 +1,5 @@
 package com.ultradevs.ultrakernel.activities;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,9 +13,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.fragments.BatteryInfoFragment;
-import com.ultradevs.ultrakernel.fragments.KernelInfoFragment;
-import com.ultradevs.ultrakernel.fragments.SystemInfoFragment;
+import com.ultradevs.ultrakernel.fragments.deviceInfo.BatteryInfoFragment;
+import com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment;
+import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
