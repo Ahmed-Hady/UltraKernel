@@ -9,7 +9,7 @@ import java.io.IOException;
  */
 
 public class SystemInfoUtils {
-    
+
     public static String Android_Version() {
         return Build.VERSION.RELEASE;
     }
@@ -50,5 +50,14 @@ public class SystemInfoUtils {
 
     public static String Android_device_kernel(){
         return System.getProperty("os.version");
+    }
+    public static String Android_Boorloader(){
+        return Build.BOOTLOADER;
+    }
+    public static String Android_ABI(){
+        return Build.CPU_ABI;
+    }
+    public static String Android_RadioVersion(){
+        return Build.getRadioVersion();
     }
 }
