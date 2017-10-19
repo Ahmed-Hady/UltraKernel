@@ -14,23 +14,14 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp">
 
-        <com.eralp.circleprogressview.CircleProgressView
-            android:id="@+id/battery_header_icon2"
-            android:layout_width="103dp"
-            android:layout_height="104dp"
-            android:layout_gravity="center"
+        <com.ultradevs.ultrakernel.utils.BatteryMeterView
+            android:id="@+id/battery_header_icon"
+            android:layout_width="@dimen/battery_meter_width"
+            android:layout_height="@dimen/battery_meter_height"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_weight="1"
-            app:cpv_background_circle_color="@color/batterymeter_frame_color"
-            app:cpv_background_circle_width="1dp"
-            app:cpv_circle_color="@color/colorPrimary"
-            app:cpv_circle_width="6dp"
-            app:cpv_text_color="@color/colorPrimary"
-            app:cpv_text_prefix="%"
-            app:cpv_text_size="40"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.91"

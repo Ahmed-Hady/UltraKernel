@@ -65,7 +65,7 @@ public class SystemInfoFragment extends Fragment {
         adapter.clear();
         adapter.add(new InfoList("Android Code Name", Android_Name()));
         adapter.add(new InfoList("Android Version", Android_Version()));
-        adapter.add(new InfoList("SDK Version", Android_Sdk_Version()));
+        adapter.add(new InfoList("SDK Version", String.valueOf(Android_Sdk_Version())));
         adapter.add(new InfoList("Security Patch", Android_system_patch_Version()));
         adapter.add(new InfoList("Device Name", Android_device_name()));
         adapter.add(new InfoList("Device SOC", Android_device_board()));

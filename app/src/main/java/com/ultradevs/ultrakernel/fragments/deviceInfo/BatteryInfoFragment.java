@@ -7,8 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.BatteryManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.transition.CircularPropagation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +18,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eralp.circleprogressview.CircleProgressView;
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.InfoList;
 import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 import com.ultradevs.ultrakernel.utils.BatteryMeterView;
 import com.ultradevs.ultrakernel.utils.BatteryUtils;
+import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
 import java.util.ArrayList;
+
+import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Sdk_Version;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -34,6 +41,7 @@ public class BatteryInfoFragment extends Fragment {
     int level;
     ListView batinfolist;
     BatteryMeterView bat;
+    CircleProgressView bat2;
 
     ArrayList<InfoList> arrayOfBattery = new ArrayList<InfoList>();
 
@@ -57,16 +65,22 @@ public class BatteryInfoFragment extends Fragment {
         level = batteryIntent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         mtxt_perc = v.findViewById(R.id.txt_bat_perce);
         mtxt_bat_status = v.findViewById(R.id.txt_bat_status);
+
         bat = v.findViewById(R.id.battery_header_icon);
+        bat2 = v.findViewById(R.id.battery_header_icon2);
 
         adapter = new StatusAdapter(getContext(), arrayOfBattery);
         batinfolist = v.findViewById(R.id.bat_status_list);
         batinfolist.setAdapter(adapter);
 
         // Battery: Set Defaults
-        bat.setColorFilter(getContext().getColor(R.color.colorAccent_light));
-        bat.setImageLevel(level);
-        bat.setBatteryLevel(level);
+        if(Android_Sdk_Version() > 23) {
+            bat.setColorFilter(getContext().getColor(R.color.colorAccent_light));
+            bat.setImageLevel(level);
+            bat.setBatteryLevel(level);
+        } else {
+            bat2.setProgress(level);
+        }
         mtxt_perc.setText(level + "%");
 
         mtxt_bat_status.setText(BatteryUtils.current_status(getContext()));
@@ -142,7 +156,11 @@ public class BatteryInfoFragment extends Fragment {
             if (level != -1 && scale != -1) {
                 int batteryPct = (int) ((level / (float) scale) * 100f);
                 mtxt_perc.setText(batteryPct + "%");
-                bat.setBatteryLevel(level);
+                if(Android_Sdk_Version() > 23) {
+                    bat.setBatteryLevel(batteryPct);
+                } else {
+                    bat2.setProgress(batteryPct);
+                }
             }
 
             int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
@@ -176,12 +194,16 @@ public class BatteryInfoFragment extends Fragment {
             switch (status) {
                 case BatteryManager.BATTERY_STATUS_CHARGING:
                     statusLbl = R.string.battery_status_charging;
-                    bat.setCharging(true);
+                    if(Android_Sdk_Version() > 23) {
+                        bat.setCharging(true);
+                    }
                     break;
 
                 case BatteryManager.BATTERY_STATUS_DISCHARGING:
                     statusLbl = R.string.battery_status_discharging;
-                    bat.setCharging(false);
+                    if(Android_Sdk_Version() > 23) {
+                        bat.setCharging(false);
+                    }
                     break;
 
                 case BatteryManager.BATTERY_STATUS_FULL:

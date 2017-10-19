@@ -10,6 +10,8 @@ import java.io.IOException;
 
 public class SystemInfoUtils {
 
+    private static ShellExecuter mShell;
+
     public static String Android_Version() {
         return Build.VERSION.RELEASE;
     }
@@ -31,8 +33,13 @@ public class SystemInfoUtils {
         }
         return null;
     }
-    public static String Android_Sdk_Version(){
-        return Build.VERSION.SDK;
+    public static int Android_Sdk_Version(){
+        if (Android_Name() == "Lollipop"){
+            mShell.command="getprop ro.build.version.sdk";
+            return Integer.parseInt(mShell.runAsRoot());
+        } else {
+            return Integer.parseInt(Build.VERSION.SDK);
+        }
     }
     public static String Android_system_patch_Version(){
         return Build.VERSION.SECURITY_PATCH;

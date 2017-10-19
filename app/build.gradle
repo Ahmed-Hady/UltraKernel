@@ -35,6 +35,6 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     testCompile 'junit:junit:4.12'
     compile 'org.jetbrains:annotations-java5:15.0'
-    compile 'com.github.jineshfrancs:BatteryProgressView:187ffa72ce'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
+    compile 'com.github.eralpyucel:CircleProgressView:v1.1'
 }
