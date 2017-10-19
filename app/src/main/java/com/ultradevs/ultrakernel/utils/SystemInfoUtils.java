@@ -58,7 +58,7 @@ public class SystemInfoUtils {
     public static String Android_device_kernel(){
         return System.getProperty("os.version");
     }
-    public static String Android_Boorloader(){
+    public static String Android_Bootloader(){
         return Build.BOOTLOADER;
     }
     public static String Android_ABI(){

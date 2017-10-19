@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.hasSelinux;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_ABI;
-import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Boorloader;
+import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Bootloader;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Name;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_RadioVersion;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Sdk_Version;
@@ -70,7 +70,7 @@ public class SystemInfoFragment extends Fragment {
         adapter.add(new InfoList("Device Name", Android_device_name()));
         adapter.add(new InfoList("Device SOC", Android_device_board()));
         adapter.add(new InfoList("Device Manufacturer", Android_device_manuf()));
-        adapter.add(new InfoList("Bootloader", Android_Boorloader()));
+        adapter.add(new InfoList("Bootloader", Android_Bootloader()));
         adapter.add(new InfoList("CPU ABI", Android_ABI()));
         adapter.add(new InfoList("Baseband Version", Android_RadioVersion()));
         adapter.add(new InfoList("Kernel Version", Android_device_kernel()));
