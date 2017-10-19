@@ -45,7 +45,7 @@ public class SystemInfoUtils {
     }
 
     public static String Android_device_name(){
-        return Build.DEVICE;
+        return Build.MODEL + " (" + Build.DEVICE + ")";
     }
 
     public static String Android_device_kernel(){
