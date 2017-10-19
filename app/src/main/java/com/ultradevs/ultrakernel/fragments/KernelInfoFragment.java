@@ -32,7 +32,7 @@ public class KernelInfoFragment extends Fragment {
     public KernelInfoFragment() {
         // Required empty public constructor
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +52,7 @@ public class KernelInfoFragment extends Fragment {
 
         adapter.add(new InfoList("Kernel Version", Kernel_Full_Version()));
         adapter.add(new InfoList("Kernel GCC", "Gcc " + Kernel_GCC()));
+        adapter.add(new InfoList("Current Governor", kernel_Current_Gov()));
         return v;
     }
 
@@ -72,5 +73,9 @@ public class KernelInfoFragment extends Fragment {
         String[] splitter1 = CurrentString.split("-");
         String[] splitter2 = splitter1[7].split(" ");
         return splitter2[3] + " " + splitter2[4];
+    }
+    public static String kernel_Current_Gov(){
+        mShell.command="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
+        return mShell.runAsRoot() ;
     }
 }
