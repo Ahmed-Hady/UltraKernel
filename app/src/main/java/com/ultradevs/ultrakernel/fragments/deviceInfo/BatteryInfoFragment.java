@@ -71,20 +71,19 @@ public class BatteryInfoFragment extends Fragment {
         bat = v.findViewById(R.id.battery_header_icon);
         bat2 = v.findViewById(R.id.battery_header_icon2);
 
-        bat2.setTextEnabled(false);
-        bat2.setCirclerWidth(30);
-
         adapter = new StatusAdapter(getContext(), arrayOfBattery);
         batinfolist = v.findViewById(R.id.bat_status_list);
         batinfolist.setAdapter(adapter);
 
         // Battery: Set Defaults
-        if(Android_Sdk_Version() > 23) {
+        if(Android_Sdk_Version() > 22) {
             bat.setColorFilter(getContext().getColor(R.color.colorAccent_light));
             bat.setImageLevel(level);
             bat.setBatteryLevel(level);
         } else {
             bat2.setProgress(level);
+            bat2.setTextEnabled(false);
+            bat2.setCirclerWidth(30);
         }
         mtxt_perc.setText(level + "%");
 
@@ -168,7 +167,7 @@ public class BatteryInfoFragment extends Fragment {
             if (level != -1 && scale != -1) {
                 int batteryPct = (int) ((level / (float) scale) * 100f);
                 mtxt_perc.setText(batteryPct + "%");
-                if(Android_Sdk_Version() > 23) {
+                if(Android_Sdk_Version() > 22) {
                     bat.setBatteryLevel(batteryPct);
                 } else {
                     bat2.setProgress(batteryPct);
@@ -206,14 +205,14 @@ public class BatteryInfoFragment extends Fragment {
             switch (status) {
                 case BatteryManager.BATTERY_STATUS_CHARGING:
                     statusLbl = R.string.battery_status_charging;
-                    if(Android_Sdk_Version() > 23) {
+                    if(Android_Sdk_Version() > 22) {
                         bat.setCharging(true);
                     }
                     break;
 
                 case BatteryManager.BATTERY_STATUS_DISCHARGING:
                     statusLbl = R.string.battery_status_discharging;
-                    if(Android_Sdk_Version() > 23) {
+                    if(Android_Sdk_Version() > 22) {
                         bat.setCharging(false);
                     }
                     break;
