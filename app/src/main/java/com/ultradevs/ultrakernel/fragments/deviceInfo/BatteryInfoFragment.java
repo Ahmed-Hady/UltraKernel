@@ -43,6 +43,8 @@ public class BatteryInfoFragment extends Fragment {
     BatteryMeterView bat;
     CircleProgressView bat2;
 
+    Context _context;
+
     ArrayList<InfoList> arrayOfBattery = new ArrayList<InfoList>();
 
     public BatteryInfoFragment() {
@@ -91,13 +93,20 @@ public class BatteryInfoFragment extends Fragment {
         return v;
     }
 
+    @Override
+    public void onAttach(Context context)
+    {
+        super.onAttach(context);
+        _context = context;
+    }
+
     private void loadBatterySection() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
         intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
         intentFilter.addAction(Intent.ACTION_BATTERY_CHANGED);
 
-        getActivity().registerReceiver(batteryInfoReceiver, intentFilter);
+        _context.registerReceiver(batteryInfoReceiver, intentFilter);
     }
 
     private BroadcastReceiver batteryInfoReceiver = new BroadcastReceiver() {
@@ -254,5 +263,18 @@ public class BatteryInfoFragment extends Fragment {
 
         }
 
+    }
+
+    @Override
+    public void onDestroyView()
+    {
+        super.onDestroyView();
+        _context.unregisterReceiver(batteryInfoReceiver);
+    }
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        loadBatterySection();
     }
 }
