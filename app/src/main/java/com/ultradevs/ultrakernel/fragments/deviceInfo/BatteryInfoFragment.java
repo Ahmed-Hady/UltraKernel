@@ -71,6 +71,9 @@ public class BatteryInfoFragment extends Fragment {
         bat = v.findViewById(R.id.battery_header_icon);
         bat2 = v.findViewById(R.id.battery_header_icon2);
 
+        bat2.setTextEnabled(false);
+        bat2.setCirclerWidth(30);
+
         adapter = new StatusAdapter(getContext(), arrayOfBattery);
         batinfolist = v.findViewById(R.id.bat_status_list);
         batinfolist.setAdapter(adapter);
