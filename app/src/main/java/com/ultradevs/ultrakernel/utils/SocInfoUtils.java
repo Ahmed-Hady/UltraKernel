@@ -16,7 +16,7 @@ public class SocInfoUtils {
     private static ShellExecuter mShell;
 
     public static String SocName(){
-        mShell.command = "sed '41!d' /proc/cpuinfo";
+        mShell.command = "sed 41!d /proc/cpuinfo";
         String[] splitter = mShell.runAsRoot().split(": ");
         return splitter[1];
     }
