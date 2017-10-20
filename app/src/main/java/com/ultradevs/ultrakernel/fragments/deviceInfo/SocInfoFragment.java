@@ -53,6 +53,7 @@ public class SocInfoFragment extends Fragment {
 
         soc_name.setText(SocName());
 
+        adapter.clear();
         adapter.add(new InfoList("Number of cores", CoresInWords(getContext()) + " (" + Ncores() + " Cores)"));
         adapter.add(new InfoList("CPU ABI", Android_ABI()));
         adapter.add(new InfoList("CPU Manufacturer", getProcManuf(getContext())));
