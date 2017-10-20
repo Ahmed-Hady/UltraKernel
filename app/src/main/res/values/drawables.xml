@@ -3,5 +3,5 @@
     <item name="ic_bat_info" type="drawable">@drawable/ic_battery_std_grey_800_24dp</item>
     <item name="ic_kernel_info" type="drawable">@drawable/ic_build_black_24dp</item>
     <item name="ic_proc_info" type="drawable">@drawable/ic_phonelink_setup_black_24dp</item>
-    <item name="ic_platlogo" type="drawable">@*android:drawable/platlogo</item>
+    <item name="ic_k_cpu_gov" type="drawable">@drawable/ic_memory_black_24dp</item>
 </resources>

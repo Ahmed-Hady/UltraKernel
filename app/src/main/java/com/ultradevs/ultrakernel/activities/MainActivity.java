@@ -17,6 +17,7 @@ import com.ultradevs.ultrakernel.fragments.deviceInfo.BatteryInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SocInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
+import com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CpuGovFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity
     private BatteryInfoFragment mBatInfo;
     private KernelInfoFragment mKernelInfo;
     private SocInfoFragment mSocInfo;
+    private CpuGovFragment mCpuGov;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity
         mBatInfo = new BatteryInfoFragment();
         mKernelInfo = new KernelInfoFragment();
         mSocInfo = new SocInfoFragment();
+        mCpuGov = new CpuGovFragment();
         updateFragment(this.mSysInfo);
     }
 
@@ -96,6 +99,8 @@ public class MainActivity extends AppCompatActivity
             updateFragment(this.mKernelInfo);
         } else if (id == R.id.nav_proc) {
             updateFragment(this.mSocInfo);
+        } else if (id == R.id.nav_k_cpu_gov) {
+            updateFragment(this.mCpuGov);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

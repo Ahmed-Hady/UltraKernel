@@ -26,4 +26,16 @@
         </menu>
     </item>
 
+    <item
+        android:title="@string/k_cpu_title">
+
+        <menu>
+            <item
+                android:id="@+id/nav_k_cpu_gov"
+                android:icon="@drawable/ic_k_cpu_gov"
+                android:title="@string/k_cpu_gov"
+                android:checkable="true" />
+        </menu>
+    </item>
+
 </menu>

@@ -8,6 +8,7 @@
 
     <!-- Menu Titles -->
     <string name="info_title">Device Information</string>
+    <string name="k_cpu_title">CPU Kernel Features</string>
 
     <!-- Info sections -->
     <string name="sys_info">System Information</string>
@@ -16,6 +17,9 @@
     <string name="proc_info">Processor Information</string>
     <string name="KernelInfo">Kernel Information</string>
     <string name="SocInfo">Processor Information</string>
+
+    <!-- Kernel CPU Features Section -->
+    <string name="k_cpu_gov">CPU Governors</string>
 
     <!-- System Info -->
     <string name="sys_info_title">System Version</string>
