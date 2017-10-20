@@ -15,6 +15,7 @@
     <string name="kernel_info">Kernel Information</string>
     <string name="proc_info">Processor Information</string>
     <string name="KernelInfo">Kernel Information</string>
+    <string name="SocInfo">Processor Information</string>
 
     <!-- System Info -->
     <string name="sys_info_title">System Version</string>
@@ -37,4 +38,19 @@
     <string name="battery_status_discharging">Not Charging</string>
     <string name="battery_status_charging">Charging</string>
     <string name="battery_status_full">Full</string>
+
+    <!-- Processor Cores in Words -->
+    <string name="dual_core">DualCore</string>
+    <string name="quad_core">QuadCore</string>
+    <string name="hexa_core">HexaCore</string>
+    <string name="octa_core">OctaCore</string>
+    <string name="deca_core">DecaCore</string>
+
+    <!-- SOC Manufacturer -->
+    <string name="qcom">Qualcomm</string>
+    <string name="mtk">MediaTek</string>
+    <string name="exynos">Exynos</string>
+    <string name="hisilicon">HiSilicon</string>
+    <string name="cortex">Cortex</string>
+    <string name="intel">Intel</string>
 </resources>

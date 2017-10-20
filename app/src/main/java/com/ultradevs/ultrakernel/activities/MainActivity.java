@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.BatteryInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment;
+import com.ultradevs.ultrakernel.fragments.deviceInfo.SocInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity
     private SystemInfoFragment mSysInfo;
     private BatteryInfoFragment mBatInfo;
     private KernelInfoFragment mKernelInfo;
+    private SocInfoFragment mSocInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         mSysInfo = new SystemInfoFragment();
         mBatInfo = new BatteryInfoFragment();
         mKernelInfo = new KernelInfoFragment();
+        mSocInfo = new SocInfoFragment();
         updateFragment(this.mSysInfo);
     }
 
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_kernel) {
             updateFragment(this.mKernelInfo);
         } else if (id == R.id.nav_proc) {
-
+            updateFragment(this.mSocInfo);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
