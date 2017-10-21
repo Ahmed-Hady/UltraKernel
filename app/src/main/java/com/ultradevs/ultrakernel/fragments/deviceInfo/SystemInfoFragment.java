@@ -28,6 +28,7 @@ import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_ker
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_manuf;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_name;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_system_patch_Version;
+import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.isRoot;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +82,7 @@ public class SystemInfoFragment extends Fragment {
         }else {
             adapter.add(new InfoList("SElinux", "Off"));
         }
+        adapter.add(new InfoList("Root Status", isRoot()));
         return v;
     }
 

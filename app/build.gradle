@@ -39,4 +39,5 @@ dependencies {
     compile 'org.jetbrains:annotations-java5:15.0'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
     compile 'com.github.eralpyucel:CircleProgressView:v1.1'
+    compile files('libs/RootTools.jar')
 }

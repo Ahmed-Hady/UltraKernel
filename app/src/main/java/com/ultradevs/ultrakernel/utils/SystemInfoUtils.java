@@ -2,6 +2,8 @@ package com.ultradevs.ultrakernel.utils;
 
 import android.os.Build;
 
+import com.stericson.RootTools.RootTools;
+
 import java.io.IOException;
 
 /**
@@ -66,5 +68,13 @@ public class SystemInfoUtils {
     }
     public static String Android_RadioVersion(){
         return Build.getRadioVersion();
+    }
+    public static String isRoot(){
+        boolean checkroot = RootTools.isRootAvailable();
+        if(checkroot==true){
+            return "Rooted";
+        } else {
+            return "Not Rooted";
+        }
     }
 }
