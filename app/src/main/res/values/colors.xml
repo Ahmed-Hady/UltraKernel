@@ -8,4 +8,8 @@
     <color name="batterymeter_frame_color">#66FFFFFF</color>
     <color name="batterymeter_bolt_color">#ff141414</color>
     <color name="header_bg">#efefef</color>
+    <color name="light_white">#cbf1f1f1</color>
+    <color name="darker">#b6cecece</color>
+    <color name="light_green">#4ea5ffae</color>
+    <color name="light_red">#4effa5a8</color>
 </resources>
