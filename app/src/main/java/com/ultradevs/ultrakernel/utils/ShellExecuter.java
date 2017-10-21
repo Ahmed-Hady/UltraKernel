@@ -120,4 +120,13 @@ public class ShellExecuter {
         }
         return out;
     }
+
+    public static String isRoot(){
+        boolean checkroot = RootTools.isRootAvailable();
+        if(checkroot==true){
+            return "Rooted";
+        } else {
+            return "Not Rooted";
+        }
+    }
 }

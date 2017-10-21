@@ -17,6 +17,7 @@ import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 import java.util.ArrayList;
 
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.hasSelinux;
+import static com.ultradevs.ultrakernel.utils.ShellExecuter.isRoot;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_ABI;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Bootloader;
@@ -29,7 +30,6 @@ import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_ker
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_manuf;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_device_name;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_system_patch_Version;
-import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.isRoot;
 
 /**
  * A simple {@link Fragment} subclass.

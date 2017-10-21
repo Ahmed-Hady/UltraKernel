@@ -69,12 +69,4 @@ public class SystemInfoUtils {
     public static String Android_RadioVersion(){
         return Build.getRadioVersion();
     }
-    public static String isRoot(){
-        boolean checkroot = RootTools.isRootAvailable();
-        if(checkroot==true){
-            return "Rooted";
-        } else {
-            return "Not Rooted";
-        }
-    }
 }
