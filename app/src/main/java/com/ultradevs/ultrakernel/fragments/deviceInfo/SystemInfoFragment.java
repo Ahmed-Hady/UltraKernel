@@ -17,6 +17,7 @@ import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 import java.util.ArrayList;
 
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.hasSelinux;
+import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_ABI;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Bootloader;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Name;
@@ -83,6 +84,7 @@ public class SystemInfoFragment extends Fragment {
             adapter.add(new InfoList("SElinux", "Off"));
         }
         adapter.add(new InfoList("Root Status", isRoot()));
+
         return v;
     }
 
