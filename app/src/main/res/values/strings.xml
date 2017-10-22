@@ -50,4 +50,7 @@
     <string name="octa_core">OctaCore</string>
     <string name="deca_core">DecaCore</string>
 
+    <!-- CPU GOV -->
+    <string name="k_current_gov">Current Governor</string>
+    <string name="k_change_gov">Change Governor</string>
 </resources>
