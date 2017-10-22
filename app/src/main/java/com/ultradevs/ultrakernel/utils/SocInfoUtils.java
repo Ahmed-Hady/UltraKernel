@@ -16,9 +16,9 @@ public class SocInfoUtils {
     private static ShellExecuter mShell;
 
     public static String SocName(){
-        mShell.command = "sed 41!d /proc/cpuinfo";
-        String[] splitter = mShell.runAsRoot().split(": ");
-        return splitter[1];
+        mShell.command = "grep -m1 Hardware /proc/cpuinfo";
+        String[] splitter = mShell.runAsRoot().split(":");
+        return splitter[1].trim();
     }
     public static String Ncores(){
         return String.valueOf(Runtime.getRuntime().availableProcessors());
@@ -38,19 +38,7 @@ public class SocInfoUtils {
         return null;
     }
     public static String getProcManuf(Context context) {
-        if(SocName().contains("MSM")){
-            return context.getString(R.string.qcom).toString();
-        } else if(SocName().contains("MT")){
-            return context.getString(R.string.mtk).toString();
-        } else if(SocName().contains("Exy")) {
-            return context.getString(R.string.exynos).toString();
-        } else if(SocName().contains("HiSi")){
-            return context.getString(R.string.hisilicon).toString();
-        } else if(SocName().contains("Coretex")) {
-            return context.getString(R.string.cortex).toString();
-        } else if(SocName().contains("Intel")) {
-            return context.getString(R.string.intel).toString();
-        }
-        return null;
+        String[] man = SocName().split(" ");
+        return man[0];
     }
 }
