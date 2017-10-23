@@ -1,10 +1,12 @@
 package com.ultradevs.ultrakernel.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.stericson.RootTools.RootTools;
 import com.ultradevs.ultrakernel.R;
@@ -26,6 +28,7 @@ public class InitActivity extends Activity {
 
     int error = 0;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +61,10 @@ public class InitActivity extends Activity {
             error += 1;
         }
 
-        if(error > 2){
-
+        if(error >= 2){
+            TextView loading = (TextView) findViewById(R.id.loading);
+            loading.setText("Error .. Check the error list");
+            loading.setTextColor(getColor(R.color.red));
         }else {
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
@@ -68,7 +73,7 @@ public class InitActivity extends Activity {
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     InitActivity.this.finish();
                 }
-            }, 2500);
+            }, 2000);
         }
 
     }

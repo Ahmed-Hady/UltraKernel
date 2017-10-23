@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/loading"
         android:layout_width="@dimen/init_loading_width"
         android:layout_height="@dimen/init_loading_height"
         android:layout_marginEnd="@dimen/init_loading_marginEnd"
