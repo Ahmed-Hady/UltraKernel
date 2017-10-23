@@ -6,10 +6,7 @@
     <dimen name="nav_header_vertical_spacing">16dp</dimen>
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="top_panel_height">120dp</dimen>
-    <dimen name="battery_height">14.5dp</dimen>
-    <dimen name="battery_width">9.5dp</dimen>
-    <dimen name="battery_meter_width">66dp</dimen>
-    <dimen name="battery_meter_height">100dp</dimen>
+    <dimen name="list_marginTop">10dp</dimen>
 
     <!-- INIT -->
     <dimen name="init_logo_layout_width">0dp</dimen>
@@ -27,4 +24,29 @@
     <dimen name="init_loading_marginEnd">8dp</dimen>
     <dimen name="init_loading_marginStart">@dimen/init_loading_marginEnd</dimen>
     <dimen name="init_loading_marginTop">@dimen/init_loading_marginEnd</dimen>
+
+    <!-- Battery Info -->
+    <dimen name="battery_height">14.5dp</dimen>
+    <dimen name="battery_width">9.5dp</dimen>
+    <dimen name="battery_meter_width">66dp</dimen>
+    <dimen name="battery_meter_height">100dp</dimen>
+    <dimen name="battery_const_layout_editor_absoluteX">0dp</dimen>
+    <dimen name="battery_const_layout_editor_absoluteY">2dp</dimen>
+    <dimen name="battery_const_layout_height">158dp</dimen>
+    <dimen name="battery_batmeter_marginBottom">8dp</dimen>
+    <dimen name="battery_batmeter_marginEnd">@dimen/battery_batmeter_marginBottom</dimen>
+    <dimen name="battery_batmeter_marginStart">@dimen/battery_batmeter_marginBottom</dimen>
+    <dimen name="battery_batmeter_marginTop">@dimen/battery_batmeter_marginBottom</dimen>
+    <dimen name="battery_perc_layout_width">76dp</dimen>
+    <dimen name="battery_perc_layout_height">61dp</dimen>
+    <dimen name="battery_perc_layout_marginBottom">8dp</dimen>
+    <dimen name="battery_perc_layout_marginEnd">@dimen/battery_perc_layout_marginBottom</dimen>
+    <dimen name="battery_perc_layout_marginStart">@dimen/battery_perc_layout_marginBottom</dimen>
+    <dimen name="battery_perc_layout_marginTop">@dimen/battery_perc_layout_marginBottom</dimen>
+    <dimen name="battery_status_layout_width">198dp</dimen>
+    <dimen name="battery_status_layout_height">27dp</dimen>
+    <dimen name="battery_status_layout_marginBottom">8dp</dimen>
+    <dimen name="battery_status_layout_marginEnd">@dimen/battery_status_layout_marginBottom</dimen>
+    <dimen name="battery_status_layout_marginStart">@dimen/battery_status_layout_marginBottom</dimen>
+    <dimen name="battery_status_layout_marginTop">@dimen/battery_status_layout_marginBottom</dimen>
 </resources>
