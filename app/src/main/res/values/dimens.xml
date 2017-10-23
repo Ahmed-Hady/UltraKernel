@@ -10,4 +10,21 @@
     <dimen name="battery_width">9.5dp</dimen>
     <dimen name="battery_meter_width">66dp</dimen>
     <dimen name="battery_meter_height">100dp</dimen>
+
+    <!-- INIT -->
+    <dimen name="init_logo_layout_width">0dp</dimen>
+    <dimen name="init_logo_layout_marginBottom">8dp</dimen>
+    <dimen name="init_logo_layout_marginEnd">@dimen/init_logo_layout_marginBottom</dimen>
+    <dimen name="init_logo_layout_marginStart">@dimen/init_logo_layout_marginBottom</dimen>
+    <dimen name="init_logo_layout_marginTop">@dimen/init_logo_layout_marginBottom</dimen>
+    <dimen name="init_list_width">353dp</dimen>
+    <dimen name="init_list_height">315dp</dimen>
+    <dimen name="init_list_marginBottom">72dp</dimen>
+    <dimen name="init_list_marginEnd">8dp</dimen>
+    <dimen name="init_list_marginStart">@dimen/init_list_marginEnd</dimen>
+    <dimen name="init_loading_width">425dp</dimen>
+    <dimen name="init_loading_height">54dp</dimen>
+    <dimen name="init_loading_marginEnd">8dp</dimen>
+    <dimen name="init_loading_marginStart">@dimen/init_loading_marginEnd</dimen>
+    <dimen name="init_loading_marginTop">@dimen/init_loading_marginEnd</dimen>
 </resources>
