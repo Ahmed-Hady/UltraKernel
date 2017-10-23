@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -50,6 +52,7 @@ public class KernelInfoFragment extends Fragment {
             br.close();
             return line;
         } catch (Exception ex) {
+            Log.e(LOG_TAG, ex.getMessage());
             return "ERROR: " + ex.getMessage();
         }
     }
@@ -92,8 +95,6 @@ public class KernelInfoFragment extends Fragment {
         mShell.command="cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
         return mShell.runAsRoot() ;
     }
-
-    final static String LOG_TAG = "UltraKernel";
 
     public static String getFormattedKernelVersion(Integer gNumber) {
 

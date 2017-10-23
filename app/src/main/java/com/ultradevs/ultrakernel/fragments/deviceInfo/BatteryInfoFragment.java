@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.transition.CircularPropagation;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,7 @@ import com.ultradevs.ultrakernel.utils.ShellExecuter;
 import java.util.ArrayList;
 
 import static android.os.Build.VERSION_CODES.LOLLIPOP;
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Sdk_Version;
 
 /**
@@ -70,6 +72,8 @@ public class BatteryInfoFragment extends Fragment {
 
         bat = v.findViewById(R.id.battery_header_icon);
         bat2 = v.findViewById(R.id.battery_header_icon2);
+
+        Log.i(LOG_TAG,"Initializing Battery Info");
 
         adapter = new StatusAdapter(getContext(), arrayOfBattery);
         batinfolist = v.findViewById(R.id.bat_status_list);
@@ -157,6 +161,7 @@ public class BatteryInfoFragment extends Fragment {
 
             if (healthLbl != -1) {
                 // display battery health ...
+                Log.i(LOG_TAG, "Battery Health: " + getString(healthLbl));
                 adapter.add(new InfoList("Health", getString(healthLbl)));
             }
 
@@ -172,6 +177,7 @@ public class BatteryInfoFragment extends Fragment {
                 } else {
                     bat2.setProgress(batteryPct);
                 }
+                Log.i(LOG_TAG, "Updating Battery Percentage -> " + batteryPct);
             }
 
             int plugged = intent.getIntExtra(BatteryManager.EXTRA_PLUGGED, 0);
@@ -198,7 +204,9 @@ public class BatteryInfoFragment extends Fragment {
             // display plugged status ...
             if(pluggedLbl != R.string.battery_plugged_none) {
                 adapter.add(new InfoList("Plugged", getString(pluggedLbl)));
-            }
+                Log.i(LOG_TAG, "Battery Update: Plugged to " + getString(pluggedLbl));
+            } else { Log.i(LOG_TAG, "Battery Update: UnPlugged");}
+
             int status = intent.getIntExtra(BatteryManager.EXTRA_STATUS, -1);
             int statusLbl = R.string.battery_status_discharging;
 
@@ -234,6 +242,7 @@ public class BatteryInfoFragment extends Fragment {
             if (statusLbl != -1) {
                 mtxt_bat_status.setText(getString(statusLbl) + " " + getString(pluggedLbl));
                 adapter.add(new InfoList("Status", getString(statusLbl)));
+                Log.i(LOG_TAG, "Battery Update: " + getString(statusLbl));
             }
 
             if (intent.getExtras() != null) {
@@ -241,6 +250,7 @@ public class BatteryInfoFragment extends Fragment {
 
                 if (!"".equals(technology)) {
                     adapter.add(new InfoList("Technology", technology));
+                    Log.i(LOG_TAG, "Battery Update: Technology is " + technology);
                 }
             }
 
@@ -249,18 +259,21 @@ public class BatteryInfoFragment extends Fragment {
             if (temperature > 0) {
                 float temp = ((float) temperature) / 10f;
                 adapter.add(new InfoList("Temperature", temp + "°C"));
+                Log.i(LOG_TAG, "Battery Update: Temperature " + temp + "°C");
             }
 
             int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
 
             if (voltage > 0) {
                 adapter.add(new InfoList("Voltage", voltage + " mV"));
+                Log.i(LOG_TAG, "Battery Update: Voltage  " + voltage);
             }
 
             double capacity = BatteryUtils.getBatteryCapacity(getContext());
 
             if (capacity > 0) {
                 adapter.add(new InfoList("Capacity", capacity + " mAh"));
+                Log.i(LOG_TAG, "Battery Update: Capacity " + capacity + " mAh");
             }
 
         }

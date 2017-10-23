@@ -28,6 +28,8 @@ public class InitActivity extends Activity {
 
     int error = 0;
 
+    public final static String LOG_TAG = "UltraKernel";
+
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

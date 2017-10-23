@@ -1,6 +1,7 @@
 package com.ultradevs.ultrakernel.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
 import java.util.ArrayList;
+
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 
 /**
  * Created by: sumit

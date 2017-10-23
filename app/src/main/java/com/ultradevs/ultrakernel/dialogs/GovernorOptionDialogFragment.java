@@ -10,12 +10,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.GovernorAdapter;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment.kernel_Current_Gov;
 
 /**
@@ -40,6 +42,7 @@ public class GovernorOptionDialogFragment extends DialogFragment
             @Override
             public void onClick(DialogInterface dialog, int which)
             {
+                Log.i(LOG_TAG, "Current Governor: " + kernel_Current_Gov());
                 ShellExecuter.shell(((GovernorAdapter.GovernorItem) adapter.getItem(which)).command,true);
             }
         });
@@ -51,6 +54,7 @@ public class GovernorOptionDialogFragment extends DialogFragment
     public void onDestroyView(){
         super.onDestroyView();
         TextView curr = (TextView) getActivity().findViewById(R.id.cpugov);
+        Log.i(LOG_TAG, "Set Governor: " + kernel_Current_Gov());
         curr.setText(kernel_Current_Gov());
     }
 }
