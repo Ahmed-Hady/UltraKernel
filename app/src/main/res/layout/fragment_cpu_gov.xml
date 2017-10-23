@@ -62,55 +62,80 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:divider="@drawable/horz_separator"
-        android:showDividers="middle"
-        android:layout_marginTop="22dp">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:padding="@dimen/list_marginTop">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:divider="@drawable/horz_separator"
+            android:showDividers="middle"
+            android:layout_marginTop="22dp"
+            android:isScrollContainer="true">
 
-            <TextView
-                android:id="@+id/textView4"
-                style="?android:attr/textAppearanceListItem"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-                android:text="@string/k_cpu_gov"
-                android:textSize="18dp">
+                android:layout_height="125dp"
+                android:padding="@dimen/list_marginTop">
 
-            </TextView>
+                <TextView
+                    android:id="@+id/textView4"
+                    style="?android:attr/textAppearanceListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                    android:text="@string/k_cpu_gov"
+                    android:textSize="18dp">
 
-            <TextView
-                android:id="@+id/cpugov"
+                </TextView>
+
+                <TextView
+                    android:id="@+id/cpugov"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/textView4"
+                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                    android:layout_marginTop="@dimen/cpu_gov_governor_marginTop"
+                    android:ellipsize="end"
+                    android:maxLines="10"
+                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                    android:textColor="?android:attr/textColorSecondary"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/change_gov"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:text="@string/k_change_gov" />
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textView4"
-                android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-                android:layout_marginTop="@dimen/cpu_gov_governor_marginTop"
-                android:ellipsize="end"
-                android:maxLines="10"
-                android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                android:textColor="?android:attr/textColorSecondary"
-                android:textSize="16sp" />
+                android:layout_height="match_parent"
+                android:padding="@dimen/list_marginTop">
 
-            <Button
-                android:id="@+id/change_gov"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:text="@string/k_change_gov" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/textView3"
+                    style="?android:attr/textAppearanceListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                    android:text="@string/k_cpu_freq"
+                    android:textSize="18dp" />
 
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/textView3"
+                    android:layout_below="@+id/textView3" />
+            </RelativeLayout>
 
-    </LinearLayout>
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
