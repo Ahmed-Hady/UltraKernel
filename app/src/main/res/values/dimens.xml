@@ -49,4 +49,12 @@
     <dimen name="battery_status_layout_marginEnd">@dimen/battery_status_layout_marginBottom</dimen>
     <dimen name="battery_status_layout_marginStart">@dimen/battery_status_layout_marginBottom</dimen>
     <dimen name="battery_status_layout_marginTop">@dimen/battery_status_layout_marginBottom</dimen>
+
+    <!-- CPU GOV -->
+    <dimen name="cpu_gov_switcher_layout_height">50dp</dimen>
+    <dimen name="cpu_gov_switcher_layout_padding">6dp</dimen>
+    <dimen name="cpu_gov_freq_layout_marginBottom">8dp</dimen>
+    <dimen name="cpu_gov_freq_layout_marginEnd">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
+    <dimen name="cpu_gov_freq_layout_marginStart">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
+    <dimen name="cpu_gov_freq_layout_marginTop">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
 </resources>
