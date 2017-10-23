@@ -6,6 +6,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="onboot">Apply On Boot</string>
+
     <!-- Menu Titles -->
     <string name="info_title">Device Information</string>
     <string name="k_cpu_title">CPU Kernel Features</string>
@@ -51,7 +53,6 @@
     <string name="deca_core">DecaCore</string>
 
     <!-- CPU GOV -->
-    <string name="onboot_current_gov">Apply On Boot</string>
     <string name="cpu_max_freq">CPU Frequently</string>
     <string name="k_change_gov">Change Governor</string>
 </resources>

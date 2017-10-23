@@ -12,7 +12,7 @@
         android:layout_height="@dimen/cpu_gov_switcher_layout_height"
         android:background="@color/colorAccent"
         android:padding="@dimen/cpu_gov_switcher_layout_padding"
-        android:text="@string/onboot_current_gov"
+        android:text="@string/onboot"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.DialogWindowTitle"
         android:textColor="@android:color/white" />
 
