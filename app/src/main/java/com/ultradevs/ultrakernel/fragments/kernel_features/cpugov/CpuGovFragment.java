@@ -6,13 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
+import com.ultradevs.ultrakernel.dialogs.GovernorOptionDialogFragment;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
-import java.text.DecimalFormat;
-
+import static com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment.kernel_Current_Gov;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.getMaxFreq;
 
 /**
@@ -22,7 +23,9 @@ public class CpuGovFragment extends Fragment {
 
     public  static ShellExecuter mShell;
 
+    public TextView mMaxFreq;
     public TextView mCurrent;
+    public Button GovernorButton;
 
     public CpuGovFragment() {
         // Required empty public constructor
@@ -36,8 +39,23 @@ public class CpuGovFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.k_cpu_gov));
 
-        mCurrent = (TextView) v.findViewById(R.id.cpufreq);
-        mCurrent.setText(getMaxFreq());
+        mMaxFreq = (TextView) v.findViewById(R.id.cpufreq);
+        mCurrent = (TextView) v.findViewById(R.id.cpugov);
+
+        mMaxFreq.setText(getMaxFreq());
+        mCurrent.setText(kernel_Current_Gov());
+
+        //Change gov
+        GovernorButton=(Button)v.findViewById(R.id.change_gov);
+        GovernorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GovernorOptionDialogFragment fragment = new GovernorOptionDialogFragment();
+                fragment.show(getActivity().getSupportFragmentManager(), "governor_dialog");
+            }
+        });
+
+
         return v;
     }
 

@@ -57,6 +57,8 @@
     <dimen name="cpu_gov_freq_layout_marginEnd">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
     <dimen name="cpu_gov_freq_layout_marginStart">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
     <dimen name="cpu_gov_freq_layout_marginTop">@dimen/cpu_gov_freq_layout_marginBottom</dimen>
+    <dimen name="cpu_gov_governor_marginStart">5dp</dimen>
+    <dimen name="cpu_gov_governor_marginTop">3dp</dimen>
 
     <!-- Kernel Info -->
     <dimen name="kernel_info_kversion_layout_width">224dp</dimen>
@@ -79,4 +81,5 @@
     <dimen name="sys_info_os_version_height">51dp</dimen>
     <dimen name="sys_info_os_name_width">365dp</dimen>
     <dimen name="sys_info_os_name_height">61dp</dimen>
+
 </resources>
