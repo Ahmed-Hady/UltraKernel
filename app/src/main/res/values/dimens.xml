@@ -72,4 +72,11 @@
     <dimen name="soc_info_const_layout_height">118dp</dimen>
     <dimen name="soc_info_soc_version_layout_width">341dp</dimen>
     <dimen name="soc_info_soc_version_layout_height">78dp</dimen>
+
+    <!-- Sys Info -->
+    <dimen name="sys_info_const_layout_height=">139dp</dimen>
+    <dimen name="sys_info_os_version_width">115dp</dimen>
+    <dimen name="sys_info_os_version_height">51dp</dimen>
+    <dimen name="sys_info_os_name_width">365dp</dimen>
+    <dimen name="sys_info_os_name_height">61dp</dimen>
 </resources>
