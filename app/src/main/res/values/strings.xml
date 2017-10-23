@@ -51,6 +51,7 @@
     <string name="deca_core">DecaCore</string>
 
     <!-- CPU GOV -->
-    <string name="k_current_gov">Current Governor</string>
+    <string name="onboot_current_gov">Enable On Boot</string>
+    <string name="cpu_max_freq">CPU Frequently</string>
     <string name="k_change_gov">Change Governor</string>
 </resources>

@@ -9,13 +9,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
+import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
-import static com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment.kernel_Current_Gov;
+import java.text.DecimalFormat;
+
+import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.getMaxFreq;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CpuGovFragment extends Fragment {
+
+    public  static ShellExecuter mShell;
 
     public TextView mCurrent;
 
@@ -31,9 +36,8 @@ public class CpuGovFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.k_cpu_gov));
 
-        mCurrent = (TextView) v.findViewById(R.id.currGov);
-
-        mCurrent.setText(kernel_Current_Gov());
+        mCurrent = (TextView) v.findViewById(R.id.cpufreq);
+        mCurrent.setText(getMaxFreq());
         return v;
     }
 
