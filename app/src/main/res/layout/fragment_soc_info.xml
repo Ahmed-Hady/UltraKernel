@@ -9,19 +9,19 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="118dp"
+        android:layout_height="@dimen/soc_info_const_layout_height"
         android:background="@color/header_bg"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp">
 
         <TextView
             android:id="@+id/txt_soc_version"
-            android:layout_width="341dp"
-            android:layout_height="78dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="@dimen/soc_info_soc_version_layout_width"
+            android:layout_height="@dimen/soc_info_soc_version_layout_height"
+            android:layout_marginBottom="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginEnd="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginStart="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginTop="@dimen/kernel_info_kversion_layout_marginBottom"
             android:textAlignment="center"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
     </android.support.constraint.ConstraintLayout>
     <ListView
         android:id="@+id/soc_info_list"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/list_marginTop"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

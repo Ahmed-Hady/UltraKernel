@@ -67,4 +67,9 @@
     <dimen name="kernel_info_kversion_layout_marginTop">@dimen/kernel_info_kversion_layout_marginBottom</dimen>
     <dimen name="kernel_info_kname_width">365dp</dimen>
     <dimen name="kernel_info_kname_height">61dp</dimen>
+
+    <!-- Soc Info -->
+    <dimen name="soc_info_const_layout_height">118dp</dimen>
+    <dimen name="soc_info_soc_version_layout_width">341dp</dimen>
+    <dimen name="soc_info_soc_version_layout_height">78dp</dimen>
 </resources>
