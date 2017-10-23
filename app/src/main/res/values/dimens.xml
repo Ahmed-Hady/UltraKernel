@@ -15,7 +15,7 @@
     <dimen name="init_logo_layout_marginStart">@dimen/init_logo_layout_marginBottom</dimen>
     <dimen name="init_logo_layout_marginTop">@dimen/init_logo_layout_marginBottom</dimen>
     <dimen name="init_list_width">353dp</dimen>
-    <dimen name="init_list_height">315dp</dimen>
+    <dimen name="init_list_height">270dp</dimen>
     <dimen name="init_list_marginBottom">72dp</dimen>
     <dimen name="init_list_marginEnd">8dp</dimen>
     <dimen name="init_list_marginStart">@dimen/init_list_marginEnd</dimen>
