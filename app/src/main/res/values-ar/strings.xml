@@ -60,4 +60,6 @@
     <string name="kernel_version">إصدار النواة</string>
     <string name="kernel_gcc">أداة بناء النواة</string>
     <string name="kernel_c_gov">مدير المعالج الحالي</string>
+    <string name="soc_n_cores">عدد الأنوية</string>
+    <string name="soc_manuf">الشركة المنتجة</string>
 </resources>
