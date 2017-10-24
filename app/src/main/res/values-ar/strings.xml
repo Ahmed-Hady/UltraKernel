@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">UltraKernel</string>
+    <string name="action_settings">إعدادات</string>
+    <string name="onboot">تطبيق عند التشغيل</string>
+    <string name="info_title">معلومات الجهاز</string>
+    <string name="k_cpu_title">"خواص المعالج "</string>
+    <string name="sys_info">معلومات عن النظام</string>
+    <string name="bat_info">معلومات عن البطارية</string>
+    <string name="kernel_info">معلومات عن النواة</string>
+    <string name="proc_info">معلومات عن المعالج</string>
+    <string name="KernelInfo">معلومات عن النواة</string>
+    <string name="SocInfo">معلومات عن المعالج</string>
+    <string name="k_cpu_gov">مدير المعالج</string>
+    <string name="sys_info_title">إصدار النظام</string>
+    <string name="battery_health_cold">بارد</string>
+    <string name="battery_health_dead">ميت</string>
+    <string name="battery_health_good">جيد</string>
+    <string name="battery_health_over_voltage">فولتية زائدة</string>
+    <string name="battery_health_overheat">حرارة زائدة</string>
+    <string name="battery_health_unspecified_failure">فشل غير معروف</string>
+    <string name="battery_plugged_wireless">الشاحن اللاسلكي</string>
+    <string name="battery_plugged_usb">شاحن الUSB</string>
+    <string name="battery_plugged_ac">الشاحن</string>
+    <string name="battery_status_discharging">غير موصل</string>
+    <string name="battery_status_charging">يشحن</string>
+    <string name="battery_status_full">تم الشحن</string>
+    <string name="dual_core">ثنائي النواة</string>
+    <string name="quad_core">رباعي النواة</string>
+    <string name="hexa_core">سداسي النواة</string>
+    <string name="octa_core">ثماني النواة</string>
+    <string name="deca_core">عشاري النواة</string>
+    <string name="cpu_max_freq">تردد المعالج</string>
+    <string name="k_change_gov">تغيير</string>
+    <string name="k_cpu_freq">جدول الترددات</string>
+    <string name="gathering_cpu_information">جمع المعلومات</string>
+    <string name="cpu_info_speed_current">السرعة الحالية</string>
+    <string name="cpu_info_speed_max">السرعة العظمى</string>
+    <string name="cpu_info_speed_min">السرعة الصغرى</string>
+</resources>
