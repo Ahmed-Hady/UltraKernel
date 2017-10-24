@@ -1,4 +1,4 @@
-package receivers;
+package com.ultradevs.ultrakernel.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

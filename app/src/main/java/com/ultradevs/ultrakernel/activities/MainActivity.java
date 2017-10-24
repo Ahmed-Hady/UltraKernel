@@ -1,14 +1,18 @@
 package com.ultradevs.ultrakernel.activities;
 
+import android.app.NotificationManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -18,6 +22,8 @@ import com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SocInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
 import com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CpuGovFragment;
+
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 
 public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -108,10 +114,16 @@ public class MainActivity extends Activity
         return true;
     }
 
+    public Long getPreferences_long(String Name){
+        SharedPreferences settings = getBaseContext().getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getLong(Name, 0);
+    }
+
     protected void updateFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(R.id.content, fragment);
         ft.commit();
+        Log.i(LOG_TAG, "MIN: " + getPreferences_long("cpu_min_freq"));
     }
 }

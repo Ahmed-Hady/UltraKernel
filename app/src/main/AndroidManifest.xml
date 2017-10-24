@@ -26,12 +26,6 @@
             </intent-filter>
         </activity>
 
-        <!--
-            <receiver
-            android:name=".receivers.batteryInfoReceiver"
-            android:enabled="true"
-            android:exported="true"></receiver>
-        -->
         <activity android:name=".activities.MainActivity" />
 
         <receiver

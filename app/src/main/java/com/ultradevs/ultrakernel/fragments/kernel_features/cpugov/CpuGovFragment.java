@@ -134,7 +134,7 @@ public class CpuGovFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar)
             {
                 mShell.getSession().addCommand("echo " + (seekBar.getProgress() + mCPUInfo.speedMinAllowed) + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq");
-                PutLongPreferences("cpu_max_freq", seekBar.getProgress() + mCPUInfo.speedMinAllowed);
+                PutLongPreferences("cpu_max_freq", (seekBar.getProgress() + mCPUInfo.speedMinAllowed));
             }
         });
 
@@ -150,7 +150,7 @@ public class CpuGovFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar)
             {
                 mShell.getSession().addCommand("echo " + (seekBar.getProgress() + mCPUInfo.speedMinAllowed) + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq");
-                PutLongPreferences("cpu_min_freq", seekBar.getProgress() + mCPUInfo.speedMinAllowed);
+                PutLongPreferences("cpu_min_freq", (seekBar.getProgress() + mCPUInfo.speedMinAllowed));
             }
         });
 
