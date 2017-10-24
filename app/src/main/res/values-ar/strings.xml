@@ -57,4 +57,7 @@
     <string name="sys_selinux_permissive">مسموح</string>
     <string name="sys_selinux_off">موقف</string>
     <string name="sys_root">حالة الجذر</string>
+    <string name="kernel_version">إصدار النواة</string>
+    <string name="kernel_gcc">أداة بناء النواة</string>
+    <string name="kernel_c_gov">مدير المعالج الحالي</string>
 </resources>
