@@ -32,7 +32,22 @@
             android:enabled="true"
             android:exported="true"></receiver>
         -->
-        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.MainActivity" />
+
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true">
+            <intent-filter android:priority="800">
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".services.OnBootApply"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
