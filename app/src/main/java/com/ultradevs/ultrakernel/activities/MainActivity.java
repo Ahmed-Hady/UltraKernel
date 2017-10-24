@@ -19,7 +19,7 @@ import com.ultradevs.ultrakernel.fragments.deviceInfo.SocInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
 import com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CpuGovFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends Activity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private SystemInfoFragment mSysInfo;

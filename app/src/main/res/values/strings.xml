@@ -56,4 +56,8 @@
     <string name="cpu_max_freq">CPU Frequently</string>
     <string name="k_change_gov">Change Governor</string>
     <string name="k_cpu_freq">Frequently Table</string>
+    <string name="gathering_cpu_information">Gathering CPU information…</string>
+    <string name="cpu_info_speed_current">Current speed</string>
+    <string name="cpu_info_speed_max">Maximum speed</string>
+    <string name="cpu_info_speed_min">Minimum speed</string>
 </resources>
