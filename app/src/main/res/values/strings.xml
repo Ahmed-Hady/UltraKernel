@@ -28,7 +28,16 @@
 
     <!-- Glyph to be overlaid atop the battery when the level is extremely low. Do not translate. -->
     <string name="battery_meter_very_low_overlay_symbol" translatable="false">!</string>
-    <string name="perc_0">0%</string>
+    <string name="perc_0" translatable="false">0%</string>
+
+    <!-- Battery Info Titles -->
+    <string name="battery_health">Health</string>
+    <string name="battery_plugged">Plugged</string>
+    <string name="battery_status">Status</string>
+    <string name="battery_technology">Technology</string>
+    <string name="battery_temp">Temperature</string>
+    <string name="battery_voltage">Voltage</string>
+    <string name="battery_capacity">Capacity</string>
 
     <!-- Battery Health -->
     <string name="battery_health_cold">Cold</string>
@@ -37,7 +46,7 @@
     <string name="battery_health_over_voltage">Over-Voltage</string>
     <string name="battery_health_overheat">Over-Heat</string>
     <string name="battery_health_unspecified_failure">Unspecified failure</string>
-    <string name="battery_plugged_none"></string>
+    <string name="battery_plugged_none" translatable="false"></string>
     <string name="battery_plugged_wireless">Wireless Charger</string>
     <string name="battery_plugged_usb">USB Charger</string>
     <string name="battery_plugged_ac">AC Charger</string>

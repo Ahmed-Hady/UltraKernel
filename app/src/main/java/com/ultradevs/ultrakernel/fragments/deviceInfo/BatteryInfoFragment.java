@@ -162,7 +162,7 @@ public class BatteryInfoFragment extends Fragment {
             if (healthLbl != -1) {
                 // display battery health ...
                 Log.i(LOG_TAG, "Battery Health: " + getString(healthLbl));
-                adapter.add(new InfoList("Health", getString(healthLbl)));
+                adapter.add(new InfoList(getString(R.string.battery_health), getString(healthLbl)));
             }
 
             // Calculate Battery Percentage ...
@@ -203,7 +203,7 @@ public class BatteryInfoFragment extends Fragment {
 
             // display plugged status ...
             if(pluggedLbl != R.string.battery_plugged_none) {
-                adapter.add(new InfoList("Plugged", getString(pluggedLbl)));
+                adapter.add(new InfoList(getString(R.string.battery_plugged), getString(pluggedLbl)));
                 Log.i(LOG_TAG, "Battery Update: Plugged to " + getString(pluggedLbl));
             } else { Log.i(LOG_TAG, "Battery Update: UnPlugged");}
 
@@ -241,7 +241,7 @@ public class BatteryInfoFragment extends Fragment {
 
             if (statusLbl != -1) {
                 mtxt_bat_status.setText(getString(statusLbl) + " " + getString(pluggedLbl));
-                adapter.add(new InfoList("Status", getString(statusLbl)));
+                adapter.add(new InfoList(getString(R.string.battery_status), getString(statusLbl)));
                 Log.i(LOG_TAG, "Battery Update: " + getString(statusLbl));
             }
 
@@ -249,7 +249,7 @@ public class BatteryInfoFragment extends Fragment {
                 String technology = intent.getExtras().getString(BatteryManager.EXTRA_TECHNOLOGY);
 
                 if (!"".equals(technology)) {
-                    adapter.add(new InfoList("Technology", technology));
+                    adapter.add(new InfoList(getString(R.string.battery_technology), technology));
                     Log.i(LOG_TAG, "Battery Update: Technology is " + technology);
                 }
             }
@@ -258,21 +258,21 @@ public class BatteryInfoFragment extends Fragment {
 
             if (temperature > 0) {
                 float temp = ((float) temperature) / 10f;
-                adapter.add(new InfoList("Temperature", temp + "°C"));
+                adapter.add(new InfoList(getString(R.string.battery_temp), temp + "°C"));
                 Log.i(LOG_TAG, "Battery Update: Temperature " + temp + "°C");
             }
 
             int voltage = intent.getIntExtra(BatteryManager.EXTRA_VOLTAGE, 0);
 
             if (voltage > 0) {
-                adapter.add(new InfoList("Voltage", voltage + " mV"));
+                adapter.add(new InfoList(getString(R.string.battery_voltage), voltage + " mV"));
                 Log.i(LOG_TAG, "Battery Update: Voltage  " + voltage);
             }
 
             double capacity = BatteryUtils.getBatteryCapacity(getContext());
 
             if (capacity > 0) {
-                adapter.add(new InfoList("Capacity", capacity + " mAh"));
+                adapter.add(new InfoList(getString(R.string.battery_capacity), capacity + " mAh"));
                 Log.i(LOG_TAG, "Battery Update: Capacity " + capacity + " mAh");
             }
 

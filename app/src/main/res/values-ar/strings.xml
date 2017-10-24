@@ -37,4 +37,11 @@
     <string name="cpu_info_speed_current">السرعة الحالية</string>
     <string name="cpu_info_speed_max">السرعة العظمى</string>
     <string name="cpu_info_speed_min">السرعة الصغرى</string>
+    <string name="battery_health">صلاحة البطارية</string>
+    <string name="battery_plugged">موصل</string>
+    <string name="battery_status">الحالة</string>
+    <string name="battery_technology">التكنولوجيا</string>
+    <string name="battery_temp">درجة الحرارة</string>
+    <string name="battery_voltage">الفولتية</string>
+    <string name="battery_capacity">السعة</string>
 </resources>
