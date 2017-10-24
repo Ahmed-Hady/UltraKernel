@@ -65,25 +65,25 @@ public class SystemInfoFragment extends Fragment {
         os_version.setText(Android_Version());
 
         adapter.clear();
-        adapter.add(new InfoList("Android Code Name", Android_Name()));
-        adapter.add(new InfoList("Android Version", Android_Version()));
-        adapter.add(new InfoList("SDK Version", String.valueOf(Android_Sdk_Version())));
-        adapter.add(new InfoList("Security Patch", Android_system_patch_Version()));
-        adapter.add(new InfoList("Device Name", Android_device_name()));
-        adapter.add(new InfoList("Device SOC", Android_device_board()));
-        adapter.add(new InfoList("Device Manufacturer", Android_device_manuf()));
-        adapter.add(new InfoList("Bootloader", Android_Bootloader()));
-        adapter.add(new InfoList("CPU ABI", Android_ABI()));
-        adapter.add(new InfoList("Baseband Version", Android_RadioVersion()));
-        adapter.add(new InfoList("Kernel Version", Android_device_kernel()));
+        adapter.add(new InfoList(getString(R.string.sys_code_name), Android_Name()));
+        adapter.add(new InfoList(getString(R.string.sys_version), Android_Version()));
+        adapter.add(new InfoList(getString(R.string.sys_sdk), String.valueOf(Android_Sdk_Version())));
+        adapter.add(new InfoList(getString(R.string.sys_sec_patch), Android_system_patch_Version()));
+        adapter.add(new InfoList(getString(R.string.sys_device_name), Android_device_name()));
+        adapter.add(new InfoList(getString(R.string.sys_device_soc), Android_device_board()));
+        adapter.add(new InfoList(getString(R.string.sys_device_manuf), Android_device_manuf()));
+        adapter.add(new InfoList(getString(R.string.sys_bootloader), Android_Bootloader()));
+        adapter.add(new InfoList(getString(R.string.sys_cpu_abi), Android_ABI()));
+        adapter.add(new InfoList(getString(R.string.sys_baseband), Android_RadioVersion()));
+        adapter.add(new InfoList(getString(R.string.sys_k_version), Android_device_kernel()));
         if(hasSelinux()==true) {
-            adapter.add(new InfoList("SElinux", "Enforcing"));
+            adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_enforcing)));
         } else if(hasSelinux()==false) {
-            adapter.add(new InfoList("SElinux", "Permissive"));
+            adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_permissive)));
         }else {
-            adapter.add(new InfoList("SElinux", "Off"));
+            adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_off)));
         }
-        adapter.add(new InfoList("Root Status", isRoot()));
+        adapter.add(new InfoList(getString(R.string.sys_root), isRoot()));
 
         return v;
     }
