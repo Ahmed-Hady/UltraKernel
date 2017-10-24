@@ -2,6 +2,7 @@ package com.ultradevs.ultrakernel.fragments.kernel_features.cpugov;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,22 +10,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.activities.Activity;
 import com.ultradevs.ultrakernel.dialogs.GovernorOptionDialogFragment;
 import com.ultradevs.ultrakernel.utils.ConcurrentSync;
-import com.ultradevs.ultrakernel.utils.ShellExecuter;
 import com.ultradevs.ultrakernel.utils.cpu_utils.CPUInfo;
 import com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils;
 import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
+import com.ultradevs.ultrakernel.utils.utils;
 
 import static com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment.kernel_Current_Gov;
-import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
-import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.getMaxFreq;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,6 +51,20 @@ public class CpuGovFragment extends Fragment {
 
     private CpuShellUtils mShell;
     private CPUInfo mCPUInfo = new CPUInfo();
+
+    private Switch mOnBoot;
+
+    public void PutBooleanPreferences(String Name,Boolean Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(Name, Function);
+        editor.commit();
+    }
+
+    public boolean getPreferences_bool(String Name){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getBoolean(Name, Boolean.parseBoolean(null));
+    }
 
     public CpuGovFragment() {
         // Required empty public constructor
@@ -126,6 +141,21 @@ public class CpuGovFragment extends Fragment {
 
         // Update stats for initializing
         updateOnActivity();
+
+        mOnBoot = (Switch) v.findViewById(R.id.cpuGov_runOnBoot);
+        if (getPreferences_bool("cpugov_onboot"))
+            mOnBoot.setChecked(getPreferences_bool("cpugov_onboot"));
+
+        mOnBoot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(mOnBoot.isChecked()==true){
+                    PutBooleanPreferences("cpugov_onboot",true);
+                } else {
+                    PutBooleanPreferences("cpugov_onboot",false);
+                }
+            }
+        });
 
         return v;
     }

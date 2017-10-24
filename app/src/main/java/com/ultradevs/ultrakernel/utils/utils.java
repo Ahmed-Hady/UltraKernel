@@ -1,5 +1,8 @@
 package com.ultradevs.ultrakernel.utils;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.text.DecimalFormat;
 
 /**
@@ -7,6 +10,7 @@ import java.text.DecimalFormat;
  */
 
 public class utils {
+
     public static double roundOneDecimals(double d)
     {
         DecimalFormat oneDForm = new DecimalFormat("#.#");
