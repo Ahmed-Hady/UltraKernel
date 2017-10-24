@@ -61,6 +61,20 @@ public class CpuGovFragment extends Fragment {
         editor.commit();
     }
 
+    public void PutLongPreferences(String Name,Long Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putLong(Name, Function);
+        editor.commit();
+    }
+
+    public void PutStringPreferences(String Name,String Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(Name, Function);
+        editor.commit();
+    }
+
     public boolean getPreferences_bool(String Name){
         SharedPreferences settings = getContext().getSharedPreferences(Name, 0); // 0 - for private mode
         return settings.getBoolean(Name, Boolean.parseBoolean(null));
@@ -84,6 +98,8 @@ public class CpuGovFragment extends Fragment {
 
         //mMaxFreq.setText(getMaxFreq());
         mCurrent.setText(kernel_Current_Gov());
+
+        PutStringPreferences("cur_gov", kernel_Current_Gov());
 
         //Change gov
         GovernorButton=(Button)v.findViewById(R.id.change_gov);
@@ -118,7 +134,7 @@ public class CpuGovFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar)
             {
                 mShell.getSession().addCommand("echo " + (seekBar.getProgress() + mCPUInfo.speedMinAllowed) + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq");
-
+                PutLongPreferences("cpu_max_freq", seekBar.getProgress() + mCPUInfo.speedMinAllowed);
             }
         });
 
@@ -134,6 +150,7 @@ public class CpuGovFragment extends Fragment {
             public void onStopTrackingTouch(SeekBar seekBar)
             {
                 mShell.getSession().addCommand("echo " + (seekBar.getProgress() + mCPUInfo.speedMinAllowed) + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq");
+                PutLongPreferences("cpu_min_freq", seekBar.getProgress() + mCPUInfo.speedMinAllowed);
             }
         });
 

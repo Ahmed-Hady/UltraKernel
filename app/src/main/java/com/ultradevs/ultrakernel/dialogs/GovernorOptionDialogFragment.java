@@ -6,6 +6,7 @@ package com.ultradevs.ultrakernel.dialogs;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
@@ -50,11 +51,19 @@ public class GovernorOptionDialogFragment extends DialogFragment
         return dialogBuilder.create();
     }
 
+    public void PutStringPreferences(String Name,String Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString(Name, Function);
+        editor.commit();
+    }
+
     @Override
     public void onDestroyView(){
         super.onDestroyView();
         TextView curr = (TextView) getActivity().findViewById(R.id.cpugov);
         Log.i(LOG_TAG, "Set Governor: " + kernel_Current_Gov());
         curr.setText(kernel_Current_Gov());
+        PutStringPreferences("cur_gov", kernel_Current_Gov());
     }
 }
