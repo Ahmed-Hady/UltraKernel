@@ -77,6 +77,11 @@
     <string name="octa_core">OctaCore</string>
     <string name="deca_core">DecaCore</string>
 
+    <!-- Processor Info Titles -->
+    <string name="soc_n_cores">Number of cores</string>
+    <string name="soc_api">CPU ABI</string>
+    <string name="soc_manuf">CPU Manufacturer</string>
+
     <!-- CPU GOV -->
     <string name="cpu_max_freq">CPU Frequently</string>
     <string name="k_change_gov">Change</string>
