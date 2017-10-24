@@ -117,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_below="@+id/textView4"
+                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
                     android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
                     android:ellipsize="end"
                     android:maxLines="10"
