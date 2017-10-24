@@ -85,4 +85,9 @@
     <string name="cpu_info_speed_current">Current speed</string>
     <string name="cpu_info_speed_max">Maximum speed</string>
     <string name="cpu_info_speed_min">Minimum speed</string>
+
+    <!-- Kernel Info Titles -->
+    <string name="kernel_version">Kernel Version</string>
+    <string name="kernel_gcc">Kernel GCC</string>
+    <string name="kernel_c_gov">Current Governor</string>
 </resources>

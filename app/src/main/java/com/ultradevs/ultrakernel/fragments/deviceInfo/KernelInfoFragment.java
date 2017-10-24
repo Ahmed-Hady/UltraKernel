@@ -78,9 +78,9 @@ public class KernelInfoFragment extends Fragment {
 
         adapter.clear();
 
-        adapter.add(new InfoList("Kernel Version", readKernel()));
-        adapter.add(new InfoList("Kernel GCC", getFormattedKernelVersion(3)));
-        adapter.add(new InfoList("Current Governor", kernel_Current_Gov()));
+        adapter.add(new InfoList(getString(R.string.kernel_version), readKernel()));
+        adapter.add(new InfoList(getString(R.string.kernel_gcc), getFormattedKernelVersion(3)));
+        adapter.add(new InfoList(getString(R.string.kernel_c_gov), kernel_Current_Gov()));
         return v;
     }
 
