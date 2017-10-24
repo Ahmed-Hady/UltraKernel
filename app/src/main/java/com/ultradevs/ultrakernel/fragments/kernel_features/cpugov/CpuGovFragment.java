@@ -64,10 +64,10 @@ public class CpuGovFragment extends Fragment {
 
         getActivity().setTitle(getString(R.string.k_cpu_gov));
 
-        mMaxFreq = (TextView) v.findViewById(R.id.cpufreq);
+        //mMaxFreq = (TextView) v.findViewById(R.id.cpufreq);
         mCurrent = (TextView) v.findViewById(R.id.cpugov);
 
-        mMaxFreq.setText(getMaxFreq());
+        //mMaxFreq.setText(getMaxFreq());
         mCurrent.setText(kernel_Current_Gov());
 
         //Change gov
@@ -79,9 +79,6 @@ public class CpuGovFragment extends Fragment {
                 fragment.show(getActivity().getSupportFragmentManager(), "governor_dialog");
             }
         });
-
-        mCPUCoreListFragment = (CPUCoreListFragment) getChildFragmentManager().findFragmentById(R.id.cputools_cpulist_fragment);
-        mCPUCoreListFragment.getView().setMinimumHeight(80*Integer.valueOf(Ncores()));
 
         // get terminal session
         mShell = ((Activity) getActivity()).getShellSession();
