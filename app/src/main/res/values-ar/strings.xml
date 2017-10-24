@@ -44,4 +44,17 @@
     <string name="battery_temp">درجة الحرارة</string>
     <string name="battery_voltage">الفولتية</string>
     <string name="battery_capacity">السعة</string>
+    <string name="sys_code_name">إصدار الأندرويد</string>
+    <string name="sys_version">رقم الإصدار</string>
+    <string name="sys_sdk">إصدار الSDK</string>
+    <string name="sys_sec_patch">تصحيح الأمان</string>
+    <string name="sys_device_name">إسم الجهاز</string>
+    <string name="sys_device_soc">لوحة الجهاز</string>
+    <string name="sys_device_manuf">الشرمة المصنعة</string>
+    <string name="sys_baseband">إصدار النطاق الأساسي</string>
+    <string name="sys_k_version">إصدار النواة</string>
+    <string name="sys_selinux_enforcing">فرض</string>
+    <string name="sys_selinux_permissive">مسموح</string>
+    <string name="sys_selinux_off">موقف</string>
+    <string name="sys_root">حالة الجذر</string>
 </resources>
