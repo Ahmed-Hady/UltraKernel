@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import com.ultradevs.ultrakernel.R;
 
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
 
@@ -82,12 +84,14 @@ public class OnBootApply extends Service {
 
                             Long max_freq = getPreferences_long("cpu_max_freq");
                             if(max_freq != null){
-                                shell("echo " + max_freq + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq", true);
+                                shell("echo " + max_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq", true);
+                                Log.i(LOG_TAG, "Applying Max Freq:" + max_freq.toString());
                             }
 
                             Long min_freq = getPreferences_long("cpu_min_freq");
                             if(max_freq != null){
-                                shell("echo " + min_freq + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", true);
+                                shell("echo " + min_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", true);
+                                Log.i(LOG_TAG, "Applying Min Freq:" + min_freq.toString());
                             }
                         }
 
