@@ -20,7 +20,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="112dp"
+        android:layout_height="100dp"
         android:background="@color/header_bg"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="2dp">
@@ -32,16 +32,16 @@
             android:layout_marginBottom="@dimen/cpu_gov_freq_layout_marginBottom"
             android:layout_marginEnd="@dimen/cpu_gov_freq_layout_marginEnd"
             android:layout_marginStart="@dimen/cpu_gov_freq_layout_marginStart"
-            android:layout_marginTop="@dimen/cpu_gov_freq_layout_marginTop"
             android:text="@string/gathering_cpu_information"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.661" />
+            app:layout_constraintVertical_bias="0.626" />
 
         <TextView
             android:id="@+id/fragment_cputools_cpuinfo_text"
@@ -58,6 +58,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
@@ -66,91 +67,105 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="6dp"
             android:text="@string/cpu_max_freq"
             android:textAlignment="center"
             android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
     </android.support.constraint.ConstraintLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:divider="@drawable/horz_separator"
-        android:showDividers="middle"
-        android:layout_marginTop="0dp"
-        android:isScrollContainer="true">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-            android:layout_marginTop="@dimen/cpu_gov_governor_marginTop"
-            android:padding="@dimen/list_marginTop">
+            android:divider="@drawable/horz_separator"
+            android:showDividers="middle"
+            android:layout_marginTop="0dp"
+            android:isScrollContainer="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                android:layout_marginTop="@dimen/cpu_gov_governor_marginTop"
+                android:padding="@dimen/list_marginTop">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="?android:attr/textAppearanceListItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                    android:text="@string/k_cpu_gov"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/cpugov"
+                        android:layout_width="258dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@+id/textView4"
+                        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+                        android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
+                        android:ellipsize="end"
+                        android:maxLines="10"
+                        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+                        android:textColor="?android:attr/textColorSecondary"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/change_gov"
+                        style="@android:style/Widget.Material.Light.Button.Borderless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:padding="1dp"
+                        android:text="@string/k_change_gov" />
+                </LinearLayout>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView4"
                 style="?android:attr/textAppearanceListItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-                android:text="@string/k_cpu_gov"
+                android:layout_marginTop="@dimen/list_marginTop"
+                android:layout_marginBottom="@dimen/list_marginTop"
+                android:paddingStart="14dp"
+                android:text="@string/k_cpu_freq"
                 android:textSize="18dp" />
 
-            <LinearLayout
+            <fragment
+                android:id="@+id/cputools_cpulist_fragment"
+                android:name="com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CPUCoreListFragment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp"
+                android:layout_weight="0.55"
+                android:tag="fragment_cputools_cpulist_fragment" />
 
-                <TextView
-                    android:id="@+id/cpugov"
-                    android:layout_width="258dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_below="@+id/textView4"
-                    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-                    android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
-                    android:ellipsize="end"
-                    android:maxLines="10"
-                    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-                    android:textColor="?android:attr/textColorSecondary"
-                    android:textSize="16sp" />
+            <include
+                layout="@layout/cpu_sliders"/>
 
-                <Button
-                    android:id="@+id/change_gov"
-                    style="@android:style/Widget.Material.Light.Button.Borderless"
-                    android:layout_width="wrap_content"
-                    android:layout_height="38dp"
-                    android:padding="1dp"
-                    android:text="@string/k_change_gov" />
-            </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            style="?android:attr/textAppearanceListItem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-            android:layout_marginTop="@dimen/list_marginTop"
-            android:layout_marginBottom="@dimen/list_marginTop"
-            android:paddingStart="14dp"
-            android:text="@string/k_cpu_freq"
-            android:textSize="18dp" />
+    </ScrollView>
 
-        <include
-            layout="@layout/freq_table"
-            android:layout_width="match_parent"
-            android:layout_height="283dp" />
-
-    </LinearLayout>
 </LinearLayout>

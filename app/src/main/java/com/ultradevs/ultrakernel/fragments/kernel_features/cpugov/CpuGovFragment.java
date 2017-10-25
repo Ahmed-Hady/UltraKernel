@@ -26,6 +26,7 @@ import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
 import com.ultradevs.ultrakernel.utils.utils;
 
 import static com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment.kernel_Current_Gov;
+import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
 
 /**
@@ -185,6 +186,11 @@ public class CpuGovFragment extends Fragment {
 
         mCPUCoreListFragment = (CPUCoreListFragment) getChildFragmentManager().findFragmentById(R.id.cputools_cpulist_fragment);
 
+        ViewGroup.LayoutParams params = mCPUCoreListFragment.getView().getLayoutParams();
+
+        params.height = 100*(Integer.valueOf(Ncores()));
+
+        mCPUCoreListFragment.getView().setLayoutParams(params);
     }
 
     @Override
