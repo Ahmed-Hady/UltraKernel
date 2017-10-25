@@ -22,6 +22,7 @@ import com.ultradevs.ultrakernel.fragments.deviceInfo.KernelInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SocInfoFragment;
 import com.ultradevs.ultrakernel.fragments.deviceInfo.SystemInfoFragment;
 import com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CpuGovFragment;
+import com.ultradevs.ultrakernel.fragments.kernel_features.cpuhotplugs.CpuHotPlugsFragment;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 
@@ -33,6 +34,7 @@ public class MainActivity extends Activity
     private KernelInfoFragment mKernelInfo;
     private SocInfoFragment mSocInfo;
     private CpuGovFragment mCpuGov;
+    private CpuHotPlugsFragment mHotplug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends Activity
         mKernelInfo = new KernelInfoFragment();
         mSocInfo = new SocInfoFragment();
         mCpuGov = new CpuGovFragment();
+        mHotplug = new CpuHotPlugsFragment();
         updateFragment(this.mSysInfo);
     }
 
@@ -107,6 +110,8 @@ public class MainActivity extends Activity
             updateFragment(this.mSocInfo);
         } else if (id == R.id.nav_k_cpu_gov) {
             updateFragment(this.mCpuGov);
+        } else if (id == R.id.nav_k_cpu_hotplug) {
+            updateFragment(this.mHotplug);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,6 +129,5 @@ public class MainActivity extends Activity
 
         ft.replace(R.id.content, fragment);
         ft.commit();
-        Log.i(LOG_TAG, "MIN: " + getPreferences_long("cpu_min_freq"));
     }
 }

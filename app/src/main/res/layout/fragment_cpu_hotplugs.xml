@@ -1,0 +1,52 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ultradevs.ultrakernel.fragments.kernel_features.cpugov.CpuGovFragment">
+
+    <CheckBox
+        android:id="@+id/cpuHP_runOnBoot"
+        style="@style/custom_switch"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cpu_gov_switcher_layout_height"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/cpu_gov_switcher_layout_padding"
+        android:text="@string/onboot"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.DialogWindowTitle"
+        android:textColor="@android:color/white" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/header_bg"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="2dp">
+
+        <TextView
+            android:id="@+id/socversion"
+            android:layout_width="@dimen/soc_info_soc_version_layout_width"
+            android:layout_height="@dimen/soc_info_soc_version_layout_height"
+            android:layout_marginBottom="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginEnd="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginStart="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:layout_marginTop="@dimen/kernel_info_kversion_layout_marginBottom"
+            android:textAlignment="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.296"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.666" />
+    </android.support.constraint.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/hotplugs_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

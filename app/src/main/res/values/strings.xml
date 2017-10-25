@@ -95,4 +95,8 @@
     <string name="kernel_version">Kernel Version</string>
     <string name="kernel_gcc">Kernel GCC</string>
     <string name="kernel_c_gov">Current Governor</string>
+
+    <!-- HotPlugs -->
+    <string name="cpu_hotplugs">CPU HotPlugs</string>
+
 </resources>

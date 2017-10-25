@@ -35,6 +35,10 @@
                 android:icon="@drawable/ic_k_cpu_gov"
                 android:title="@string/k_cpu_gov"
                 android:checkable="true" />
+            <item android:id="@+id/nav_k_cpu_hotplug"
+                android:icon="@drawable/ic_power_black_24dp"
+                android:title="@string/cpu_hotplugs" />
+
         </menu>
     </item>
 
