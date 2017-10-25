@@ -59,6 +59,8 @@ public class CpuHotPlugsFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cpu_hotplugs, container, false);
 
+        getActivity().setTitle(getString(R.string.cpu_hotplugs));
+
         mOnBoot = (CheckBox) v.findViewById(R.id.cpuHP_runOnBoot);
         mSocName = (TextView) v.findViewById(R.id.socversion);
 
