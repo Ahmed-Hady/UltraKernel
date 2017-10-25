@@ -97,6 +97,11 @@ public class CpuHotPlugsFragment extends Fragment {
         if(new File(msm_path).exists())
             adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_msm), "Replacement for Qualcomm MPD hotplug developed by myfluxi", msm_path, "msm_hp"));
 
+        //Alucard Hotplug
+        String alucard_path = "/sys/kernel/alucard_hotplug/hotplug_enable";
+        if(new File(alucard_path).exists())
+            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_alucard), "Replacement for Qualcomm MPD hotplug developed by Alucard", alucard_path, "msm_alucard"));
+
         return v ;
     }
 }

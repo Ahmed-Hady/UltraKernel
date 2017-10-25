@@ -109,6 +109,11 @@ public class OnBootApply extends Service {
                             } else {
                                 shell("echo 0 > /sys/kernel/msm_hotplug/conf/enabled", true);
                             }
+                            if(getPreferences_bool("msm_alucard") == true){
+                                shell("echo 1 > /sys/kernel/alucard_hotplug/hotplug_enable", true);
+                            } else {
+                                shell("echo 0 > /sys/kernel/alucard_hotplug/hotplug_enable", true);
+                            }
                         }
 
                         try {
