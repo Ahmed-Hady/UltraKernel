@@ -2,9 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/toggle_background_off"></item>
     <item
-
-
-        android:drawable="@drawable/toggle_icon"
+        android:drawable="@drawable/toggle_icon_off"
         android:left="2dp"
         android:right="27.5dp"
         android:bottom="1.5dp"
