@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -52,7 +53,7 @@ public class CpuGovFragment extends Fragment {
     private CpuShellUtils mShell;
     private CPUInfo mCPUInfo = new CPUInfo();
 
-    private Switch mOnBoot;
+    private CheckBox mOnBoot;
 
     public void PutBooleanPreferences(String Name,Boolean Function){
         SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
@@ -159,7 +160,7 @@ public class CpuGovFragment extends Fragment {
         // Update stats for initializing
         updateOnActivity();
 
-        mOnBoot = (Switch) v.findViewById(R.id.cpuGov_runOnBoot);
+        mOnBoot = (CheckBox) v.findViewById(R.id.cpuGov_runOnBoot);
         if (getPreferences_bool("cpugov_onboot"))
             mOnBoot.setChecked(getPreferences_bool("cpugov_onboot"));
 
