@@ -66,6 +66,8 @@ public class CpuHotPlugsFragment extends Fragment {
         HotplugList = v.findViewById(R.id.hotplugs_list);
         HotplugList.setAdapter(adapter);
 
+        adapter.clear();
+
         mSocName.setText(SocName());
 
         if (getPreferences_bool("cpu_hotplug_onboot"))
