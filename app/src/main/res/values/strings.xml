@@ -98,5 +98,7 @@
 
     <!-- HotPlugs -->
     <string name="cpu_hotplugs">CPU HotPlugs</string>
+    <string name="cpu_hotplug_mpd">MSM MPDecision</string>
+    <string name="cpu_hotplug_msm">MSM HotPlug</string>
 
 </resources>
