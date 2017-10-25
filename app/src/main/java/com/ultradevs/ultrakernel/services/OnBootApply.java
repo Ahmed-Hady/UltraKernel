@@ -68,6 +68,9 @@ public class OnBootApply extends Service {
         if(getPreferences_bool("cpugov_onboot")==true)
             task += 1;
 
+        if(getPreferences_bool("cpu_hotplug_onboot")==true)
+            task +=1;
+
         if (task > 0)
             mNotificationManager.notify(1, mBuilder.build());
 
@@ -92,6 +95,14 @@ public class OnBootApply extends Service {
                             if(max_freq != null){
                                 shell("echo " + min_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", true);
                                 Log.i(LOG_TAG, "Applying Min Freq:" + min_freq.toString());
+                            }
+                        }
+
+                        if(getPreferences_bool("cpu_hotplug_onboot")==true){
+                            if(getPreferences_bool("msm_mpd") == true){
+                                shell("echo 1 > /sys/kernel/msm_mpdecision/conf/enabled", true);
+                            } else {
+                                shell("echo 0 > /sys/kernel/msm_mpdecision/conf/enabled", true);
                             }
                         }
 

@@ -34,7 +34,6 @@ import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
  */
 public class CpuGovFragment extends Fragment {
 
-    public TextView mMaxFreq;
     public TextView mCurrent;
     public Button GovernorButton;
 
