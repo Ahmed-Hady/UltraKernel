@@ -90,17 +90,17 @@ public class CpuHotPlugsFragment extends Fragment {
         //MSM MPDecision
         String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
         if(new File(mpd_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_mpd), "Replacement for Qualcomm MPD hotplug developed by show-p-1984", mpd_path, "msm_mpd"));
+            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_mpd), getString(R.string.cpu_hotplug_mpd_summary), mpd_path, "msm_mpd"));
 
         //MSM Hotplug
         String msm_path = "/sys/kernel/msm_hotplug/conf/enabled";
         if(new File(msm_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_msm), "Replacement for Qualcomm MPD hotplug developed by myfluxi", msm_path, "msm_hp"));
+            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_msm), getString(R.string.cpu_hotplug_msm_summary), msm_path, "msm_hp"));
 
         //Alucard Hotplug
         String alucard_path = "/sys/kernel/alucard_hotplug/hotplug_enable";
         if(new File(alucard_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_alucard), "Replacement for Qualcomm MPD hotplug developed by Alucard", alucard_path, "msm_alucard"));
+            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_alucard), getString(R.string.cpu_hotplug_alucard_summary), alucard_path, "msm_alucard"));
 
         return v ;
     }

@@ -99,7 +99,10 @@
     <!-- HotPlugs -->
     <string name="cpu_hotplugs">CPU HotPlugs</string>
     <string name="cpu_hotplug_mpd">MSM MPDecision</string>
+    <string name="cpu_hotplug_mpd_summary">Replacement for Qualcomm MPD hotplug developed by show-p-1984</string>
     <string name="cpu_hotplug_msm">MSM HotPlug</string>
+    <string name="cpu_hotplug_msm_summary">Replacement for Qualcomm MPD hotplug developed by myfluxi</string>
     <string name="cpu_hotplug_alucard">Alucard HotPlug</string>
+    <string name="cpu_hotplug_alucard_summary">Replacement for Qualcomm MPD hotplug developed by Alucard</string>
 
 </resources>
