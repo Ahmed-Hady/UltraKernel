@@ -88,9 +88,14 @@ public class CpuHotPlugsFragment extends Fragment {
 
 
         //MSM MPDecision
-        String path = "/sys/kernel/msm_mpdecision/conf/enabled";
-        if(new File(path).exists())
-            adapter.add(new SwitchPrefList("MSM MPDecision", "Replacement for Qualcomm MPD hotplug developed by show-p-1984", path, "msm_mpd"));
+        String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
+        if(new File(mpd_path).exists())
+            adapter.add(new SwitchPrefList("MSM MPDecision", "Replacement for Qualcomm MPD hotplug developed by show-p-1984", mpd_path, "msm_mpd"));
+
+        //MSM Hotplug
+        String msm_path = "/sys/kernel/msm_hotplug/conf/enabled";
+        if(new File(msm_path).exists())
+            adapter.add(new SwitchPrefList("MSM HotPlug", "Replacement for Qualcomm MPD hotplug developed by myfluxi", msm_path, "msm_hp"));
 
         return v ;
     }

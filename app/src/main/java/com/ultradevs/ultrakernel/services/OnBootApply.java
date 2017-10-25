@@ -104,6 +104,11 @@ public class OnBootApply extends Service {
                             } else {
                                 shell("echo 0 > /sys/kernel/msm_mpdecision/conf/enabled", true);
                             }
+                            if(getPreferences_bool("msm_hotplug") == true){
+                                shell("echo 1 > /sys/kernel/msm_hotplug/conf/enabled", true);
+                            } else {
+                                shell("echo 0 > /sys/kernel/msm_hotplug/conf/enabled", true);
+                            }
                         }
 
                         try {
