@@ -37,7 +37,8 @@
                 android:checkable="true" />
             <item android:id="@+id/nav_k_cpu_hotplug"
                 android:icon="@drawable/ic_power_black_24dp"
-                android:title="@string/cpu_hotplugs" />
+                android:title="@string/cpu_hotplugs"
+                android:checkable="true"/>
 
         </menu>
     </item>
