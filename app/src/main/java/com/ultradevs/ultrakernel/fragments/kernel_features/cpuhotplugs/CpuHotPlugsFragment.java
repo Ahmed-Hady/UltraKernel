@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.adapters.PrefAdapter;
-import com.ultradevs.ultrakernel.adapters.SwitchPrefList;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
 import java.io.File;
@@ -33,9 +32,16 @@ public class CpuHotPlugsFragment extends Fragment {
 
     private CheckBox mOnBoot;
     private TextView mSocName;
-    private ArrayList<SwitchPrefList> arrayOfSwitchPref = new ArrayList<SwitchPrefList>();
-    private PrefAdapter adapter;
-    private ListView HotplugList;
+
+    private ShellExecuter mShell;
+
+    private Switch mMSM;
+    private Switch mMPD;
+    private Switch mALU;
+
+    private RelativeLayout M_lyMSM;
+    private RelativeLayout M_lyMPD;
+    private RelativeLayout M_lyALU;
 
     public CpuHotPlugsFragment() {
         // Required empty public constructor
@@ -64,44 +70,89 @@ public class CpuHotPlugsFragment extends Fragment {
         mOnBoot = (CheckBox) v.findViewById(R.id.cpuHP_runOnBoot);
         mSocName = (TextView) v.findViewById(R.id.socversion);
 
-        adapter = new PrefAdapter(getContext(), arrayOfSwitchPref);
-        HotplugList = v.findViewById(R.id.hotplugs_list);
-        HotplugList.setAdapter(adapter);
-
-        adapter.clear();
-
         mSocName.setText(SocName());
 
         if (getPreferences_bool("cpu_hotplug_onboot"))
             mOnBoot.setChecked(getPreferences_bool("cpu_hotplug_onboot"));
 
-        mOnBoot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(mOnBoot.isChecked()==true){
-                    PutBooleanPreferences("cpu_hotplug_onboot",true);
-                } else {
-                    PutBooleanPreferences("cpu_hotplug_onboot",false);
-                }
+        mOnBoot.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(mOnBoot.isChecked()==true){
+                PutBooleanPreferences("cpu_hotplug_onboot",true);
+            } else {
+                PutBooleanPreferences("cpu_hotplug_onboot",false);
             }
         });
 
+        M_lyMPD = v.findViewById(R.id.ly_mpd);
+        M_lyMSM = v.findViewById(R.id.ly_msm);
+        M_lyALU = v.findViewById(R.id.ly_alu);
 
         //MSM MPDecision
         String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
-        if(new File(mpd_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_mpd), getString(R.string.cpu_hotplug_mpd_summary), mpd_path, "msm_mpd"));
+        if(new File(mpd_path).exists()){
+            mShell.command = "su -c cat " + mpd_path;
+            mMPD = v.findViewById(R.id.mpd_hotplug);
+            if(mShell.runAsRoot().equals("0")){
+                mMPD.setChecked(false);
+            } else {
+                mMPD.setChecked(true);
+            }
+            mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
+                if(mMPD.isChecked()==true){
+                    shell("echo 1  > " + mpd_path , true);
+                } else {
+                    shell("echo 0  > " + mpd_path , true);
+                }
+                PutBooleanPreferences("msm_mpd",b);
+            });
+        } else {
+            M_lyMPD.setVisibility(View.GONE);
+        }
+
 
         //MSM Hotplug
         String msm_path = "/sys/kernel/msm_hotplug/conf/enabled";
-        if(new File(msm_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_msm), getString(R.string.cpu_hotplug_msm_summary), msm_path, "msm_hp"));
+        if(new File(msm_path).exists()){
+            mShell.command = "su -c cat " + msm_path;
+            mMSM = v.findViewById(R.id.msm_hotplug);
+            if(mShell.runAsRoot().equals("0")){
+                mMSM.setChecked(false);
+            } else {
+                mMSM.setChecked(true);
+            }
+            mMSM.setOnCheckedChangeListener((compoundButton, b) -> {
+                if(mMSM.isChecked()==true){
+                    shell("echo 1  > " + msm_path , true);
+                } else {
+                    shell("echo 0  > " + msm_path , true);
+                }
+                PutBooleanPreferences("msm_hotplug",b);
+            });
+        } else {
+            M_lyMSM.setVisibility(View.GONE);
+        }
 
         //Alucard Hotplug
         String alucard_path = "/sys/kernel/alucard_hotplug/hotplug_enable";
-        if(new File(alucard_path).exists())
-            adapter.add(new SwitchPrefList(getString(R.string.cpu_hotplug_alucard), getString(R.string.cpu_hotplug_alucard_summary), alucard_path, "msm_alucard"));
-
+        if(new File(alucard_path).exists()){
+            mShell.command = "su -c cat " + alucard_path;
+            mALU = v.findViewById(R.id.alucard_hotplug);
+            if(mShell.runAsRoot().equals("0")){
+                mALU.setChecked(false);
+            } else {
+                mALU.setChecked(true);
+            }
+            mALU.setOnCheckedChangeListener((compoundButton, b) -> {
+                if(mALU.isChecked()==true){
+                    shell("echo 1  > " + alucard_path , true);
+                } else {
+                    shell("echo 0  > " + alucard_path , true);
+                }
+                PutBooleanPreferences("alucard",b);
+            });
+        } else {
+            M_lyALU.setVisibility(View.GONE);
+        }
         return v ;
     }
 }
