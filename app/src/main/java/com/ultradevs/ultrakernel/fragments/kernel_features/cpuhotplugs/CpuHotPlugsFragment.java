@@ -88,15 +88,15 @@ public class CpuHotPlugsFragment extends Fragment {
         M_lyALU = v.findViewById(R.id.ly_alu);
 
         //MSM MPDecision
-        String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
+        final String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
         if(new File(mpd_path).exists()){
-            mShell.command = "su -c cat " + mpd_path;
             mMPD = v.findViewById(R.id.mpd_hotplug);
-            if(mShell.runAsRoot().equals("0")){
+            if(shell("cat " + mpd_path, true).toString().contains("0")){
                 mMPD.setChecked(false);
             } else {
                 mMPD.setChecked(true);
             }
+
             mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
                 if(mMPD.isChecked()==true){
                     shell("echo 1  > " + mpd_path , true);
@@ -113,9 +113,8 @@ public class CpuHotPlugsFragment extends Fragment {
         //MSM Hotplug
         String msm_path = "/sys/kernel/msm_hotplug/conf/enabled";
         if(new File(msm_path).exists()){
-            mShell.command = "su -c cat " + msm_path;
             mMSM = v.findViewById(R.id.msm_hotplug);
-            if(mShell.runAsRoot().equals("0")){
+            if(shell("cat " + msm_path, true).toString().contains("0")){
                 mMSM.setChecked(false);
             } else {
                 mMSM.setChecked(true);
@@ -135,9 +134,8 @@ public class CpuHotPlugsFragment extends Fragment {
         //Alucard Hotplug
         String alucard_path = "/sys/kernel/alucard_hotplug/hotplug_enable";
         if(new File(alucard_path).exists()){
-            mShell.command = "su -c cat " + alucard_path;
             mALU = v.findViewById(R.id.alucard_hotplug);
-            if(mShell.runAsRoot().equals("0")){
+            if(shell("cat " + alucard_path, true).toString().contains("0")){
                 mALU.setChecked(false);
             } else {
                 mALU.setChecked(true);

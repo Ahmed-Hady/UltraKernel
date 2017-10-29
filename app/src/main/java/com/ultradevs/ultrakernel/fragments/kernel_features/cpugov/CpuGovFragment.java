@@ -104,12 +104,9 @@ public class CpuGovFragment extends Fragment {
 
         //Change gov
         GovernorButton=(Button)v.findViewById(R.id.change_gov);
-        GovernorButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GovernorOptionDialogFragment fragment = new GovernorOptionDialogFragment();
-                fragment.show(getActivity().getSupportFragmentManager(), "governor_dialog");
-            }
+        GovernorButton.setOnClickListener(view -> {
+            GovernorOptionDialogFragment fragment = new GovernorOptionDialogFragment();
+            fragment.show(getActivity().getSupportFragmentManager(), "governor_dialog");
         });
 
         // get terminal session
@@ -164,14 +161,11 @@ public class CpuGovFragment extends Fragment {
         if (getPreferences_bool("cpugov_onboot"))
             mOnBoot.setChecked(getPreferences_bool("cpugov_onboot"));
 
-        mOnBoot.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(mOnBoot.isChecked()==true){
-                    PutBooleanPreferences("cpugov_onboot",true);
-                } else {
-                    PutBooleanPreferences("cpugov_onboot",false);
-                }
+        mOnBoot.setOnCheckedChangeListener((compoundButton, b) -> {
+            if(mOnBoot.isChecked()==true){
+                PutBooleanPreferences("cpugov_onboot",true);
+            } else {
+                PutBooleanPreferences("cpugov_onboot",false);
             }
         });
 
@@ -218,44 +212,41 @@ public class CpuGovFragment extends Fragment {
         if (getActivity() == null || isDetached())
             return false;
 
-        getActivity().runOnUiThread(new Runnable()
-        {
-            @Override
-            public void run()
+        getActivity().runOnUiThread(() -> {
+            // catch the exceptions if response of shell delays
+            try
             {
-                // catch the exceptions if response of shell delays
-                try
-                {
-                    CpuInfoUtils.getCpuInfo(mShell, mCPUInfo);
+                CpuInfoUtils.getCpuInfo(mShell, mCPUInfo);
 
-                    StringBuilder cpuInfo = new StringBuilder();
+                StringBuilder cpuInfo = new StringBuilder();
 
-                    mCPUInfoCurrentSpeedText.setText(mCPUInfo.speedCurrent / 1000 + "MHz");
+                mCPUInfoCurrentSpeedText.setText(mCPUInfo.speedCurrent / 1000 + "MHz");
 
-                    cpuInfo.append(mCPUInfo.speedMin / 1000 + "MHz / " + mCPUInfo.speedMax / 1000 + "MHz");
+                cpuInfo.append(mCPUInfo.speedMin / 1000 + "MHz / " + mCPUInfo.speedMax / 1000 + "MHz");
 
-                    mCPUSliderMaxLow.setText(mCPUInfo.speedMinAllowed / 1000 + "MHz");
-                    mCPUSliderMaxHigh.setText(mCPUInfo.speedMaxAllowed / 1000 + "MHz");
-                    mCPUSliderMinLow.setText(mCPUInfo.speedMinAllowed / 1000 + "MHz");
-                    mCPUSliderMinHigh.setText(mCPUInfo.speedMax / 1000 + "MHz");
+                mCPUSliderMaxLow.setText(mCPUInfo.speedMinAllowed / 1000 + "MHz");
+                mCPUSliderMaxHigh.setText(mCPUInfo.speedMaxAllowed / 1000 + "MHz");
+                mCPUSliderMinLow.setText(mCPUInfo.speedMinAllowed / 1000 + "MHz");
+                mCPUSliderMinHigh.setText(mCPUInfo.speedMax / 1000 + "MHz");
 
-                    mCPUSliderMaxSeekBar.setMax((int)(mCPUInfo.speedMaxAllowed - mCPUInfo.speedMinAllowed));
-                    mCPUSliderMinSeekBar.setMax((int)(mCPUInfo.speedMax - mCPUInfo.speedMinAllowed));
+                mCPUSliderMaxSeekBar.setMax((int)(mCPUInfo.speedMaxAllowed - mCPUInfo.speedMinAllowed));
+                mCPUSliderMinSeekBar.setMax((int)(mCPUInfo.speedMax - mCPUInfo.speedMinAllowed));
 
-                    mCPUSliderMaxSeekBar.setProgress((int)(mCPUInfo.speedMax - mCPUInfo.speedMinAllowed));
-                    mCPUSliderMinSeekBar.setProgress((int)(mCPUInfo.speedMin - mCPUInfo.speedMinAllowed));
+                mCPUSliderMaxSeekBar.setProgress((int)(mCPUInfo.speedMax - mCPUInfo.speedMinAllowed));
+                mCPUSliderMinSeekBar.setProgress((int)(mCPUInfo.speedMin - mCPUInfo.speedMinAllowed));
 
-                    mCPUInfoText.setText(cpuInfo.toString());
+                PutLongPreferences("cpu_min_freq", (long) (mCPUInfo.speedMin - mCPUInfo.speedMinAllowed));
 
-                    if (mCPUCoreListFragment != null)
-                        mCPUCoreListFragment.update();
+                mCPUInfoText.setText(cpuInfo.toString());
 
-                }
-                catch (RuntimeException e)
-                {}
-                catch (Exception e)
-                {}
+                if (mCPUCoreListFragment != null)
+                    mCPUCoreListFragment.update();
+
             }
+            catch (RuntimeException e)
+            {}
+            catch (Exception e)
+            {}
         });
 
         return true;

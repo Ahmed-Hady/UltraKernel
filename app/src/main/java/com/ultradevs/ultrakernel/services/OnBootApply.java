@@ -86,13 +86,13 @@ public class OnBootApply extends Service {
                             }
 
                             Long max_freq = getPreferences_long("cpu_max_freq");
-                            if(max_freq != null){
+                            if(max_freq > 0){
                                 shell("echo " + max_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq", true);
                                 Log.i(LOG_TAG, "Applying Max Freq:" + max_freq.toString());
                             }
 
                             Long min_freq = getPreferences_long("cpu_min_freq");
-                            if(max_freq != null){
+                            if(!min_freq.toString().equals("")){
                                 shell("echo " + min_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", true);
                                 Log.i(LOG_TAG, "Applying Min Freq:" + min_freq.toString());
                             }
