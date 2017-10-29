@@ -235,7 +235,7 @@ public class CpuGovFragment extends Fragment {
                 mCPUSliderMaxSeekBar.setProgress((int)(mCPUInfo.speedMax - mCPUInfo.speedMinAllowed));
                 mCPUSliderMinSeekBar.setProgress((int)(mCPUInfo.speedMin - mCPUInfo.speedMinAllowed));
 
-                PutLongPreferences("cpu_min_freq", (long) (mCPUInfo.speedMin - mCPUInfo.speedMinAllowed));
+                PutLongPreferences("cpu_min_freq", mCPUInfo.speedMin);
 
                 mCPUInfoText.setText(cpuInfo.toString());
 
