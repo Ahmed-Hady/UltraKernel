@@ -9,6 +9,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.ultradevs.ultrakernel.R;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AutoSmp;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
@@ -100,24 +104,24 @@ public class OnBootApply extends Service {
 
                         if(getPreferences_bool("cpu_hotplug_onboot")==true){
                             if(getPreferences_bool("msm_mpd") == true){
-                                shell("echo 1 > /sys/kernel/msm_mpdecision/conf/enabled", true);
+                                msmMPDutil.setEnaled(true);
                             } else {
-                                shell("echo 0 > /sys/kernel/msm_mpdecision/conf/enabled", true);
+                                msmMPDutil.setEnaled(false);
                             }
                             if(getPreferences_bool("msm_hotplug") == true){
-                                shell("echo 1 > /sys/kernel/msm_hotplug/conf/enabled", true);
+                                MSM_utils.setEnaled(true);
                             } else {
-                                shell("echo 0 > /sys/kernel/msm_hotplug/conf/enabled", true);
+                                MSM_utils.setEnaled(false);
                             }
                             if(getPreferences_bool("alucard") == true){
-                                shell("echo 1 > /sys/kernel/alucard_hotplug/hotplug_enable", true);
+                                AlucardUtils.setEnaled(true);
                             } else {
-                                shell("echo 0 > /sys/kernel/alucard_hotplug/hotplug_enable", true);
+                                AlucardUtils.setEnaled(false);
                             }
                             if(getPreferences_bool("autosmp") == true){
-                                shell("echo Y > /sys/module/autosmp/parameters/enabled", true);
+                                AutoSmp.setEnaled(true);
                             } else {
-                                shell("echo N > /sys/module/autosmp/parameters/enabled", true);
+                                AutoSmp.setEnaled(false);
                             }
                         }
 
