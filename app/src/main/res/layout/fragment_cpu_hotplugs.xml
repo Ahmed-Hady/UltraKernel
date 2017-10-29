@@ -47,10 +47,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:divider="@drawable/horz_separator"
+            android:showDividers="middle">
 
             <RelativeLayout
                 android:id="@+id/ly_msm"
