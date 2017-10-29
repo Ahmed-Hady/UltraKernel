@@ -17,6 +17,9 @@ import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -88,43 +91,23 @@ public class CpuHotPlugsFragment extends Fragment {
         M_lyALU = v.findViewById(R.id.ly_alu);
 
         //MSM MPDecision
-        final String mpd_path = "/sys/kernel/msm_mpdecision/conf/enabled";
-        if(new File(mpd_path).exists()){
+        if(msmMPDutil.isAvailable()){
             mMPD = v.findViewById(R.id.mpd_hotplug);
-            if(shell("cat " + mpd_path, true).toString().contains("0")){
-                mMPD.setChecked(false);
-            } else {
-                mMPD.setChecked(true);
-            }
-
+            mMPD.setChecked(msmMPDutil.getStatus());
             mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
-                if(mMPD.isChecked()==true){
-                    shell("echo 1  > " + mpd_path , true);
-                } else {
-                    shell("echo 0  > " + mpd_path , true);
-                }
+                msmMPDutil.setEnaled(b);
                 PutBooleanPreferences("msm_mpd",b);
             });
         } else {
             M_lyMPD.setVisibility(View.GONE);
         }
 
-
         //MSM Hotplug
-        String msm_path = "/sys/kernel/msm_hotplug/conf/enabled";
-        if(new File(msm_path).exists()){
+        if(MSM_utils.isAvailable()){
             mMSM = v.findViewById(R.id.msm_hotplug);
-            if(shell("cat " + msm_path, true).toString().contains("0")){
-                mMSM.setChecked(false);
-            } else {
-                mMSM.setChecked(true);
-            }
+            mMSM.setChecked(MSM_utils.getStatus());
             mMSM.setOnCheckedChangeListener((compoundButton, b) -> {
-                if(mMSM.isChecked()==true){
-                    shell("echo 1  > " + msm_path , true);
-                } else {
-                    shell("echo 0  > " + msm_path , true);
-                }
+                MSM_utils.setEnaled(b);
                 PutBooleanPreferences("msm_hotplug",b);
             });
         } else {
@@ -132,20 +115,11 @@ public class CpuHotPlugsFragment extends Fragment {
         }
 
         //Alucard Hotplug
-        String alucard_path = "/sys/kernel/alucard_hotplug/hotplug_enable";
-        if(new File(alucard_path).exists()){
+        if(AlucardUtils.isAvailable()){
             mALU = v.findViewById(R.id.alucard_hotplug);
-            if(shell("cat " + alucard_path, true).toString().contains("0")){
-                mALU.setChecked(false);
-            } else {
-                mALU.setChecked(true);
-            }
+            mALU.setChecked(AlucardUtils.getStatus());
             mALU.setOnCheckedChangeListener((compoundButton, b) -> {
-                if(mALU.isChecked()==true){
-                    shell("echo 1  > " + alucard_path , true);
-                } else {
-                    shell("echo 0  > " + alucard_path , true);
-                }
+                AlucardUtils.setEnaled(b);
                 PutBooleanPreferences("alucard",b);
             });
         } else {
