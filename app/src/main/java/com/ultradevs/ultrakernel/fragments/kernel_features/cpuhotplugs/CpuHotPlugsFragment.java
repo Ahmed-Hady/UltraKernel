@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AutoSmp;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
@@ -41,10 +42,12 @@ public class CpuHotPlugsFragment extends Fragment {
     private Switch mMSM;
     private Switch mMPD;
     private Switch mALU;
+    private Switch mAutoSmp;
 
     private RelativeLayout M_lyMSM;
     private RelativeLayout M_lyMPD;
     private RelativeLayout M_lyALU;
+    private RelativeLayout M_lyAuto;
 
     public CpuHotPlugsFragment() {
         // Required empty public constructor
@@ -89,6 +92,7 @@ public class CpuHotPlugsFragment extends Fragment {
         M_lyMPD = v.findViewById(R.id.ly_mpd);
         M_lyMSM = v.findViewById(R.id.ly_msm);
         M_lyALU = v.findViewById(R.id.ly_alu);
+        M_lyAuto = v.findViewById(R.id.ly_auto);
 
         //MSM MPDecision
         if(msmMPDutil.isAvailable()){
@@ -125,6 +129,19 @@ public class CpuHotPlugsFragment extends Fragment {
         } else {
             M_lyALU.setVisibility(View.GONE);
         }
+
+        //AutoSMP Hotplug
+        if(AutoSmp.isAvailable()){
+            mAutoSmp = v.findViewById(R.id.autosmp_hotplug);
+            mAutoSmp.setChecked(AutoSmp.getStatus());
+            mAutoSmp.setOnCheckedChangeListener((compoundButton, b) -> {
+                AutoSmp.setEnaled(b);
+                PutBooleanPreferences("autosmp",b);
+            });
+        } else {
+            M_lyAuto.setVisibility(View.GONE);
+        }
+
         return v ;
     }
 }

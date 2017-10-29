@@ -114,6 +114,11 @@ public class OnBootApply extends Service {
                             } else {
                                 shell("echo 0 > /sys/kernel/alucard_hotplug/hotplug_enable", true);
                             }
+                            if(getPreferences_bool("autosmp") == true){
+                                shell("echo Y > /sys/module/autosmp/parameters/enabled", true);
+                            } else {
+                                shell("echo N > /sys/module/autosmp/parameters/enabled", true);
+                            }
                         }
 
                         try {
