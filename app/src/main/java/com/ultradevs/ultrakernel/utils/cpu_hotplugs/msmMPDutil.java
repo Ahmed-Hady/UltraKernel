@@ -35,6 +35,23 @@ public class msmMPDutil {
             return false;
         }
     }
+
+    public static int getMinOnline(){
+        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MIN_CPUS_ONLINE,true));
+    }
+
+    public static int getMaxOnline(){
+        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MAX_CPUS_ONLINE, true));
+    }
+
+    public static boolean getSuspend() {
+        if (utils.readFile(MPD_HOTPLUG_SUSPEND, true).toString().contains("1")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static void setEnabled(boolean enable) {
         final Integer set;
         if(enable == true){
@@ -44,10 +61,22 @@ public class msmMPDutil {
         }
         RootUtils.runCommand("echo " + set.toString() + " > " + MPD_ENABLE);
     }
-    public static int getMinOnline(){
-        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MIN_CPUS_ONLINE,true));
+
+    public static void setMinOnline(int value){
+        RootUtils.runCommand("echo " + value + " > " + MPD_HOTPLUG_MIN_CPUS_ONLINE);
     }
-    public static int getMaxOnline(){
-        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MAX_CPUS_ONLINE, true));
+
+    public static void setMaxOnline(int value){
+        RootUtils.runCommand("echo " + value + " > " + MPD_HOTPLUG_MAX_CPUS_ONLINE);
+    }
+
+    public static void setSuspend(boolean value){
+        int set;
+        if(value == true){
+            set = 1;
+        }else{
+            set = 0;
+        }
+        RootUtils.runCommand("echo " + set + " > " + MPD_HOTPLUG_SUSPEND);
     }
 }

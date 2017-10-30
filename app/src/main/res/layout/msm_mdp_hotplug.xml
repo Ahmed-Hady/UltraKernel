@@ -1,108 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ly_mpd"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingBottom="14dp"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:paddingTop="15dp">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ly_mpd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="14dp"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:paddingTop="15dp">
 
     <Switch
-    android:id="@+id/mpd_hotplug"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ellipsize="marquee"
-    android:fadingEdge="horizontal"
-    android:singleLine="true"
-    android:text="@string/cpu_hotplug_mpd"
-    android:textAppearance="?android:attr/textAppearanceListItem" />
+        android:id="@+id/mpd_hotplug"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
+        android:singleLine="true"
+        android:text="@string/cpu_hotplug_mpd"
+        android:textAppearance="?android:attr/textAppearanceListItem" />
 
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_alignParentStart="true"
-    android:layout_below="@+id/mpd_hotplug"
-    android:ellipsize="end"
-    android:maxLines="10"
-    android:text="@string/cpu_hotplug_mpd_summary"
-    android:textAppearance="?android:attr/textAppearanceListItemSecondary"
-    android:textColor="?android:attr/textColorSecondary" />
-
-    <Switch
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
-    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-    android:text="@string/suspend_title"
-    android:textColor="?android:attr/textColorSecondary"
-    android:textStyle="bold" />
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/mpd_hotplug"
+        android:ellipsize="end"
+        android:maxLines="10"
+        android:text="@string/cpu_hotplug_mpd_summary"
+        android:textAppearance="?android:attr/textAppearanceListItemSecondary"
+        android:textColor="?android:attr/textColorSecondary" />
+    
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
-    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-    android:text="@string/min_cpu_online"
-    android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
+        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+        android:text="@string/min_cpu_online"
+        android:textStyle="bold" />
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:layout_margin="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_margin="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1" />
 
-    <SeekBar
-        android:id="@+id/mpd_min_online"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        <SeekBar
+            android:id="@+id/mpd_min_online"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/mpd_min_online_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0" />
-
     </LinearLayout>
 
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
-    android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-    android:text="@string/max_cpu_online"
-    android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
+        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+        android:text="@string/max_cpu_online"
+        android:textStyle="bold" />
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:layout_margin="5dp">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:layout_margin="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="1" />
 
-    <SeekBar
-        android:id="@+id/mpd_max_online"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        <SeekBar
+            android:id="@+id/mpd_max_online"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            />
 
         <TextView
             android:id="@+id/mpd_max_online_Value"
@@ -112,4 +101,13 @@
 
     </LinearLayout>
 
+    <Switch
+        android:id="@+id/mpdSuspend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+        android:text="@string/suspend_title"
+        android:textColor="?android:attr/textColorSecondary"
+        android:textStyle="bold" />
 </LinearLayout>

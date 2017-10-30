@@ -24,12 +24,9 @@ import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AutoSmp;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.util.ArrayList;
 
-import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 
@@ -46,6 +43,7 @@ public class CpuHotPlugsFragment extends Fragment {
 
     private Switch mMSM;
     private Switch mMPD;
+    private Switch mMPDsuspend;
     private Switch mALU;
     private Switch mAutoSmp;
 
@@ -65,6 +63,13 @@ public class CpuHotPlugsFragment extends Fragment {
         SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putBoolean(Name, Function);
+        editor.commit();
+    }
+
+    public void PutIntegerPreferences(String Name,int Function){
+        SharedPreferences settings = getContext().getSharedPreferences(Name, 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putInt(Name, Function);
         editor.commit();
     }
 
@@ -124,6 +129,41 @@ public class CpuHotPlugsFragment extends Fragment {
                 PutBooleanPreferences("msm_mpd",b);
             });
 
+            mMPD_online_min.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                }
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    msmMPDutil.setMinOnline(seekBar.getProgress());
+                    PutIntegerPreferences("msm_mpd_min_online", seekBar.getProgress());
+                }
+            });
+
+            mMPD_online_max.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                }
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    msmMPDutil.setMaxOnline(seekBar.getProgress());
+                    PutIntegerPreferences("msm_mpd_max_online", seekBar.getProgress());
+                }
+            });
+
+            mMPDsuspend = v.findViewById(R.id.mpdSuspend);
+            mMPDsuspend.setChecked(msmMPDutil.getSuspend());
+
+            mMPDsuspend.setOnCheckedChangeListener((compoundButton, b) -> {
+                msmMPDutil.setSuspend(b);
+                PutBooleanPreferences("msm_mpd_suspend", b);
+            });
         } else {
             M_lyMPD.setVisibility(View.GONE);
         }

@@ -39,6 +39,11 @@ public class OnBootApply extends Service {
         return settings.getLong(Name, 0);
     }
 
+    public int getPreferences_integer(String Name){
+        SharedPreferences settings = getBaseContext().getSharedPreferences(Name, 0); // 0 - for private mode
+        return settings.getInt(Name, 0);
+    }
+
     @Override
     public IBinder onBind(Intent intent) {
         return null;
@@ -105,6 +110,12 @@ public class OnBootApply extends Service {
                         if(getPreferences_bool("cpu_hotplug_onboot")==true){
                             if(getPreferences_bool("msm_mpd") == true){
                                 msmMPDutil.setEnabled(true);
+                                if(getPreferences_integer("msm_mpd_min_online") > 0)
+                                    msmMPDutil.setMinOnline(getPreferences_integer("msm_mpd_min_online"));
+                                if(getPreferences_integer("msm_mpd_max_online") > 0)
+                                    msmMPDutil.setMaxOnline(getPreferences_integer("msm_mpd_max_online"));
+                                if (getPreferences_bool("msm_mpd_suspend"))
+                                    msmMPDutil.setSuspend(getPreferences_bool("msm_mpd_suspend"));
                             } else {
                                 msmMPDutil.setEnabled(false);
                             }
