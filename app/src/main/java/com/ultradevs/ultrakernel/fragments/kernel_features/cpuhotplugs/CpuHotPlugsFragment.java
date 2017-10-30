@@ -203,7 +203,7 @@ public class CpuHotPlugsFragment extends Fragment {
 
             mALU.setChecked(AlucardUtils.getStatus());
             mALU.setOnCheckedChangeListener((compoundButton, b) -> {
-                AlucardUtils.setEnaled(b);
+                AlucardUtils.setEnabled(b);
                 PutBooleanPreferences("alucard",b);
             });
 
@@ -238,9 +238,9 @@ public class CpuHotPlugsFragment extends Fragment {
             mALUsuspend = v.findViewById(R.id.aluSuspend);
             mALUsuspend.setChecked(AlucardUtils.getSuspend());
 
-            mMPDsuspend.setOnCheckedChangeListener((compoundButton, b) -> {
-                msmMPDutil.setSuspend(b);
-                PutBooleanPreferences("msm_mpd_suspend", b);
+            mALUsuspend.setOnCheckedChangeListener((compoundButton, b) -> {
+                AlucardUtils.setSuspend(b);
+                PutBooleanPreferences("alu_suspend", b);
             });
 
         } else {

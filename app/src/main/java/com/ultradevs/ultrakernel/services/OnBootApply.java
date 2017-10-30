@@ -125,15 +125,15 @@ public class OnBootApply extends Service {
                                 MSM_utils.setEnaled(false);
                             }
                             if(getPreferences_bool("alucard") == true){
-                                AlucardUtils.setEnaled(true);
+                                AlucardUtils.setEnabled(true);
                                 if(getPreferences_integer("alu_min_online") > 0)
-                                    msmMPDutil.setMinOnline(getPreferences_integer("alu_min_online"));
+                                    AlucardUtils.setMinOnline(getPreferences_integer("alu_min_online"));
                                 if(getPreferences_integer("alu_max_online") > 0)
-                                    msmMPDutil.setMaxOnline(getPreferences_integer("alu_max_online"));
+                                    AlucardUtils.setMaxOnline(getPreferences_integer("alu_max_online"));
                                 if (getPreferences_bool("alu_suspend"))
-                                    msmMPDutil.setSuspend(getPreferences_bool("alu_suspend"));
+                                    AlucardUtils.setSuspend(getPreferences_bool("alu_suspend"));
                             } else {
-                                AlucardUtils.setEnaled(false);
+                                AlucardUtils.setEnabled(false);
                             }
                             if(getPreferences_bool("autosmp") == true){
                                 AutoSmp.setEnaled(true);

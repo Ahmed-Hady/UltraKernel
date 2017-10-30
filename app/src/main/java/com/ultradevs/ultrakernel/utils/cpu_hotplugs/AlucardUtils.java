@@ -48,7 +48,7 @@ public class AlucardUtils {
         }
     }
 
-    public static void setEnaled(boolean enable) {
+    public static void setEnabled(boolean enable) {
         final Integer set;
         if(enable == true){
             set = 1;
@@ -71,7 +71,7 @@ public class AlucardUtils {
         if(value == true){
             set = 1;
         } else {
-            set = 2;
+            set = 0;
         }
         RootUtils.runCommand("echo " + set + " > " + ALUCARD_HOTPLUG_SUSPEND);
     }
