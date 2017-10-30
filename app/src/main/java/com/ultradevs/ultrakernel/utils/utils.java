@@ -1,9 +1,19 @@
 package com.ultradevs.ultrakernel.utils;
 
-import android.content.Context;
-import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
+import android.util.Log;
 
+import com.stericson.RootTools.RootTools;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DecimalFormat;
+
+import eu.chainfire.libsuperuser.Shell;
+
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 
 /**
  * Created by ahmedhady on 23/10/17.

@@ -14,6 +14,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import eu.chainfire.libsuperuser.Shell;
+
 /**
  * Created by ahmedhady on 17/10/17.
  */
@@ -104,7 +106,7 @@ public class ShellExecuter {
             return r;
     }
 
-    private static String getSuBin() {
+    public static String getSuBin() {
         if (new File("/system/xbin","su").exists()) {
             return "/system/xbin/su";
         }

@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -22,11 +24,14 @@ import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AutoSmp;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.util.ArrayList;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
+import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 
 /**
@@ -35,19 +40,23 @@ import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 public class CpuHotPlugsFragment extends Fragment {
 
     private CheckBox mOnBoot;
-    private TextView mSocName;
 
-    private ShellExecuter mShell;
+    private TextView mSocName;
+    private TextView mMPD_min_value;
+    private TextView mMPD_max_value;
 
     private Switch mMSM;
     private Switch mMPD;
     private Switch mALU;
     private Switch mAutoSmp;
 
-    private RelativeLayout M_lyMSM;
-    private RelativeLayout M_lyMPD;
-    private RelativeLayout M_lyALU;
-    private RelativeLayout M_lyAuto;
+    private LinearLayout M_lyMSM;
+    private LinearLayout M_lyMPD;
+    private LinearLayout M_lyALU;
+    private LinearLayout M_lyAuto;
+
+    private SeekBar mMPD_online_min;
+    private SeekBar mMPD_online_max;
 
     public CpuHotPlugsFragment() {
         // Required empty public constructor
@@ -97,11 +106,25 @@ public class CpuHotPlugsFragment extends Fragment {
         //MSM MPDecision
         if(msmMPDutil.isAvailable()){
             mMPD = v.findViewById(R.id.mpd_hotplug);
+
+            mMPD_min_value = v.findViewById(R.id.mpd_min_online_Value);
+            mMPD_min_value.setText(Ncores());
+            mMPD_online_min = v.findViewById(R.id.mpd_min_online);
+            mMPD_online_min.setMax(Integer.valueOf(mMPD_min_value.getText().toString()));
+            //mMPD_online_min.setProgress(msmMPDutil.getMinOnline());
+
+            mMPD_max_value = v.findViewById(R.id.mpd_max_online_Value);
+            mMPD_max_value.setText(Ncores());
+            mMPD_online_max = v.findViewById(R.id.mpd_max_online);
+            mMPD_online_max.setMax(Integer.valueOf(mMPD_max_value.getText().toString()));
+            //mMPD_online_max.setProgress(msmMPDutil.getMaxOnline());
+
             mMPD.setChecked(msmMPDutil.getStatus());
             mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
                 msmMPDutil.setEnaled(b);
                 PutBooleanPreferences("msm_mpd",b);
             });
+
         } else {
             M_lyMPD.setVisibility(View.GONE);
         }

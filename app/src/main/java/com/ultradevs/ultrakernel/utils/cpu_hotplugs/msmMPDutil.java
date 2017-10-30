@@ -1,9 +1,12 @@
 package com.ultradevs.ultrakernel.utils.cpu_hotplugs;
 
-import android.content.Context;
+import android.util.Log;
+
+import com.ultradevs.ultrakernel.utils.utils;
 
 import java.io.File;
 
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 
 /**
@@ -15,6 +18,7 @@ public class msmMPDutil {
     private static final String MPD_ENABLE = MPD_PATH + "/enabled";
     private static final String MPD_HOTPLUG_SUSPEND = MPD_PATH + "/hotplug_suspend";
     private static final String MPD_HOTPLUG_MIN_CPUS_ONLINE = MPD_PATH + "/min_cpus_online";
+    private static final String MPD_HOTPLUG_MAX_CPUS_ONLINE = MPD_PATH + "/max_cpus_online";
 
     public static boolean isAvailable() {
         if(new File(MPD_PATH).exists()){
