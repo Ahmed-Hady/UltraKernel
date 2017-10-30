@@ -12,6 +12,9 @@ import java.io.File;
 public class AlucardUtils {
     private static final String ALUCARD_HOTPLUG = "/sys/kernel/alucard_hotplug";
     private static final String ALUCARD_HOTPLUG_ENABLE = ALUCARD_HOTPLUG + "/hotplug_enable";
+    private static final String ALUCARD_HOTPLUG_MIN_CPUS_ONLINE = ALUCARD_HOTPLUG + "/min_cpus_online";
+    private static final String ALUCARD_HOTPLUG_MAX_CORES_LIMIT = ALUCARD_HOTPLUG + "/maxcoreslimit";
+    private static final String ALUCARD_HOTPLUG_SUSPEND = ALUCARD_HOTPLUG + "/hotplug_suspend";
 
     public static boolean isAvailable() {
         if(new File(ALUCARD_HOTPLUG).exists()){
@@ -28,6 +31,23 @@ public class AlucardUtils {
             return false;
         }
     }
+
+    public static int getMinOnline(){
+        return utils.strToInt(utils.readFile(ALUCARD_HOTPLUG_MIN_CPUS_ONLINE));
+    }
+
+    public static int getMaxOnline(){
+        return utils.strToInt(utils.readFile(ALUCARD_HOTPLUG_MAX_CORES_LIMIT));
+    }
+
+    public static boolean getSuspend(){
+        if(utils.readFile(ALUCARD_HOTPLUG_SUSPEND).contains("1")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static void setEnaled(boolean enable) {
         final Integer set;
         if(enable == true){
@@ -36,5 +56,23 @@ public class AlucardUtils {
             set = 0;
         }
         RootUtils.runCommand("echo " + set.toString() + " > " + ALUCARD_HOTPLUG_ENABLE);
+    }
+
+    public static void setMinOnline(int value){
+        RootUtils.runCommand("echo " + value + " > " + ALUCARD_HOTPLUG_MIN_CPUS_ONLINE);
+    }
+
+    public static void setMaxOnline(int value){
+        RootUtils.runCommand("echo " + value + " > " + ALUCARD_HOTPLUG_MAX_CORES_LIMIT);
+    }
+
+    public static void setSuspend(boolean value){
+        int set;
+        if(value == true){
+            set = 1;
+        } else {
+            set = 2;
+        }
+        RootUtils.runCommand("echo " + set + " > " + ALUCARD_HOTPLUG_SUSPEND);
     }
 }

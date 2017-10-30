@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/ly_mpd"
+        android:id="@+id/ly_alu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -11,23 +11,23 @@
         android:paddingTop="15dp">
 
     <Switch
-        android:id="@+id/mpd_hotplug"
+        android:id="@+id/alucard_hotplug"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
         android:fadingEdge="horizontal"
         android:singleLine="true"
-        android:text="@string/cpu_hotplug_mpd"
+        android:text="@string/cpu_hotplug_alucard"
         android:textAppearance="?android:attr/textAppearanceListItem" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/mpd_hotplug"
+        android:layout_below="@+id/alucard_hotplug"
         android:ellipsize="end"
         android:maxLines="10"
-        android:text="@string/cpu_hotplug_mpd_summary"
+        android:text="@string/cpu_hotplug_alucard_summary"
         android:textAppearance="?android:attr/textAppearanceListItemSecondary"
         android:textColor="?android:attr/textColorSecondary" />
 
@@ -53,13 +53,13 @@
             android:text="1" />
 
         <SeekBar
-            android:id="@+id/mpd_min_online"
+            android:id="@+id/alu_min_online"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/mpd_min_online_Value"
+            android:id="@+id/alu_min_online_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0" />
@@ -87,14 +87,13 @@
             android:text="1" />
 
         <SeekBar
-            android:id="@+id/mpd_max_online"
+            android:id="@+id/alu_max_online"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
+            android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/mpd_max_online_Value"
+            android:id="@+id/alu_max_online_Value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0" />
@@ -102,7 +101,7 @@
     </LinearLayout>
 
     <Switch
-        android:id="@+id/mpdSuspend"
+        android:id="@+id/aluSuspend"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

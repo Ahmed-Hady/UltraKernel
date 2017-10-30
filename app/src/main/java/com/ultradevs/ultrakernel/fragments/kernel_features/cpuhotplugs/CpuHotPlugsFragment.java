@@ -40,11 +40,14 @@ public class CpuHotPlugsFragment extends Fragment {
     private TextView mSocName;
     private TextView mMPD_min_value;
     private TextView mMPD_max_value;
+    private TextView mALU_min_value;
+    private TextView mALU_max_value;
 
     private Switch mMSM;
     private Switch mMPD;
     private Switch mMPDsuspend;
     private Switch mALU;
+    private Switch mALUsuspend;
     private Switch mAutoSmp;
 
     private LinearLayout M_lyMSM;
@@ -54,6 +57,8 @@ public class CpuHotPlugsFragment extends Fragment {
 
     private SeekBar mMPD_online_min;
     private SeekBar mMPD_online_max;
+    private SeekBar mALU_online_min;
+    private SeekBar mALU_online_max;
 
     public CpuHotPlugsFragment() {
         // Required empty public constructor
@@ -183,11 +188,61 @@ public class CpuHotPlugsFragment extends Fragment {
         //Alucard Hotplug
         if(AlucardUtils.isAvailable()){
             mALU = v.findViewById(R.id.alucard_hotplug);
+
+            mALU_min_value = v.findViewById(R.id.alu_min_online_Value);
+            mALU_min_value.setText(Ncores());
+            mALU_online_min = v.findViewById(R.id.alu_min_online);
+            mALU_online_min.setMax(Integer.valueOf(mALU_min_value.getText().toString()));
+            mALU_online_min.setProgress(AlucardUtils.getMinOnline());
+
+            mALU_max_value = v.findViewById(R.id.alu_max_online_Value);
+            mALU_max_value.setText(Ncores());
+            mALU_online_max = v.findViewById(R.id.alu_max_online);
+            mALU_online_max.setMax(Integer.valueOf(mALU_max_value.getText().toString()));
+            mALU_online_max.setProgress(AlucardUtils.getMaxOnline());
+
             mALU.setChecked(AlucardUtils.getStatus());
             mALU.setOnCheckedChangeListener((compoundButton, b) -> {
                 AlucardUtils.setEnaled(b);
                 PutBooleanPreferences("alucard",b);
             });
+
+            mALU_online_min.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                }
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    AlucardUtils.setMinOnline(seekBar.getProgress());
+                    PutIntegerPreferences("alu_min_online", seekBar.getProgress());
+                }
+            });
+
+            mALU_online_max.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                }
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                }
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    AlucardUtils.setMaxOnline(seekBar.getProgress());
+                    PutIntegerPreferences("alu_max_online", seekBar.getProgress());
+                }
+            });
+
+            mALUsuspend = v.findViewById(R.id.aluSuspend);
+            mALUsuspend.setChecked(AlucardUtils.getSuspend());
+
+            mMPDsuspend.setOnCheckedChangeListener((compoundButton, b) -> {
+                msmMPDutil.setSuspend(b);
+                PutBooleanPreferences("msm_mpd_suspend", b);
+            });
+
         } else {
             M_lyALU.setVisibility(View.GONE);
         }

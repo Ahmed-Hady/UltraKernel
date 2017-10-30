@@ -126,6 +126,12 @@ public class OnBootApply extends Service {
                             }
                             if(getPreferences_bool("alucard") == true){
                                 AlucardUtils.setEnaled(true);
+                                if(getPreferences_integer("alu_min_online") > 0)
+                                    msmMPDutil.setMinOnline(getPreferences_integer("alu_min_online"));
+                                if(getPreferences_integer("alu_max_online") > 0)
+                                    msmMPDutil.setMaxOnline(getPreferences_integer("alu_max_online"));
+                                if (getPreferences_bool("alu_suspend"))
+                                    msmMPDutil.setSuspend(getPreferences_bool("alu_suspend"));
                             } else {
                                 AlucardUtils.setEnaled(false);
                             }
