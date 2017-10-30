@@ -8,16 +8,15 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.stericson.RootTools.RootTools;
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.InitAdapter;
 import com.ultradevs.ultrakernel.adapters.initList;
+import com.ultradevs.ultrakernel.utils.RootUtils;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.getRoot;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.isRoot;
 
 public class InitActivity extends Activity {
@@ -39,24 +38,17 @@ public class InitActivity extends Activity {
         LVinit = findViewById(R.id.initlist);
         LVinit.setAdapter(adapter);
 
-        if(RootTools.isRootAvailable()==true){
+        if(RootUtils.rootAccess()==true){
             adapter.add(new initList("Root Status", Boolean.TRUE, "Device is Rooted", R.color.light_green));
-
-            getRoot();
-
-            if(RootTools.isAccessGiven()==true){
-                adapter.add(new initList("Root Access", Boolean.TRUE, "Root Access Available", R.color.light_green));
-            }else{
-                adapter.add(new initList("Root Access", Boolean.FALSE, "Root Access Denied", R.color.light_red));
-                error += 1;
-            }
+            RootUtils.getSU();
+            adapter.add(new initList("Root Access", Boolean.TRUE, "Root Access Available", R.color.light_green));
 
         }else{
             adapter.add(new initList("Root Status", Boolean.FALSE, "Device isn't Root", R.color.light_red));
-            error += 1;
+            error += 2;
         }
 
-        if(RootTools.isBusyboxAvailable()==true){
+        if(RootUtils.busyboxInstalled()==true){
             adapter.add(new initList("BusyBox", Boolean.TRUE, "Installed", R.color.light_green));
         }else{
             adapter.add(new initList("BusyBox", Boolean.FALSE, "Not Installed", R.color.light_red));

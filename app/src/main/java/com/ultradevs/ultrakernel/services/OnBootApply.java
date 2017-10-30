@@ -9,13 +9,13 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.ultradevs.ultrakernel.R;
+import com.ultradevs.ultrakernel.utils.RootUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AutoSmp;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MSM_utils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.msmMPDutil;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
 
 public class OnBootApply extends Service {
@@ -86,27 +86,27 @@ public class OnBootApply extends Service {
 
                             String gov = getPreferences_string("cur_gov");
                             if(gov != null){
-                                shell("chmod 777 " + Scaling_gov_path + " && echo " + gov + " > "  + Scaling_gov_path + " && chmod 644 " + Scaling_gov_path, true);
+                                RootUtils.runCommand("chmod 777 " + Scaling_gov_path + " && echo " + gov + " > "  + Scaling_gov_path + " && chmod 644 " + Scaling_gov_path);
                             }
 
                             Long max_freq = getPreferences_long("cpu_max_freq");
                             if(max_freq > 0){
-                                shell("echo " + max_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq", true);
+                                RootUtils.runCommand("echo " + max_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_max_freq");
                                 Log.i(LOG_TAG, "Applying Max Freq:" + max_freq.toString());
                             }
 
                             Long min_freq = getPreferences_long("cpu_min_freq");
                             if(!min_freq.toString().equals("")){
-                                shell("echo " + min_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", true);
+                                RootUtils.runCommand("echo " + min_freq.toString() + " > " + PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq");
                                 Log.i(LOG_TAG, "Applying Min Freq:" + min_freq.toString());
                             }
                         }
 
                         if(getPreferences_bool("cpu_hotplug_onboot")==true){
                             if(getPreferences_bool("msm_mpd") == true){
-                                msmMPDutil.setEnaled(true);
+                                msmMPDutil.setEnabled(true);
                             } else {
-                                msmMPDutil.setEnaled(false);
+                                msmMPDutil.setEnabled(false);
                             }
                             if(getPreferences_bool("msm_hotplug") == true){
                                 MSM_utils.setEnaled(true);

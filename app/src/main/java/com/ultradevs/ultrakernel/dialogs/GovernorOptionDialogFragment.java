@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.adapters.GovernorAdapter;
+import com.ultradevs.ultrakernel.utils.RootUtils;
 import com.ultradevs.ultrakernel.utils.ShellExecuter;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
@@ -44,7 +45,7 @@ public class GovernorOptionDialogFragment extends DialogFragment
             public void onClick(DialogInterface dialog, int which)
             {
                 Log.i(LOG_TAG, "Current Governor: " + kernel_Current_Gov());
-                ShellExecuter.shell(((GovernorAdapter.GovernorItem) adapter.getItem(which)).command,true);
+                RootUtils.runCommand(((GovernorAdapter.GovernorItem) adapter.getItem(which)).command);
             }
         });
 

@@ -2,12 +2,12 @@ package com.ultradevs.ultrakernel.utils.cpu_hotplugs;
 
 import android.util.Log;
 
+import com.ultradevs.ultrakernel.utils.RootUtils;
 import com.ultradevs.ultrakernel.utils.utils;
 
 import java.io.File;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 
 /**
  * Created by ahmedhady on 29/10/17.
@@ -29,19 +29,25 @@ public class msmMPDutil {
     }
 
     public static boolean getStatus() {
-        if (shell("cat " + MPD_ENABLE, true).toString().contains("1")){
+        if (utils.readFile(MPD_ENABLE, true).toString().contains("1")){
             return true;
         } else {
             return false;
         }
     }
-    public static void setEnaled(boolean enable) {
+    public static void setEnabled(boolean enable) {
         final Integer set;
         if(enable == true){
             set = 1;
         } else {
             set = 0;
         }
-        shell("echo " + set.toString() + " > " + MPD_ENABLE, true);
+        RootUtils.runCommand("echo " + set.toString() + " > " + MPD_ENABLE);
+    }
+    public static int getMinOnline(){
+        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MIN_CPUS_ONLINE,true));
+    }
+    public static int getMaxOnline(){
+        return utils.strToInt(utils.readFile(MPD_HOTPLUG_MAX_CPUS_ONLINE, true));
     }
 }

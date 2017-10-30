@@ -7,12 +7,6 @@ import com.ultradevs.ultrakernel.utils.ShellExecuter;
  */
 
 public class CPUInfo {
-
-    public static String split(String receiver) {
-        String[] splitter = receiver.split(":");
-        return splitter[1];
-    }
-
     public long speedCurrent = 0;
     public long speedMin = 0;
     public long speedMax = 0;

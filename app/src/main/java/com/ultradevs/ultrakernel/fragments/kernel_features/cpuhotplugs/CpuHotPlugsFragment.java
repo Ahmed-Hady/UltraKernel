@@ -30,7 +30,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 
@@ -111,17 +110,17 @@ public class CpuHotPlugsFragment extends Fragment {
             mMPD_min_value.setText(Ncores());
             mMPD_online_min = v.findViewById(R.id.mpd_min_online);
             mMPD_online_min.setMax(Integer.valueOf(mMPD_min_value.getText().toString()));
-            //mMPD_online_min.setProgress(msmMPDutil.getMinOnline());
+            mMPD_online_min.setProgress(msmMPDutil.getMinOnline());
 
             mMPD_max_value = v.findViewById(R.id.mpd_max_online_Value);
             mMPD_max_value.setText(Ncores());
             mMPD_online_max = v.findViewById(R.id.mpd_max_online);
             mMPD_online_max.setMax(Integer.valueOf(mMPD_max_value.getText().toString()));
-            //mMPD_online_max.setProgress(msmMPDutil.getMaxOnline());
+            mMPD_online_max.setProgress(msmMPDutil.getMaxOnline());
 
             mMPD.setChecked(msmMPDutil.getStatus());
             mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
-                msmMPDutil.setEnaled(b);
+                msmMPDutil.setEnabled(b);
                 PutBooleanPreferences("msm_mpd",b);
             });
 

@@ -1,8 +1,9 @@
 package com.ultradevs.ultrakernel.utils.cpu_hotplugs;
 
-import java.io.File;
+import com.ultradevs.ultrakernel.utils.RootUtils;
+import com.ultradevs.ultrakernel.utils.utils;
 
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
+import java.io.File;
 
 /**
  * Created by ahmedhady on 29/10/17.
@@ -21,7 +22,7 @@ public class AutoSmp {
     }
 
     public static boolean getStatus() {
-        if (shell("cat " + HOTPLUG_AUTOSMP_ENABLE, true).toString().contains("Y")){
+        if (utils.readFile(HOTPLUG_AUTOSMP_ENABLE, true).toString().contains("Y")){
             return true;
         } else {
             return false;
@@ -34,6 +35,6 @@ public class AutoSmp {
         } else {
             set = "N";
         }
-        shell("echo " + set + " > " + HOTPLUG_AUTOSMP_ENABLE, true);
+        RootUtils.runCommand("echo " + set + " > " + HOTPLUG_AUTOSMP_ENABLE);
     }
 }

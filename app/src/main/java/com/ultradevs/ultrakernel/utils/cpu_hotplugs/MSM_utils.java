@@ -1,8 +1,9 @@
 package com.ultradevs.ultrakernel.utils.cpu_hotplugs;
 
-import java.io.File;
+import com.ultradevs.ultrakernel.utils.RootUtils;
+import com.ultradevs.ultrakernel.utils.utils;
 
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
+import java.io.File;
 
 /**
  * Created by ahmedhady on 29/10/17.
@@ -23,7 +24,7 @@ public class MSM_utils {
     }
 
     public static boolean getStatus() {
-        if (shell("cat " + MSM_ENABLE, true).toString().contains("1")){
+        if (utils.readFile(MSM_ENABLE, true).toString().contains("1")){
             return true;
         } else {
             return false;
@@ -36,6 +37,6 @@ public class MSM_utils {
         } else {
             set = 0;
         }
-        shell("echo " + set.toString() + " > " + MSM_ENABLE, true);
+        RootUtils.runCommand("echo " + set.toString() + " > " + MSM_ENABLE);
     }
 }

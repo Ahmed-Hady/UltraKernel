@@ -16,9 +16,7 @@ import com.ultradevs.ultrakernel.adapters.StatusAdapter;
 
 import java.util.ArrayList;
 
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.hasSelinux;
 import static com.ultradevs.ultrakernel.utils.ShellExecuter.isRoot;
-import static com.ultradevs.ultrakernel.utils.ShellExecuter.shell;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_ABI;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Bootloader;
 import static com.ultradevs.ultrakernel.utils.SystemInfoUtils.Android_Name;
@@ -76,13 +74,13 @@ public class SystemInfoFragment extends Fragment {
         adapter.add(new InfoList(getString(R.string.sys_cpu_abi), Android_ABI()));
         adapter.add(new InfoList(getString(R.string.sys_baseband), Android_RadioVersion()));
         adapter.add(new InfoList(getString(R.string.sys_k_version), Android_device_kernel()));
-        if(hasSelinux()==true) {
+        /*if(hasSelinux()==true) {
             adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_enforcing)));
         } else if(hasSelinux()==false) {
             adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_permissive)));
         }else {
             adapter.add(new InfoList(getString(R.string.sys_selinux), getString(R.string.sys_selinux_off)));
-        }
+        }*/
         adapter.add(new InfoList(getString(R.string.sys_root), isRoot()));
 
         return v;

@@ -2,8 +2,6 @@ package com.ultradevs.ultrakernel.utils;
 
 import android.os.Build;
 
-import com.stericson.RootTools.RootTools;
-
 import java.io.IOException;
 
 /**
