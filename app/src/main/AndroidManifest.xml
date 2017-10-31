@@ -30,18 +30,17 @@
 
         <receiver
             android:name=".receivers.BootReceiver"
-            android:enabled="true">
-            <intent-filter android:priority="800">
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-
-                <category android:name="android.intent.category.INFO" />
             </intent-filter>
         </receiver>
 
         <service
             android:name=".services.OnBootApply"
-            android:enabled="true"
-            android:exported="true"></service>
+            android:enabled="true"/>
     </application>
 
 </manifest>

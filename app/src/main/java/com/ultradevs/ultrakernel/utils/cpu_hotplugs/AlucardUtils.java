@@ -1,6 +1,9 @@
 package com.ultradevs.ultrakernel.utils.cpu_hotplugs;
 
+import android.content.Context;
+
 import com.ultradevs.ultrakernel.utils.RootUtils;
+import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.utils;
 
 import java.io.File;
@@ -48,31 +51,35 @@ public class AlucardUtils {
         }
     }
 
-    public static void setEnabled(boolean enable) {
+    public static void setEnabled(boolean enable, Context context) {
         final Integer set;
         if(enable == true){
             set = 1;
         } else {
             set = 0;
         }
-        RootUtils.runCommand("echo " + set.toString() + " > " + ALUCARD_HOTPLUG_ENABLE);
+        utils.writeFile(ALUCARD_HOTPLUG_ENABLE, set.toString());
+        prefs.putBoolean("alucard_onboot", enable, context);
     }
 
-    public static void setMinOnline(int value){
-        RootUtils.runCommand("echo " + value + " > " + ALUCARD_HOTPLUG_MIN_CPUS_ONLINE);
+    public static void setMinOnline(int value, Context context){
+        utils.writeFile(ALUCARD_HOTPLUG_MIN_CPUS_ONLINE, value);
+        prefs.putInt("alucard_min_online", value, context);
     }
 
-    public static void setMaxOnline(int value){
-        RootUtils.runCommand("echo " + value + " > " + ALUCARD_HOTPLUG_MAX_CORES_LIMIT);
+    public static void setMaxOnline(int value, Context context){
+        utils.writeFile(ALUCARD_HOTPLUG_MAX_CORES_LIMIT, value);
+        prefs.putInt("alucard_max_online", value, context);
     }
 
-    public static void setSuspend(boolean value){
+    public static void setSuspend(boolean value, Context context){
         int set;
         if(value == true){
             set = 1;
         } else {
             set = 0;
         }
-        RootUtils.runCommand("echo " + set + " > " + ALUCARD_HOTPLUG_SUSPEND);
+        utils.writeFile(ALUCARD_HOTPLUG_SUSPEND, set);
+        prefs.putBoolean("alucard_suspend", value, context);
     }
 }

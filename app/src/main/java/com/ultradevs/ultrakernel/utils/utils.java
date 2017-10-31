@@ -74,9 +74,32 @@ public class utils {
         }
         return s == null ? null : s.toString().trim();
     }
+
+    public static void writeFile(String file, String value){
+        RootUtils.runCommand("echo " + value + " > " + file);
+    }
+
+    public static void writeFile(String file, int value){
+        RootUtils.runCommand("echo " + value + " > " + file);
+    }
+
     public static int strToInt(String text) {
         try {
             return Integer.parseInt(text);
+        } catch (NumberFormatException ignored) {
+            return 0;
+        }
+    }
+    public static Boolean strToBoolean(String text) {
+        try {
+            return Boolean.parseBoolean(text);
+        } catch (NumberFormatException ignored) {
+            return false;
+        }
+    }
+    public static long strToLong(String text) {
+        try {
+            return Long.parseLong(text);
         } catch (NumberFormatException ignored) {
             return 0;
         }

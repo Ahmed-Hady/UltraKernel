@@ -14,14 +14,7 @@ import static com.ultradevs.ultrakernel.utils.utils.roundOneDecimals;
 
 public class CpuInfoUtils {
 
-    public static ShellExecuter mShell;
-
     public final static String PATH_CPUS = "/sys/devices/system/cpu";
-
-    public static String getMaxFreq() {
-        mShell.command = "cat " + PATH_CPUS + "/cpu0/cpufreq/cpuinfo_max_freq";
-        return roundOneDecimals(Double.valueOf(mShell.runAsRoot())/1000000) + " GHz";
-    }
 
     // use with caution: Due to thread delay, info may not pushed before its read sequence
     public static void getCpuInfo(CpuShellUtils shell, final CPUInfo info) {
