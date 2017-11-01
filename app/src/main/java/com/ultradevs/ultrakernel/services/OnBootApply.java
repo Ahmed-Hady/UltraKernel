@@ -130,10 +130,10 @@ public class OnBootApply extends Service {
                             * MSM Hotplug
                             */
                             boolean MSM = prefs.getBoolean("msm_onboot", utils.strToBoolean(null), getBaseContext());
-                            if(MPD){
+                            if(MSM){
                                 MsmUtils.setEnabled(true,getBaseContext());
                                 if(prefs.getInt("msm_min_online", utils.strToInt(null), getBaseContext()) > 0){
-                                    MsmUtils.setMinOnline(prefs.getInt("mpd_min_online", utils.strToInt(null), getBaseContext()), getBaseContext());
+                                    MsmUtils.setMinOnline(prefs.getInt("msm_min_online", utils.strToInt(null), getBaseContext()), getBaseContext());
                                 }
                                 if(prefs.getInt("msm_max_online", utils.strToInt(null), getBaseContext()) > 0){
                                     MsmUtils.setMaxOnline(prefs.getInt("msm_max_online", utils.strToInt(null), getBaseContext()), getBaseContext());
