@@ -1,8 +1,6 @@
 package com.ultradevs.ultrakernel.fragments.kernel_features.cpuhotplugs;
 
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,6 +17,7 @@ import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MpdUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
+import com.ultradevs.ultrakernel.utils.sliderUtils;
 import com.ultradevs.ultrakernel.utils.utils;
 
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
@@ -217,54 +216,14 @@ public class CpuHotPlugsFragment extends Fragment {
         if(curr_hp == "alu"){
             mMPDsuspend.setChecked(false);
             MpdUtils.setSuspend(false,getContext());
-
-            mALU_opt.animate()
-                    .translationY(1)
-                    .alpha(1.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            mALU_opt.setVisibility(View.VISIBLE);
-                        }
-                    });
-
-            mMPD_opt.animate()
-                    .translationY(0)
-                    .alpha(1.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            mMPD_opt.setVisibility(View.GONE);
-                        }
-                    });
+            sliderUtils.slideUp(mMPD_opt);
+            sliderUtils.slideDown(mALU_opt);
 
         } else if(curr_hp == "mpd"){
             mALUsuspend.setChecked(false);
             AlucardUtils.setSuspend(false,getContext());
-            mALU_opt.animate()
-                    .translationY(0)
-                    .alpha(1.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            mALU_opt.setVisibility(View.GONE);
-                        }
-                    });
-
-            mMPD_opt.animate()
-                    .translationY(1)
-                    .alpha(1.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            mMPD_opt.setVisibility(View.VISIBLE);
-                        }
-                    });
+            sliderUtils.slideUp(mALU_opt);
+            sliderUtils.slideDown(mMPD_opt);
         }
     }
-
 }
