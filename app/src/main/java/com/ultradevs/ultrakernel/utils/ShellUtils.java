@@ -30,24 +30,18 @@ public class ShellUtils
             dialog.show();
 
             // start the shell in the background and keep it alive as long as the app is running
+            // Callback to report whether the shell was successfully started up
             rootSession = new Shell.Builder().
                     useSU().
                     setWantSTDERR(true).
                     setWatchdogTimeout(5).
                     setMinimalLogging(true).
-                    open(new Shell.OnCommandResultListener()
-                    {
+                    open((commandCode, exitCode, output) -> {
+                        // note: this will FC if you rotate the phone while the dialog is up
+                        dialog.dismiss();
 
-                        // Callback to report whether the shell was successfully started up
-                        @Override
-                        public void onCommandResult(int commandCode, int exitCode, List<String> output)
-                        {
-                            // note: this will FC if you rotate the phone while the dialog is up
-                            dialog.dismiss();
-
-                            if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING)
-                                reportError("Error opening root shell: exitCode " + exitCode, context);
-                        }
+                        if (exitCode != Shell.OnCommandResultListener.SHELL_RUNNING)
+                            reportError("Error opening root shell: exitCode " + exitCode, context);
                     });
         }
     }
