@@ -70,7 +70,8 @@ public class OnBootApply extends Service {
 
                             String gov = prefs.getString("cur_gov",null,getBaseContext());
                             if(gov != null){
-                                utils.writeFile(Scaling_gov_path,gov);
+                                utils.writeFile(Scaling_gov_path,gov.toString());
+                                Log.i(LOG_TAG, "Applying Max Freq:" + gov.toString());
                             }
 
                             Long max_freq = prefs.getLong("cpu_max_freq", utils.strToLong(null), getBaseContext());
