@@ -46,8 +46,8 @@ public class OnBootApply extends Service {
         final NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.ic_sys_info)
-                        .setContentTitle("UltraKernel")
-                        .setContentText("Applying OnBoot Preferences !")
+                        .setContentTitle(getString(R.string.app_name))
+                        .setContentText(getString(R.string.notif_onboot_title))
                         .setProgress(100,0,true);;
 
         final NotificationManager mNotificationManager =
@@ -133,7 +133,7 @@ public class OnBootApply extends Service {
                             e.printStackTrace();
                         }
 
-                        mBuilder.setContentText("Applying complete")
+                        mBuilder.setContentText(getString(R.string.notif_onboot_complete))
                                 .setProgress(0,0,false);
                         mNotificationManager.notify(1, mBuilder.build());
                     }

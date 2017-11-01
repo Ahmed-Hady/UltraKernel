@@ -8,6 +8,9 @@
 
     <string name="onboot">Apply On Boot</string>
 
+    <string name="notif_onboot_title">Applying OnBoot Preferences !</string>
+    <string name="notif_onboot_complete">Applying complete</string>
+
     <!-- Menu Titles -->
     <string name="info_title">Device Information</string>
     <string name="k_cpu_title">CPU Kernel Features</string>
