@@ -103,6 +103,8 @@ public class OnBootApply extends Service {
                                 if(prefs.getBoolean("alucard_suspend", utils.strToBoolean(null),getBaseContext())){
                                     AlucardUtils.setSuspend(prefs.getBoolean("alucard_suspend", utils.strToBoolean(null),getBaseContext()),getBaseContext());
                                 }
+                            } else {
+                                AlucardUtils.setSuspend(false,getBaseContext());
                             }
 
                             /*
@@ -120,6 +122,8 @@ public class OnBootApply extends Service {
                                 if(prefs.getBoolean("mpd_suspend", utils.strToBoolean(null),getBaseContext())){
                                     MpdUtils.setSuspend(prefs.getBoolean("mpd_suspend", utils.strToBoolean(null),getBaseContext()),getBaseContext());
                                 }
+                            } else {
+                                MpdUtils.setSuspend(false,getBaseContext());
                             }
                         }
 
