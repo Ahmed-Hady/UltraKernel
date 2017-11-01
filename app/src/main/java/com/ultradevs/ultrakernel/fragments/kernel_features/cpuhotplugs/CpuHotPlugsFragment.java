@@ -1,8 +1,10 @@
 package com.ultradevs.ultrakernel.fragments.kernel_features.cpuhotplugs;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
@@ -19,6 +22,7 @@ import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MpdUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.utils;
 
+import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 
@@ -95,7 +99,10 @@ public class CpuHotPlugsFragment extends Fragment {
         */
         if(AlucardUtils.isAvailable()){
             mALU.setChecked(AlucardUtils.getStatus());
-            mALU.setOnCheckedChangeListener((compoundButton, b) -> AlucardUtils.setEnabled(b,getContext()));
+            mALU.setOnCheckedChangeListener((compoundButton, b) -> {
+                AlucardUtils.setEnabled(b,getContext());
+                OnlyOne_hotplug("alu", b);
+            });
             mALU_online_min.setMax(Integer.valueOf(Ncores()));
             mALU_online_min.setProgress(AlucardUtils.getMinOnline());
             mALU_online_min.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -135,7 +142,10 @@ public class CpuHotPlugsFragment extends Fragment {
         */
         if(MpdUtils.isAvailable()){
             mMPD.setChecked(MpdUtils.getStatus());
-            mMPD.setOnCheckedChangeListener((compoundButton, b) -> MpdUtils.setEnabled(b,getContext()));
+            mMPD.setOnCheckedChangeListener((compoundButton, b) -> {
+                MpdUtils.setEnabled(b,getContext());
+                OnlyOne_hotplug("mpd", b);
+            });
             mMPD_online_min.setMax(Integer.valueOf(Ncores()));
             mMPD_online_min.setProgress(MpdUtils.getMinOnline());
             mMPD_online_min.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -163,11 +173,39 @@ public class CpuHotPlugsFragment extends Fragment {
             mMPD_max_value.setText(Ncores());
             mMPD_min_value.setText(Ncores());
             mMPDsuspend.setChecked(MpdUtils.getSuspend());
-            mMPDsuspend.setOnCheckedChangeListener((compoundButton, b) -> MpdUtils.setSuspend(b, getContext()));
         } else {
             M_lyMPD.setVisibility(View.GONE);
         }
 
         return v ;
+    }
+
+    private int n = 0;
+
+    private void OnlyOne_hotplug(String curr_hp, boolean b){
+        if(AlucardUtils.getStatus())
+            n += 1;
+        if(MpdUtils.getStatus())
+            n += 1;
+
+        if (n > 1){
+            //Disabling All
+            AlucardUtils.setEnabled(false, getContext());
+            MpdUtils.setEnabled(false, getContext());
+
+            Toast.makeText(getContext(),getString(R.string.onlyone_hotplug), Toast.LENGTH_SHORT).show();
+
+            mALU.setChecked(false);
+            mMPD.setChecked(false);
+
+            //Enable only checked hotplug
+            if(curr_hp == "alu"){
+                mALU.setChecked(b);
+                AlucardUtils.setEnabled(b, getContext());
+            } else if(curr_hp == "mpd"){
+                mMPD.setChecked(b);
+                MpdUtils.setEnabled(b, getContext());
+            }
+        }
     }
 }
