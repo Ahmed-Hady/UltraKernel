@@ -206,6 +206,31 @@ public class CpuHotPlugsFragment extends Fragment {
                 mMPD.setChecked(b);
                 MpdUtils.setEnabled(b, getContext());
             }
+            HotPlugFeatures(curr_hp);
         }
     }
+
+    private void HotPlugFeatures(String curr_hp){
+        if(curr_hp == "alu"){
+            mMPDsuspend.setChecked(false);
+            mMPDsuspend.setEnabled(false);
+            MpdUtils.setSuspend(false,getContext());
+            mMPD_online_min.setEnabled(false);
+            mMPD_online_max.setEnabled(false);
+            mALUsuspend.setEnabled(true);
+            mALU_online_min.setEnabled(true);
+            mALU_online_max.setEnabled(true);
+
+        } else if(curr_hp == "mpd"){
+            mALUsuspend.setChecked(false);
+            mALUsuspend.setEnabled(false);
+            AlucardUtils.setSuspend(false,getContext());
+            mALU_online_min.setEnabled(false);
+            mALU_online_max.setEnabled(false);
+            mMPDsuspend.setEnabled(true);
+            mMPD_online_min.setEnabled(true);
+            mMPD_online_max.setEnabled(true);
+        }
+    }
+
 }
