@@ -79,10 +79,10 @@ public class OnBootApply extends Service {
                                 Log.i(LOG_TAG, "Applying Max Freq:" + max_freq.toString());
                             }
 
-                            Long min_freq = prefs.getLong("cpu_min_freq",utils.strToLong(null), getBaseContext());
-                            if(!min_freq.toString().equals("")){
-                                utils.writeFile(PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", min_freq.toString());
-                                Log.i(LOG_TAG, "Applying Min Freq:" + min_freq.toString());
+                            int min_freq = prefs.getInt("cpu_min_freq",utils.strToInt(null), getBaseContext());
+                            if(min_freq > 0){
+                                utils.writeFile(PATH_CPUS + "/cpu0/cpufreq/scaling_min_freq", min_freq);
+                                Log.i(LOG_TAG, "Applying Min Freq:" + min_freq);
                             }
                         }
 
@@ -91,7 +91,7 @@ public class OnBootApply extends Service {
                             /*
                             * AluCard Hotplug
                             */
-                            Boolean ALU = prefs.getBoolean("alucard_onboot", utils.strToBoolean(null), getBaseContext());
+                            boolean ALU = prefs.getBoolean("alucard_onboot", utils.strToBoolean(null), getBaseContext());
                             if(ALU){
                                 AlucardUtils.setEnabled(true,getBaseContext());
                                 if(prefs.getInt("alucard_min_online", utils.strToInt(null), getBaseContext()) > 0){
@@ -108,7 +108,7 @@ public class OnBootApply extends Service {
                             /*
                             * MPD Hotplug
                             */
-                            Boolean MPD = prefs.getBoolean("mpd_onboot", utils.strToBoolean(null), getBaseContext());
+                            boolean MPD = prefs.getBoolean("mpd_onboot", utils.strToBoolean(null), getBaseContext());
                             if(MPD){
                                 MpdUtils.setEnabled(true,getBaseContext());
                                 if(prefs.getInt("mpd_min_online", utils.strToInt(null), getBaseContext()) > 0){
