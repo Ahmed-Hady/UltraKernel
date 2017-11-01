@@ -31,82 +31,88 @@
         android:textAppearance="?android:attr/textAppearanceListItemSecondary"
         android:textColor="?android:attr/textColorSecondary" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
-        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-        android:text="@string/min_cpu_online"
-        android:textStyle="bold" />
-
     <LinearLayout
+        android:id="@+id/alu_opt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_margin="5dp">
+        android:layout_height="130dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
+            android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+            android:text="@string/min_cpu_online"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <SeekBar
+                android:id="@+id/alu_min_online"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/alu_min_online_Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
+            android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+            android:text="@string/max_cpu_online"
+            android:textStyle="bold" />
 
-        <SeekBar
-            android:id="@+id/alu_min_online"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
 
-        <TextView
-            android:id="@+id/alu_min_online_Value"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <SeekBar
+                android:id="@+id/alu_max_online"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/alu_max_online_Value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/aluSuspend"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="0" />
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
+            android:text="@string/suspend_title"
+            android:textColor="?android:attr/textColorSecondary"
+            android:textStyle="bold" />
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/cpu_gov_governor_marginStart"
-        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-        android:text="@string/max_cpu_online"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1" />
-
-        <SeekBar
-            android:id="@+id/alu_max_online"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <TextView
-            android:id="@+id/alu_max_online_Value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0" />
-
-    </LinearLayout>
-
-    <Switch
-        android:id="@+id/aluSuspend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="@dimen/cpu_gov_governor_marginStart"
-        android:text="@string/suspend_title"
-        android:textColor="?android:attr/textColorSecondary"
-        android:textStyle="bold" />
 </LinearLayout>

@@ -1,15 +1,14 @@
 package com.ultradevs.ultrakernel.fragments.kernel_features.cpuhotplugs;
 
 
-import android.content.Context;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
@@ -22,7 +21,6 @@ import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MpdUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.utils;
 
-import static com.ultradevs.ultrakernel.activities.InitActivity.LOG_TAG;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.SocInfoUtils.SocName;
 
@@ -46,6 +44,8 @@ public class CpuHotPlugsFragment extends Fragment {
 
     private LinearLayout M_lyALU;
     private LinearLayout M_lyMPD;
+    private LinearLayout mALU_opt;
+    private LinearLayout mMPD_opt;
 
     private SeekBar mALU_online_min;
     private SeekBar mALU_online_max;
@@ -62,6 +62,9 @@ public class CpuHotPlugsFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_cpu_hotplugs, container, false);
         getActivity().setTitle(getString(R.string.cpu_hotplugs));
+
+        mALU_opt = v.findViewById(R.id.alu_opt);
+        mMPD_opt = v.findViewById(R.id.mpd_opt);
 
         mOnBoot = v.findViewById(R.id.cpuHP_runOnBoot);
         mSocName = v.findViewById(R.id.socversion);
@@ -213,23 +216,54 @@ public class CpuHotPlugsFragment extends Fragment {
     private void HotPlugFeatures(String curr_hp){
         if(curr_hp == "alu"){
             mMPDsuspend.setChecked(false);
-            mMPDsuspend.setEnabled(false);
             MpdUtils.setSuspend(false,getContext());
-            mMPD_online_min.setEnabled(false);
-            mMPD_online_max.setEnabled(false);
-            mALUsuspend.setEnabled(true);
-            mALU_online_min.setEnabled(true);
-            mALU_online_max.setEnabled(true);
+
+            mALU_opt.animate()
+                    .translationY(1)
+                    .alpha(1.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mALU_opt.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+            mMPD_opt.animate()
+                    .translationY(0)
+                    .alpha(1.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mMPD_opt.setVisibility(View.GONE);
+                        }
+                    });
 
         } else if(curr_hp == "mpd"){
             mALUsuspend.setChecked(false);
-            mALUsuspend.setEnabled(false);
             AlucardUtils.setSuspend(false,getContext());
-            mALU_online_min.setEnabled(false);
-            mALU_online_max.setEnabled(false);
-            mMPDsuspend.setEnabled(true);
-            mMPD_online_min.setEnabled(true);
-            mMPD_online_max.setEnabled(true);
+            mALU_opt.animate()
+                    .translationY(0)
+                    .alpha(1.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mALU_opt.setVisibility(View.GONE);
+                        }
+                    });
+
+            mMPD_opt.animate()
+                    .translationY(1)
+                    .alpha(1.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            mMPD_opt.setVisibility(View.VISIBLE);
+                        }
+                    });
         }
     }
 
