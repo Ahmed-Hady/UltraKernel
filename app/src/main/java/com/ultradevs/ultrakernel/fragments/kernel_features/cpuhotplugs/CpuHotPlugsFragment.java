@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.ultradevs.ultrakernel.R;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MpdUtils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MsmUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.sliderUtils;
 import com.ultradevs.ultrakernel.utils.utils;
@@ -35,21 +36,28 @@ public class CpuHotPlugsFragment extends Fragment {
     private TextView mALU_max_value;
     private TextView mMPD_min_value;
     private TextView mMPD_max_value;
+    private TextView mMSM_min_value;
+    private TextView mMSM_max_value;
 
     private Switch mALU;
     private Switch mALUsuspend;
     private Switch mMPD;
     private Switch mMPDsuspend;
+    private Switch mMSM;
 
     private LinearLayout M_lyALU;
     private LinearLayout M_lyMPD;
+    private LinearLayout M_lyMSM;
     private LinearLayout mALU_opt;
     private LinearLayout mMPD_opt;
+    private LinearLayout mMSM_opt;
 
     private SeekBar mALU_online_min;
     private SeekBar mALU_online_max;
     private SeekBar mMPD_online_min;
     private SeekBar mMPD_online_max;
+    private SeekBar mMSM_online_min;
+    private SeekBar mMSM_online_max;
 
     public CpuHotPlugsFragment() {
         // Required empty public constructor
@@ -64,6 +72,7 @@ public class CpuHotPlugsFragment extends Fragment {
 
         mALU_opt = v.findViewById(R.id.alu_opt);
         mMPD_opt = v.findViewById(R.id.mpd_opt);
+        mMSM_opt = v.findViewById(R.id.msm_opt);
 
         mOnBoot = v.findViewById(R.id.cpuHP_runOnBoot);
         mSocName = v.findViewById(R.id.socversion);
@@ -83,6 +92,13 @@ public class CpuHotPlugsFragment extends Fragment {
         mMPD_min_value = v.findViewById(R.id.mpd_min_online_Value);
         mMPDsuspend = v.findViewById(R.id.mpdSuspend);
         M_lyMPD = v.findViewById(R.id.ly_mpd);
+
+        mMSM = v.findViewById(R.id.msm_hotplug);
+        mMSM_online_min = v.findViewById(R.id.msm_min_online);
+        mMSM_online_max = v.findViewById(R.id.msm_max_online);
+        mMSM_max_value = v.findViewById(R.id.msm_max_online_Value);
+        mMSM_min_value = v.findViewById(R.id.msm_min_online_Value);
+        M_lyMSM = v.findViewById(R.id.ly_msm);
 
         /*
         * ==========
@@ -179,6 +195,48 @@ public class CpuHotPlugsFragment extends Fragment {
             M_lyMPD.setVisibility(View.GONE);
         }
 
+        /*
+        * ================
+        * MSM HotPlug
+        * ================
+        */
+        if(MsmUtils.isAvailable()){
+            mMSM.setChecked(MsmUtils.getStatus());
+            mMSM.setOnCheckedChangeListener((compoundButton, b) -> {
+                MsmUtils.setEnabled(b,getContext());
+                OnlyOne_hotplug("msm", b);
+            });
+            mMSM_online_min.setMax(Integer.valueOf(Ncores()));
+            mMSM_online_min.setProgress(MsmUtils.getMinOnline());
+            mMSM_online_min.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {}
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    MsmUtils.setMinOnline(seekBar.getProgress(),getContext());
+                }
+            });
+            mMSM_online_max.setMax(Integer.valueOf(Ncores()));
+            mMSM_online_max.setProgress(MsmUtils.getMaxOnline());
+            mMSM_online_max.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int i, boolean b) {}
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {}
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    MsmUtils.setMaxOnline(seekBar.getProgress(),getContext());
+                }
+            });
+            mMSM_max_value.setText(Ncores());
+            mMSM_min_value.setText(Ncores());
+            //mMSMsuspend.setChecked(MsmUtils.getSuspend());
+        } else {
+            M_lyMSM.setVisibility(View.GONE);
+        }
+
         return v ;
     }
 
@@ -189,16 +247,20 @@ public class CpuHotPlugsFragment extends Fragment {
             n += 1;
         if(MpdUtils.getStatus())
             n += 1;
+        if(MsmUtils.getStatus())
+            n += 1;
 
         if (n > 1){
             //Disabling All
             AlucardUtils.setEnabled(false, getContext());
             MpdUtils.setEnabled(false, getContext());
+            MsmUtils.setEnabled(false, getContext());
 
             Toast.makeText(getContext(),getString(R.string.onlyone_hotplug), Toast.LENGTH_SHORT).show();
 
             mALU.setChecked(false);
             mMPD.setChecked(false);
+            mMSM.setChecked(false);
 
             //Enable only checked hotplug
             if(curr_hp == "alu"){
@@ -207,6 +269,9 @@ public class CpuHotPlugsFragment extends Fragment {
             } else if(curr_hp == "mpd"){
                 mMPD.setChecked(b);
                 MpdUtils.setEnabled(b, getContext());
+            } else if(curr_hp == "msm"){
+                mMSM.setChecked(b);
+                MsmUtils.setEnabled(b, getContext());
             }
             HotPlugFeatures(curr_hp);
         }
@@ -217,13 +282,21 @@ public class CpuHotPlugsFragment extends Fragment {
             mMPDsuspend.setChecked(false);
             MpdUtils.setSuspend(false,getContext());
             sliderUtils.slideUp(mMPD_opt);
+            sliderUtils.slideUp(mMSM_opt);
             sliderUtils.slideDown(mALU_opt);
 
         } else if(curr_hp == "mpd"){
             mALUsuspend.setChecked(false);
             AlucardUtils.setSuspend(false,getContext());
             sliderUtils.slideUp(mALU_opt);
+            sliderUtils.slideUp(mMSM_opt);
             sliderUtils.slideDown(mMPD_opt);
+        } else if(curr_hp == "msm"){
+            mALUsuspend.setChecked(false);
+            mMPDsuspend.setChecked(false);
+            sliderUtils.slideUp(mALU_opt);
+            sliderUtils.slideUp(mMPD_opt);
+            sliderUtils.slideDown(mMSM_opt);
         }
     }
 }

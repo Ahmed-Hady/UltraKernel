@@ -59,9 +59,9 @@
 
             <include layout="@layout/msm_mdp_hotplug" />
 
-            <!--<include layout="@layout/msm_hotplug" />
+            <include layout="@layout/msm_hotplug" />
 
-            <include layout="@layout/autosmp_hotplug" />-->
+            <!--<include layout="@layout/autosmp_hotplug" />-->
 
         </LinearLayout>
     </ScrollView>

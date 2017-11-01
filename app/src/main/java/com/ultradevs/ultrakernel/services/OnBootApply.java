@@ -8,9 +8,9 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.utils.RootUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.AlucardUtils;
 import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MpdUtils;
+import com.ultradevs.ultrakernel.utils.cpu_hotplugs.MsmUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.utils;
 
@@ -125,6 +125,19 @@ public class OnBootApply extends Service {
                                 }
                             } else {
                                 MpdUtils.setSuspend(false,getBaseContext());
+                            }
+                            /*
+                            * MSM Hotplug
+                            */
+                            boolean MSM = prefs.getBoolean("msm_onboot", utils.strToBoolean(null), getBaseContext());
+                            if(MPD){
+                                MsmUtils.setEnabled(true,getBaseContext());
+                                if(prefs.getInt("msm_min_online", utils.strToInt(null), getBaseContext()) > 0){
+                                    MsmUtils.setMinOnline(prefs.getInt("mpd_min_online", utils.strToInt(null), getBaseContext()), getBaseContext());
+                                }
+                                if(prefs.getInt("msm_max_online", utils.strToInt(null), getBaseContext()) > 0){
+                                    MsmUtils.setMaxOnline(prefs.getInt("msm_max_online", utils.strToInt(null), getBaseContext()), getBaseContext());
+                                }
                             }
                         }
 
