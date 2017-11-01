@@ -62,4 +62,11 @@
     <string name="kernel_c_gov">مدير المعالج الحالي</string>
     <string name="soc_n_cores">عدد الأنوية</string>
     <string name="soc_manuf">الشركة المنتجة</string>
+    <string name="cpu_hotplug_mpd_summary">بديل Qualcomm MPD hotplug تم تطويره بواسطة  show-p-1984</string>
+    <string name="cpu_hotplug_msm_summary">بديل Qualcomm MPD hotplug تم تطويره بواسطة myfluxi</string>
+    <string name="cpu_hotplug_alucard_summary">بديل Qualcomm MPD hotplug تم تطويره بواسطة Alucard</string>
+    <string name="cpu_hotplug_autosmp_summary">بديل Qualcomm MPD hotplug تم تطويرة بواسطة mrg666</string>
+    <string name="min_cpu_online">أقل عدد من الأنوية المشغله</string>
+    <string name="max_cpu_online">أقصى عدد من الأنوية المشغله</string>
+    <string name="suspend_title">تعليق</string>
 </resources>

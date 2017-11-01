@@ -100,14 +100,14 @@
     <string name="kernel_c_gov">Current Governor</string>
 
     <!-- HotPlugs -->
-    <string name="cpu_hotplugs">CPU HotPlugs</string>
-    <string name="cpu_hotplug_mpd">MSM MPDecision</string>
+    <string name="cpu_hotplugs" translatable="false">CPU HotPlugs</string>
+    <string name="cpu_hotplug_mpd" translatable="false">MSM MPDecision</string>
     <string name="cpu_hotplug_mpd_summary">Replacement for Qualcomm MPD hotplug developed by show-p-1984</string>
-    <string name="cpu_hotplug_msm">MSM HotPlug</string>
+    <string name="cpu_hotplug_msm" translatable="false">MSM HotPlug</string>
     <string name="cpu_hotplug_msm_summary">Replacement for Qualcomm MPD hotplug developed by myfluxi</string>
-    <string name="cpu_hotplug_alucard">Alucard HotPlug</string>
+    <string name="cpu_hotplug_alucard" translatable="false">Alucard HotPlug</string>
     <string name="cpu_hotplug_alucard_summary">Replacement for Qualcomm MPD hotplug developed by Alucard</string>
-    <string name="cpu_hotplug_autosmp">AutoSmp HotPlug</string>
+    <string name="cpu_hotplug_autosmp" translatable="false">AutoSmp HotPlug</string>
     <string name="cpu_hotplug_autosmp_summary">Replacement for Qualcomm MPD hotplug developed by mrg666</string>
     <string name="min_cpu_online">Minimum CPU online</string>
     <string name="max_cpu_online">Maximum CPU online</string>
