@@ -1,7 +1,9 @@
-package com.ultradevs.ultrakernel.utils.cpu_utils;
+package com.ultradevs.ultrakernel.utils;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.widget.Toast;
+
+import com.ultradevs.ultrakernel.R;
 
 import java.util.List;
 
@@ -11,18 +13,18 @@ import eu.chainfire.libsuperuser.Shell;
  * Date: 10/20/16 3:31 PM
  */
 
-public class CpuShellUtils
+public class ShellUtils
 {
     // all activities should use the same session
     private static Shell.Interactive rootSession;
 
-    public CpuShellUtils(final Context context)
+    public ShellUtils(final Context context)
     {
         if (rootSession == null)
         {
             final ProgressDialog dialog = new ProgressDialog(context);
-            dialog.setTitle("Please wait");
-            dialog.setMessage("Requesting root privilege...");
+            dialog.setTitle(context.getString(R.string.priv_title));
+            dialog.setMessage(context.getString(R.string.priv_msg));
             dialog.setIndeterminate(true);
             dialog.setCancelable(false);
             dialog.show();
@@ -60,7 +62,7 @@ public class CpuShellUtils
 
     public Shell.Interactive getSession()
     {
-        return CpuShellUtils.rootSession;
+        return ShellUtils.rootSession;
     }
 
     protected void reportError(String string, Context context)

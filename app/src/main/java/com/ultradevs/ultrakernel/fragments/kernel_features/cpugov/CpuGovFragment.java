@@ -22,7 +22,7 @@ import com.ultradevs.ultrakernel.dialogs.GovernorOptionDialogFragment;
 import com.ultradevs.ultrakernel.utils.ConcurrentSync;
 import com.ultradevs.ultrakernel.utils.cpu_utils.CPUInfo;
 import com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils;
-import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
+import com.ultradevs.ultrakernel.utils.ShellUtils;
 import com.ultradevs.ultrakernel.utils.prefs;
 import com.ultradevs.ultrakernel.utils.utils;
 
@@ -51,7 +51,7 @@ public class CpuGovFragment extends Fragment {
     private SeekBar mCPUSliderMinSeekBar;
     private SeekBar mCPUSliderMaxSeekBar;
 
-    private CpuShellUtils mShell;
+    private ShellUtils mShell;
     private CPUInfo mCPUInfo = new CPUInfo();
 
     private CheckBox mOnBoot;

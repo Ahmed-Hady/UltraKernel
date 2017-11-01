@@ -11,6 +11,9 @@
     <string name="notif_onboot_title">Applying OnBoot Preferences !</string>
     <string name="notif_onboot_complete">Applying complete</string>
 
+    <string name="priv_title">Please wait</string>
+    <string name="priv_msg">Requesting root privilege...</string>
+
     <!-- Menu Titles -->
     <string name="info_title">Device Information</string>
     <string name="k_cpu_title">CPU Kernel Features</string>

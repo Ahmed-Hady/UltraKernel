@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
-import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
+import com.ultradevs.ultrakernel.utils.ShellUtils;
 
 /**
  * Created by: veli
@@ -13,9 +13,9 @@ import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
 
 public class Activity extends AppCompatActivity
 {
-    public static CpuShellUtils mShellInstance;
+    public static ShellUtils mShellInstance;
 
-    public CpuShellUtils getShellSession()
+    public ShellUtils getShellSession()
     {
         if (this.mShellInstance == null || this.mShellInstance.getSession() == null)
             loadShell();
@@ -25,7 +25,7 @@ public class Activity extends AppCompatActivity
 
     protected void loadShell()
     {
-        this.mShellInstance = new CpuShellUtils(this);
+        this.mShellInstance = new ShellUtils(this);
     }
 
     @Override

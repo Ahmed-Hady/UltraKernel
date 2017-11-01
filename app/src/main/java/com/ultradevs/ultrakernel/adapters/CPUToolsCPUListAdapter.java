@@ -8,13 +8,12 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.ultradevs.ultrakernel.R;
-import com.ultradevs.ultrakernel.utils.cpu_utils.CpuShellUtils;
+import com.ultradevs.ultrakernel.utils.ShellUtils;
 
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
 
-import static com.ultradevs.ultrakernel.utils.SocInfoUtils.Ncores;
 import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
 
 /**
@@ -24,11 +23,11 @@ import static com.ultradevs.ultrakernel.utils.cpu_utils.CpuInfoUtils.PATH_CPUS;
 
 public class CPUToolsCPUListAdapter extends AbstractCPUListAdapter
 {
-    private CpuShellUtils mShell;
+    private ShellUtils mShell;
     public Context mContext;
     private LayoutInflater mInflater;
 
-    public CPUToolsCPUListAdapter(CpuShellUtils shell, Context context)
+    public CPUToolsCPUListAdapter(ShellUtils shell, Context context)
     {
         super();
 

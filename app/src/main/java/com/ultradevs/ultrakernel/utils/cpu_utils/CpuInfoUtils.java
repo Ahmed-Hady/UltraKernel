@@ -4,20 +4,18 @@ package com.ultradevs.ultrakernel.utils.cpu_utils;
  * Created by ahmedhady on 23/10/17.
  */
 
-import com.ultradevs.ultrakernel.utils.ShellExecuter;
+import com.ultradevs.ultrakernel.utils.ShellUtils;
 
 import java.util.List;
 
 import eu.chainfire.libsuperuser.Shell;
-
-import static com.ultradevs.ultrakernel.utils.utils.roundOneDecimals;
 
 public class CpuInfoUtils {
 
     public final static String PATH_CPUS = "/sys/devices/system/cpu";
 
     // use with caution: Due to thread delay, info may not pushed before its read sequence
-    public static void getCpuInfo(CpuShellUtils shell, final CPUInfo info) {
+    public static void getCpuInfo(ShellUtils shell, final CPUInfo info) {
 
         String corePath = PATH_CPUS + "/cpu0/";
 
